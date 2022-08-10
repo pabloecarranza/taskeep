@@ -22,6 +22,9 @@ export const User = sequelize.define("users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email: {
+    type: DataTypes.STRING,
+  },
   collaborative_account: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

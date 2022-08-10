@@ -1,18 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+const SIGNUP_URL = "http://localhost:4000/signup";
+const SIGNIN_URL = "http://localhost:4000/signin";
 
 const initialState = {
-	username: '',
-	password: '',
+  username: "",
+  password: "",
+  email: "",
+};
+
+export const signUpPost = (credent) => async () => {
+  try {
+    const laresp = await axios.post(SIGNUP_URL, credent);
+    console.log(laresp);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const signInPost = (credent) => async () => {
+  try {
+    const laresp = await axios.post(SIGNIN_URL, credent);
+    console.log(laresp);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const authSlice = createSlice({
-	name: 'auth',
-	initialState,
-	reducers: {
-		signUpAction: (state, action) => {
-			console.log('action', action.payload);
-		},
-	},
+  name: "auth",
+  initialState,
+  reducers: {
+    signUpAction: (state, action) => {
+      console.log("action", action.payload);
+    },
+  },
 });
 
 export const { signUpAction } = authSlice.actions;

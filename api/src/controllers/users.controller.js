@@ -30,7 +30,7 @@ export const updateUser = async (req, res) => {
     const { id } = req.params;
     const {
       username,
-
+      email,
       collaborative_account,
       request_send,
       request_received,
@@ -40,6 +40,7 @@ export const updateUser = async (req, res) => {
     const user = await User.findByPk(id);
     (user.username = username),
       (user.collaborative_account = collaborative_account),
+      (user.email = email),
       (user.request_received = request_received),
       (user.request_send = request_send),
       (user.collaborators = collaborators);

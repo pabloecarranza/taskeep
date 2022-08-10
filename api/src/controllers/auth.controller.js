@@ -4,10 +4,11 @@ import config from "../config.js";
 import { serialize } from "cookie";
 
 export const signUp = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
 
   const NewUser = await User.create({
     username,
+    email,
     password: await User.prototype.encryptPassword(password),
   });
 
@@ -17,6 +18,7 @@ export const signUp = async (req, res) => {
 
   res.status(200).json({ token });
 };
+
 export const signIn = async (req, res) => {
   const userFound = await User.findOne({
     where: {
@@ -54,7 +56,7 @@ export const profileHandler = async (req, res) => {
   const { mytokenName } = req.cookies;
   try {
     const user = verify(mytokenName, config.SECRET);
-    return res.json({ username: user.username, password: user.password });
+    return res.json({ username: user.username, email: user.email });
   } catch (error) {
     return res.status(401).json({ message: "invalid token" });
   }
