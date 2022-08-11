@@ -39,9 +39,9 @@ export const signIn = async (req, res) => {
     expiresIn: 86400,
   });
 
-  const serialized = serialize("mytokenName", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+  const serialized = serialize("mytokenNames", token, {
+    httpOnly: false,
+    secure: true,
     sameSite: "none",
     maxAge: 1000 * 60 * 60 * 24 * 30,
     path: "/",

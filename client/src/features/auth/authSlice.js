@@ -20,7 +20,14 @@ export const signUpPost = (credent) => async () => {
 
 export const signInPost = (credent) => async () => {
   try {
-    const laresp = await axios.post(SIGNIN_URL, credent);
+    const laresp = await fetch(SIGNIN_URL, {
+      method: "POST",
+      body: JSON.stringify(credent),
+      credentials: "include", // added this part
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     console.log(laresp);
   } catch (error) {
     console.log(error);
