@@ -26,14 +26,14 @@ export const signIn = async (req, res) => {
     },
   });
 
-  if (!userFound) return res.json({ message: "user not found" });
+  if (!userFound) return res.status(401).send({ message: "user not found" });
   const matchPassword = await User.prototype.comparePassword(
     req.body.password,
     userFound.password
   );
 
   if (!matchPassword)
-    return res.status(401).json({ token: null, message: "invalid password" });
+    return res.status(401).json({ message: "invalid password" });
 
   const token = Jwt.sign({ id: userFound.id }, config.SECRET, {
     expiresIn: 86400,
@@ -49,7 +49,7 @@ export const signIn = async (req, res) => {
 
   res.setHeader("Set-Cookie", serialized);
 
-  res.json("Login Success");
+  res.json({ message: "Login Successfuly" });
 };
 
 export const profileHandler = async (req, res) => {
