@@ -14,20 +14,21 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { AiOutlineUserAdd, AiOutlineUser } from "react-icons/all";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { signUpPost, signInPost } from "./../features/auth/authSlice";
+
+import { useSignInMutation, useSignUpMutation } from "../features/api/apiSlice";
 
 export const LoginForm = () => {
-  const dispatch = useDispatch();
   const [signUp, setSignUp] = React.useState(false);
   const [show, setShow] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
   const [credentials, setCredentials] = React.useState({
     username: "",
     password: "",
     email: "",
   });
+
+  const [SignIn, SignInResponse] = useSignInMutation();
+  const [SignUp, SignUpResponse] = useSignUpMutation();
+
   const handleClick = () => setShow(!show);
   const handleClickType = () => {
     setSignUp(!signUp);
@@ -40,32 +41,50 @@ export const LoginForm = () => {
   };
 
   const handleSubmit = async () => {
-    if (credentials.username === "" || credentials.password === "") {
+    if (
+      credentials.username.length === 0 ||
+      credentials.password.length === 0
+    ) {
+      setCredentials({
+        username: "",
+        password: "",
+        email: "",
+      });
       return alert("el campo no puede estar vacio");
-    }
-    if (signUp) {
-      setLoading(true);
-      /* const response = await axios.post(
-				'http://localhost:4000/signup',
-				credentials
-			); */
-      dispatch(signUpPost(credentials));
-      setLoading(false);
+    } else if (!signUp) {
+      SignIn(credentials)
+        .unwrap()
+        .then((respon) => {
+          console.log(respon);
+        })
+        .catch((error) => {
+          console.log(error.data);
+        });
+      setCredentials({
+        username: "",
+        password: "",
+        email: "",
+      });
     } else {
-      setLoading(true);
-      /* const response = await axios.post(
-        "http://localhost:4000/signin",
-        credentials
-        ); */
-      dispatch(signInPost(credentials));
-
-      setLoading(false);
+      SignUp(credentials)
+        .unwrap()
+        .then((respon) => {
+          console.log(respon);
+        })
+        .catch((error) => {
+          console.log(error.data);
+        });
+      setCredentials({
+        username: "",
+        password: "",
+        email: "",
+      });
     }
   };
 
   return (
     <Box w="30vw" h="80vh" boxShadow="dark-lg" p="6" rounded="md" bg="#1A202C">
-      {loading ? (
+      {SignInResponse.isLoading || SignUpResponse.isLoading ? (
         <Center pt="50%">
           <Spinner size="xl" color="blue.500" />
         </Center>
@@ -99,6 +118,7 @@ export const LoginForm = () => {
                     <Input
                       name="username"
                       type="username"
+                      value={credentials.username}
                       placeholder="Name"
                       onChange={handleChange}
                     />
@@ -108,6 +128,7 @@ export const LoginForm = () => {
                     <Input
                       name="email"
                       type="email"
+                      value={credentials.email}
                       placeholder="email"
                       onChange={handleChange}
                     />
@@ -119,6 +140,7 @@ export const LoginForm = () => {
                         name="password"
                         type={show ? "text" : "password"}
                         placeholder="Password"
+                        value={credentials.password}
                         onChange={handleChange}
                       />
                       <InputRightElement width="4.5rem">
@@ -168,6 +190,7 @@ export const LoginForm = () => {
                     <Input
                       name="username"
                       type="username"
+                      value={credentials.username}
                       placeholder="Name"
                       onChange={handleChange}
                     />
@@ -179,6 +202,7 @@ export const LoginForm = () => {
                         name="password"
                         type={show ? "text" : "password"}
                         placeholder="Password"
+                        value={credentials.password}
                         onChange={handleChange}
                       />
                       <InputRightElement width="4.5rem">

@@ -16,7 +16,17 @@ export const signUp = async (req, res) => {
     expiresIn: 84600,
   });
 
-  res.status(200).json({ token });
+  const serialized = serialize("mytokenNames", token, {
+    httpOnly: false,
+    secure: true,
+    sameSite: "none",
+    maxAge: 1000 * 60 * 60 * 24 * 30,
+    path: "/",
+  });
+
+  res.setHeader("Set-Cookie", serialized);
+
+  res.status(200).json({ message: "Sign Up Successfuly" });
 };
 
 export const signIn = async (req, res) => {
@@ -26,7 +36,10 @@ export const signIn = async (req, res) => {
     },
   });
 
-  if (!userFound) return res.status(401).send({ message: "user not found" });
+  if (!userFound) {
+    return res.status(401).send({ message: "user not found" });
+  }
+
   const matchPassword = await User.prototype.comparePassword(
     req.body.password,
     userFound.password
