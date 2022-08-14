@@ -24,7 +24,6 @@ import { useSignInMutation, useSignUpMutation } from '../features/api/apiSlice';
 
 export const LoginForm = () => {
 	const [signUp, setSignUp] = React.useState(false);
-	const [test, setTest] = React.useState(true);
 	const [show, setShow] = React.useState(false);
 	const [credentials, setCredentials] = React.useState({
 		username: '',
@@ -46,6 +45,34 @@ export const LoginForm = () => {
 		});
 	};
 	console.log('outside', SignInResponse.isSuccess);
+
+	const handleInvited = async () => {
+		const invitedCredentials = {
+			username: 'Invited',
+			password: '1234',
+		};
+		SignIn(invitedCredentials)
+			.unwrap()
+			.then(respon => {
+				toast({
+					title: `${respon.message}`,
+					status: 'success',
+					isClosable: true,
+				});
+				console.log('inside', SignInResponse);
+				setTimeout(() => {
+					navigate('/homepage', { replace: true });
+				}, 1000);
+			})
+			.catch(error => {
+				toast({
+					title: `${error.data.message}`,
+					status: 'error',
+					isClosable: true,
+				});
+			});
+	};
+
 	const handleSubmit = async () => {
 		if (
 			credentials.username.length === 0 ||
@@ -307,6 +334,15 @@ export const LoginForm = () => {
 														</InputGroup>
 													</FormControl>
 												</Box>
+
+												<Button
+													colorScheme='gray'
+													variant='link'
+													onClick={handleInvited}
+												>
+													Enter as a guest
+												</Button>
+
 												<Button
 													size='lg'
 													colorScheme='blue'
