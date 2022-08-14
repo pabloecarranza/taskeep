@@ -73,6 +73,12 @@ export const WelcomePage = () => {
               colorScheme="blue"
               rightIcon={<VscGithubInverted />}
               mr="10px"
+              onClick={() =>
+                window.open(
+                  "https://github.com/pabloecarranza/taskeep",
+                  "_blank"
+                )
+              }
             >
               GitHub
             </Button>
@@ -92,6 +98,12 @@ export const WelcomePage = () => {
             variant="link"
             rightIcon={<BsLinkedin />}
             pt="35px"
+            onClick={() =>
+              window.open(
+                "https://www.linkedin.com/in/pabloecarranza/",
+                "_blank"
+              )
+            }
           >
             Made by Pablo Carranza
           </Button>

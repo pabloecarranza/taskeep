@@ -12,6 +12,7 @@ import {
   InputGroup,
   InputRightElement,
   Spinner,
+  useToast,
 } from "@chakra-ui/react";
 import { AiOutlineUserAdd, AiOutlineUser } from "react-icons/all";
 
@@ -25,7 +26,7 @@ export const LoginForm = () => {
     password: "",
     email: "",
   });
-
+  const toast = useToast();
   const [SignIn, SignInResponse] = useSignInMutation();
   const [SignUp, SignUpResponse] = useSignUpMutation();
 
@@ -50,15 +51,30 @@ export const LoginForm = () => {
         password: "",
         email: "",
       });
-      return alert("el campo no puede estar vacio");
+      toast({
+        title: `The fields cant be empty`,
+        status: "error",
+        isClosable: true,
+      });
+
+      return;
     } else if (!signUp) {
       SignIn(credentials)
         .unwrap()
         .then((respon) => {
           console.log(respon);
+          toast({
+            title: `${respon.message}`,
+            status: "success",
+            isClosable: true,
+          });
         })
         .catch((error) => {
-          console.log(error.data);
+          toast({
+            title: `${error.data.message}`,
+            status: "error",
+            isClosable: true,
+          });
         });
       setCredentials({
         username: "",
@@ -69,10 +85,18 @@ export const LoginForm = () => {
       SignUp(credentials)
         .unwrap()
         .then((respon) => {
-          console.log(respon);
+          toast({
+            title: `${respon.message}`,
+            status: "success",
+            isClosable: true,
+          });
         })
         .catch((error) => {
-          console.log(error.data);
+          toast({
+            title: `${error.data.message}`,
+            status: "error",
+            isClosable: true,
+          });
         });
       setCredentials({
         username: "",
