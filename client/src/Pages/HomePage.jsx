@@ -5,7 +5,7 @@ import { Box, Flex } from '@chakra-ui/react';
 
 export const HomePage = () => {
 	return (
-		<Flex justifyContent="center" mt="5px">
+		<Flex justifyContent='center' mt='5px'>
 			<Sidebar />
 			<TaskArea />
 		</Flex>

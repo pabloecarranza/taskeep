@@ -18,12 +18,12 @@ export const AddTaskBar = () => {
 
 	return (
 		<>
-			<Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+			<Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
 				New Task
 			</Button>
 			<Drawer
 				isOpen={isOpen}
-				placement="right"
+				placement='right'
 				onClose={onClose}
 				finalFocusRef={btnRef}
 			>
@@ -33,14 +33,14 @@ export const AddTaskBar = () => {
 					<DrawerHeader>Add a new Task</DrawerHeader>
 
 					<DrawerBody>
-						<Input placeholder="Type here..." />
+						<Input placeholder='Type here...' />
 					</DrawerBody>
 
 					<DrawerFooter>
-						<Button variant="outline" mr={3} onClick={onClose}>
+						<Button variant='outline' mr={3} onClick={onClose}>
 							Cancel
 						</Button>
-						<Button colorScheme="blue">Save</Button>
+						<Button colorScheme='blue'>Save</Button>
 					</DrawerFooter>
 				</DrawerContent>
 			</Drawer>

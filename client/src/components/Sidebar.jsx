@@ -33,97 +33,97 @@ import {
 export const Sidebar = () => {
 	return (
 		<Box
-			w="20%"
+			w='20%'
 			p={4}
-			bg="brand.700"
-			color="white"
-			borderRadius="20px"
-			h="98vh"
+			bg='brand.700'
+			color='white'
+			borderRadius='20px'
+			h='98vh'
 		>
-			<Flex w="100%" alignItems="center" pb="15px">
-				<Box w="40%">
-					<Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+			<Flex w='100%' alignItems='center' pb='15px'>
+				<Box w='40%'>
+					<Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
 				</Box>
-				<Box w="100%">
-					<Heading as="h5" size="xs">
+				<Box w='100%'>
+					<Heading as='h5' size='xs'>
 						Pablo Carranza
 					</Heading>
 					<Spacer />
-					<Text fontSize="xs">pabloecarranza@gmail.com</Text>
+					<Text fontSize='xs'>pabloecarranza@gmail.com</Text>
 				</Box>
 			</Flex>
 
-			<InputGroup size="sm">
-				<Input placeholder="Buscar" variant="outline" />
+			<InputGroup size='sm'>
+				<Input placeholder='Buscar' variant='outline' />
 				<InputRightElement children={<FaSearch />} />
 			</InputGroup>
 			<Button
 				leftIcon={<FiSun />}
-				variant="white"
+				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w="100%"
-				justifyContent="flex-start"
+				w='100%'
+				justifyContent='flex-start'
 			>
 				Mi día
 			</Button>
 			<Button
 				leftIcon={<FiStar />}
-				variant="white"
+				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w="100%"
-				justifyContent="flex-start"
+				w='100%'
+				justifyContent='flex-start'
 			>
 				Importante
 			</Button>
 			<Button
 				leftIcon={<FiCalendar />}
-				variant="white"
+				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w="100%"
-				justifyContent="flex-start"
+				w='100%'
+				justifyContent='flex-start'
 			>
 				Planeado
 			</Button>
 			<Button
 				leftIcon={<FiUser />}
-				variant="white"
+				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w="100%"
-				justifyContent="flex-start"
+				w='100%'
+				justifyContent='flex-start'
 			>
 				Asignado a mi usuario
 			</Button>
 			<Button
 				leftIcon={<FiHome />}
-				variant="white"
+				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w="100%"
-				justifyContent="flex-start"
+				w='100%'
+				justifyContent='flex-start'
 			>
 				Tareas
 			</Button>
 			<Button
 				leftIcon={<FiPlus />}
-				variant="white"
+				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w="100%"
-				justifyContent="flex-start"
-				mb="10px"
+				w='100%'
+				justifyContent='flex-start'
+				mb='10px'
 			>
 				Nueva Lista
 			</Button>
 			<Divider />
 			<Flex
-				flexDirection="column"
-				justifyContent="space-between"
-				h="50%"
-				w="100%"
+				flexDirection='column'
+				justifyContent='space-between'
+				h='50%'
+				w='100%'
 			>
 				<Button
 					leftIcon={<FiPlay />}
-					variant="white"
+					variant='white'
 					_hover={{ bg: '#44444442', color: '#0084ff' }}
-					justifyContent="flex-start"
+					justifyContent='flex-start'
 				>
 					Introducción
 				</Button>

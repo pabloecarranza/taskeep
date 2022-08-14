@@ -5,9 +5,27 @@ import { serialize } from "cookie";
 
 export const signUp = async (req, res) => {
   const { username, password, email } = req.body;
+  const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  const parsedName = username.trim().replace(/ /g, "");
+
+  const userFound = await User.findOne({
+    where: {
+      username: parsedName,
+    },
+  });
+  if (userFound)
+    return res
+      .status(401)
+      .json({ message: "User already exists, choose another name" });
+
+  if (!validEmail.test(email)) {
+    return res
+      .status(401)
+      .json({ message: "Please enter a valid email address " });
+  }
 
   const NewUser = await User.create({
-    username,
+    username: parsedName,
     email,
     password: await User.prototype.encryptPassword(password),
   });
