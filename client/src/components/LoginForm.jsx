@@ -21,6 +21,7 @@ import {
 import { AiOutlineUserAdd, AiOutlineUser } from 'react-icons/all';
 import { useNavigate } from 'react-router-dom';
 import { useSignInMutation, useSignUpMutation } from '../features/api/apiSlice';
+import { useSpring, animated } from 'react-spring';
 
 export const LoginForm = () => {
 	const [signUp, setSignUp] = React.useState(false);
@@ -31,6 +32,12 @@ export const LoginForm = () => {
 		email: '',
 	});
 	const toast = useToast();
+	const fadeSignUp = useSpring({
+		opacity: signUp ? 1 : 0,
+	});
+	const fadeSignIn = useSpring({
+		opacity: signUp ? 0 : 1,
+	});
 	const [SignIn, SignInResponse] = useSignInMutation();
 	const [SignUp, SignUpResponse] = useSignUpMutation();
 	let navigate = useNavigate();
@@ -145,25 +152,27 @@ export const LoginForm = () => {
 	};
 
 	return (
-		<Box w='30vw' h='80vh' boxShadow='dark-lg' p='6' rounded='md' bg='#1A202C'>
+		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
 			{SignInResponse.isSuccess ? (
-				<Alert
-					status='success'
-					variant='blackAlpha'
-					flexDirection='column'
-					alignItems='center'
-					justifyContent='center'
-					textAlign='center'
-					height='100%'
-				>
-					<AlertIcon boxSize='40px' mr={0} />
-					<AlertTitle mt={4} mb={1} fontSize='lg'>
-						User Log In successfully!
-					</AlertTitle>
-					<AlertDescription maxWidth='sm'>
-						Welcome back ! We love having you here.
-					</AlertDescription>
-				</Alert>
+				<animated.div style={fadeSignIn}>
+					<Alert
+						status='success'
+						variant='blackAlpha'
+						flexDirection='column'
+						alignItems='center'
+						justifyContent='center'
+						textAlign='center'
+						height='100%'
+					>
+						<AlertIcon boxSize='40px' mr={0} />
+						<AlertTitle mt={4} mb={1} fontSize='lg'>
+							User Log In successfully!
+						</AlertTitle>
+						<AlertDescription maxWidth='sm'>
+							Welcome back ! We love having you here.
+						</AlertDescription>
+					</Alert>
+				</animated.div>
 			) : (
 				<>
 					{SignUpResponse.isSuccess ? (
@@ -194,8 +203,8 @@ export const LoginForm = () => {
 							) : (
 								<>
 									{signUp ? (
-										<>
-											<Center flexDir='column' h='30%'>
+										<animated.div style={fadeSignUp}>
+											<Center flexDir='column' h='10rem'>
 												<Box>
 													<AiOutlineUserAdd size='50px' />
 												</Box>
@@ -214,12 +223,8 @@ export const LoginForm = () => {
 													</Text>
 												</Box>
 											</Center>
-											<Flex
-												h='70%'
-												flexDir='column'
-												justifyContent='space-between'
-											>
-												<Box>
+											<Center flexDir='column' h='21rem'>
+												<Flex flexDir='column' w='80%'>
 													<FormControl isRequired pt='5px'>
 														<FormLabel>User Name</FormLabel>
 														<Input
@@ -263,19 +268,22 @@ export const LoginForm = () => {
 															</InputRightElement>
 														</InputGroup>
 													</FormControl>
-												</Box>
-												<Button
-													size='lg'
-													colorScheme='blue'
-													onClick={handleSubmit}
-												>
-													Create Account
-												</Button>
-											</Flex>
-										</>
+												</Flex>
+												<Center flexDir='column' h='70%' w='100%'>
+													<Button
+														size='lg'
+														colorScheme='blue'
+														onClick={handleSubmit}
+														w='80%'
+													>
+														Create Account
+													</Button>
+												</Center>
+											</Center>
+										</animated.div>
 									) : (
-										<>
-											<Center flexDir='column' h='40%'>
+										<animated.div style={fadeSignIn}>
+											<Center flexDir='column' h='10rem'>
 												<Box>
 													<AiOutlineUser size='50px' />
 												</Box>
@@ -294,12 +302,8 @@ export const LoginForm = () => {
 													</Text>
 												</Box>
 											</Center>
-											<Flex
-												h='60%'
-												flexDir='column'
-												justifyContent='space-between'
-											>
-												<Box>
+											<Center h='21rem' flexDir='column'>
+												<Box w='80%' h='70%'>
 													<FormControl isRequired>
 														<FormLabel>User Name</FormLabel>
 														<Input
@@ -334,24 +338,27 @@ export const LoginForm = () => {
 														</InputGroup>
 													</FormControl>
 												</Box>
+												<Center flexDir='column' h='30%' w='100%'>
+													<Button
+														colorScheme='gray'
+														variant='link'
+														onClick={handleInvited}
+														pb='8px'
+													>
+														Enter as a guest
+													</Button>
 
-												<Button
-													colorScheme='gray'
-													variant='link'
-													onClick={handleInvited}
-												>
-													Enter as a guest
-												</Button>
-
-												<Button
-													size='lg'
-													colorScheme='blue'
-													onClick={handleSubmit}
-												>
-													Log In
-												</Button>
-											</Flex>
-										</>
+													<Button
+														size='lg'
+														colorScheme='blue'
+														onClick={handleSubmit}
+														w='80%'
+													>
+														Log In
+													</Button>
+												</Center>
+											</Center>
+										</animated.div>
 									)}
 								</>
 							)}
