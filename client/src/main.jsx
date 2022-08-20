@@ -6,7 +6,7 @@ import './App.css';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { ApiProvider } from '@reduxjs/toolkit/dist/query/react';
-import { apiSlice } from './features/api/apiSlice';
+import { authSlice } from './features/api/authSlice';
 
 // eslint-disable-next-line no-unused-vars
 const colors = {
@@ -38,7 +38,7 @@ const theme = extendTheme({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<ApiProvider api={apiSlice}>
+		<ApiProvider api={authSlice}>
 			<Provider store={store}>
 				<ChakraProvider theme={theme}>
 					<App />

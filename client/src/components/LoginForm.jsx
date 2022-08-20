@@ -20,7 +20,10 @@ import {
 } from '@chakra-ui/react';
 import { AiOutlineUserAdd, AiOutlineUser } from 'react-icons/all';
 import { useNavigate } from 'react-router-dom';
-import { useSignInMutation, useSignUpMutation } from '../features/api/apiSlice';
+import {
+	useSignInMutation,
+	useSignUpMutation,
+} from '../features/api/authSlice';
 import { useSpring, animated } from 'react-spring';
 
 export const LoginForm = () => {
