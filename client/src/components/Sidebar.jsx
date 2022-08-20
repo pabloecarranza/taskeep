@@ -32,10 +32,12 @@ import {
 	FiPlay,
 	FiPlus,
 } from 'react-icons/fi';
+import { useGetListsQuery } from '../features/api/listSlice';
 
 export const Sidebar = () => {
 	const [isloaded, setIsloaded] = React.useState(false);
-
+	const { data, error, isLoading } = useGetListsQuery();
+	console.log('getLists', data);
 	return (
 		<Box
 			w='20%'
