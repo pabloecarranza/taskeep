@@ -25,7 +25,7 @@ import { useSpring, animated } from 'react-spring';
 
 export const LoginForm = () => {
 	const [signUp, setSignUp] = React.useState(false);
-	const [show, setShow] = React.useState(false);
+	const [show, setShow] = React.useState(true);
 	const [credentials, setCredentials] = React.useState({
 		username: '',
 		password: '',
@@ -61,15 +61,11 @@ export const LoginForm = () => {
 		SignIn(invitedCredentials)
 			.unwrap()
 			.then(respon => {
-				toast({
+				/* toast({
 					title: `${respon.message}`,
 					status: 'success',
 					isClosable: true,
-				});
-				console.log('inside', SignInResponse);
-				setTimeout(() => {
-					navigate('/homepage', { replace: true });
-				}, 1000);
+				}); */
 			})
 			.catch(error => {
 				toast({
@@ -101,15 +97,11 @@ export const LoginForm = () => {
 			SignIn(credentials)
 				.unwrap()
 				.then(respon => {
-					toast({
+					/* toast({
 						title: `${respon.message}`,
 						status: 'success',
 						isClosable: true,
-					});
-					console.log('inside', SignInResponse);
-					setTimeout(() => {
-						navigate('/homepage', { replace: true });
-					}, 1000);
+					}); */
 				})
 				.catch(error => {
 					toast({
@@ -127,14 +119,11 @@ export const LoginForm = () => {
 			SignUp(credentials)
 				.unwrap()
 				.then(respon => {
-					toast({
+					/* toast({
 						title: `${respon.message}`,
 						status: 'success',
 						isClosable: true,
-					});
-					setTimeout(() => {
-						navigate('/homepage', { replace: true });
-					}, 50000);
+					}); */
 				})
 				.catch(error => {
 					toast({
@@ -154,16 +143,16 @@ export const LoginForm = () => {
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
 			{SignInResponse.isSuccess ? (
-				<animated.div style={fadeSignIn}>
-					<Alert
-						status='success'
-						variant='blackAlpha'
-						flexDirection='column'
-						alignItems='center'
-						justifyContent='center'
-						textAlign='center'
-						height='100%'
-					>
+				<Alert
+					status='success'
+					variant='blackAlpha'
+					flexDirection='column'
+					alignItems='center'
+					justifyContent='center'
+					textAlign='center'
+					height='100%'
+				>
+					<Center flexDir='column'>
 						<AlertIcon boxSize='40px' mr={0} />
 						<AlertTitle mt={4} mb={1} fontSize='lg'>
 							User Log In successfully!
@@ -171,8 +160,17 @@ export const LoginForm = () => {
 						<AlertDescription maxWidth='sm'>
 							Welcome back ! We love having you here.
 						</AlertDescription>
-					</Alert>
-				</animated.div>
+					</Center>
+					<Button
+						size='lg'
+						colorScheme='green'
+						onClick={() => navigate('/homepage', { replace: true })}
+						w='60%'
+						mt='30px'
+					>
+						Enter
+					</Button>
+				</Alert>
 			) : (
 				<>
 					{SignUpResponse.isSuccess ? (
@@ -185,14 +183,25 @@ export const LoginForm = () => {
 							textAlign='center'
 							height='100%'
 						>
-							<AlertIcon boxSize='40px' mr={0} />
-							<AlertTitle mt={4} mb={1} fontSize='lg'>
-								User created successfully!
-							</AlertTitle>
-							<AlertDescription maxWidth='sm'>
-								Thank you for your subscription to our application, we hope you
-								enjoy it.
-							</AlertDescription>
+							<Center flexDir='column'>
+								<AlertIcon boxSize='40px' mr={0} />
+								<AlertTitle mt={4} mb={1} fontSize='lg'>
+									User created successfully!
+								</AlertTitle>
+								<AlertDescription maxWidth='sm'>
+									Thank you for your subscription to our application, we hope
+									you enjoy it.
+								</AlertDescription>
+							</Center>
+							<Button
+								size='lg'
+								colorScheme='green'
+								onClick={() => navigate('/homepage', { replace: true })}
+								w='60%'
+								mt='30px'
+							>
+								Enter
+							</Button>
 						</Alert>
 					) : (
 						<>
@@ -338,12 +347,12 @@ export const LoginForm = () => {
 														</InputGroup>
 													</FormControl>
 												</Box>
-												<Center flexDir='column' h='30%' w='100%'>
+												<Center flexDir='column' h='34%' w='100%'>
 													<Button
 														colorScheme='gray'
 														variant='link'
 														onClick={handleInvited}
-														pb='8px'
+														pb='11px'
 													>
 														Enter as a guest
 													</Button>

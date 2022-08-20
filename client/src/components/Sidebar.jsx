@@ -17,6 +17,9 @@ import {
 	InputRightElement,
 	Button,
 	ButtonGroup,
+	Skeleton,
+	SkeletonCircle,
+	SkeletonText,
 } from '@chakra-ui/react';
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
@@ -31,6 +34,8 @@ import {
 } from 'react-icons/fi';
 
 export const Sidebar = () => {
+	const [isloaded, setIsloaded] = React.useState(false);
+
 	return (
 		<Box
 			w='20%'
@@ -42,21 +47,38 @@ export const Sidebar = () => {
 		>
 			<Flex w='100%' alignItems='center' pb='15px'>
 				<Box w='40%'>
-					<Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
+					<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
+						<Avatar
+							size='md'
+							name='Dan Abrahmov'
+							src='https://bit.ly/dan-abramov'
+						/>
+					</SkeletonCircle>
 				</Box>
 				<Box w='100%'>
-					<Heading as='h5' size='xs'>
-						Pablo Carranza
-					</Heading>
-					<Spacer />
-					<Text fontSize='xs'>pabloecarranza@gmail.com</Text>
+					<SkeletonText
+						mt='2'
+						noOfLines={2}
+						isLoaded={isloaded}
+						fadeDuration={2}
+						spacing='2'
+					>
+						<Heading as='h5' size='xs'>
+							Pablo Carranza
+						</Heading>
+
+						<Spacer />
+						<Text fontSize='xs'>pabloecarranza@gmail.com</Text>
+					</SkeletonText>
 				</Box>
 			</Flex>
 
-			<InputGroup size='sm'>
-				<Input placeholder='Buscar' variant='outline' />
-				<InputRightElement children={<FaSearch />} />
-			</InputGroup>
+			<Skeleton isLoaded={isloaded} fadeDuration={3}>
+				<InputGroup size='sm'>
+					<Input placeholder='Buscar' variant='outline' />
+					<InputRightElement children={<FaSearch />} />
+				</InputGroup>
+			</Skeleton>
 			<Button
 				leftIcon={<FiSun />}
 				variant='white'
@@ -64,8 +86,11 @@ export const Sidebar = () => {
 				w='100%'
 				justifyContent='flex-start'
 			>
-				Mi día
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={4}>
+					Mi día
+				</SkeletonText>
 			</Button>
+
 			<Button
 				leftIcon={<FiStar />}
 				variant='white'
@@ -73,7 +98,9 @@ export const Sidebar = () => {
 				w='100%'
 				justifyContent='flex-start'
 			>
-				Importante
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={5}>
+					Importante
+				</SkeletonText>
 			</Button>
 			<Button
 				leftIcon={<FiCalendar />}
@@ -82,7 +109,9 @@ export const Sidebar = () => {
 				w='100%'
 				justifyContent='flex-start'
 			>
-				Planeado
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
+					Planeado
+				</SkeletonText>
 			</Button>
 			<Button
 				leftIcon={<FiUser />}
@@ -91,7 +120,9 @@ export const Sidebar = () => {
 				w='100%'
 				justifyContent='flex-start'
 			>
-				Asignado a mi usuario
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={7}>
+					Asignado a mi usuario
+				</SkeletonText>
 			</Button>
 			<Button
 				leftIcon={<FiHome />}
@@ -100,7 +131,9 @@ export const Sidebar = () => {
 				w='100%'
 				justifyContent='flex-start'
 			>
-				Tareas
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={8}>
+					Tareas
+				</SkeletonText>
 			</Button>
 			<Button
 				leftIcon={<FiPlus />}
@@ -110,7 +143,9 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 				mb='10px'
 			>
-				Nueva Lista
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
+					Nueva Lista
+				</SkeletonText>
 			</Button>
 			<Divider />
 			<Flex
@@ -124,6 +159,7 @@ export const Sidebar = () => {
 					variant='white'
 					_hover={{ bg: '#44444442', color: '#0084ff' }}
 					justifyContent='flex-start'
+					onClick={() => setIsloaded(v => !v)}
 				>
 					Introducción
 				</Button>

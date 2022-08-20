@@ -28,6 +28,17 @@ export const apiSlice = createApi({
 			}),
 			invalidatesTags: ['Auth'],
 		}),
+		GetLists: builder.mutation({
+			query: payload => ({
+				url: '/lists',
+				method: 'GET',
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			}),
+			invalidatesTags: ['Auth'],
+		}),
 	}),
 });
-export const { useSignInMutation, useSignUpMutation } = apiSlice;
+export const { useSignInMutation, useSignUpMutation, useGetListsMutation } =
+	apiSlice;
