@@ -15,12 +15,29 @@ import Logo from '../assets/daily-tasks.png';
 import Typewriter from 'typewriter-effect';
 import { LoginForm } from '../components/LoginForm';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-
+import Swal from 'sweetalert2/dist/sweetalert2';
+import { useNavigate } from 'react-router-dom';
 import bg from '../assets/hojas.png';
 
 export const WelcomePage = () => {
 	const { isOpen, onToggle } = useDisclosure();
-
+	let navigate = useNavigate();
+	const showAlert = () => {
+		Swal.fire({
+			icon: 'success',
+			position: 'center',
+			background: '#1A202C',
+			color: '#ffffff',
+			height: '40rem',
+			target: '#master',
+			allowEnterKey: true,
+			title: 'User Log In successfully!',
+			text: 'Welcome back ! We love having you here.',
+			confirmButtonText: 'Enter',
+		}).then(result => {
+			navigate('/homepage', { replace: true });
+		});
+	};
 	return (
 		<Flex
 			w='100vw'
@@ -110,7 +127,7 @@ export const WelcomePage = () => {
 				</Center>
 			</Box>
 			<Center
-				w='100%'
+				w='80%'
 				h='100%'
 				backgroundImage={bg}
 				backgroundPosition='center'
@@ -118,7 +135,7 @@ export const WelcomePage = () => {
 				backgroundSize='cover'
 			>
 				<ScaleFade initialScale={0.9} in={isOpen}>
-					<LoginForm />
+					<LoginForm onToggle={onToggle} showAlert={showAlert} />
 				</ScaleFade>
 			</Center>
 		</Flex>

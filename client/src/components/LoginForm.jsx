@@ -13,10 +13,6 @@ import {
 	InputRightElement,
 	Spinner,
 	useToast,
-	Alert,
-	AlertIcon,
-	AlertTitle,
-	AlertDescription,
 } from '@chakra-ui/react';
 import { AiOutlineUserAdd, AiOutlineUser } from 'react-icons/all';
 import { useNavigate } from 'react-router-dom';
@@ -25,8 +21,9 @@ import {
 	useSignUpMutation,
 } from '../features/api/authSlice';
 import { useSpring, animated } from 'react-spring';
+import Swal from 'sweetalert2';
 
-export const LoginForm = () => {
+export const LoginForm = ({ onToggle, showAlert }) => {
 	const [signUp, setSignUp] = React.useState(false);
 	const [show, setShow] = React.useState(true);
 	const [credentials, setCredentials] = React.useState({
@@ -48,6 +45,21 @@ export const LoginForm = () => {
 	const handleClickType = () => {
 		setSignUp(!signUp);
 	};
+
+	const Toast = Swal.mixin({
+		toast: true,
+		position: 'bottom',
+		showConfirmButton: false,
+		timer: 3000,
+		timerProgressBar: true,
+		background: '#1A202C',
+		color: '#ffffff',
+		didOpen: toast => {
+			toast.addEventListener('mouseenter', Swal.stopTimer);
+			toast.addEventListener('mouseleave', Swal.resumeTimer);
+		},
+	});
+
 	const handleChange = e => {
 		setCredentials({
 			...credentials,
@@ -69,12 +81,13 @@ export const LoginForm = () => {
 					status: 'success',
 					isClosable: true,
 				}); */
+				onToggle();
+				showAlert();
 			})
 			.catch(error => {
-				toast({
+				Toast.fire({
+					icon: 'error',
 					title: `${error.data.message}`,
-					status: 'error',
-					isClosable: true,
 				});
 			});
 	};
@@ -89,10 +102,10 @@ export const LoginForm = () => {
 				password: '',
 				email: '',
 			});
-			toast({
+
+			Toast.fire({
+				icon: 'error',
 				title: `The fields cant be empty`,
-				status: 'error',
-				isClosable: true,
 			});
 
 			return;
@@ -105,12 +118,13 @@ export const LoginForm = () => {
 						status: 'success',
 						isClosable: true,
 					}); */
+					onToggle();
+					showAlert();
 				})
 				.catch(error => {
-					toast({
+					Toast.fire({
 						title: `${error.data.message}`,
-						status: 'error',
-						isClosable: true,
+						icon: 'error',
 					});
 				});
 			setCredentials({
@@ -127,12 +141,13 @@ export const LoginForm = () => {
 						status: 'success',
 						isClosable: true,
 					}); */
+					onToggle();
+					showAlert();
 				})
 				.catch(error => {
-					toast({
+					Toast.fire({
 						title: `${error.data.message}`,
-						status: 'error',
-						isClosable: true,
+						icon: 'error',
 					});
 				});
 			setCredentials({
@@ -146,7 +161,8 @@ export const LoginForm = () => {
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
 			{SignInResponse.isSuccess ? (
-				<Alert
+				<>
+					{/* <Alert
 					status='success'
 					variant='blackAlpha'
 					flexDirection='column'
@@ -154,30 +170,32 @@ export const LoginForm = () => {
 					justifyContent='center'
 					textAlign='center'
 					height='100%'
-				>
+					>
 					<Center flexDir='column'>
-						<AlertIcon boxSize='40px' mr={0} />
-						<AlertTitle mt={4} mb={1} fontSize='lg'>
-							User Log In successfully!
-						</AlertTitle>
-						<AlertDescription maxWidth='sm'>
-							Welcome back ! We love having you here.
-						</AlertDescription>
+					<AlertIcon boxSize='40px' mr={0} />
+					<AlertTitle mt={4} mb={1} fontSize='lg'>
+					User Log In successfully!
+					</AlertTitle>
+					<AlertDescription maxWidth='sm'>
+					Welcome back ! We love having you here.
+					</AlertDescription>
 					</Center>
 					<Button
-						size='lg'
-						colorScheme='green'
-						onClick={() => navigate('/homepage', { replace: true })}
-						w='60%'
-						mt='30px'
+					size='lg'
+					colorScheme='green'
+					onClick={() => navigate('/homepage', { replace: true })}
+					w='60%'
+					mt='30px'
 					>
-						Enter
+					Enter
 					</Button>
-				</Alert>
+				</Alert> */}
+				</>
 			) : (
 				<>
 					{SignUpResponse.isSuccess ? (
-						<Alert
+						<>
+							{/* <Alert
 							status='success'
 							variant='blackAlpha'
 							flexDirection='column'
@@ -185,27 +203,28 @@ export const LoginForm = () => {
 							justifyContent='center'
 							textAlign='center'
 							height='100%'
-						>
+							>
 							<Center flexDir='column'>
-								<AlertIcon boxSize='40px' mr={0} />
-								<AlertTitle mt={4} mb={1} fontSize='lg'>
-									User created successfully!
-								</AlertTitle>
-								<AlertDescription maxWidth='sm'>
-									Thank you for your subscription to our application, we hope
-									you enjoy it.
-								</AlertDescription>
+							<AlertIcon boxSize='40px' mr={0} />
+							<AlertTitle mt={4} mb={1} fontSize='lg'>
+							User created successfully!
+							</AlertTitle>
+							<AlertDescription maxWidth='sm'>
+							Thank you for your subscription to our application, we hope
+							you enjoy it.
+							</AlertDescription>
 							</Center>
 							<Button
-								size='lg'
-								colorScheme='green'
-								onClick={() => navigate('/homepage', { replace: true })}
-								w='60%'
-								mt='30px'
+							size='lg'
+							colorScheme='green'
+							onClick={() => navigate('/homepage', { replace: true })}
+							w='60%'
+							mt='30px'
 							>
-								Enter
+							Enter
 							</Button>
-						</Alert>
+						</Alert> */}
+						</>
 					) : (
 						<>
 							{SignInResponse.isLoading || SignUpResponse.isLoading ? (
