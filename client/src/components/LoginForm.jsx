@@ -37,7 +37,6 @@ export const LoginForm = () => {
 		password: '',
 		email: '',
 	});
-	const toast = useToast();
 	const fadeSignUp = useSpring({
 		opacity: signUp ? 1 : 0,
 	});
@@ -72,7 +71,6 @@ export const LoginForm = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
-	console.log('outside', SignInResponse.isSuccess);
 
 	const handleInvited = async () => {
 		const invitedCredentials = {

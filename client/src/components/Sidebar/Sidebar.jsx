@@ -13,24 +13,39 @@ import {
 	Skeleton,
 	SkeletonCircle,
 	SkeletonText,
+	useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import {
-	FiSun,
-	FiStar,
-	FiCalendar,
-	FiUser,
-	FiHome,
-	FiPlay,
-	FiPlus,
-} from 'react-icons/fi';
+import { FiSun, FiStar, FiCalendar, FiUser } from 'react-icons/fi';
 import { useGetListsQuery } from '../../features/api/listSlice';
 
+import { BiTask } from 'react-icons/bi';
+import { CgList } from 'react-icons/cg';
+import { MdPostAdd } from 'react-icons/md';
+import { ModalWelcome } from './../Modals/ModalWelcome';
+import { ModalAddList } from '../Modals/ModalAddList';
+
 export const Sidebar = () => {
+	const {
+		isOpen: isOpenWelcomeModal,
+		onOpen: onOpenWelcomeModal,
+		onClose: onCloseWelcomeModal,
+	} = useDisclosure();
+
+	const {
+		isOpen: isOpenAddListModal,
+		onOpen: onOpenAddListModal,
+		onClose: onCloseAddListModal,
+	} = useDisclosure();
+
 	const [isloaded, setIsloaded] = React.useState(false);
 	const { data, error, isLoading } = useGetListsQuery();
-	console.log('getLists', data);
+
+	useEffect(() => {
+		onOpenWelcomeModal();
+	}, []);
+
 	return (
 		<Box
 			w='20%'
@@ -40,6 +55,13 @@ export const Sidebar = () => {
 			borderRadius='20px'
 			h='98vh'
 		>
+			<ModalWelcome
+				isOpen={isOpenWelcomeModal}
+				onClose={onCloseWelcomeModal}
+				setIsloaded={setIsloaded}
+			/>
+			<ModalAddList isOpen={isOpenAddListModal} onClose={onCloseAddListModal} />
+
 			<Flex w='100%' alignItems='center' pb='15px'>
 				<Box w='40%'>
 					<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
@@ -120,7 +142,7 @@ export const Sidebar = () => {
 				</SkeletonText>
 			</Button>
 			<Button
-				leftIcon={<FiHome />}
+				leftIcon={<BiTask />}
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
 				w='100%'
@@ -131,13 +153,13 @@ export const Sidebar = () => {
 				</SkeletonText>
 			</Button>
 			<Button
-				leftIcon={<FiPlus />}
+				leftIcon={<MdPostAdd />}
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
 				w='100%'
 				justifyContent='flex-start'
 				mb='10px'
-				onClick={() => setIsloaded(v => !v)}
+				onClick={onOpenAddListModal}
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
 					Nueva Lista
@@ -150,14 +172,19 @@ export const Sidebar = () => {
 				h='50%'
 				w='100%'
 			>
-				<Button
-					leftIcon={<FiPlay />}
-					variant='white'
-					_hover={{ bg: '#44444442', color: '#0084ff' }}
-					justifyContent='flex-start'
-				>
-					Introducción
-				</Button>
+				{data &&
+					data.map(list => (
+						<Button
+							leftIcon={<CgList />}
+							variant='white'
+							_hover={{ bg: '#44444442', color: '#0084ff' }}
+							justifyContent='flex-start'
+						>
+							<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
+								{list.name}
+							</SkeletonText>
+						</Button>
+					))}
 			</Flex>
 		</Box>
 	);
