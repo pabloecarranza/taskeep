@@ -1,7 +1,8 @@
 import React from 'react';
-import { Sidebar } from './../components/Sidebar';
+
 import { TaskArea } from './../components/TaskArea';
 import { Box, Flex } from '@chakra-ui/react';
+import { Sidebar } from '../components/Sidebar/Sidebar';
 
 export const HomePage = () => {
 	return (

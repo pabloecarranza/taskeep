@@ -25,7 +25,7 @@ import {
 	FiPlay,
 	FiPlus,
 } from 'react-icons/fi';
-import { useGetListsQuery } from '../features/api/listSlice';
+import { useGetListsQuery } from '../../features/api/listSlice';
 
 export const Sidebar = () => {
 	const [isloaded, setIsloaded] = React.useState(false);
@@ -137,6 +137,7 @@ export const Sidebar = () => {
 				w='100%'
 				justifyContent='flex-start'
 				mb='10px'
+				onClick={() => setIsloaded(v => !v)}
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
 					Nueva Lista
@@ -154,7 +155,6 @@ export const Sidebar = () => {
 					variant='white'
 					_hover={{ bg: '#44444442', color: '#0084ff' }}
 					justifyContent='flex-start'
-					onClick={() => setIsloaded(v => !v)}
 				>
 					Introducción
 				</Button>

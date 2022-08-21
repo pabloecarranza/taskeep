@@ -13,6 +13,12 @@ import {
 	InputRightElement,
 	Spinner,
 	useToast,
+	Alert,
+	AlertIcon,
+	AlertTitle,
+	AlertDescription,
+	ScaleFade,
+	SlideFade,
 } from '@chakra-ui/react';
 import { AiOutlineUserAdd, AiOutlineUser } from 'react-icons/all';
 import { useNavigate } from 'react-router-dom';
@@ -23,7 +29,7 @@ import {
 import { useSpring, animated } from 'react-spring';
 import Swal from 'sweetalert2';
 
-export const LoginForm = ({ onToggle, showAlert }) => {
+export const LoginForm = () => {
 	const [signUp, setSignUp] = React.useState(false);
 	const [show, setShow] = React.useState(true);
 	const [credentials, setCredentials] = React.useState({
@@ -48,11 +54,11 @@ export const LoginForm = ({ onToggle, showAlert }) => {
 
 	const Toast = Swal.mixin({
 		toast: true,
-		position: 'bottom',
+		position: 'bottom-start',
 		showConfirmButton: false,
-		timer: 3000,
+		timer: 2000,
 		timerProgressBar: true,
-		background: '#1A202C',
+		background: '#1f2b43',
 		color: '#ffffff',
 		didOpen: toast => {
 			toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -76,13 +82,10 @@ export const LoginForm = ({ onToggle, showAlert }) => {
 		SignIn(invitedCredentials)
 			.unwrap()
 			.then(respon => {
-				/* toast({
+				Toast.fire({
+					icon: 'success',
 					title: `${respon.message}`,
-					status: 'success',
-					isClosable: true,
-				}); */
-				onToggle();
-				showAlert();
+				});
 			})
 			.catch(error => {
 				Toast.fire({
@@ -113,13 +116,10 @@ export const LoginForm = ({ onToggle, showAlert }) => {
 			SignIn(credentials)
 				.unwrap()
 				.then(respon => {
-					/* toast({
+					Toast.fire({
+						icon: 'success',
 						title: `${respon.message}`,
-						status: 'success',
-						isClosable: true,
-					}); */
-					onToggle();
-					showAlert();
+					});
 				})
 				.catch(error => {
 					Toast.fire({
@@ -136,13 +136,10 @@ export const LoginForm = ({ onToggle, showAlert }) => {
 			SignUp(credentials)
 				.unwrap()
 				.then(respon => {
-					/* toast({
+					Toast.fire({
+						icon: 'success',
 						title: `${respon.message}`,
-						status: 'success',
-						isClosable: true,
-					}); */
-					onToggle();
-					showAlert();
+					});
 				})
 				.catch(error => {
 					Toast.fire({
@@ -161,70 +158,72 @@ export const LoginForm = ({ onToggle, showAlert }) => {
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
 			{SignInResponse.isSuccess ? (
-				<>
-					{/* <Alert
-					status='success'
-					variant='blackAlpha'
-					flexDirection='column'
-					alignItems='center'
-					justifyContent='center'
-					textAlign='center'
-					height='100%'
+				<SlideFade offsetY='20px' in={SignInResponse.isSuccess}>
+					<Alert
+						pt='40%'
+						status='success'
+						variant='blackAlpha'
+						flexDirection='column'
+						alignItems='center'
+						justifyContent='center'
+						textAlign='center'
+						height='100%'
 					>
-					<Center flexDir='column'>
-					<AlertIcon boxSize='40px' mr={0} />
-					<AlertTitle mt={4} mb={1} fontSize='lg'>
-					User Log In successfully!
-					</AlertTitle>
-					<AlertDescription maxWidth='sm'>
-					Welcome back ! We love having you here.
-					</AlertDescription>
-					</Center>
-					<Button
-					size='lg'
-					colorScheme='green'
-					onClick={() => navigate('/homepage', { replace: true })}
-					w='60%'
-					mt='30px'
-					>
-					Enter
-					</Button>
-				</Alert> */}
-				</>
-			) : (
-				<>
-					{SignUpResponse.isSuccess ? (
-						<>
-							{/* <Alert
-							status='success'
-							variant='blackAlpha'
-							flexDirection='column'
-							alignItems='center'
-							justifyContent='center'
-							textAlign='center'
-							height='100%'
-							>
-							<Center flexDir='column'>
+						<Center flexDir='column'>
 							<AlertIcon boxSize='40px' mr={0} />
 							<AlertTitle mt={4} mb={1} fontSize='lg'>
-							User created successfully!
+								User Log In successfully!
 							</AlertTitle>
 							<AlertDescription maxWidth='sm'>
-							Thank you for your subscription to our application, we hope
-							you enjoy it.
+								Welcome back ! We love having you here.
 							</AlertDescription>
-							</Center>
-							<Button
+						</Center>
+						<Button
 							size='lg'
 							colorScheme='green'
 							onClick={() => navigate('/homepage', { replace: true })}
 							w='60%'
 							mt='30px'
-							>
+						>
 							Enter
-							</Button>
-						</Alert> */}
-						</>
+						</Button>
+					</Alert>
+				</SlideFade>
+			) : (
+				<>
+					{SignUpResponse.isSuccess ? (
+						<SlideFade offsetY='20px' in={SignUpResponse.isSuccess}>
+							<Alert
+								pt='40%'
+								status='success'
+								variant='blackAlpha'
+								flexDirection='column'
+								alignItems='center'
+								justifyContent='center'
+								textAlign='center'
+								height='100%'
+							>
+								<Center flexDir='column'>
+									<AlertIcon boxSize='40px' mr={0} />
+									<AlertTitle mt={4} mb={1} fontSize='lg'>
+										User created successfully!
+									</AlertTitle>
+									<AlertDescription maxWidth='sm'>
+										Thank you for your subscription to our application, we hope
+										you enjoy it.
+									</AlertDescription>
+								</Center>
+								<Button
+									size='lg'
+									colorScheme='green'
+									onClick={() => navigate('/homepage', { replace: true })}
+									w='60%'
+									mt='30px'
+								>
+									Enter
+								</Button>
+							</Alert>
+						</SlideFade>
 					) : (
 						<>
 							{SignInResponse.isLoading || SignUpResponse.isLoading ? (
