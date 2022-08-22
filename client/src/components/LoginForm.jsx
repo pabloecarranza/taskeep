@@ -185,7 +185,7 @@ export const LoginForm = () => {
 						</Center>
 						<Button
 							size='lg'
-							colorScheme='green'
+							colorScheme='blue'
 							onClick={() => navigate('/homepage', { replace: true })}
 							w='60%'
 							mt='30px'
@@ -220,7 +220,7 @@ export const LoginForm = () => {
 								</Center>
 								<Button
 									size='lg'
-									colorScheme='green'
+									colorScheme='blue'
 									onClick={() => navigate('/homepage', { replace: true })}
 									w='60%'
 									mt='30px'

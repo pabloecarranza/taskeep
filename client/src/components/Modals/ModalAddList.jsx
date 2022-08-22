@@ -33,9 +33,9 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 			setInput('');
 
 			toast({
-				title: 'Error Addind list.',
-				description: 'The field name cant by empty.',
-				status: 'error',
+				title: 'Warning.',
+				description: 'The field list name cant by empty.',
+				status: 'warning',
 				duration: 2000,
 				isClosable: true,
 			});
