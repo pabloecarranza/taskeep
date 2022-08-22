@@ -27,9 +27,9 @@ import {
 	useSignUpMutation,
 } from '../features/api/authSlice';
 import { useSpring, animated } from 'react-spring';
-import Swal from 'sweetalert2';
 
 export const LoginForm = () => {
+	const toast = useToast();
 	const [signUp, setSignUp] = React.useState(false);
 	const [show, setShow] = React.useState(true);
 	const [credentials, setCredentials] = React.useState({
@@ -51,20 +51,6 @@ export const LoginForm = () => {
 		setSignUp(!signUp);
 	};
 
-	const Toast = Swal.mixin({
-		toast: true,
-		position: 'bottom-start',
-		showConfirmButton: false,
-		timer: 2000,
-		timerProgressBar: true,
-		background: '#1f2b43',
-		color: '#ffffff',
-		didOpen: toast => {
-			toast.addEventListener('mouseenter', Swal.stopTimer);
-			toast.addEventListener('mouseleave', Swal.resumeTimer);
-		},
-	});
-
 	const handleChange = e => {
 		setCredentials({
 			...credentials,
@@ -80,15 +66,21 @@ export const LoginForm = () => {
 		SignIn(invitedCredentials)
 			.unwrap()
 			.then(respon => {
-				Toast.fire({
-					icon: 'success',
-					title: `${respon.message}`,
+				toast({
+					title: 'Success.',
+					description: `${respon.message}`,
+					status: 'success',
+					duration: 2000,
+					isClosable: true,
 				});
 			})
 			.catch(error => {
-				Toast.fire({
-					icon: 'error',
-					title: `${error.data.message}`,
+				toast({
+					title: 'Error',
+					description: `${error.data.message}`,
+					status: 'error',
+					duration: 2000,
+					isClosable: true,
 				});
 			});
 	};
@@ -104,9 +96,12 @@ export const LoginForm = () => {
 				email: '',
 			});
 
-			Toast.fire({
-				icon: 'error',
-				title: `The fields cant be empty`,
+			toast({
+				title: 'Warning.',
+				description: 'The fields cant be empty.',
+				status: 'warning',
+				duration: 2000,
+				isClosable: true,
 			});
 
 			return;
@@ -114,15 +109,21 @@ export const LoginForm = () => {
 			SignIn(credentials)
 				.unwrap()
 				.then(respon => {
-					Toast.fire({
-						icon: 'success',
-						title: `${respon.message}`,
+					toast({
+						title: 'Success.',
+						description: `${respon.message}`,
+						status: 'success',
+						duration: 2000,
+						isClosable: true,
 					});
 				})
 				.catch(error => {
-					Toast.fire({
-						title: `${error.data.message}`,
-						icon: 'error',
+					toast({
+						title: 'Error',
+						description: `${error.data.message}`,
+						status: 'error',
+						duration: 2000,
+						isClosable: true,
 					});
 				});
 			setCredentials({
@@ -134,15 +135,21 @@ export const LoginForm = () => {
 			SignUp(credentials)
 				.unwrap()
 				.then(respon => {
-					Toast.fire({
-						icon: 'success',
-						title: `${respon.message}`,
+					toast({
+						title: 'Success.',
+						description: `${respon.message}`,
+						status: 'success',
+						duration: 2000,
+						isClosable: true,
 					});
 				})
 				.catch(error => {
-					Toast.fire({
-						title: `${error.data.message}`,
-						icon: 'error',
+					toast({
+						title: 'Account created.',
+						description: `${error.data.message}`,
+						status: 'error',
+						duration: 2000,
+						isClosable: true,
 					});
 				});
 			setCredentials({

@@ -12,27 +12,14 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
+	useToast,
 } from '@chakra-ui/react';
-import Swal from 'sweetalert2';
 
 export const ModalAddList = ({ isOpen, onClose }) => {
+	const toast = useToast();
 	const handleClick = () => {
 		onClose();
 	};
-
-	const Toast = Swal.mixin({
-		toast: true,
-		position: 'bottom-start',
-		showConfirmButton: false,
-		timer: 2000,
-		timerProgressBar: true,
-		background: '#1f2b43',
-		color: '#ffffff',
-		didOpen: toast => {
-			toast.addEventListener('mouseenter', Swal.stopTimer);
-			toast.addEventListener('mouseleave', Swal.resumeTimer);
-		},
-	});
 
 	const initialRef = React.useRef(null);
 	const [input, setInput] = React.useState('');
@@ -45,9 +32,12 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 		if (input.length === 0) {
 			setInput('');
 
-			Toast.fire({
-				icon: 'error',
-				title: `The field cant be empty`,
+			toast({
+				title: 'Error Addind list.',
+				description: 'The field name cant by empty.',
+				status: 'error',
+				duration: 2000,
+				isClosable: true,
 			});
 
 			return;
@@ -64,7 +54,6 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 				onClose={handleClick}
 				isCentered
 			>
-				<ModalOverlay />
 				<ModalContent bg='#1A202C'>
 					<ModalHeader>Create a new task list</ModalHeader>
 					<ModalCloseButton />
@@ -84,7 +73,7 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 						<Button variant='ghost' onClick={onClose}>
 							Cancel
 						</Button>
-						<Button colorScheme='blue' mr={3} onClick={handleSubmit}>
+						<Button colorScheme='blue' mr={3} onClick={handleSubmit} ml='4px'>
 							Save
 						</Button>
 					</ModalFooter>
