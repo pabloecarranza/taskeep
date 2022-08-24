@@ -14,3 +14,4 @@ async function main() {
 main();
 
 //TODO https://www.youtube.com/watch?v=zBbqrcvdJjQ&t=246s
+//TODO https://express-validator.github.io/docs/

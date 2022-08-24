@@ -34,7 +34,7 @@ export const signUp = async (req, res) => {
     expiresIn: 84600,
   });
 
-  const serialized = serialize("mytokenNames", token, {
+  const serialized = serialize("auth-token", token, {
     httpOnly: false,
     secure: true,
     sameSite: "none",
@@ -70,15 +70,7 @@ export const signIn = async (req, res) => {
     expiresIn: 86400,
   });
 
-  const serialized = serialize("mytokenNames", token, {
-    httpOnly: false,
-    secure: true,
-    sameSite: "none",
-    maxAge: 1000 * 60 * 60 * 24 * 30,
-    path: "/",
-  });
-
-  res.setHeader("Set-Cookie", serialized);
+  res.cookie("cookieName", token, { sameSite: "none", secure: true });
 
   res.json({ message: "Login Successfuly" });
 };

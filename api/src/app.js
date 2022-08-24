@@ -5,6 +5,8 @@ import tasksRoutes from "./routes/task.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import listRoutes from "./routes/list.routes.js";
 
+import cookieParser from "cookie-parser";
+
 const app = express();
 app.use(express.json());
 
@@ -13,8 +15,9 @@ const corsOptions = {
   credentials: true, //included credentials as true
 };
 
-app.use(cors(corsOptions));
+app.use(cors({ credentials: true, origin: true }));
 
+app.use(cookieParser("MY SECRET"));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", req.headers.origin);
   res.header("Access-Control-Allow-Credentials", true);
@@ -26,9 +29,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(authRoutes);
 app.use(usersRoutes);
 app.use(tasksRoutes);
-app.use(authRoutes);
 app.use(listRoutes);
 
 export default app;

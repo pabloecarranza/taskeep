@@ -11,6 +11,7 @@ export const authSlice = createApi({
 				url: '/signin',
 				method: 'POST',
 				body: payload,
+				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
 				},
