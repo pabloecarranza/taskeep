@@ -13,8 +13,10 @@ const router = Router();
 router.get("/lists", getLists);
 router.get("/list/:id", getList);
 router.get("/list/:id/tasks", getListTask);
-router.post("/list", verifyToken, createList);
-router.put("/list/:id", verifyToken, updateList);
-router.delete("/list/:id", verifyToken, deleteList);
+router.post("/list", /* verifyToken, */ createList);
+router.put("/list/:id", /* verifyToken,  */ updateList);
+router.delete("/list/:id", /* verifyToken, */ deleteList);
 
 export default router;
+
+//verificar el token mediante localstorage

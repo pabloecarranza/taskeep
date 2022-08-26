@@ -14,6 +14,7 @@ import {
 	Input,
 	useToast,
 } from '@chakra-ui/react';
+import { usePostListMutation } from '../../features/api/listSlice';
 
 export const ModalAddList = ({ isOpen, onClose }) => {
 	const toast = useToast();
@@ -22,16 +23,19 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 	};
 
 	const initialRef = React.useRef(null);
-	const [input, setInput] = React.useState('');
+	const [input, setInput] = React.useState({
+		name: '',
+	});
 
 	const handleChange = e => {
-		setInput(e.target.value);
+		setInput({ name: e.target.value });
 	};
 
-	const handleSubmit = async () => {
-		if (input.length === 0) {
-			setInput('');
+	const [PostList, PostListResponse] = usePostListMutation();
 
+	const handleSubmit = async () => {
+		console.log(input.name);
+		if (input.name.length === 0) {
 			toast({
 				title: 'Warning.',
 				description: 'The field list name cant by empty.',
@@ -42,7 +46,54 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 
 			return;
 		} else {
-			//aca hacer el POST
+			PostList(input)
+				.unwrap()
+				.then(respon => {
+					toast({
+						title: 'Success.',
+						description: `${respon.message}`,
+						status: 'success',
+						duration: 2000,
+						isClosable: true,
+					});
+				})
+				.catch(error => {
+					toast({
+						title: 'Error',
+						description: `${error.data.message}`,
+						status: 'error',
+						duration: 2000,
+						isClosable: true,
+					});
+				});
+			/* 			
+			SignIn(credentials)
+				.unwrap()
+				.then(respon => {
+					toast({
+						title: 'Success.',
+						description: `${respon.message}`,
+						status: 'success',
+						duration: 2000,
+						isClosable: true,
+					});
+				})
+				.catch(error => {
+					toast({
+						title: 'Error',
+						description: `${error.data.message}`,
+						status: 'error',
+						duration: 2000,
+						isClosable: true,
+					});
+				});
+			setCredentials({
+				username: '',
+				password: '',
+				email: '',
+			});
+			*/
+			setInput({ name: '' });
 		}
 	};
 
@@ -63,7 +114,7 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 							<Input
 								ref={initialRef}
 								placeholder='Write here...'
-								value={input}
+								value={input.name}
 								onChange={handleChange}
 							/>
 						</FormControl>

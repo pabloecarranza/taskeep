@@ -4,16 +4,29 @@ import { Task } from "./../models/Task.js";
 export const createList = async (req, res) => {
   try {
     const { name } = req.body;
+    const parsedList = name.trim().replace(/ /g, "").toLowerCase();
+    console.log(name);
+    console.log(parsedList);
+    const listFound = await List.findOne({
+      where: {
+        name: parsedList,
+      },
+    });
+    if (listFound)
+      return res
+        .status(401)
+        .json({ message: "List already exists, please choose another name" });
 
     const newList = await List.create({
       name,
     });
 
-    res.json(newList);
+    res.json({ message: "List created Successfuly" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
 export const getLists = async (req, res) => {
   try {
     const lists = await List.findAll();

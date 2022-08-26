@@ -31,4 +31,5 @@ export const authSlice = createApi({
 		}),
 	}),
 });
-export const { useSignInMutation, useSignUpMutation } = authSlice;
+export const { useSignInMutation, useSignUpMutation, useGetProfileQuery } =
+	authSlice;

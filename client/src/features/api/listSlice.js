@@ -10,17 +10,18 @@ export const listSlice = createApi({
 			query: () => '/lists',
 			providesTags: ['Get'],
 		}),
-		/* postList: builder.mutation({
+		PostList: builder.mutation({
 			query: payload => ({
 				url: '/list',
-				method: 'POST',
+				method: 'Post',
 				body: payload,
-				headers: {
+				credentials: 'include',
+				/* headers: {
 					'Content-type': 'application/json; charset=UTF-8',
-				},
+				}, */
 			}),
 			invalidatesTags: ['List'],
-		}), */
+		}),
 	}),
 });
-export const { useGetListsQuery } = listSlice;
+export const { useGetListsQuery, usePostListMutation } = listSlice;

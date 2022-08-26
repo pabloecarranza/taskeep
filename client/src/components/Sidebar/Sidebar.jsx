@@ -40,7 +40,7 @@ export const Sidebar = () => {
 	} = useDisclosure();
 
 	const [isloaded, setIsloaded] = React.useState(false);
-	const { data, error, isLoading } = useGetListsQuery();
+	const { data = [], error, isLoading } = useGetListsQuery();
 
 	useEffect(() => {
 		onOpenWelcomeModal();
@@ -166,12 +166,7 @@ export const Sidebar = () => {
 				</SkeletonText>
 			</Button>
 			<Divider />
-			<Flex
-				flexDirection='column'
-				justifyContent='space-between'
-				h='50%'
-				w='100%'
-			>
+			<Flex flexDirection='column' justifyContent='flex-start' h='50%' w='100%'>
 				{data &&
 					data.map(list => (
 						<Button
@@ -179,6 +174,7 @@ export const Sidebar = () => {
 							variant='white'
 							_hover={{ bg: '#44444442', color: '#0084ff' }}
 							justifyContent='flex-start'
+							key={list.id}
 						>
 							<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
 								{list.name}

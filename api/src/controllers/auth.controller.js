@@ -16,7 +16,7 @@ export const signUp = async (req, res) => {
   if (userFound)
     return res
       .status(401)
-      .json({ message: "User already exists, choose another name" });
+      .json({ message: "User already exists, please choose another name" });
 
   if (!validEmail.test(email)) {
     return res
@@ -70,9 +70,15 @@ export const signIn = async (req, res) => {
     expiresIn: 86400,
   });
 
-  res.cookie("cookieName", token, { sameSite: "none", secure: true });
+  /*  res.send("cookieName", token, { sameSite: "none", secure: true }); */
 
-  res.json({ message: "Login Successfuly" });
+  res.json({
+    message: "Login Successfuly",
+    id: userFound.id,
+    username: userFound.username,
+    email: userFound.email,
+    token: token,
+  });
 };
 
 export const profileHandler = async (req, res) => {

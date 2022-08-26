@@ -17,7 +17,7 @@ const corsOptions = {
 
 app.use(cors({ credentials: true, origin: true }));
 
-app.use(cookieParser("MY SECRET"));
+app.use(cookieParser("SECRET"));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", req.headers.origin);
   res.header("Access-Control-Allow-Credentials", true);

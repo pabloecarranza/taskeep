@@ -73,6 +73,7 @@ export const LoginForm = () => {
 					duration: 2000,
 					isClosable: true,
 				});
+				localStorage.setItem('identified-user', JSON.stringify(respon));
 			})
 			.catch(error => {
 				toast({
@@ -116,6 +117,7 @@ export const LoginForm = () => {
 						duration: 2000,
 						isClosable: true,
 					});
+					localStorage.setItem('identified-user', JSON.stringify(respon));
 				})
 				.catch(error => {
 					toast({

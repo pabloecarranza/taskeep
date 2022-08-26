@@ -5,11 +5,14 @@ import {
 	Center,
 	Button,
 	Text,
+	Image,
 } from '@chakra-ui/react';
-
+import Logo from '../assets/daily-tasks.png';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-
+import { useNavigate } from 'react-router-dom';
 export const NotFoundPage = () => {
+	let navigate = useNavigate();
+
 	return (
 		<Container centerContent>
 			<Center padding='4' w='100vw' h='100vh'>
@@ -21,13 +24,10 @@ export const NotFoundPage = () => {
 					alignItems='center'
 					justifyContent='center'
 				>
-					<Heading
-						as='h2'
-						size='2xl'
-						noOflines={1}
-						fontWeight='bold'
-						textAlign='center'
-					>
+					<Box>
+						<Image src={Logo} alt='Logo_Task' boxSize='150px' />
+					</Box>
+					<Heading as='h2' size='2xl' fontWeight='bold' textAlign='center'>
 						We&apos;re sorry - something&apos;s gone wrong.
 						<Text
 							bgGradient='linear(to-l, #7928ca, #0084ff)'
@@ -45,6 +45,7 @@ export const NotFoundPage = () => {
 							rightIcon={<ArrowForwardIcon />}
 							colorScheme='blue'
 							size='lg'
+							onClick={() => navigate('/homepage', { replace: true })}
 						>
 							HomePage
 						</Button>

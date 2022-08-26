@@ -9,6 +9,6 @@ export const store = configureStore({
 		[listSlice.reducerPath]: listSlice.reducer,
 	},
 	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware().concat(authSlice.middleware),
+		getDefaultMiddleware().concat(authSlice.middleware, listSlice.middleware),
 });
 setupListeners(store.dispatch);
