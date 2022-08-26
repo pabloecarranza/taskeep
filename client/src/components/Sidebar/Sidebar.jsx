@@ -25,6 +25,7 @@ import { CgList } from 'react-icons/cg';
 import { MdPostAdd } from 'react-icons/md';
 import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
+import { TaskLists } from './TaskLists';
 
 export const Sidebar = () => {
 	const {
@@ -167,20 +168,14 @@ export const Sidebar = () => {
 			</Button>
 			<Divider />
 			<Flex flexDirection='column' justifyContent='flex-start' h='50%' w='100%'>
-				{data &&
-					data.map(list => (
-						<Button
-							leftIcon={<CgList />}
-							variant='white'
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
-							justifyContent='flex-start'
-							key={list.id}
-						>
-							<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
-								{list.name}
-							</SkeletonText>
-						</Button>
-					))}
+				<SkeletonText
+					noOfLines={3}
+					isLoaded={isloaded}
+					fadeDuration={9}
+					spacing='6'
+				>
+					<TaskLists data={data} />
+				</SkeletonText>
 			</Flex>
 		</Box>
 	);

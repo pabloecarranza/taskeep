@@ -27,8 +27,11 @@ import {
 	useSignUpMutation,
 } from '../features/api/authSlice';
 import { useSpring, animated } from 'react-spring';
+import { useDispatch } from 'react-redux';
+import { sessionIn } from '../features/api/sessionSlice';
 
 export const LoginForm = () => {
+	const dispatch = useDispatch();
 	const toast = useToast();
 	const [signUp, setSignUp] = React.useState(false);
 	const [show, setShow] = React.useState(true);
@@ -74,6 +77,7 @@ export const LoginForm = () => {
 					isClosable: true,
 				});
 				localStorage.setItem('identified-user', JSON.stringify(respon));
+				dispatch(sessionIn(respon));
 			})
 			.catch(error => {
 				toast({

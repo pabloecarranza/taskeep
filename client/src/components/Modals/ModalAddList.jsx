@@ -53,9 +53,10 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 						title: 'Success.',
 						description: `${respon.message}`,
 						status: 'success',
-						duration: 2000,
+						duration: 3000,
 						isClosable: true,
 					});
+					onClose();
 				})
 				.catch(error => {
 					toast({
