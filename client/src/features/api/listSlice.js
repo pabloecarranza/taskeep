@@ -22,6 +22,18 @@ export const listSlice = createApi({
 			}),
 			invalidatesTags: ['List'],
 		}),
+		DeleteList: builder.mutation({
+			query: payload => ({
+				url: `/list/${payload}`,
+				method: 'Delete',
+				credentials: 'include',
+				/* headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				}, */
+			}),
+			invalidatesTags: ['List'],
+		}),
 	}),
 });
-export const { useGetListsQuery, usePostListMutation } = listSlice;
+export const { useGetListsQuery, usePostListMutation, useDeleteListMutation } =
+	listSlice;

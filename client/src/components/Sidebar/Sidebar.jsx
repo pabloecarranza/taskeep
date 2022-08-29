@@ -41,8 +41,11 @@ export const Sidebar = () => {
 	} = useDisclosure();
 
 	const [isloaded, setIsloaded] = React.useState(false);
-	const { data = [], error, isLoading } = useGetListsQuery();
+	const { data = [], error, isLoading, refetch } = useGetListsQuery();
 
+	const userData = JSON.parse(localStorage.getItem('identified-user'));
+
+	console.log(userData);
 	useEffect(() => {
 		onOpenWelcomeModal();
 	}, []);
@@ -82,11 +85,11 @@ export const Sidebar = () => {
 						spacing='2'
 					>
 						<Heading as='h5' size='xs'>
-							Pablo Carranza
+							{userData.username}
 						</Heading>
 
 						<Spacer />
-						<Text fontSize='xs'>pabloecarranza@gmail.com</Text>
+						<Text fontSize='xs'>{userData.email}</Text>
 					</SkeletonText>
 				</Box>
 			</Flex>

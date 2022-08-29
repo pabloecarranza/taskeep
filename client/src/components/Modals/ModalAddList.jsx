@@ -14,9 +14,14 @@ import {
 	Input,
 	useToast,
 } from '@chakra-ui/react';
-import { usePostListMutation } from '../../features/api/listSlice';
+import {
+	useGetListsQuery,
+	usePostListMutation,
+} from '../../features/api/listSlice';
 
 export const ModalAddList = ({ isOpen, onClose }) => {
+	const { refetch } = useGetListsQuery();
+
 	const toast = useToast();
 	const handleClick = () => {
 		onClose();
@@ -67,6 +72,7 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 						isClosable: true,
 					});
 				});
+			refetch();
 			/* 			
 			SignIn(credentials)
 				.unwrap()
