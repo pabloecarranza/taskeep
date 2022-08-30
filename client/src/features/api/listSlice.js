@@ -8,7 +8,7 @@ export const listSlice = createApi({
 	endpoints: builder => ({
 		getLists: builder.query({
 			query: () => '/lists',
-			providesTags: ['Get'],
+			providesTags: ['List'],
 		}),
 		PostList: builder.mutation({
 			query: payload => ({

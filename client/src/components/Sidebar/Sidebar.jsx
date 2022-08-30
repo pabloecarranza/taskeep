@@ -17,7 +17,13 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { FiSun, FiStar, FiCalendar, FiUser } from 'react-icons/fi';
+import {
+	FiSun,
+	FiStar,
+	FiCalendar,
+	FiUser,
+	FiCheckCircle,
+} from 'react-icons/fi';
 import { useGetListsQuery } from '../../features/api/listSlice';
 
 import { BiTask } from 'react-icons/bi';
@@ -132,6 +138,17 @@ export const Sidebar = () => {
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
 					Planeado
+				</SkeletonText>
+			</Button>
+			<Button
+				leftIcon={<FiCheckCircle />}
+				variant='white'
+				_hover={{ bg: '#44444442', color: '#0084ff' }}
+				w='100%'
+				justifyContent='flex-start'
+			>
+				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
+					Completadas
 				</SkeletonText>
 			</Button>
 			<Button

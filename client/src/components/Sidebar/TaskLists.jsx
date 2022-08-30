@@ -7,14 +7,10 @@ import {
 	ButtonGroup,
 	IconButton,
 } from '@chakra-ui/react';
-import {
-	useDeleteListMutation,
-	useGetListsQuery,
-} from '../../features/api/listSlice';
+import { useDeleteListMutation } from '../../features/api/listSlice';
 
 export const TaskLists = ({ data, isloaded }) => {
 	const [DeleteList] = useDeleteListMutation();
-	const { refetch } = useGetListsQuery();
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
@@ -27,7 +23,6 @@ export const TaskLists = ({ data, isloaded }) => {
 	}
 	function handleDeleted(e) {
 		DeleteList(e);
-		refetch();
 	}
 
 	return data.map(list => (

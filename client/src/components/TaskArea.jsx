@@ -8,8 +8,8 @@ export const TaskArea = () => {
 			backgroundPosition='center'
 			backgroundRepeat='no-repeat'
 			backgroundSize='cover'
-			w='76%'
-			h='95vh'
+			w='79%'
+			h='94vh'
 			p={4}
 			color='white'
 			borderRadius='20px'
