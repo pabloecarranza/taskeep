@@ -70,7 +70,7 @@ export const deleteList = async (req, res) => {
         id,
       },
     });
-    res.sendStatus(204);
+    res.json({ message: "List eliminated Successfuly" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

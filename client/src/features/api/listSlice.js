@@ -27,9 +27,9 @@ export const listSlice = createApi({
 				url: `/list/${payload}`,
 				method: 'Delete',
 				credentials: 'include',
-				/* headers: {
+				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
-				}, */
+				},
 			}),
 			invalidatesTags: ['List'],
 		}),

@@ -32,6 +32,7 @@ import { MdPostAdd } from 'react-icons/md';
 import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { TaskLists } from './TaskLists';
+import { ModalConfirm } from './../Modals/ModalConfirm';
 
 export const Sidebar = () => {
 	const {
@@ -187,7 +188,13 @@ export const Sidebar = () => {
 				</SkeletonText>
 			</Button>
 			<Divider />
-			<Flex flexDirection='column' justifyContent='flex-start' h='50%' w='100%'>
+			<Flex
+				flexDirection='column'
+				justifyContent='flex-start'
+				h='30%'
+				w='100%'
+				overflow='auto'
+			>
 				<SkeletonText
 					noOfLines={3}
 					isLoaded={isloaded}

@@ -6,11 +6,21 @@ import {
 	Center,
 	ButtonGroup,
 	IconButton,
+	useDisclosure,
+	AlertDialog,
+	AlertDialogBody,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogContent,
+	AlertDialogOverlay,
 } from '@chakra-ui/react';
 import { useDeleteListMutation } from '../../features/api/listSlice';
+import { ModalConfirm } from '../Modals/ModalConfirm';
 
 export const TaskLists = ({ data, isloaded }) => {
-	const [DeleteList] = useDeleteListMutation();
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const cancelRef = React.useRef();
+	const [seleted, setSeleted] = React.useState({});
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
@@ -19,35 +29,44 @@ export const TaskLists = ({ data, isloaded }) => {
 	}
 
 	function handleSelect(e) {
-		console.log('probando', e);
+		setSeleted(e);
 	}
 	function handleDeleted(e) {
-		DeleteList(e);
+		console.log(seleted);
+		onOpen();
 	}
 
 	return data.map(list => (
 		<Center>
 			{/* <CgList /> */}
+			<ModalConfirm
+				onOpen={onOpen}
+				isOpen={isOpen}
+				onClose={onClose}
+				List={seleted}
+				setSeleted={setSeleted}
+			/>
 			<Button
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
 				justifyContent='space-between'
-				key={list.id}
+				key={list.name}
+				name={list.id}
 				w='100%'
-				name={list.name}
-				onClick={e => handleSelect(list.name)}
+				onClick={e => handleSelect(list)}
 			>
 				{capitalizeFirstLetter(list.name)}
+				<Button
+					justifyContent='center'
+					rightIcon={<CgClose />}
+					key={list.id}
+					variant='gray'
+					name={list.name}
+					colorScheme='whiteAlpha'
+					_hover={{ color: '#ff4000' }}
+					onClick={() => handleDeleted(list.id)}
+				/>
 			</Button>
-			<Button
-				justifyContent='center'
-				rightIcon={<CgClose />}
-				variant='gray'
-				key={list.name}
-				colorScheme='whiteAlpha'
-				_hover={{ color: '#ff4000' }}
-				onClick={e => handleDeleted(list.id)}
-			/>
 		</Center>
 	));
 };
