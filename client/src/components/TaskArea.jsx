@@ -1,5 +1,6 @@
-import { Box } from '@chakra-ui/react';
-import bg from '../assets/fields.png';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import bg from '../assets/beach.jpg';
+import { fecha } from './../utils/date';
 
 export const TaskArea = () => {
 	return (
@@ -16,7 +17,11 @@ export const TaskArea = () => {
 			mt='10px'
 			boxShadow='md'
 		>
-			This is the Box
+			<Text textShadow='2px 2px #000000' m='6'>
+				<Heading as='h4' size='md'>
+					{fecha()}
+				</Heading>
+			</Text>
 		</Box>
 	);
 };

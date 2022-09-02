@@ -14,6 +14,14 @@ import {
 	SkeletonCircle,
 	SkeletonText,
 	useDisclosure,
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuItem,
+	MenuItemOption,
+	MenuGroup,
+	MenuOptionGroup,
+	MenuDivider,
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
@@ -73,33 +81,35 @@ export const Sidebar = () => {
 			/>
 			<ModalAddList isOpen={isOpenAddListModal} onClose={onCloseAddListModal} />
 
-			<Flex w='100%' alignItems='center' pb='15px'>
-				<Box w='40%'>
-					<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
-						<Avatar
-							size='md'
-							name='Dan Abrahmov'
-							src='https://bit.ly/dan-abramov'
-						/>
-					</SkeletonCircle>
-				</Box>
-				<Box w='100%'>
-					<SkeletonText
-						mt='2'
-						noOfLines={2}
-						isLoaded={isloaded}
-						fadeDuration={2}
-						spacing='2'
-					>
-						<Heading as='h5' size='xs'>
-							{userData.username}
-						</Heading>
+			<Button w='100%' variant='white' _hover={{ color: '#0084ff' }} mb='13px'>
+				<Flex w='100%' alignItems='center' pb='15px'>
+					<Box w='40%'>
+						<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
+							<Avatar
+								size='md'
+								name='Dan Abrahmov'
+								src='https://bit.ly/dan-abramov'
+							/>
+						</SkeletonCircle>
+					</Box>
+					<Flex w='100%' textAlign='left'>
+						<SkeletonText
+							mt='2'
+							noOfLines={2}
+							isLoaded={isloaded}
+							fadeDuration={2}
+							spacing='2'
+						>
+							<Heading as='h5' size='xs'>
+								{userData.username}
+							</Heading>
 
-						<Spacer />
-						<Text fontSize='xs'>{userData.email}</Text>
-					</SkeletonText>
-				</Box>
-			</Flex>
+							<Spacer />
+							<Text fontSize='xs'>{userData.email}</Text>
+						</SkeletonText>
+					</Flex>
+				</Flex>
+			</Button>
 
 			<Skeleton isLoaded={isloaded} fadeDuration={3}>
 				<InputGroup size='sm'>
@@ -108,6 +118,7 @@ export const Sidebar = () => {
 				</InputGroup>
 			</Skeleton>
 			<Button
+				isActive='true'
 				leftIcon={<FiSun />}
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
