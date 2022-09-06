@@ -9,7 +9,7 @@ export const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<WelcomePage />} />
-				<Route path='/homepage' element={<HomePage />} />
+				<Route path='/homepage/*' element={<HomePage />} />
 				<Route path='*' element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>

@@ -41,6 +41,7 @@ import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { TaskLists } from './TaskLists';
 import { ModalConfirm } from './../Modals/ModalConfirm';
+import { Link } from 'react-router-dom';
 
 export const Sidebar = () => {
 	const {
@@ -126,7 +127,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={4}>
-					Mi día
+					<Link to='/homepage/myday'>Mi día</Link>
 				</SkeletonText>
 			</Button>
 
@@ -138,7 +139,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={5}>
-					Importante
+					<Link to='/homepage/important'>Importante</Link>
 				</SkeletonText>
 			</Button>
 			<Button
