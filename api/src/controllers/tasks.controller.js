@@ -47,7 +47,7 @@ export const getTask = async (req, res) => {
         id,
       },
     });
-    if (!task) return res.status(404).json({ message: "task dont exists" });
+    if (!task) return res.status(404).json({ message: "Task dont exists" });
     res.json(task);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -67,7 +67,7 @@ export const updateTask = async (req, res) => {
     } = req.body;
 
     const task = await Task.findByPk(id);
-    if (!task) return res.json({ message: "task dont exists" });
+    if (!task) return res.json({ message: "Task dont exists" });
     (task.completed = completed),
       (task.important = important),
       (task.description = description),

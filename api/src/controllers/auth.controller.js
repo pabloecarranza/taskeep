@@ -44,7 +44,7 @@ export const signUp = async (req, res) => {
 
   res.setHeader("Set-Cookie", serialized);
 
-  res.status(200).json({ message: "Sign Up Successfuly" });
+  res.status(200).json({ message: "Sign up successfully" });
 };
 
 export const signIn = async (req, res) => {
@@ -55,7 +55,7 @@ export const signIn = async (req, res) => {
   });
 
   if (!userFound) {
-    return res.status(401).send({ message: "user not found" });
+    return res.status(401).send({ message: "User not found" });
   }
 
   const matchPassword = await User.prototype.comparePassword(
@@ -64,7 +64,7 @@ export const signIn = async (req, res) => {
   );
 
   if (!matchPassword)
-    return res.status(401).json({ message: "invalid password" });
+    return res.status(401).json({ message: "Invalid password" });
 
   const token = Jwt.sign({ id: userFound.id }, config.SECRET, {
     expiresIn: 86400,
@@ -73,7 +73,7 @@ export const signIn = async (req, res) => {
   /*  res.send("cookieName", token, { sameSite: "none", secure: true }); */
 
   res.json({
-    message: "Login Successfuly",
+    message: "Login successfully",
     id: userFound.id,
     username: userFound.username,
     email: userFound.email,
@@ -87,6 +87,6 @@ export const profileHandler = async (req, res) => {
     const user = verify(mytokenName, config.SECRET);
     return res.json({ username: user.username, email: user.email });
   } catch (error) {
-    return res.status(401).json({ message: "invalid token" });
+    return res.status(401).json({ message: "Invalid token" });
   }
 };

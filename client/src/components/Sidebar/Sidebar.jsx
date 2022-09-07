@@ -114,7 +114,7 @@ export const Sidebar = () => {
 
 			<Skeleton isLoaded={isloaded} fadeDuration={3}>
 				<InputGroup size='sm'>
-					<Input placeholder='Buscar' variant='outline' />
+					<Input placeholder='Search' variant='outline' />
 					<InputRightElement children={<FaSearch />} />
 				</InputGroup>
 			</Skeleton>
@@ -127,7 +127,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={4}>
-					<Link to='/homepage/myday'>Mi día</Link>
+					<Link to='/homepage/myday'>My day</Link>
 				</SkeletonText>
 			</Button>
 
@@ -139,7 +139,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={5}>
-					<Link to='/homepage/important'>Importante</Link>
+					<Link to='/homepage/important'>Important</Link>
 				</SkeletonText>
 			</Button>
 			<Button
@@ -150,7 +150,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
-					Planeado
+					<Link to='/homepage/planing'>Planing</Link>
 				</SkeletonText>
 			</Button>
 			<Button
@@ -161,7 +161,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
-					Completadas
+					<Link to='/homepage/completed'>Completed</Link>
 				</SkeletonText>
 			</Button>
 			<Button
@@ -172,7 +172,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={7}>
-					Asignado a mi usuario
+					<Link to='/homepage/assignedtome'>Assigned to me</Link>
 				</SkeletonText>
 			</Button>
 			<Button
@@ -183,7 +183,7 @@ export const Sidebar = () => {
 				justifyContent='flex-start'
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={8}>
-					Tareas
+					<Link to='/homepage/tasks'>Tasks</Link>
 				</SkeletonText>
 			</Button>
 			<Button
@@ -196,7 +196,7 @@ export const Sidebar = () => {
 				onClick={onOpenAddListModal}
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
-					Nueva Lista
+					New list
 				</SkeletonText>
 			</Button>
 			<Divider />

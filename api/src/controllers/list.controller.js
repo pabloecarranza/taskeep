@@ -21,7 +21,7 @@ export const createList = async (req, res) => {
       name,
     });
 
-    res.json({ message: "List created Successfuly" });
+    res.json({ message: "List created successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -70,7 +70,7 @@ export const deleteList = async (req, res) => {
         id,
       },
     });
-    res.json({ message: "List eliminated Successfuly" });
+    res.json({ message: "List eliminated successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

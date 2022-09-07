@@ -1,23 +1,18 @@
 import React from 'react';
 import {
 	Modal,
-	ModalOverlay,
 	ModalContent,
 	ModalHeader,
 	ModalFooter,
 	ModalBody,
 	ModalCloseButton,
-	useDisclosure,
 	Button,
 	FormControl,
 	FormLabel,
 	Input,
 	useToast,
 } from '@chakra-ui/react';
-import {
-	useGetListsQuery,
-	usePostListMutation,
-} from '../../features/api/listSlice';
+import { usePostListMutation } from '../../features/api/listSlice';
 
 export const ModalAddList = ({ isOpen, onClose }) => {
 	const toast = useToast();
@@ -40,9 +35,9 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 		console.log(input.name);
 		if (input.name.length === 0) {
 			toast({
-				title: 'Warning.',
+				title: 'Error.',
 				description: 'The field list name cant by empty.',
-				status: 'warning',
+				status: 'error',
 				duration: 2000,
 				isClosable: true,
 			});
