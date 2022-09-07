@@ -41,7 +41,7 @@ import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { TaskLists } from './TaskLists';
 import { ModalConfirm } from './../Modals/ModalConfirm';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Sidebar = () => {
 	const {
@@ -58,12 +58,12 @@ export const Sidebar = () => {
 
 	const [isloaded, setIsloaded] = React.useState(false);
 	const { data = [], error, isLoading, refetch } = useGetListsQuery();
-
+	const navigate = useNavigate();
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
 
-	console.log(userData);
 	useEffect(() => {
 		onOpenWelcomeModal();
+		navigate('/homepage/myday');
 	}, []);
 
 	return (

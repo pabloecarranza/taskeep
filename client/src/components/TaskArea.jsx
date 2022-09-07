@@ -8,6 +8,7 @@ import { Planing } from './Tabs/Planing';
 import { Completed } from './Tabs/Completed';
 import { AssignedToMe } from './Tabs/AssignedToMe';
 import { Tasks } from './Tabs/Tasks';
+import { CustomList } from './Tabs/CustomList';
 
 export const TaskArea = () => {
 	return (
@@ -31,6 +32,7 @@ export const TaskArea = () => {
 				<Route path='completed' element={<Completed />}></Route>
 				<Route path='assignedtome' element={<AssignedToMe />}></Route>
 				<Route path='tasks' element={<Tasks />}></Route>
+				<Route path='tasklist/:listId' element={<CustomList />}></Route>
 			</Routes>
 		</Box>
 	);

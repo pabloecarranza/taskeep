@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useDeleteListMutation } from '../../features/api/listSlice';
 import { ModalConfirm } from '../Modals/ModalConfirm';
+import { Link } from 'react-router-dom';
 
 export const TaskLists = ({ data, isloaded }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,7 +33,6 @@ export const TaskLists = ({ data, isloaded }) => {
 		setSeleted(e);
 	}
 	function handleDeleted(e) {
-		console.log(seleted);
 		onOpen();
 	}
 
@@ -55,7 +55,9 @@ export const TaskLists = ({ data, isloaded }) => {
 				w='100%'
 				onClick={e => handleSelect(list)}
 			>
-				{capitalizeFirstLetter(list.name)}
+				<Link to={'tasklist/' + list.name}>
+					{capitalizeFirstLetter(list.name)}
+				</Link>
 				<Button
 					justifyContent='center'
 					rightIcon={<CgClose />}

@@ -1,28 +1,24 @@
 import React from 'react';
 import {
 	Modal,
-	ModalOverlay,
 	ModalContent,
 	ModalHeader,
 	ModalFooter,
 	ModalBody,
 	ModalCloseButton,
-	useDisclosure,
 	Button,
-	FormControl,
-	FormLabel,
-	Input,
 	useToast,
 } from '@chakra-ui/react';
 import { useDeleteListMutation } from '../../features/api/listSlice';
-
+import { useNavigate, useParams } from 'react-router-dom';
 export const ModalConfirm = ({ isOpen, onClose, onOpen, List, setSeleted }) => {
 	const toast = useToast();
 	const initialRef = React.useRef(null);
 	const [DeleteList] = useDeleteListMutation();
+	const params = useParams();
+	const navigate = useNavigate();
 
 	function deleteList(list) {
-		console.log('desde el modal', list);
 		DeleteList(list.id)
 			.unwrap()
 			.then(respon => {
@@ -46,6 +42,10 @@ export const ModalConfirm = ({ isOpen, onClose, onOpen, List, setSeleted }) => {
 			});
 		setSeleted({});
 		onClose();
+
+		if (Object.values(params)[0].includes(list.name)) {
+			navigate('/homepage/myday');
+		}
 	}
 
 	return (

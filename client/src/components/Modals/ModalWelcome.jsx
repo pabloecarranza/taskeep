@@ -17,11 +17,13 @@ export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 		setIsloaded(v => !v);
 	};
 
+	const userData = JSON.parse(localStorage.getItem('identified-user'));
+
 	return (
 		<Modal isOpen={isOpen} onClose={handleClick} isCentered>
 			<ModalOverlay />
 			<ModalContent bg='#1A202C'>
-				<ModalHeader>Hi Pablo!</ModalHeader>
+				<ModalHeader>Hi {userData.username}!</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
 					Welcome to my personal app for task management. <br />
