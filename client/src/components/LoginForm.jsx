@@ -102,9 +102,9 @@ export const LoginForm = () => {
 			});
 
 			toast({
-				title: 'Warning.',
+				title: 'Error.',
 				description: 'The fields cant be empty.',
-				status: 'warning',
+				status: 'error',
 				duration: 2000,
 				isClosable: true,
 			});

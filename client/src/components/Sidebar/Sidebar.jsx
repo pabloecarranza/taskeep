@@ -196,7 +196,7 @@ export const Sidebar = () => {
 				onClick={onOpenAddListModal}
 			>
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
-					New list
+					Add new list
 				</SkeletonText>
 			</Button>
 			<Divider />

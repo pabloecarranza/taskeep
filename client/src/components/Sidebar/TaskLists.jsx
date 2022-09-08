@@ -1,26 +1,13 @@
 import React from 'react';
-import { CgList, CgClose } from 'react-icons/cg';
-import {
-	Button,
-	SkeletonText,
-	Center,
-	ButtonGroup,
-	IconButton,
-	useDisclosure,
-	AlertDialog,
-	AlertDialogBody,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogContent,
-	AlertDialogOverlay,
-} from '@chakra-ui/react';
-import { useDeleteListMutation } from '../../features/api/listSlice';
+import { CgClose } from 'react-icons/cg';
+import { Button, Center, useDisclosure } from '@chakra-ui/react';
+
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
 
 export const TaskLists = ({ data, isloaded }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const cancelRef = React.useRef();
+
 	const [seleted, setSeleted] = React.useState({});
 
 	function capitalizeFirstLetter(str) {
@@ -38,7 +25,6 @@ export const TaskLists = ({ data, isloaded }) => {
 
 	return data.map(list => (
 		<Center>
-			{/* <CgList /> */}
 			<ModalConfirm
 				onOpen={onOpen}
 				isOpen={isOpen}
