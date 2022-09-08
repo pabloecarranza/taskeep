@@ -145,6 +145,7 @@ export const AddTask = () => {
 					mr='1%'
 					ml='1%'
 					w='12%'
+					isDisabled={data.length ? false : true}
 				>
 					Add
 				</Button>
