@@ -32,7 +32,7 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 	const [PostList, PostListResponse] = usePostListMutation();
 
 	const handleSubmit = async event => {
-		if (event.key === 'Enter') {
+		if (event.key === 'Enter' || event.type === 'click') {
 			console.log('aaaa');
 
 			if (input.name.length === 0) {
