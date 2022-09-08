@@ -31,69 +31,44 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 
 	const [PostList, PostListResponse] = usePostListMutation();
 
-	const handleSubmit = async () => {
-		console.log(input.name);
-		if (input.name.length === 0) {
-			toast({
-				title: 'Error.',
-				description: 'The field list name cant by empty.',
-				status: 'error',
-				duration: 2000,
-				isClosable: true,
-			});
+	const handleSubmit = async event => {
+		if (event.key === 'Enter') {
+			console.log('aaaa');
 
-			return;
-		} else {
-			PostList(input)
-				.unwrap()
-				.then(respon => {
-					toast({
-						title: 'Success.',
-						description: `${respon.message}`,
-						status: 'success',
-						duration: 3000,
-						isClosable: true,
-					});
-					onClose();
-				})
-				.catch(error => {
-					toast({
-						title: 'Error',
-						description: `${error.data.message}`,
-						status: 'error',
-						duration: 2000,
-						isClosable: true,
-					});
+			if (input.name.length === 0) {
+				toast({
+					title: 'Error.',
+					description: 'The field list name cant by empty.',
+					status: 'error',
+					duration: 2000,
+					isClosable: true,
 				});
 
-			/* 			
-			SignIn(credentials)
-				.unwrap()
-				.then(respon => {
-					toast({
-						title: 'Success.',
-						description: `${respon.message}`,
-						status: 'success',
-						duration: 2000,
-						isClosable: true,
+				return;
+			} else {
+				PostList(input)
+					.unwrap()
+					.then(respon => {
+						toast({
+							title: 'Success.',
+							description: `${respon.message}`,
+							status: 'success',
+							duration: 3000,
+							isClosable: true,
+						});
+						onClose();
+					})
+					.catch(error => {
+						toast({
+							title: 'Error',
+							description: `${error.data.message}`,
+							status: 'error',
+							duration: 2000,
+							isClosable: true,
+						});
 					});
-				})
-				.catch(error => {
-					toast({
-						title: 'Error',
-						description: `${error.data.message}`,
-						status: 'error',
-						duration: 2000,
-						isClosable: true,
-					});
-				});
-			setCredentials({
-				username: '',
-				password: '',
-				email: '',
-			});
-			*/
-			setInput({ name: '' });
+				setInput({ name: '' });
+			}
 		}
 	};
 
@@ -116,6 +91,7 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 								placeholder='Write here...'
 								value={input.name}
 								onChange={handleChange}
+								onKeyDown={e => handleSubmit(e)}
 							/>
 						</FormControl>
 					</ModalBody>
@@ -124,7 +100,13 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 						<Button variant='ghost' onClick={onClose}>
 							Cancel
 						</Button>
-						<Button colorScheme='blue' mr={3} onClick={handleSubmit} ml='4px'>
+						<Button
+							colorScheme='blue'
+							mr={3}
+							onClick={handleSubmit}
+							ml='4px'
+							onKeyDown={handleSubmit}
+						>
 							Save
 						</Button>
 					</ModalFooter>

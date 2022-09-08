@@ -34,6 +34,12 @@ import { useGetListsQuery } from '../features/api/listSlice';
 export const AddTask = () => {
 	const { data = [], error, isLoading, refetch } = useGetListsQuery();
 
+	function capitalizeFirstLetter(str) {
+		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+
+		return capitalized;
+	}
+
 	console.log('datac', data);
 	const onclick = a => {
 		console.log('a', a.target.outerText);
@@ -41,7 +47,7 @@ export const AddTask = () => {
 
 	return (
 		<Center
-			w='50%'
+			w='70%'
 			h='50px'
 			bg='gray.800'
 			color='white'
@@ -101,17 +107,16 @@ export const AddTask = () => {
 						<MenuOptionGroup title='Task lists' type='radio'>
 							{data.length ? (
 								data.map(list => (
-									<>
-										<MenuItemOption
-											value={list.name}
-											key={list.id}
-											_hover={{ bg: '#44444442', color: '#0084ff' }}
-											closeOnSelect={false}
-											onClick={onclick}
-										>
-											{list.name}
-										</MenuItemOption>
-									</>
+									<MenuItemOption
+										value={list.name}
+										name={list.name}
+										key={list.id}
+										_hover={{ bg: '#44444442', color: '#0084ff' }}
+										closeOnSelect={false}
+										onClick={onclick}
+									>
+										{capitalizeFirstLetter(list.name)}
+									</MenuItemOption>
 								))
 							) : (
 								<>
