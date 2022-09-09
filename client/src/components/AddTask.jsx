@@ -32,7 +32,7 @@ import {
 } from '@chakra-ui/icons';
 import { BiTask } from 'react-icons/bi';
 import { useGetListsQuery } from '../features/api/listSlice';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePostTaskMutation } from '../features/api/taskSlice';
 
 export const AddTask = () => {
@@ -54,17 +54,12 @@ export const AddTask = () => {
 		listid: null,
 		userid: userData.id,
 	});
-	const [expirationDate, setExpirationDate] = useState('');
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 
 		return capitalized;
 	}
-
-	const onclick = a => {
-		console.log(task);
-	};
 
 	const handleOnChange = (type, event) => {
 		if (type === 'expiration_date') {
@@ -129,7 +124,6 @@ export const AddTask = () => {
 						duration: 2000,
 						isClosable: true,
 					});
-					localStorage.setItem('identified-user', JSON.stringify(respon));
 				})
 				.catch(error => {
 					toast({

@@ -39,7 +39,7 @@ import { CgList } from 'react-icons/cg';
 import { MdPostAdd } from 'react-icons/md';
 import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
-import { TaskLists } from './TaskLists';
+import { Lists } from './Lists';
 import { ModalConfirm } from './../Modals/ModalConfirm';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -213,7 +213,7 @@ export const Sidebar = () => {
 					fadeDuration={9}
 					spacing='6'
 				>
-					<TaskLists data={data} />
+					<Lists data={data} />
 				</SkeletonText>
 			</Flex>
 		</Box>

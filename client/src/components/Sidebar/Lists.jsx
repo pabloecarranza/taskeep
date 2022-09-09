@@ -5,7 +5,7 @@ import { Button, Center, useDisclosure } from '@chakra-ui/react';
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
 
-export const TaskLists = ({ data, isloaded }) => {
+export const Lists = ({ data, isloaded }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [seleted, setSeleted] = React.useState({});

@@ -2,6 +2,7 @@ import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
 import { fecha } from './../../utils/date';
 import { AddTask } from './../AddTask';
+import { TasksList } from './../TasksList';
 
 export const MyDay = () => {
 	return (
@@ -20,6 +21,7 @@ export const MyDay = () => {
 						{fecha()}
 					</Text>
 				</Text>
+				<TasksList />
 			</Center>
 			<Center h='90%' alignItems='flex-end'>
 				<AddTask />
