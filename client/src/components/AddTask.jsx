@@ -20,6 +20,7 @@ import {
 	MenuItemOption,
 	Stack,
 	Text,
+	Hide,
 } from '@chakra-ui/react';
 import {
 	ChevronDownIcon,
@@ -108,99 +109,102 @@ export const AddTask = () => {
 					w='70%'
 					type='tel'
 					variant='unstyled'
-					placeholder='Add new task'
+					placeholder={
+						data.length
+							? 'Add new task'
+							: 'To enable ADD TASK you must add a task list first'
+					}
 					value={task.description}
 					onChange={e => handleSubmit('description', e)}
+					isDisabled={data.length ? false : true}
 				/>
-
-				<Menu>
-					<MenuButton
-						as={Button}
-						rightIcon={<ChevronDownIcon />}
-						variant='gray'
-						borderColor='gray.800'
-						bg='gray.800'
-						_hover={{ bg: '#44444442', color: '#0084ff' }}
-						_expanded={{ bg: '#23486b' }}
-					>
-						Options
-					</MenuButton>
-					<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
-						<MenuItem
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
-							closeOnSelect={false}
-						>
-							<Stack align='center' direction='row'>
-								<Text>Important</Text>
-								<Switch
-									id='important'
-									pl='15px'
-									colorScheme='teal'
-									onChange={e => handleSubmit('important', e)}
-								></Switch>
-							</Stack>
-						</MenuItem>
-						<MenuItem
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
-							closeOnSelect={false}
-						>
-							<Input
-								w='100%'
-								placeholder='Select Date and Time'
-								size='md'
+				{data.length ? (
+					<>
+						<Menu computePositionOnMount={true}>
+							<MenuButton
+								as={Button}
+								rightIcon={<ChevronDownIcon />}
 								variant='gray'
 								borderColor='gray.800'
 								bg='gray.800'
-								type='date'
-								value={task.expiration_date}
-								onChange={e => handleSubmit('expiration_date', e)}
-							/>
-						</MenuItem>
-						<MenuDivider />
-						<MenuOptionGroup title='Task lists' type='radio'>
-							{data.length ? (
-								data.map(list => (
-									<MenuItemOption
-										value={list.name}
-										name={list.name}
-										key={list.id}
-										_hover={{ bg: '#44444442', color: '#0084ff' }}
-										closeOnSelect={false}
-										onClick={() => handleSubmit('listid', list.id)}
-									>
-										{capitalizeFirstLetter(list.name)}
-									</MenuItemOption>
-								))
-							) : (
-								<>
-									<MenuItemOption
-										value='add a new task list'
-										key='no date'
-										closeOnSelect={false}
-										isDisabled={true}
-									>
-										add a new task list
-									</MenuItemOption>
-								</>
-							)}
-						</MenuOptionGroup>
-					</MenuList>
-				</Menu>
+								_hover={{ bg: '#44444442', color: '#0084ff' }}
+								_expanded={{ bg: '#23486b' }}
+								isDisabled={data.length ? false : true}
+							>
+								Options
+							</MenuButton>
+							<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
+								<MenuItem
+									_hover={{ bg: '#44444442', color: '#0084ff' }}
+									closeOnSelect={false}
+								>
+									<Stack align='center' direction='row'>
+										<Text>Important</Text>
+										<Switch
+											id='important'
+											pl='15px'
+											colorScheme='teal'
+											onChange={e => handleSubmit('important', e)}
+										></Switch>
+									</Stack>
+								</MenuItem>
+								<MenuItem
+									_hover={{ bg: '#44444442', color: '#0084ff' }}
+									closeOnSelect={false}
+								>
+									<Input
+										w='100%'
+										placeholder='Select Date and Time'
+										size='md'
+										variant='gray'
+										borderColor='gray.800'
+										bg='gray.800'
+										type='date'
+										value={task.expiration_date}
+										onChange={e => handleSubmit('expiration_date', e)}
+									/>
+								</MenuItem>
+								<MenuDivider />
+								<MenuOptionGroup title='Task lists' type='radio'>
+									{data.map(list => (
+										<MenuItemOption
+											value={list.name}
+											name={list.name}
+											key={list.id}
+											_hover={{ bg: '#44444442', color: '#0084ff' }}
+											closeOnSelect={false}
+											onClick={() => handleSubmit('listid', list.id)}
+										>
+											{capitalizeFirstLetter(list.name)}
+										</MenuItemOption>
+									))}
+								</MenuOptionGroup>
+							</MenuList>
+						</Menu>
 
-				<Button
-					rightIcon={<ChevronRightIcon />}
-					variant='white'
-					_hover={{ bg: '#44444442', color: '#0084ff' }}
-					colorScheme='blue'
-					aria-label='Search database'
-					mr='1%'
-					ml='1%'
-					w='12%'
-					isDisabled={data.length ? false : true}
-					onClick={() => onclick(12)}
-				>
-					Add
-				</Button>
+						<Button
+							rightIcon={<ChevronRightIcon />}
+							variant='white'
+							_hover={{ bg: '#44444442', color: '#0084ff' }}
+							colorScheme='blue'
+							aria-label='Search database'
+							mr='1%'
+							ml='1%'
+							w='12%'
+							isDisabled={data.length ? false : true}
+							onClick={() => onclick(12)}
+						>
+							Add
+						</Button>
+					</>
+				) : (
+					<>
+						<Button
+							bg='gray.800'
+							_hover={{ bg: '#44444442', color: '#0084ff' }}
+						></Button>
+					</>
+				)}
 			</InputGroup>
 		</Center>
 	);
