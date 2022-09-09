@@ -30,9 +30,22 @@ import {
 } from '@chakra-ui/icons';
 import { BiTask } from 'react-icons/bi';
 import { useGetListsQuery } from '../features/api/listSlice';
+import { useState } from 'react';
 
 export const AddTask = () => {
 	const { data = [], error, isLoading, refetch } = useGetListsQuery();
+
+	const [task, setTask] = useState({
+		completed: false,
+		important: false,
+		description: '',
+		reminder: 'YYYY-MM-DD',
+		expiration_date: '',
+		repeat: 'YYYY-MM-DD',
+		notes: '',
+		listid: null,
+	});
+	const [expirationDate, setExpirationDate] = useState('');
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
@@ -40,9 +53,40 @@ export const AddTask = () => {
 		return capitalized;
 	}
 
-	console.log('datac', data);
 	const onclick = a => {
-		console.log('a', a.target.outerText);
+		console.log(task);
+	};
+
+	const handleSubmit = (type, event) => {
+		if (type === 'expiration_date') {
+			setTask({
+				...task,
+				expiration_date: event.target.value,
+			});
+		}
+		if (type === 'listid') {
+			setTask({
+				...task,
+				listid: event,
+			});
+		}
+
+		if (type === 'description') {
+			setTask({
+				...task,
+				description: event.target.value,
+			});
+		}
+
+		if (type === 'important') {
+			setTask({
+				...task,
+				important: !task.important,
+			});
+		}
+		if (type === 'add') {
+			console.log(task);
+		}
 	};
 
 	return (
@@ -65,6 +109,8 @@ export const AddTask = () => {
 					type='tel'
 					variant='unstyled'
 					placeholder='Add new task'
+					value={task.description}
+					onChange={e => handleSubmit('description', e)}
 				/>
 
 				<Menu>
@@ -86,7 +132,12 @@ export const AddTask = () => {
 						>
 							<Stack align='center' direction='row'>
 								<Text>Important</Text>
-								<Switch id='email-alerts' pl='15px'></Switch>
+								<Switch
+									id='important'
+									pl='15px'
+									colorScheme='teal'
+									onChange={e => handleSubmit('important', e)}
+								></Switch>
 							</Stack>
 						</MenuItem>
 						<MenuItem
@@ -101,6 +152,8 @@ export const AddTask = () => {
 								borderColor='gray.800'
 								bg='gray.800'
 								type='date'
+								value={task.expiration_date}
+								onChange={e => handleSubmit('expiration_date', e)}
 							/>
 						</MenuItem>
 						<MenuDivider />
@@ -113,7 +166,7 @@ export const AddTask = () => {
 										key={list.id}
 										_hover={{ bg: '#44444442', color: '#0084ff' }}
 										closeOnSelect={false}
-										onClick={onclick}
+										onClick={() => handleSubmit('listid', list.id)}
 									>
 										{capitalizeFirstLetter(list.name)}
 									</MenuItemOption>
@@ -123,9 +176,7 @@ export const AddTask = () => {
 									<MenuItemOption
 										value='add a new task list'
 										key='no date'
-										_hover={{ bg: '#44444442', color: '#0084ff' }}
 										closeOnSelect={false}
-										onClick={onclick}
 										isDisabled={true}
 									>
 										add a new task list
@@ -146,6 +197,7 @@ export const AddTask = () => {
 					ml='1%'
 					w='12%'
 					isDisabled={data.length ? false : true}
+					onClick={() => onclick(12)}
 				>
 					Add
 				</Button>
