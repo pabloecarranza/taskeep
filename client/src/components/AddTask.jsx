@@ -19,6 +19,7 @@ import {
 	MenuOptionGroup,
 	MenuItemOption,
 	Stack,
+	useToast,
 	Text,
 	Hide,
 } from '@chakra-ui/react';
@@ -32,9 +33,15 @@ import {
 import { BiTask } from 'react-icons/bi';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { useState } from 'react';
+import { usePostTaskMutation } from '../features/api/taskSlice';
 
 export const AddTask = () => {
+	const userData = JSON.parse(localStorage.getItem('identified-user'));
+
+	const toast = useToast();
 	const { data = [], error, isLoading, refetch } = useGetListsQuery();
+
+	const [PostTask, PostTaskResponse] = usePostTaskMutation();
 
 	const [task, setTask] = useState({
 		completed: false,
@@ -45,6 +52,7 @@ export const AddTask = () => {
 		repeat: 'YYYY-MM-DD',
 		notes: '',
 		listid: null,
+		userid: userData.id,
 	});
 	const [expirationDate, setExpirationDate] = useState('');
 
@@ -58,7 +66,7 @@ export const AddTask = () => {
 		console.log(task);
 	};
 
-	const handleSubmit = (type, event) => {
+	const handleOnChange = (type, event) => {
 		if (type === 'expiration_date') {
 			setTask({
 				...task,
@@ -90,6 +98,62 @@ export const AddTask = () => {
 		}
 	};
 
+	const handleSubmit = async () => {
+		if (task.description.length === 0) {
+			setTask({
+				completed: false,
+				important: false,
+				description: '',
+				reminder: 'YYYY-MM-DD',
+				expiration_date: '',
+				repeat: 'YYYY-MM-DD',
+				notes: '',
+				listid: null,
+			});
+			toast({
+				title: 'Error.',
+				description: 'The field description cant be empty.',
+				status: 'error',
+				duration: 2000,
+				isClosable: true,
+			});
+			return;
+		} else {
+			PostTask(task)
+				.unwrap()
+				.then(respon => {
+					toast({
+						title: 'Success.',
+						description: `${respon.message}`,
+						status: 'success',
+						duration: 2000,
+						isClosable: true,
+					});
+					localStorage.setItem('identified-user', JSON.stringify(respon));
+				})
+				.catch(error => {
+					toast({
+						title: 'Error',
+						description: `${error.data.message}`,
+						status: 'error',
+						duration: 2000,
+						isClosable: true,
+					});
+				});
+
+			setTask({
+				completed: false,
+				important: false,
+				description: '',
+				reminder: 'YYYY-MM-DD',
+				expiration_date: '',
+				repeat: 'YYYY-MM-DD',
+				notes: '',
+				listid: null,
+			});
+		}
+	};
+
 	return (
 		<Center
 			w='70%'
@@ -114,8 +178,8 @@ export const AddTask = () => {
 							? 'Add new task'
 							: 'To enable ADD TASK you must add a task list first'
 					}
-					value={task.description}
-					onChange={e => handleSubmit('description', e)}
+					value={data.length ? task.description : (task.description = '')}
+					onChange={e => handleOnChange('description', e)}
 					isDisabled={data.length ? false : true}
 				/>
 				{data.length ? (
@@ -144,7 +208,7 @@ export const AddTask = () => {
 											id='important'
 											pl='15px'
 											colorScheme='teal'
-											onChange={e => handleSubmit('important', e)}
+											onChange={e => handleOnChange('important', e)}
 										></Switch>
 									</Stack>
 								</MenuItem>
@@ -161,7 +225,7 @@ export const AddTask = () => {
 										bg='gray.800'
 										type='date'
 										value={task.expiration_date}
-										onChange={e => handleSubmit('expiration_date', e)}
+										onChange={e => handleOnChange('expiration_date', e)}
 									/>
 								</MenuItem>
 								<MenuDivider />
@@ -173,7 +237,7 @@ export const AddTask = () => {
 											key={list.id}
 											_hover={{ bg: '#44444442', color: '#0084ff' }}
 											closeOnSelect={false}
-											onClick={() => handleSubmit('listid', list.id)}
+											onClick={() => handleOnChange('listid', list.id)}
 										>
 											{capitalizeFirstLetter(list.name)}
 										</MenuItemOption>
@@ -192,7 +256,7 @@ export const AddTask = () => {
 							ml='1%'
 							w='12%'
 							isDisabled={data.length ? false : true}
-							onClick={() => onclick(12)}
+							onClick={handleSubmit}
 						>
 							Add
 						</Button>
@@ -200,8 +264,9 @@ export const AddTask = () => {
 				) : (
 					<>
 						<Button
+							ml='30%'
 							bg='gray.800'
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
+							_hover={{ bg: 'gray.800', color: '#0084ff' }}
 						></Button>
 					</>
 				)}
