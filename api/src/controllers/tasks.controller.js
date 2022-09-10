@@ -25,8 +25,8 @@ export const createTask = async (req, res) => {
       listid,
       userid,
     });
-    console.log("entre", newTask);
-    res.json(newTask);
+
+    res.status(200).json({ message: "Task created successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }

@@ -88,22 +88,20 @@ export const AddTask = () => {
 				important: !task.important,
 			});
 		}
-		if (type === 'add') {
-			console.log(task);
-		}
 	};
 
 	const handleSubmit = async () => {
 		if (task.description.length === 0) {
 			setTask({
 				completed: false,
-				important: false,
+				important: task.important,
 				description: '',
 				reminder: 'YYYY-MM-DD',
 				expiration_date: '',
 				repeat: 'YYYY-MM-DD',
 				notes: '',
 				listid: null,
+				userid: userData.id,
 			});
 			toast({
 				title: 'Error.',
@@ -137,13 +135,14 @@ export const AddTask = () => {
 
 			setTask({
 				completed: false,
-				important: false,
+				important: task.important,
 				description: '',
 				reminder: 'YYYY-MM-DD',
 				expiration_date: '',
 				repeat: 'YYYY-MM-DD',
 				notes: '',
 				listid: null,
+				userid: userData.id,
 			});
 		}
 	};
