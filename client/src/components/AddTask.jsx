@@ -100,7 +100,7 @@ export const AddTask = () => {
 				expiration_date: '',
 				repeat: 'YYYY-MM-DD',
 				notes: '',
-				listid: null,
+				listid: task.listid,
 				userid: userData.id,
 			});
 			toast({
@@ -141,7 +141,7 @@ export const AddTask = () => {
 				expiration_date: '',
 				repeat: 'YYYY-MM-DD',
 				notes: '',
-				listid: null,
+				listid: task.listid,
 				userid: userData.id,
 			});
 		}

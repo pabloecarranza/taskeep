@@ -11,10 +11,13 @@ import {
 } from '@chakra-ui/react';
 import { useDeleteListMutation } from '../../features/api/listSlice';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useGetTasksQuery } from '../../features/api/taskSlice';
 export const ModalConfirm = ({ isOpen, onClose, onOpen, List, setSeleted }) => {
 	const toast = useToast();
 	const initialRef = React.useRef(null);
 	const [DeleteList] = useDeleteListMutation();
+	const { refetch } = useGetTasksQuery();
+
 	const params = useParams();
 	const navigate = useNavigate();
 
@@ -42,7 +45,7 @@ export const ModalConfirm = ({ isOpen, onClose, onOpen, List, setSeleted }) => {
 			});
 		setSeleted({});
 		onClose();
-
+		refetch();
 		if (Object.values(params)[0].includes(list.name)) {
 			navigate('/homepage/myday');
 		}
@@ -61,7 +64,8 @@ export const ModalConfirm = ({ isOpen, onClose, onOpen, List, setSeleted }) => {
 					<ModalHeader>Delete {List.name} task list</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
-						Are you sure? You can't undo this action afterwards.
+						Are you sure? You can't undo this action afterwards and all task
+						assigned to this list be eliminated
 					</ModalBody>
 
 					<ModalFooter>
