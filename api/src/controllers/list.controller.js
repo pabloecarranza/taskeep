@@ -65,6 +65,21 @@ export const updateList = async (req, res) => {
 export const deleteList = async (req, res) => {
   try {
     const { id } = req.params;
+
+    const tasks = await Task.findAll({
+      where: {
+        listid: id,
+      },
+    });
+
+    for (const task of tasks) {
+      await Task.destroy({
+        where: {
+          id: task.id,
+        },
+      });
+    }
+
     await List.destroy({
       where: {
         id,
