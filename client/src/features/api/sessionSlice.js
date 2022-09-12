@@ -6,7 +6,7 @@ const initialState = {
 	username: null,
 	email: null,
 	message: null,
-	tasklist: null,
+	currentTask: {},
 };
 
 export const sessionSlice = createSlice({
@@ -30,10 +30,14 @@ export const sessionSlice = createSlice({
 				(state.email = action.payload.email),
 				(state.message = action.payload.message);
 		},
-		tasklist: (state, action) => {
-			state.tasklist = action.payload.tasklist;
+		currentTask: (state, action) => {
+			state.currentTask = action.payload;
+		},
+		clearCurrentTask: state => {
+			state.currentTask = {};
 		},
 	},
 });
 
-export const { sessionIn, tasklist } = sessionSlice.actions;
+export const { sessionIn, currentTask, clearCurrentTask } =
+	sessionSlice.actions;

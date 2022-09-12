@@ -20,7 +20,7 @@ export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
 
 	return (
-		<Modal isOpen={isOpen} onClose={handleClick} isCentered>
+		<Modal isOpen={isOpen} onClose={handleClick} isCentered size='lg'>
 			<ModalOverlay />
 			<ModalContent bg='#1A202C'>
 				<ModalHeader>Hi {userData.username}!</ModalHeader>

@@ -1,5 +1,14 @@
 import React from 'react';
-import { Box, Text, Center, Flex, Heading, Button } from '@chakra-ui/react';
+import {
+	Box,
+	Text,
+	Center,
+	Flex,
+	Heading,
+	Button,
+	useToast,
+	useDisclosure,
+} from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import {
 	AiOutlineStar,
@@ -12,10 +21,24 @@ import {
 	BiCircle,
 	BiChevronDownCircle,
 } from 'react-icons/bi';
-import { useGetTasksQuery } from '../features/api/taskSlice';
+import {
+	useGetTaskMutation,
+	useGetTasksQuery,
+} from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
+import { DrawerTask } from '../components/DrawerTask';
+import { currentTask } from '../features/api/sessionSlice';
+import { useDispatch } from 'react-redux';
 export const TasksList = () => {
-	const { data = [], error, isLoading, refetch } = useGetTasksQuery();
+	useDispatch;
+
+	const dispatch = useDispatch();
+	const { data = [] } = useGetTasksQuery();
+	const {
+		isOpen: isOpenDrawerTask,
+		onOpen: onOpenDrawerTask,
+		onClose: onCloseDrawerTask,
+	} = useDisclosure();
 	const { data: lists = [] } = useGetListsQuery();
 
 	const listName = e => {
@@ -34,22 +57,33 @@ export const TasksList = () => {
 		}
 	}
 
+	function setSelectedTask(task) {
+		dispatch(currentTask(task));
+		onOpenDrawerTask();
+	}
+
 	return (
 		<>
+			<DrawerTask
+				isOpen={isOpenDrawerTask}
+				onClose={onCloseDrawerTask}
+				onOpen={onOpenDrawerTask}
+			/>
 			{data.map(list => (
 				<Button
 					minWidth='max-content'
+					w='100%'
 					alignItems='center'
 					gap='2'
 					bg='gray.700'
 					color='white'
 					borderRadius='10px'
 					boxShadow='dark-lg'
-					w='100%'
 					_hover={{ bg: 'gray.600' }}
 					mb='7px'
 					key={list.id}
 					h='55px'
+					onClick={e => setSelectedTask(list)}
 				>
 					<Center p='2' pl='5px' w='90%' justifyContent='flex-start'>
 						<Button _hover={{ bg: 'gray.600', color: '#0084ff' }} bg='#f5f5f50'>
@@ -81,6 +115,7 @@ export const TasksList = () => {
 
 						{list.important ? (
 							<Button
+								on
 								_hover={{ bg: 'gray.600', color: '#0084ff' }}
 								bg='#f5f5f50'
 							>

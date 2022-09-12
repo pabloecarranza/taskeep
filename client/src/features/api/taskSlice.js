@@ -23,6 +23,23 @@ export const taskSlice = createApi({
 			query: () => '/tasks',
 			providesTags: ['Task'],
 		}),
+		/* GetTask: builder.mutation({
+			query: payload => ({
+				url: `/task/${payload.id}`,
+				method: 'GET',			
+			}),		
+		}), */
+		/* GetTask: builder.query({
+			query: id => `pokemon/${id}`,
+		}), */
+		GetTask: builder.mutation({
+			query: payload => ({
+				url: `/task/${payload.id}`,
+				method: 'GET',
+			}),
+			invalidatesTags: ['Task'],
+		}),
 	}),
 });
-export const { usePostTaskMutation, useGetTasksQuery } = taskSlice;
+export const { usePostTaskMutation, useGetTasksQuery, useGetTaskMutation } =
+	taskSlice;
