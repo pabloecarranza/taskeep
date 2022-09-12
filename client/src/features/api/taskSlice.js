@@ -23,15 +23,17 @@ export const taskSlice = createApi({
 			query: () => '/tasks',
 			providesTags: ['Task'],
 		}),
-		/* GetTask: builder.mutation({
+		DeleteTask: builder.mutation({
 			query: payload => ({
-				url: `/task/${payload.id}`,
-				method: 'GET',			
-			}),		
-		}), */
-		/* GetTask: builder.query({
-			query: id => `pokemon/${id}`,
-		}), */
+				url: `/task/${payload}`,
+				method: 'Delete',
+				credentials: 'include',
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			}),
+			invalidatesTags: ['Task'],
+		}),
 		GetTask: builder.mutation({
 			query: payload => ({
 				url: `/task/${payload.id}`,
@@ -41,5 +43,9 @@ export const taskSlice = createApi({
 		}),
 	}),
 });
-export const { usePostTaskMutation, useGetTasksQuery, useGetTaskMutation } =
-	taskSlice;
+export const {
+	usePostTaskMutation,
+	useGetTasksQuery,
+	useGetTaskMutation,
+	useDeleteTaskMutation,
+} = taskSlice;

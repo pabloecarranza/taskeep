@@ -16,6 +16,7 @@ import {
 	InputLeftAddon,
 	InputRightAddon,
 	Select,
+	useToast,
 	Textarea,
 	Checkbox,
 	DrawerCloseButton,
@@ -25,16 +26,47 @@ import { BiTrash } from 'react-icons/bi';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { useGetTaskMutation } from '../features/api/taskSlice';
+import {
+	useDeleteTaskMutation,
+	useGetTaskMutation,
+} from '../features/api/taskSlice';
 import { clearCurrentTask } from '../features/api/sessionSlice';
 
 export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
+	const toast = useToast();
 	const firstField = React.useRef();
 	const dispatch = useDispatch();
 	const getCurrentTask = useSelector(state => state.session.currentTask);
+	const [DeleteTask] = useDeleteTaskMutation();
 	console.log('get', getCurrentTask);
 
 	function onClosed() {
+		dispatch(clearCurrentTask());
+		onClose();
+	}
+
+	function deleteTaskSubmit() {
+		DeleteTask(getCurrentTask.id)
+			.unwrap()
+			.then(respon => {
+				toast({
+					title: 'Success.',
+					description: `${respon.message}`,
+					status: 'success',
+					duration: 3000,
+					isClosable: true,
+				});
+				onClose();
+			})
+			.catch(error => {
+				toast({
+					title: 'Error',
+					description: `${error.data.message}`,
+					status: 'error',
+					duration: 2000,
+					isClosable: true,
+				});
+			});
 		dispatch(clearCurrentTask());
 		onClose();
 	}
@@ -103,6 +135,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 							colorScheme='red'
 							leftIcon={<BiTrash />}
 							pr='30%'
+							onClick={deleteTaskSubmit}
 						/>
 						<Button
 							variant='gray'

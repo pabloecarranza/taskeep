@@ -89,7 +89,7 @@ export const deleteTask = async (req, res) => {
         id,
       },
     });
-    res.sendStatus(204);
+    res.json({ message: "Task eliminated successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
