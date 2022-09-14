@@ -78,6 +78,17 @@ export const TasksList = () => {
 			HotPutTask(task);
 			return;
 		}
+		if (e === 'setFalseImportant') {
+			console.log('setfalse con', task);
+			HotPutTask(task);
+			return;
+		}
+		if (e === 'setTrueImportant') {
+			console.log('settrue con', task);
+			console.log(data);
+			HotPutTask(task);
+			return;
+		}
 	}
 
 	return (
@@ -88,101 +99,121 @@ export const TasksList = () => {
 				onOpen={onOpenDrawerTask}
 			/>
 			{data.map(list => (
-				<Button
-					minWidth='max-content'
-					w='100%'
-					alignItems='center'
-					gap='2'
-					bg='gray.700'
-					color='white'
-					borderRadius='10px'
-					boxShadow='dark-lg'
-					_hover={{ bg: 'gray.600' }}
-					mb='7px'
-					value='general'
-					key={list.id}
-					h='55px'
-					zIndex='1'
-					onClick={e => setSelectedTask(list, 'openTask')}
-				>
-					<Center p='2' pl='5px' w='90%' justifyContent='flex-start'>
-						{list.completed ? (
+				<>
+					<Center
+						minWidth='max-content'
+						w='100%'
+						alignItems='center'
+						gap='2'
+						bg='gray.700'
+						color='white'
+						borderRadius='10px'
+						boxShadow='dark-lg'
+						_hover={{ bg: 'gray.600' }}
+						mb='7px'
+						h='55px'
+					>
+						<Center p='2' pl='5px' w='90%' justifyContent='flex-start'>
+							{list.completed ? (
+								<Button
+									_hover={{ bg: 'gray.600', color: '#0084ff' }}
+									bg='#f5f5f50'
+									key={list.id}
+									zIndex='popover'
+									onClick={e =>
+										setSelectedTask(
+											`${list.id}?completed=false`,
+											'setFalseCompleted'
+										)
+									}
+								>
+									<BiChevronDownCircle size='25px' />
+								</Button>
+							) : (
+								<Button
+									_hover={{ bg: 'gray.600', color: '#0084ff' }}
+									bg='#f5f5f50'
+									value='completed'
+									name={list.name}
+									zIndex='popover'
+									onClick={e =>
+										setSelectedTask(
+											`${list.id}?completed=true`,
+											'setTrueCompleted'
+										)
+									}
+								>
+									<BiCircle size='25px' />
+								</Button>
+							)}
 							<Button
-								_hover={{ bg: 'gray.600', color: '#0084ff' }}
+								w='100%'
+								alignItems='center'
+								color='white'
 								bg='#f5f5f50'
-								key={list.id}
-								zIndex='popover'
-								/* onClick={e => hotPutTask(`${list.id}?completed=false`, e)} */
-								onClick={e =>
-									setSelectedTask(
-										`${list.id}?completed=false`,
-										'setFalseCompleted'
-									)
-								}
+								justifyContent='flex-start'
+								_hover={{ bg: 'gray.600' }}
+								onClick={e => setSelectedTask(list, 'openTask')}
 							>
-								<BiChevronDownCircle size='25px' />
-							</Button>
-						) : (
-							<Button
-								_hover={{ bg: 'gray.600', color: '#0084ff' }}
-								bg='#f5f5f50'
-								value='completed'
-								name={list.name}
-								zIndex='popover'
-								/* onClick={e => hotPutTask(`${list.id}?completed=true`, e)} */
-								onClick={e =>
-									setSelectedTask(
-										`${list.id}?completed=true`,
-										'setTrueCompleted'
-									)
-								}
-							>
-								<BiCircle size='25px' />
-							</Button>
-						)}
-
-						<Text pl='20px' size='md'>
-							{list.description}
-						</Text>
-						<Text pl='20px' size='md' color='gray.500'>
-							{capitalizeFirstLetter(listName(list.listid))}
-						</Text>
-						<Text pl='20px' size='md' color='gray.500'>
-							{capitalizeFirstLetter(list.notes)}
-						</Text>
-					</Center>
-
-					<Center p='2' w='40%' h='50px' justifyContent='flex-end'>
-						{list.expiration_date ? (
-							<>
-								<AiOutlineCalendar color='gray' />
-								<Text pr='30px' pl='10px' color='gray.500'>
-									{' '}
-									{list.expiration_date}
+								<Text pl='20px' size='md'>
+									{list.description}
 								</Text>
-							</>
-						) : (
-							<></>
-						)}
+								<Text pl='20px' size='md' color='gray.500'>
+									{capitalizeFirstLetter(listName(list.listid))}
+								</Text>
+								<Text pl='20px' size='md' color='gray.500'>
+									{capitalizeFirstLetter(list.notes)}
+								</Text>
+							</Button>
+						</Center>
 
-						{list.important ? (
-							<Button
-								on
-								_hover={{ bg: 'gray.600', color: '#0084ff' }}
-								bg='#f5f5f50'
-							>
-								<AiTwotoneStar size='20px' />
-							</Button>
-						) : (
-							<Button
-								_hover={{ bg: 'gray.600', color: '#0084ff' }}
-								bg='#f5f5f50'
-							>
-								<AiOutlineStar size='20px' />
-							</Button>
-						)}
+						<Center p='2' w='40%' h='50px' justifyContent='flex-end'>
+							{list.expiration_date ? (
+								<>
+									<AiOutlineCalendar color='gray' />
+									<Text pr='30px' pl='10px' color='gray.500'>
+										{' '}
+										{list.expiration_date}
+									</Text>
+								</>
+							) : (
+								<></>
+							)}
+
+							{list.important ? (
+								<Button
+									_hover={{ bg: 'gray.600', color: '#0084ff' }}
+									bg='#f5f5f50'
+									key={list.id}
+									onClick={e =>
+										setSelectedTask(
+											`${list.id}?important=false`,
+											'setFalseImportant'
+										)
+									}
+								>
+									<AiTwotoneStar size='20px' />
+								</Button>
+							) : (
+								<>
+									<Button
+										_hover={{ bg: 'gray.600', color: '#0084ff' }}
+										bg='#f5f5f50'
+										key={list.id}
+										onClick={e =>
+											setSelectedTask(
+												`${list.id}?important=true`,
+												'setTrueImportant'
+											)
+										}
+									>
+										<AiOutlineStar size='20px' />
+									</Button>
+								</>
+							)}
+						</Center>
 					</Center>
-				</Button>
+				</>
 			))}
 		</>
 	);

@@ -66,7 +66,7 @@ export const updateTask = async (req, res) => {
       importantQuery !== undefined
     ) {
       (task.completed = completedQuery ? completedQuery : task.completed),
-        (task.important = importantQuery ? completedQuery : task.important),
+        (task.important = importantQuery ? importantQuery : task.important),
         await task.save();
     }
 
