@@ -19,7 +19,6 @@ export const Task = sequelize.define("Taks", {
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: false,
   },
   reminder: {
     type: DataTypes.STRING,

@@ -24,6 +24,7 @@ import {
 import {
 	useGetTaskMutation,
 	useGetTasksQuery,
+	useHotPutTaskMutation,
 } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { DrawerTask } from '../components/DrawerTask';
@@ -34,6 +35,8 @@ export const TasksList = () => {
 
 	const dispatch = useDispatch();
 	const { data = [] } = useGetTasksQuery();
+	const [HotPutTask] = useHotPutTaskMutation();
+
 	const {
 		isOpen: isOpenDrawerTask,
 		onOpen: onOpenDrawerTask,
@@ -57,9 +60,24 @@ export const TasksList = () => {
 		}
 	}
 
-	function setSelectedTask(task) {
-		dispatch(currentTask(task));
-		onOpenDrawerTask();
+	function setSelectedTask(task, e) {
+		if (e === 'openTask') {
+			console.log('debe abrir');
+			dispatch(currentTask(task));
+			onOpenDrawerTask();
+			return;
+		}
+
+		if (e === 'setFalseCompleted') {
+			console.log('entreSetFalse');
+			HotPutTask(task);
+			return;
+		}
+		if (e === 'setTrueCompleted') {
+			console.log('entreSetTrue');
+			HotPutTask(task);
+			return;
+		}
 	}
 
 	return (
@@ -81,22 +99,56 @@ export const TasksList = () => {
 					boxShadow='dark-lg'
 					_hover={{ bg: 'gray.600' }}
 					mb='7px'
+					value='general'
 					key={list.id}
 					h='55px'
-					onClick={e => setSelectedTask(list)}
+					zIndex='1'
+					onClick={e => setSelectedTask(list, 'openTask')}
 				>
 					<Center p='2' pl='5px' w='90%' justifyContent='flex-start'>
-						<Button _hover={{ bg: 'gray.600', color: '#0084ff' }} bg='#f5f5f50'>
-							<BiCircle size='25px' />
-						</Button>
-						<Button _hover={{ bg: 'gray.600', color: '#0084ff' }} bg='#f5f5f50'>
-							<BiChevronDownCircle size='25px' />
-						</Button>
+						{list.completed ? (
+							<Button
+								_hover={{ bg: 'gray.600', color: '#0084ff' }}
+								bg='#f5f5f50'
+								key={list.id}
+								zIndex='popover'
+								/* onClick={e => hotPutTask(`${list.id}?completed=false`, e)} */
+								onClick={e =>
+									setSelectedTask(
+										`${list.id}?completed=false`,
+										'setFalseCompleted'
+									)
+								}
+							>
+								<BiChevronDownCircle size='25px' />
+							</Button>
+						) : (
+							<Button
+								_hover={{ bg: 'gray.600', color: '#0084ff' }}
+								bg='#f5f5f50'
+								value='completed'
+								name={list.name}
+								zIndex='popover'
+								/* onClick={e => hotPutTask(`${list.id}?completed=true`, e)} */
+								onClick={e =>
+									setSelectedTask(
+										`${list.id}?completed=true`,
+										'setTrueCompleted'
+									)
+								}
+							>
+								<BiCircle size='25px' />
+							</Button>
+						)}
+
 						<Text pl='20px' size='md'>
 							{list.description}
 						</Text>
 						<Text pl='20px' size='md' color='gray.500'>
 							{capitalizeFirstLetter(listName(list.listid))}
+						</Text>
+						<Text pl='20px' size='md' color='gray.500'>
+							{capitalizeFirstLetter(list.notes)}
 						</Text>
 					</Center>
 

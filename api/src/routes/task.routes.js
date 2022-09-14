@@ -6,6 +6,7 @@ import {
   createTask,
   updateTask,
   deleteTask,
+  hotUpdateTask,
 } from "./../controllers/tasks.controller.js";
 const router = Router();
 

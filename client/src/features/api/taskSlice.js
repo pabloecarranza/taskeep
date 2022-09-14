@@ -41,6 +41,29 @@ export const taskSlice = createApi({
 			}),
 			invalidatesTags: ['Task'],
 		}),
+		PutTask: builder.mutation({
+			query: payload => ({
+				url: `/task/${payload.id}`,
+				method: 'PUT',
+				body: payload,
+				credentials: 'include',
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			}),
+			invalidatesTags: ['Task'],
+		}),
+		HotPutTask: builder.mutation({
+			query: payload => ({
+				url: `/task/${payload}`,
+				method: 'PUT',
+				credentials: 'include',
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			}),
+			invalidatesTags: ['Task'],
+		}),
 	}),
 });
 export const {
@@ -48,4 +71,6 @@ export const {
 	useGetTasksQuery,
 	useGetTaskMutation,
 	useDeleteTaskMutation,
+	usePutTaskMutation,
+	useHotPutTaskMutation,
 } = taskSlice;

@@ -56,6 +56,20 @@ export const getTask = async (req, res) => {
 export const updateTask = async (req, res) => {
   try {
     const { id } = req.params;
+    let completedQuery = req.query.completed;
+    let importantQuery = req.query.important;
+    const task = await Task.findByPk(id);
+    if (!task) return res.json({ message: "Task dont exists" });
+    if (
+      completedQuery !== undefined ||
+      (importantQuery !== undefined && completedQuery !== undefined) ||
+      importantQuery !== undefined
+    ) {
+      (task.completed = completedQuery ? completedQuery : task.completed),
+        (task.important = importantQuery ? completedQuery : task.important),
+        await task.save();
+    }
+
     const {
       completed,
       important,
@@ -63,24 +77,27 @@ export const updateTask = async (req, res) => {
       reminder,
       expiration_date,
       repeat,
+      listid,
       notes,
     } = req.body;
 
-    const task = await Task.findByPk(id);
-    if (!task) return res.json({ message: "Task dont exists" });
     (task.completed = completed),
       (task.important = important),
       (task.description = description),
       (task.reminder = reminder),
       (task.expiration_date = expiration_date),
       (task.repeat = repeat),
+      (task.listid = listid),
       (task.notes = notes),
       await task.save();
-    res.json(task);
+    res.status(200).json({ message: "Task update successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const hotUpdateTask = async (req, res) => {};
+
 export const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
