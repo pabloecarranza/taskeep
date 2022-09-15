@@ -1,5 +1,19 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import bg from '../assets/beach.jpg';
+import {
+	Box,
+	Heading,
+	Text,
+	Radio,
+	RadioGroup,
+	Stack,
+	Center,
+} from '@chakra-ui/react';
+import BG1 from '../assets/BG1.jpg';
+import BG2 from '../assets/BG2.jpg';
+import BG3 from '../assets/BG3.jpg';
+import BG4 from '../assets/BG4.jpg';
+import BG5 from '../assets/BG5.jpg';
+import BG6 from '../assets/BG6.png';
+import BG7 from '../assets/BG7.png';
 
 import { Routes, Route } from 'react-router-dom';
 import { MyDay } from './Tabs/MyDay';
@@ -9,11 +23,30 @@ import { Completed } from './Tabs/Completed';
 import { AssignedToMe } from './Tabs/AssignedToMe';
 import { Tasks } from './Tabs/Tasks';
 import { CustomList } from './Tabs/CustomList';
+import { useState } from 'react';
 
 export const TaskArea = () => {
+	const [value, setValue] = useState('BG1');
+
 	return (
 		<Box
-			backgroundImage={bg}
+			backgroundImage={
+				value == 'BG1'
+					? BG1
+					: value == 'BG2'
+					? BG2
+					: value == 'BG3'
+					? BG3
+					: value == 'BG4'
+					? BG4
+					: value == 'BG5'
+					? BG5
+					: value == 'BG6'
+					? BG6
+					: value == 'BG7'
+					? BG7
+					: BG1
+			}
 			backgroundPosition='center'
 			backgroundRepeat='no-repeat'
 			backgroundSize='cover'
@@ -25,6 +58,19 @@ export const TaskArea = () => {
 			mt='10px'
 			boxShadow='md'
 		>
+			<Center justifyContent='flex-end'>
+				<RadioGroup onChange={setValue} value={value}>
+					<Stack direction='row'>
+						<Radio value='BG1'></Radio>
+						<Radio value='BG2'></Radio>
+						<Radio value='BG3'></Radio>
+						<Radio value='BG4'></Radio>
+						<Radio value='BG5'></Radio>
+						<Radio value='BG6'></Radio>
+						<Radio value='BG7'></Radio>
+					</Stack>
+				</RadioGroup>
+			</Center>
 			<Routes>
 				<Route path='myday' element={<MyDay />}></Route>
 				<Route path='important' element={<Important />}></Route>

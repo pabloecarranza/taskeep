@@ -17,7 +17,7 @@ import Typewriter from 'typewriter-effect';
 import { LoginForm } from '../components/LoginForm';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
-import bg from '../assets/hojas.png';
+import bg from '../assets/BG7.png';
 
 export const WelcomePage = () => {
 	const { isOpen, onToggle } = useDisclosure();

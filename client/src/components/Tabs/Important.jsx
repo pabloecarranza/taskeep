@@ -24,7 +24,7 @@ export const Important = () => {
 				</Text>
 				<TasksList data={onlyImportantTasks} />
 			</Center>
-			<Center h='90%' alignItems='flex-end'>
+			<Center h='88%' alignItems='flex-end'>
 				<AddTask />
 			</Center>
 		</>

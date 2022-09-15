@@ -134,7 +134,7 @@ export const TasksList = ({ data = [] }) => {
 						bg='gray.700'
 						color='white'
 						borderRadius='10px'
-						boxShadow='dark-lg'
+						boxShadow='lg'
 						_hover={{ bg: 'gray.600' }}
 						_active={{
 							bg: 'gray.600',
@@ -196,7 +196,7 @@ export const TasksList = ({ data = [] }) => {
 								<Text pl='20px' size='md' color='gray.500'>
 									{capitalizeFirstLetter(listName(list.listid))}
 								</Text>
-								<Text pl='20px' size='md' color='gray.500'>
+								<Text pl='20px' size='md' color='gray.500' as='i'>
 									{capitalizeFirstLetter(list.notes)}
 								</Text>
 							</Button>

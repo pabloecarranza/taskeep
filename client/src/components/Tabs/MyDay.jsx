@@ -15,7 +15,7 @@ export const MyDay = () => {
 				flexDir='column'
 				justifyContent='flex-start'
 				alignItems='flex-start'
-				h='90%'
+				h='88%'
 				w='100%'
 				overflow='auto'
 			>
@@ -34,10 +34,6 @@ export const MyDay = () => {
 								{fecha()}
 							</Text>
 						</Center>
-
-						<Button _hover={{ color: '#0084ff' }} bg='#f5f5f50'>
-							<AiOutlineMore size='30px' />
-						</Button>
 					</Center>
 				</Center>
 
