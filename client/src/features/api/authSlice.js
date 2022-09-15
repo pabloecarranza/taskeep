@@ -14,6 +14,9 @@ export const authSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['Auth'],
@@ -25,6 +28,9 @@ export const authSlice = createApi({
 				body: payload,
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['Auth'],

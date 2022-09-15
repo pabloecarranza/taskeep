@@ -15,6 +15,9 @@ export const taskSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['Task'],
@@ -30,6 +33,9 @@ export const taskSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['Task'],
@@ -38,6 +44,12 @@ export const taskSlice = createApi({
 			query: payload => ({
 				url: `/task/${payload.id}`,
 				method: 'GET',
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
+				},
 			}),
 			invalidatesTags: ['Task'],
 		}),
@@ -49,6 +61,9 @@ export const taskSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['Task'],
@@ -60,6 +75,9 @@ export const taskSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['Task'],

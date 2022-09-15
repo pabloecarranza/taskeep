@@ -16,9 +16,12 @@ export const listSlice = createApi({
 				method: 'Post',
 				body: payload,
 				credentials: 'include',
-				/* headers: {
+				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
-				}, */
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
+				},
 			}),
 			invalidatesTags: ['List'],
 		}),
@@ -29,6 +32,9 @@ export const listSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['List'],
@@ -41,6 +47,9 @@ export const listSlice = createApi({
 				credentials: 'include',
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Accept: 'application/json',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Credentials': 'true',
 				},
 			}),
 			invalidatesTags: ['List'],
