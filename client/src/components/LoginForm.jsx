@@ -158,6 +158,7 @@ export const LoginForm = () => {
 						isClosable: true,
 					});
 				});
+			localStorage.setItem('identified-user', JSON.stringify(respon));
 			setCredentials({
 				username: '',
 				password: '',
