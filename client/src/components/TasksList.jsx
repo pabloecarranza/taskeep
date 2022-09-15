@@ -14,6 +14,7 @@ import {
 	AiOutlineStar,
 	AiTwotoneStar,
 	AiOutlineCalendar,
+	AiOutlineDelete,
 } from 'react-icons/ai';
 import {
 	BiCheckbox,
@@ -22,6 +23,7 @@ import {
 	BiChevronDownCircle,
 } from 'react-icons/bi';
 import {
+	useDeleteTaskMutation,
 	useGetTaskMutation,
 	useGetTasksQuery,
 	useHotPutTaskMutation,
@@ -30,19 +32,20 @@ import { useGetListsQuery } from '../features/api/listSlice';
 import { DrawerTask } from '../components/DrawerTask';
 import { currentTask } from '../features/api/sessionSlice';
 import { useDispatch } from 'react-redux';
-export const TasksList = () => {
+export const TasksList = ({ data = [] }) => {
 	useDispatch;
 
 	const dispatch = useDispatch();
-	const { data = [] } = useGetTasksQuery();
+	const toast = useToast();
 	const [HotPutTask] = useHotPutTaskMutation();
+	const [DeleteTask] = useDeleteTaskMutation();
 
 	const {
 		isOpen: isOpenDrawerTask,
 		onOpen: onOpenDrawerTask,
 		onClose: onCloseDrawerTask,
 	} = useDisclosure();
-	const { data: lists = [] } = useGetListsQuery();
+	const { data: lists = [], refetch } = useGetListsQuery();
 
 	const listName = e => {
 		const found = lists.find(list => list.id === e);
@@ -89,6 +92,29 @@ export const TasksList = () => {
 			HotPutTask(task);
 			return;
 		}
+	}
+
+	function deleteTaskSubmit(taskid) {
+		DeleteTask(taskid)
+			.unwrap()
+			.then(respon => {
+				toast({
+					title: 'Success.',
+					description: `${respon.message}`,
+					status: 'success',
+					duration: 3000,
+					isClosable: true,
+				});
+			})
+			.catch(error => {
+				toast({
+					title: 'Error',
+					description: `${error.data.message}`,
+					status: 'error',
+					duration: 2000,
+					isClosable: true,
+				});
+			});
 	}
 
 	return (
@@ -212,6 +238,15 @@ export const TasksList = () => {
 								</>
 							)}
 						</Center>
+						<Button
+							_hover={{ bg: 'gray.600', color: 'red' }}
+							bg='#f5f5f50'
+							color='gray.500'
+							key={list.id}
+							onClick={() => deleteTaskSubmit(list.id)}
+						>
+							<AiOutlineDelete size='25px' />
+						</Button>
 					</Center>
 				</>
 			))}

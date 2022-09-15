@@ -28,9 +28,8 @@ export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 				<ModalBody>
 					Welcome to my personal app for task management. <br />
 					The main functionalities are to create tasks and group them by lists,
-					set the priority and expiration date and most importantly the
-					collaborative use assigning tasks to other users and receiving tasks,
-					I hope you enjoy it ! <br /> <br />
+					set the priority and expiration date. I hope you enjoy it ! <br />{' '}
+					<br />
 					Pablo
 				</ModalBody>
 

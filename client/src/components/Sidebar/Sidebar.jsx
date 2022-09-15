@@ -112,12 +112,12 @@ export const Sidebar = () => {
 				</Flex>
 			</Button>
 
-			<Skeleton isLoaded={isloaded} fadeDuration={3}>
+			{/* <Skeleton isLoaded={isloaded} fadeDuration={3}>
 				<InputGroup size='sm'>
 					<Input placeholder='Search' variant='outline' />
 					<InputRightElement children={<FaSearch />} />
 				</InputGroup>
-			</Skeleton>
+			</Skeleton> */}
 			<Button
 				isActive='true'
 				leftIcon={<FiSun />}
@@ -164,7 +164,7 @@ export const Sidebar = () => {
 					<Link to='/homepage/completed'>Completed</Link>
 				</SkeletonText>
 			</Button>
-			<Button
+			{/* <Button
 				leftIcon={<FiUser />}
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
@@ -174,8 +174,8 @@ export const Sidebar = () => {
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={7}>
 					<Link to='/homepage/assignedtome'>Assigned to me</Link>
 				</SkeletonText>
-			</Button>
-			<Button
+			</Button> */}
+			{/* 	<Button
 				leftIcon={<BiTask />}
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
@@ -185,7 +185,7 @@ export const Sidebar = () => {
 				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={8}>
 					<Link to='/homepage/tasks'>Tasks</Link>
 				</SkeletonText>
-			</Button>
+			</Button> */}
 			<Button
 				leftIcon={<MdPostAdd />}
 				variant='white'

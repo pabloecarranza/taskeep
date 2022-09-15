@@ -57,7 +57,7 @@ export const updateList = async (req, res) => {
     const list = await List.findByPk(id);
     list.name = name;
     await list.save();
-    res.json(list);
+    res.status(200).json({ message: "List update successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
