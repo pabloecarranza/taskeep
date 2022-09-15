@@ -136,6 +136,9 @@ export const TasksList = ({ data = [] }) => {
 						borderRadius='10px'
 						boxShadow='dark-lg'
 						_hover={{ bg: 'gray.600' }}
+						_active={{
+							bg: 'gray.600',
+						}}
 						mb='7px'
 						h='55px'
 					>
@@ -145,6 +148,9 @@ export const TasksList = ({ data = [] }) => {
 									_hover={{ bg: 'gray.600', color: '#0084ff' }}
 									bg='#f5f5f50'
 									key={list.id}
+									_active={{
+										bg: 'gray.600',
+									}}
 									zIndex='popover'
 									onClick={e =>
 										setSelectedTask(
@@ -179,6 +185,9 @@ export const TasksList = ({ data = [] }) => {
 								bg='#f5f5f50'
 								justifyContent='flex-start'
 								_hover={{ bg: 'gray.600' }}
+								_active={{
+									bg: 'gray.600',
+								}}
 								onClick={e => setSelectedTask(list, 'openTask')}
 							>
 								<Text pl='20px' size='md'>
@@ -211,6 +220,9 @@ export const TasksList = ({ data = [] }) => {
 									_hover={{ bg: 'gray.600', color: '#0084ff' }}
 									bg='#f5f5f50'
 									key={list.id}
+									_active={{
+										bg: 'gray.600',
+									}}
 									onClick={e =>
 										setSelectedTask(
 											`${list.id}?important=false`,
@@ -226,6 +238,9 @@ export const TasksList = ({ data = [] }) => {
 										_hover={{ bg: 'gray.600', color: '#0084ff' }}
 										bg='#f5f5f50'
 										key={list.id}
+										_active={{
+											bg: 'gray.600',
+										}}
 										onClick={e =>
 											setSelectedTask(
 												`${list.id}?important=true`,
@@ -243,6 +258,9 @@ export const TasksList = ({ data = [] }) => {
 							bg='#f5f5f50'
 							color='gray.500'
 							key={list.id}
+							_active={{
+								bg: 'gray.600',
+							}}
 							onClick={() => deleteTaskSubmit(list.id)}
 						>
 							<AiOutlineDelete size='25px' />

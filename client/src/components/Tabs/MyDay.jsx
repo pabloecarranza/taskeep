@@ -1,29 +1,49 @@
 import React from 'react';
-import { Heading, Text, Center } from '@chakra-ui/react';
+import { Heading, Text, Center, Button } from '@chakra-ui/react';
 import { fecha } from './../../utils/date';
 import { AddTask } from './../AddTask';
 import { TasksList } from './../TasksList';
+import { useGetTasksQuery } from '../../features/api/taskSlice';
+import { AiOutlineMore } from 'react-icons/ai';
 
 export const MyDay = () => {
+	const { data = [] } = useGetTasksQuery();
+
 	return (
 		<>
 			<Center
 				flexDir='column'
-				justifyContent='space-between'
+				justifyContent='flex-start'
 				alignItems='flex-start'
-				h='10%'
+				h='90%'
+				w='100%'
+				overflow='auto'
 			>
-				<Text textShadow='2px 2px #000000' m='6'>
-					<Heading as='h2' size='xl'>
-						My day
-					</Heading>
-					<Text as='h4' size='md' pt='10px'>
-						{fecha()}
-					</Text>
-				</Text>
-				<TasksList />
+				<Center
+					textShadow='2px 2px #000000'
+					h='20%'
+					w='100%'
+					alignItems='flex-start'
+				>
+					<Center justifyContent='space-between' w='100%'>
+						<Center flexDir='column' alignItems='flex-start' pt='7px'>
+							<Heading as='h2' size='xl'>
+								My day
+							</Heading>
+							<Text as='h4' size='md' textShadow='2px 2px #000000' w='100%'>
+								{fecha()}
+							</Text>
+						</Center>
+
+						<Button _hover={{ color: '#0084ff' }} bg='#f5f5f50'>
+							<AiOutlineMore size='30px' />
+						</Button>
+					</Center>
+				</Center>
+
+				<TasksList data={data} />
 			</Center>
-			<Center h='90%' alignItems='flex-end'>
+			<Center h='10%' alignItems='flex-end'>
 				<AddTask />
 			</Center>
 		</>
