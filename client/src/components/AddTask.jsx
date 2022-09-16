@@ -13,6 +13,7 @@ import {
 	MenuButton,
 	MenuList,
 	MenuItem,
+	Spinner,
 	Button,
 	Switch,
 	MenuDivider,
@@ -156,11 +157,21 @@ export const AddTask = () => {
 			borderRadius='10px'
 			boxShadow='dark-lg'
 		>
+			{PostTaskResponse.isLoading ? (
+				<Spinner size='md' ml='15px' mr='15px' />
+			) : (
+				''
+			)}
+
 			<InputGroup>
-				<InputLeftElement
-					pointerEvents='none'
-					children={<BiTask color='gray.300' />}
-				/>
+				{!PostTaskResponse.isLoading ? (
+					<InputLeftElement
+						pointerEvents='none'
+						children={<BiTask color='gray.300' />}
+					/>
+				) : (
+					''
+				)}
 
 				<Input
 					w='70%'
@@ -235,6 +246,7 @@ export const AddTask = () => {
 											{capitalizeFirstLetter(list.name)}
 										</MenuItemOption>
 									))}
+									{isLoading ? <Spinner size='md' ml='10%' /> : ''}
 								</MenuOptionGroup>
 							</MenuList>
 						</Menu>

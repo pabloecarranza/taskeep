@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Text, Center, Button } from '@chakra-ui/react';
+import { Heading, Text, Center, Button, Spinner } from '@chakra-ui/react';
 import { fecha } from './../../utils/date';
 import { AddTask } from './../AddTask';
 import { TasksList } from './../TasksList';
@@ -7,7 +7,7 @@ import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { AiOutlineMore } from 'react-icons/ai';
 
 export const MyDay = () => {
-	const { data = [] } = useGetTasksQuery();
+	const { data = [], isLoading } = useGetTasksQuery();
 
 	return (
 		<>
@@ -25,7 +25,7 @@ export const MyDay = () => {
 					w='100%'
 					alignItems='flex-start'
 				>
-					<Center justifyContent='space-between' w='100%'>
+					<Center justifyContent='space-between' w='96%'>
 						<Center flexDir='column' alignItems='flex-start' pt='7px'>
 							<Heading as='h2' size='xl'>
 								My day
@@ -34,6 +34,7 @@ export const MyDay = () => {
 								{fecha()}
 							</Text>
 						</Center>
+						{isLoading ? <Spinner size='lg' /> : ''}
 					</Center>
 				</Center>
 
