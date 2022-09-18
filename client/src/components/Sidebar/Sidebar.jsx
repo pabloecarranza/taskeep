@@ -86,11 +86,7 @@ export const Sidebar = () => {
 				<Flex w='100%' alignItems='center' pb='15px'>
 					<Box w='40%'>
 						<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
-							<Avatar
-								size='md'
-								name='Dan Abrahmov'
-								src='https://bit.ly/dan-abramov'
-							/>
+							<Avatar size='md' name={userData.username} />
 						</SkeletonCircle>
 					</Box>
 					<Flex w='100%' textAlign='left'>

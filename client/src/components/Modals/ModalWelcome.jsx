@@ -9,7 +9,10 @@ import {
 	ModalCloseButton,
 	useDisclosure,
 	Button,
+	Center,
+	Image,
 } from '@chakra-ui/react';
+import me from '../../assets/me.jpg';
 
 export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 	const handleClick = () => {
@@ -26,9 +29,12 @@ export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 				<ModalHeader>Hi {userData.username}!</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
-					Welcome to my personal app for task management. <br />
-					The main functionalities are to create tasks and group them by lists,
-					set the priority and expiration date. I hope you enjoy it ! <br />{' '}
+					<Center>
+						Welcome to my personal app for task management. <br />
+						The main functionalities are to create tasks and group them by
+						lists, set the priority and expiration date. I hope you enjoy it !{' '}
+						<br /> <Image src={me} alt='PabloCarranza' w='30%' />
+					</Center>
 					<br />
 					Pablo
 				</ModalBody>
