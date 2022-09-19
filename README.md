@@ -19,4 +19,5 @@ initialized with Vite for better performance choosing React like a principal fra
 
 * i work on it with ESLint and Prettier for catch error and orden correct code
 
-
+DEPLOY:
+The database is on AWS on RDS service, the backend is ready on Heroku and the frontend is on Vercel
