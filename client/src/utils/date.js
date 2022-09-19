@@ -1,27 +1,27 @@
 export function fecha() {
 	const meses = [
-		'enero',
-		'febrero',
-		'marzo',
-		'abril',
-		'mayo',
-		'junio',
-		'julio',
-		'agosto',
-		'septiembre',
-		'octubre',
-		'noviembre',
-		'diciembre',
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'Octuber',
+		'November',
+		'December',
 	];
 
 	const dias_semana = [
-		'Domingo',
-		'Lunes',
-		'martes',
-		'Miércoles',
-		'Jueves',
-		'Viernes',
-		'Sábado',
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
 	];
 
 	const fecha = new Date();
@@ -53,13 +53,13 @@ export function validate(input) {
 
 export function diaDeSemana() {
 	const dias_semana = [
-		'Domingo',
-		'Lunes',
-		'martes',
-		'Miércoles',
-		'Jueves',
-		'Viernes',
-		'Sábado',
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
 	];
 
 	const fecha = new Date();
@@ -71,18 +71,18 @@ export function diaDeSemana() {
 
 export function MesyDia() {
 	const meses = [
-		'enero',
-		'febrero',
-		'marzo',
-		'abril',
-		'mayo',
-		'junio',
-		'julio',
-		'agosto',
-		'septiembre',
-		'octubre',
-		'noviembre',
-		'diciembre',
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'Octuber',
+		'November',
+		'December',
 	];
 
 	const fecha = new Date();
