@@ -10,16 +10,25 @@ import {
 	ScaleFade,
 	Link,
 } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
-import { BsLinkedin, VscGithubInverted } from 'react-icons/all';
+import { VscGithubInverted } from 'react-icons/vsc';
+import { BsLinkedin } from 'react-icons/bs';
 import Logo from '../assets/daily-tasks.png';
 import Typewriter from 'typewriter-effect';
 import { LoginForm } from '../components/LoginForm';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-
+import PropTypes from 'prop-types';
 import bg from '../assets/BG7.png';
 
-export const WelcomePage = () => {
+export const WelcomePage = ({
+	app_name,
+	slogan_one,
+	slogan_two,
+	subtitle,
+	repository,
+	start_app,
+	made,
+	test,
+}) => {
 	const { isOpen, onToggle } = useDisclosure();
 
 	return (
@@ -41,31 +50,31 @@ export const WelcomePage = () => {
 						<Image src={Logo} alt='Logo_Task' boxSize='150px' />
 					</Box>
 					<Text
-						bgGradient='linear(to-l, #b785e9, #61acf3)'
+						bgGradient={test ? '' : 'linear(to-l, #b785e9, #61acf3)'}
 						bgClip='text'
 						fontSize='6xl'
 						fontWeight='extrabold'
 						pb='10px'
 					>
-						TASKEEP
+						{app_name}
 					</Text>
-					<Heading as='h2' size='2xl' noOflines={1} fontWeight='bold'>
+					<Heading as='h2' size='2xl' nooflines={1} fontWeight='bold'>
 						<Typewriter
 							options={{
-								strings: ['The most powerful', 'The real powerful'],
+								strings: [`${slogan_one}`, `${slogan_two}`],
 								autoStart: true,
 								loop: true,
 							}}
 						/>
 
 						<Text
-							bgGradient='linear(to-l, #7928ca, #0084ff)'
+							bgGradient={test ? '' : 'linear(to-l, #7928ca, #0084ff)'}
 							bgClip='text'
 							fontSize='5xl'
 							fontWeight='bold'
 							pb='50px'
 						>
-							Task Management App
+							{subtitle}
 						</Text>
 					</Heading>
 					<Box>
@@ -81,7 +90,7 @@ export const WelcomePage = () => {
 								)
 							}
 						>
-							GitHub
+							{repository}
 						</Button>
 						<Button
 							rightIcon={<ArrowForwardIcon />}
@@ -90,7 +99,7 @@ export const WelcomePage = () => {
 							size='lg'
 							onClick={onToggle}
 						>
-							Get Started
+							{start_app}
 						</Button>
 					</Box>
 
@@ -106,7 +115,7 @@ export const WelcomePage = () => {
 							)
 						}
 					>
-						Made by Pablo Carranza
+						{made}
 					</Button>
 				</Center>
 			</Box>
@@ -124,4 +133,14 @@ export const WelcomePage = () => {
 			</Center>
 		</Flex>
 	);
+};
+
+WelcomePage.propTypes = {
+	app_name: PropTypes.string.isRequired,
+	slogan_one: PropTypes.string.isRequired,
+	slogan_two: PropTypes.string.isRequired,
+	subtitle: PropTypes.string.isRequired,
+	repository: PropTypes.string.isRequired,
+	start_app: PropTypes.string.isRequired,
+	made: PropTypes.string.isRequired,
 };
