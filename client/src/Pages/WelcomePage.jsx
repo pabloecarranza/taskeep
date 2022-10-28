@@ -55,6 +55,7 @@ export const WelcomePage = ({
 						fontSize='6xl'
 						fontWeight='extrabold'
 						pb='10px'
+						data-testid='app_name'
 					>
 						{app_name}
 					</Text>

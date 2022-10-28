@@ -6,42 +6,20 @@ import {
 	Text,
 	Spacer,
 	Divider,
-	Input,
-	InputGroup,
-	InputRightElement,
 	Button,
-	Skeleton,
 	SkeletonCircle,
 	SkeletonText,
 	useDisclosure,
-	Menu,
-	MenuButton,
-	MenuList,
-	MenuItem,
-	MenuItemOption,
-	MenuGroup,
-	MenuOptionGroup,
-	MenuDivider,
 } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import {
-	FiSun,
-	FiStar,
-	FiCalendar,
-	FiUser,
-	FiCheckCircle,
-} from 'react-icons/fi';
+import { FiSun, FiStar, FiCalendar, FiCheckCircle } from 'react-icons/fi';
 import { useGetListsQuery } from '../../features/api/listSlice';
-
-import { BiTask } from 'react-icons/bi';
-import { CgList } from 'react-icons/cg';
 import { MdPostAdd } from 'react-icons/md';
 import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { Lists } from './Lists';
-import { ModalConfirm } from './../Modals/ModalConfirm';
 import { Link, useNavigate } from 'react-router-dom';
+import { ModalWelcomeDates } from '../../utils/ModalWelcome.dates';
 
 export const Sidebar = () => {
 	const {
@@ -79,6 +57,7 @@ export const Sidebar = () => {
 				isOpen={isOpenWelcomeModal}
 				onClose={onCloseWelcomeModal}
 				setIsloaded={setIsloaded}
+				{...ModalWelcomeDates}
 			/>
 			<ModalAddList isOpen={isOpenAddListModal} onClose={onCloseAddListModal} />
 
@@ -107,13 +86,6 @@ export const Sidebar = () => {
 					</Flex>
 				</Flex>
 			</Button>
-
-			{/* <Skeleton isLoaded={isloaded} fadeDuration={3}>
-				<InputGroup size='sm'>
-					<Input placeholder='Search' variant='outline' />
-					<InputRightElement children={<FaSearch />} />
-				</InputGroup>
-			</Skeleton> */}
 			<Button
 				isActive='true'
 				leftIcon={<FiSun />}
@@ -160,28 +132,6 @@ export const Sidebar = () => {
 					<Link to='/homepage/completed'>Completed</Link>
 				</SkeletonText>
 			</Button>
-			{/* <Button
-				leftIcon={<FiUser />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={7}>
-					<Link to='/homepage/assignedtome'>Assigned to me</Link>
-				</SkeletonText>
-			</Button> */}
-			{/* 	<Button
-				leftIcon={<BiTask />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={8}>
-					<Link to='/homepage/tasks'>Tasks</Link>
-				</SkeletonText>
-			</Button> */}
 			<Button
 				leftIcon={<MdPostAdd />}
 				variant='white'

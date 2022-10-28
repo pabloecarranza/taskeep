@@ -7,14 +7,22 @@ import {
 	ModalFooter,
 	ModalBody,
 	ModalCloseButton,
-	useDisclosure,
 	Button,
 	Center,
 	Image,
 } from '@chakra-ui/react';
 import me from '../../assets/me.jpg';
+import PropTypes from 'prop-types';
 
-export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
+export const ModalWelcome = ({
+	isOpen,
+	onClose,
+	setIsloaded,
+	greeting,
+	welcome_text_1,
+	welcome_text_2,
+	name,
+}) => {
 	const handleClick = () => {
 		onClose();
 		setIsloaded(v => !v);
@@ -26,17 +34,19 @@ export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 		<Modal isOpen={isOpen} onClose={handleClick} isCentered size='lg'>
 			<ModalOverlay />
 			<ModalContent bg='#1A202C'>
-				<ModalHeader>Hi {userData.username}!</ModalHeader>
+				<ModalHeader>
+					{greeting} {userData ? userData.username : ''}!
+				</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
 					<Center>
-						Welcome to my personal app for task management. <br />
-						The main functionalities are to create tasks and group them by
-						lists, set the priority and expiration date. I hope you enjoy it !{' '}
-						<br /> <Image src={me} alt='PabloCarranza' w='30%' />
+						{welcome_text_1}
+						<br />
+						{welcome_text_2}
+						<Image src={me} alt='PabloCarranza' w='30%' />
 					</Center>
 					<br />
-					Pablo
+					{name}
 				</ModalBody>
 
 				<ModalFooter>
@@ -47,4 +57,11 @@ export const ModalWelcome = ({ isOpen, onClose, setIsloaded }) => {
 			</ModalContent>
 		</Modal>
 	);
+};
+
+ModalWelcome.propTypes = {
+	greeting: PropTypes.string.isRequired,
+	welcome_text_1: PropTypes.string.isRequired,
+	welcome_text_2: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
 };
