@@ -41,6 +41,7 @@ export const Sidebar = () => {
 
 	useEffect(() => {
 		onOpenWelcomeModal();
+		console.log(onOpenWelcomeModal);
 		navigate('/homepage/myday');
 	}, []);
 

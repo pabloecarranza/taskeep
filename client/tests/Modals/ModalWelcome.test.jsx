@@ -1,18 +1,35 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { vi, expect, describe, it } from 'vitest';
+import {
+	fireEvent,
+	render,
+	screen,
+	renderHook,
+	act,
+} from '@testing-library/react';
+import { vi, expect, describe, it, beforeAll } from 'vitest';
 import { ModalWelcome } from './../../src/components/Modals/ModalWelcome';
+import { container } from '@testing-library/jest-dom';
 
 describe('Test suite on ModalWelcome component', () => {
 	const ModalWelcomeDates = {
 		greeting: 'Hi',
-		welcome_text_1: 'Welcome to my personal app for task management.',
-		welcome_text_2:
-			'The main functionalities are to create tasks and group them by lists, set the priority and expiration date. I hope you enjoy it !',
+		welcome_text_1: 'personal',
+		welcome_text_2: 'functionalities',
 		name: 'Pablo',
 	};
 
+	const isOpen = true;
+
 	it('must show the gretting text', () => {
-		const { container } = render(<ModalWelcome {...ModalWelcomeDates} />);
-		expect(container).toMatchSnapshot();
+		const component = render(
+			<ModalWelcome
+				{...ModalWelcomeDates}
+				onClose={() => {}}
+				isOpen={isOpen}
+				setIsloaded={() => {}}
+			/>
+		);
+
+		screen.debug();
+		//expect(screen.getByText('functionalities'));
 	});
 });

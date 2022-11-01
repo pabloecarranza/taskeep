@@ -64,4 +64,7 @@ ModalWelcome.propTypes = {
 	welcome_text_1: PropTypes.string.isRequired,
 	welcome_text_2: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
+	onClose: PropTypes.func.isRequired,
+	setIsloaded: PropTypes.func.isRequired,
+	isOpen: PropTypes.bool.isRequired,
 };
