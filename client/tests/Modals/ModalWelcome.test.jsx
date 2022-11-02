@@ -1,14 +1,6 @@
-import {
-	fireEvent,
-	render,
-	screen,
-	renderHook,
-	act,
-} from '@testing-library/react';
-
-import { vi, expect, describe, it, beforeAll } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { expect, describe, it } from 'vitest';
 import { ModalWelcome } from './../../src/components/Modals/ModalWelcome';
-import { container } from '@testing-library/jest-dom';
 
 describe('Test suite on ModalWelcome component', () => {
 	const ModalWelcomeDates = {
