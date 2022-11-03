@@ -28,7 +28,7 @@ describe('Name of the group', () => {
 		};
 	});
 
-	it('should ', () => {
+	it('should match with snapshot', () => {
 		const { container } = render(
 			<Router>
 				<HomePage />

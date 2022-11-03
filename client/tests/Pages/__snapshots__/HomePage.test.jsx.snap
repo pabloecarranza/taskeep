@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`Name of the group > should  1`] = `
+exports[`Name of the group > should match with snapshot 1`] = `
 <div>
   <div
     class="css-ctfmb8"
