@@ -1,12 +1,4 @@
-import {
-	Box,
-	Heading,
-	Text,
-	Radio,
-	RadioGroup,
-	Stack,
-	Center,
-} from '@chakra-ui/react';
+import { Box, Radio, RadioGroup, Stack, Center } from '@chakra-ui/react';
 import BG1 from '../assets/BG1.jpg';
 import BG2 from '../assets/BG2.jpg';
 import BG3 from '../assets/BG3.jpg';
@@ -14,13 +6,11 @@ import BG4 from '../assets/BG4.jpg';
 import BG5 from '../assets/BG5.jpg';
 import BG6 from '../assets/BG6.png';
 import BG7 from '../assets/BG7.png';
-
 import { Routes, Route } from 'react-router-dom';
 import { MyDay } from './Tabs/MyDay';
 import { Important } from './Tabs/Important';
 import { Planing } from './Tabs/Planing';
 import { Completed } from './Tabs/Completed';
-import { AssignedToMe } from './Tabs/AssignedToMe';
 import { Tasks } from './Tabs/Tasks';
 import { CustomList } from './Tabs/CustomList';
 import { useState } from 'react';
@@ -76,7 +66,6 @@ export const TaskArea = () => {
 				<Route path='important' element={<Important />}></Route>
 				<Route path='planing' element={<Planing />}></Route>
 				<Route path='completed' element={<Completed />}></Route>
-				<Route path='assignedtome' element={<AssignedToMe />}></Route>
 				<Route path='tasks' element={<Tasks />}></Route>
 				<Route path='tasklist/:listId' element={<CustomList />}></Route>
 			</Routes>
