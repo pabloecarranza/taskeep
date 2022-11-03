@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`Name of the group > should  1`] = `
+<div>
+  <div
+    class="css-ctfmb8"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;

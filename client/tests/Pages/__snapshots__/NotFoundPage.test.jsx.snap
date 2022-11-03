@@ -1,0 +1,62 @@
+// Vitest Snapshot v1
+
+exports[`Test suite on NotFoundPage component > must match vith the snapshot 1`] = `
+<div>
+  <div
+    class="chakra-container css-dvxtzn"
+  >
+    <div
+      class="css-hmqmvr"
+    >
+      <div
+        class="css-1wf37dc"
+      >
+        <div
+          class="css-0"
+        >
+          <img
+            alt="Logo_Task"
+            class="chakra-image css-50xotc"
+            src="/src/assets/daily-tasks.png"
+          />
+        </div>
+        <h2
+          class="chakra-heading css-1akq1da"
+        >
+          We're
+          <p
+            class="chakra-text css-ejz6fe"
+          >
+            Our team
+          </p>
+        </h2>
+        <div
+          class="css-0"
+        >
+          <button
+            class="chakra-button css-4xx2wk"
+            type="button"
+          >
+            Page
+            <span
+              class="chakra-button__icon css-1hzyiq5"
+            >
+              <svg
+                aria-hidden="true"
+                class="chakra-icon css-onkibi"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

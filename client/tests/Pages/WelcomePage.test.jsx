@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { vi, expect, describe, it, test } from 'vitest';
+import { render } from '@testing-library/react';
+import { vi, expect, describe, it } from 'vitest';
 import { WelcomePage } from '../../src/Pages/WelcomePage';
 
 describe('Test suite on WelcomePage component', () => {
@@ -26,6 +26,11 @@ describe('Test suite on WelcomePage component', () => {
 		};
 	});
 
+	it('must match vith the snapshot', () => {
+		const { container } = render(<WelcomePage {...WelcomePagesDates} />);
+		expect(container).toMatchSnapshot();
+	});
+
 	it('must show the name app send by props', () => {
 		const { getByText, getByTestId } = render(
 			<WelcomePage {...WelcomePagesDates} />
@@ -35,30 +40,30 @@ describe('Test suite on WelcomePage component', () => {
 		expect(getByTestId('app_name').innerHTML).toBe(WelcomePagesDates.app_name);
 	});
 
-	test('must show text of subtitle send by props', () => {
+	it('must show text of subtitle send by props', () => {
 		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
 
 		expect(getByText(WelcomePagesDates.subtitle)).toBeTruthy();
 	});
 
-	test('must show the typewriter send by props', () => {
+	it('must show the typewriter send by props', () => {
 		const { getByText, getByTestId } = render(
 			<WelcomePage {...WelcomePagesDates} />
 		);
 		expect(getByTestId('typewriter-wrapper')).toBeTruthy();
 	});
 
-	test('must show the name of repository send by props', () => {
+	it('must show the name of repository send by props', () => {
 		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
 		expect(getByText(WelcomePagesDates.repository));
 	});
 
-	test('must show text get starter send by props', () => {
+	it('must show text get starter send by props', () => {
 		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
 		expect(getByText(WelcomePagesDates.start_app));
 	});
 
-	test('must show the text (made by) send by props', () => {
+	it('must show the text (made by) send by props', () => {
 		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
 		expect(getByText(WelcomePagesDates.made));
 	});
