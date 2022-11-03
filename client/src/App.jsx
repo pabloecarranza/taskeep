@@ -5,6 +5,7 @@ import { HomePage } from './Pages/HomePage';
 import { WelcomePage } from './Pages/WelcomePage';
 import { AuthProvider } from './context/AuthProvider';
 import { WelcomePagesDates } from './utils/WelcomePage.dates';
+import { NotFoundPageDates } from './utils/NotFoundPage.dates';
 
 export const App = () => {
 	return (
@@ -13,7 +14,7 @@ export const App = () => {
 				<Routes>
 					<Route path='/' element={<WelcomePage {...WelcomePagesDates} />} />
 					<Route path='/homepage/*' element={<HomePage />} />
-					<Route path='*' element={<NotFoundPage />} />
+					<Route path='*' element={<NotFoundPage {...NotFoundPageDates} />} />
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>

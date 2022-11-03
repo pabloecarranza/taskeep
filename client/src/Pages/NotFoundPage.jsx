@@ -10,8 +10,17 @@ import {
 import Logo from '../assets/daily-tasks.png';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
-export const NotFoundPage = () => {
+import PropTypes from 'prop-types';
+
+export const NotFoundPage = ({
+	error_text,
+	message_redirect,
+	page_redirect,
+}) => {
 	let navigate = useNavigate();
+	const reDirectTo = () => {
+		navigate('/homepage', { replace: true });
+	};
 
 	return (
 		<Container centerContent>
@@ -28,16 +37,16 @@ export const NotFoundPage = () => {
 						<Image src={Logo} alt='Logo_Task' boxSize='150px' />
 					</Box>
 					<Heading as='h2' size='2xl' fontWeight='bold' textAlign='center'>
-						We&apos;re sorry - something&apos;s gone wrong.
+						{error_text}
 						<Text
-							bgGradient='linear(to-l, #7928ca, #0084ff)'
+							bgGradient={test ? '' : 'linear(to-l, #7928ca, #0084ff)'}
 							bgClip='text'
 							fontSize='3xl'
 							fontWeight='bold'
 							pb='30px'
 							pt='20px'
 						>
-							Our team has been notified, but click below to go HomePage
+							{message_redirect}
 						</Text>
 					</Heading>
 					<Box>
@@ -45,13 +54,19 @@ export const NotFoundPage = () => {
 							rightIcon={<ArrowForwardIcon />}
 							colorScheme='blue'
 							size='lg'
-							onClick={() => navigate('/homepage', { replace: true })}
+							onClick={reDirectTo}
 						>
-							HomePage
+							{page_redirect}
 						</Button>
 					</Box>
 				</Box>
 			</Center>
 		</Container>
 	);
+};
+
+NotFoundPage.propTypes = {
+	error_text: PropTypes.string.isRequired,
+	message_redirect: PropTypes.string.isRequired,
+	page_redirect: PropTypes.string.isRequired,
 };
