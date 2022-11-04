@@ -16,7 +16,7 @@ import { FiSun, FiStar, FiCalendar, FiCheckCircle } from 'react-icons/fi';
 import { useGetListsQuery } from '../../features/api/listSlice';
 import { MdPostAdd } from 'react-icons/md';
 import { ModalWelcome } from './../Modals/ModalWelcome';
-import { ModalAddList } from '../Modals/ModalAddList/ModalAddList';
+import { ModalAddList } from '../Modals/ModalAddList';
 import { Lists } from './Lists';
 import { Link, useNavigate } from 'react-router-dom';
 import { ModalWelcomeDates } from '../../utils/ModalWelcome.dates';

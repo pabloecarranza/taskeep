@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
-import { usePostListMutation } from '../../../features/api/listSlice';
+import { usePostListMutation } from '../features/api/listSlice';
 
 const usehandleAdd = onClose => {
 	const [input, setInput] = useState({ name: '' });

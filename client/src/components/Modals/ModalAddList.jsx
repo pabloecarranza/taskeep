@@ -10,10 +10,9 @@ import {
 	FormControl,
 	FormLabel,
 	Input,
-	useToast,
 } from '@chakra-ui/react';
-import { usePostListMutation } from '../../../features/api/listSlice';
-import usehandleAdd from './useHandleAdd';
+
+import usehandleAdd from '../../Hooks/useHandleAdd';
 
 export const ModalAddList = ({ isOpen, onClose }) => {
 	const handleClick = () => {

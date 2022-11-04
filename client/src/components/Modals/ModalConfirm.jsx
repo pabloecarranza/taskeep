@@ -9,47 +9,11 @@ import {
 	Button,
 	useToast,
 } from '@chakra-ui/react';
-import { useDeleteListMutation } from '../../features/api/listSlice';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useGetTasksQuery } from '../../features/api/taskSlice';
+import useDeleteList from './../../Hooks/useDeleteList';
 export const ModalConfirm = ({ isOpen, onClose, onOpen, List, setSeleted }) => {
-	const toast = useToast();
 	const initialRef = React.useRef(null);
-	const [DeleteList] = useDeleteListMutation();
-	const { refetch } = useGetTasksQuery();
 
-	const params = useParams();
-	const navigate = useNavigate();
-
-	function deleteList(list) {
-		DeleteList(list.id)
-			.unwrap()
-			.then(respon => {
-				toast({
-					title: 'Success.',
-					description: `${respon.message}`,
-					status: 'success',
-					duration: 3000,
-					isClosable: true,
-				});
-				onClose();
-			})
-			.catch(error => {
-				toast({
-					title: 'Error',
-					description: `${error.data.message}`,
-					status: 'error',
-					duration: 2000,
-					isClosable: true,
-				});
-			});
-		setSeleted({});
-		onClose();
-		refetch();
-		if (Object.values(params)[0].includes(list.name)) {
-			navigate('/homepage/myday');
-		}
-	}
+	const [deleteList] = useDeleteList(onClose, setSeleted);
 
 	return (
 		<>
