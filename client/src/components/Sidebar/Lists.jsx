@@ -4,6 +4,7 @@ import { Button, Center, useDisclosure } from '@chakra-ui/react';
 
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
+import { ModalConfirmDates } from '../../utils/EnglishTexts';
 
 export const Lists = ({ data, isloaded }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,6 +32,7 @@ export const Lists = ({ data, isloaded }) => {
 				onClose={onClose}
 				List={seleted}
 				setSeleted={setSeleted}
+				{...ModalConfirmDates}
 			/>
 			<Button
 				variant='white'

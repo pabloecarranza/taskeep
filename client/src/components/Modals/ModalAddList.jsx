@@ -11,10 +11,18 @@ import {
 	FormLabel,
 	Input,
 } from '@chakra-ui/react';
-
+import PropTypes from 'prop-types';
 import usehandleAdd from '../../Hooks/useHandleAdd';
 
-export const ModalAddList = ({ isOpen, onClose }) => {
+export const ModalAddList = ({
+	isOpen,
+	onClose,
+	title,
+	name,
+	button_one,
+	button_two,
+	place_holder,
+}) => {
 	const handleClick = () => {
 		onClose();
 	};
@@ -32,14 +40,14 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 				isCentered
 			>
 				<ModalContent bg='#1A202C'>
-					<ModalHeader>Create a new task list</ModalHeader>
+					<ModalHeader>{title}</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<FormControl>
-							<FormLabel>List name</FormLabel>
+							<FormLabel> {name} </FormLabel>
 							<Input
 								ref={initialRef}
-								placeholder='Write here...'
+								placeholder={place_holder}
 								value={input.name}
 								onChange={e => handleChange(e.target.value)}
 								onKeyDown={e => handleSubmit(e)}
@@ -49,7 +57,7 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 
 					<ModalFooter>
 						<Button variant='ghost' onClick={onClose}>
-							Cancel
+							{button_one}
 						</Button>
 						<Button
 							colorScheme='blue'
@@ -58,11 +66,21 @@ export const ModalAddList = ({ isOpen, onClose }) => {
 							onClick={e => handleSubmit(e)}
 							onKeyDown={e => handleSubmit(e)}
 						>
-							Save
+							{button_two}
 						</Button>
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
 		</>
 	);
+};
+
+ModalAddList.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	onClose: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	button_one: PropTypes.string.isRequired,
+	button_two: PropTypes.string.isRequired,
+	place_holder: PropTypes.string.isRequired,
 };

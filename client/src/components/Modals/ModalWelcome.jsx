@@ -22,6 +22,7 @@ export const ModalWelcome = ({
 	welcome_text_1,
 	welcome_text_2,
 	name,
+	button_text,
 }) => {
 	const handleClick = () => {
 		onClose();
@@ -51,7 +52,7 @@ export const ModalWelcome = ({
 
 				<ModalFooter>
 					<Button colorScheme='blue' mr={3} onClick={handleClick}>
-						Close
+						{button_text}
 					</Button>
 				</ModalFooter>
 			</ModalContent>
@@ -64,6 +65,7 @@ ModalWelcome.propTypes = {
 	welcome_text_1: PropTypes.string.isRequired,
 	welcome_text_2: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
+	button_text: PropTypes.string.isRequired,
 	onClose: PropTypes.func.isRequired,
 	setIsloaded: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,

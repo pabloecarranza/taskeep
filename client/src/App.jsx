@@ -4,8 +4,7 @@ import { NotFoundPage } from './Pages/NotFoundPage';
 import { HomePage } from './Pages/HomePage';
 import { WelcomePage } from './Pages/WelcomePage';
 import { AuthProvider } from './context/AuthProvider';
-import { WelcomePagesDates } from './utils/WelcomePage.dates';
-import { NotFoundPageDates } from './utils/NotFoundPage.dates';
+import { NotFoundPageDates, WelcomePagesDates } from './utils/EnglishTexts';
 
 export const App = () => {
 	return (

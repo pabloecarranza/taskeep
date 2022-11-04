@@ -19,7 +19,7 @@ import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { Lists } from './Lists';
 import { Link, useNavigate } from 'react-router-dom';
-import { ModalWelcomeDates } from '../../utils/ModalWelcome.dates';
+import { ModalAddListDates, ModalWelcomeDates } from '../../utils/EnglishTexts';
 
 export const Sidebar = () => {
 	const {
@@ -60,7 +60,11 @@ export const Sidebar = () => {
 				setIsloaded={setIsloaded}
 				{...ModalWelcomeDates}
 			/>
-			<ModalAddList isOpen={isOpenAddListModal} onClose={onCloseAddListModal} />
+			<ModalAddList
+				isOpen={isOpenAddListModal}
+				onClose={onCloseAddListModal}
+				{...ModalAddListDates}
+			/>
 
 			<Button w='100%' variant='white' _hover={{ color: '#0084ff' }} mb='13px'>
 				<Flex w='100%' alignItems='center' pb='15px'>

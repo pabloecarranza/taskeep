@@ -9,6 +9,7 @@ describe('Test suite on ModalWelcome component', () => {
 		welcome_text_2: 'functionalities',
 		name: 'Pablo',
 		alt: 'PabloCarranza',
+		button_text: 'Close',
 	};
 
 	const isOpen = true;
@@ -79,5 +80,19 @@ describe('Test suite on ModalWelcome component', () => {
 
 		const text = screen.getByRole('dialog');
 		expect(text).toHaveTextContent(ModalWelcomeDates.welcome_text_2);
+	});
+
+	it('should display close text on button', () => {
+		render(
+			<ModalWelcome
+				{...ModalWelcomeDates}
+				onClose={() => {}}
+				isOpen={isOpen}
+				setIsloaded={() => {}}
+			/>
+		);
+
+		const text = screen.getByRole('dialog');
+		expect(text).toHaveTextContent(ModalWelcomeDates.button_text);
 	});
 });
