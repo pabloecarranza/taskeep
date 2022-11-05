@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const authSlice = createApi({
 	reducerPath: 'authSlice',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://taskeep-api.herokuapp.com',
+		baseUrl: import.meta.env.VITE_BASE_URL,
 	}),
 	tagTypes: ['Auth'],
 	endpoints: builder => ({

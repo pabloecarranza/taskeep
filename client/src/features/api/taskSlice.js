@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const taskSlice = createApi({
 	reducerPath: 'taskSlice',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://taskeep-api.herokuapp.com',
+		baseUrl: import.meta.env.VITE_BASE_URL,
 	}),
 	tagTypes: ['Task'],
 	endpoints: builder => ({
