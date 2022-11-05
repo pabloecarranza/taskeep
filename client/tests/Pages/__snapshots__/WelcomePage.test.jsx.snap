@@ -1,6 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`Test suite on WelcomePage component > must match vith the snapshot 1`] = `
+exports[`Test suite on WelcomePage component > must match with the snapshot 1`] = `
 <div>
   <div
     class="css-52m22g"

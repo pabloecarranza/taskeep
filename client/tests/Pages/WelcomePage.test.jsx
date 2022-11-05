@@ -26,7 +26,7 @@ describe('Test suite on WelcomePage component', () => {
 		};
 	});
 
-	it('must match vith the snapshot', () => {
+	it('must match with the snapshot', () => {
 		const { container } = render(<WelcomePage {...WelcomePagesDates} />);
 		expect(container).toMatchSnapshot();
 	});
