@@ -22,6 +22,7 @@ const useDeleteList = (onClose, setSeleted) => {
 					duration: 3000,
 					isClosable: true,
 				});
+				console.log('good', respon);
 				onClose();
 			})
 			.catch(error => {
@@ -32,6 +33,7 @@ const useDeleteList = (onClose, setSeleted) => {
 					duration: 2000,
 					isClosable: true,
 				});
+				console.log('error', error);
 			});
 		setSeleted({});
 		onClose();
@@ -40,7 +42,6 @@ const useDeleteList = (onClose, setSeleted) => {
 			navigate('/homepage/myday');
 		}
 	};
-
 	return [deleteList];
 };
 

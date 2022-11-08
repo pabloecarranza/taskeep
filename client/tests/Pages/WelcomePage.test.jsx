@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { vi, expect, describe, it } from 'vitest';
 import { WelcomePage } from '../../src/Pages/WelcomePage';
 
@@ -66,5 +66,19 @@ describe('Test suite on WelcomePage component', () => {
 	it('must show the text (made by) send by props', () => {
 		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
 		expect(getByText(WelcomePagesDates.made));
+	});
+
+	it('should display Get Starter button', () => {
+		render(<WelcomePage {...WelcomePagesDates} />);
+
+		const button = screen.getByText(WelcomePagesDates.start_app);
+		expect(button.textContent).toEqual(WelcomePagesDates.start_app);
+	});
+
+	it('should display Repository button', () => {
+		render(<WelcomePage {...WelcomePagesDates} />);
+
+		const button = screen.getByText(WelcomePagesDates.repository);
+		expect(button.textContent).toEqual(WelcomePagesDates.repository);
 	});
 });

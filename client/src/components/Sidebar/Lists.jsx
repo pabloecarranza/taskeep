@@ -6,7 +6,7 @@ import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
 import { ModalConfirmDates } from '../../utils/EnglishTexts';
 
-export const Lists = ({ data, isloaded }) => {
+export const Lists = ({ data }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [seleted, setSeleted] = React.useState({});

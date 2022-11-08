@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { expect, describe, it } from 'vitest';
 import { NotFoundPage } from './../../src/Pages/NotFoundPage';
@@ -44,5 +44,16 @@ describe('Test suite on NotFoundPage component', () => {
 			</Router>
 		);
 		expect(container).toMatchSnapshot();
+	});
+
+	it('should display reDirect button', () => {
+		render(
+			<Router>
+				<NotFoundPage {...NotFoundPageDates} />
+			</Router>
+		);
+
+		const button = screen.getByText(NotFoundPageDates.page_redirect);
+		expect(button.textContent).toEqual(NotFoundPageDates.page_redirect);
 	});
 });

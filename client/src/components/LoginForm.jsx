@@ -76,6 +76,7 @@ export const LoginForm = () => {
 					duration: 2000,
 					isClosable: true,
 				});
+
 				localStorage.setItem('identified-user', JSON.stringify(respon));
 				dispatch(sessionIn(respon));
 			})
@@ -122,6 +123,7 @@ export const LoginForm = () => {
 						isClosable: true,
 					});
 					localStorage.setItem('identified-user', JSON.stringify(respon));
+					console.log(respon);
 				})
 				.catch(error => {
 					toast({
