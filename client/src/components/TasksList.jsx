@@ -65,30 +65,24 @@ export const TasksList = ({ data = [] }) => {
 
 	function setSelectedTask(task, e) {
 		if (e === 'openTask') {
-			console.log('debe abrir');
 			dispatch(currentTask(task));
 			onOpenDrawerTask();
 			return;
 		}
 
 		if (e === 'setFalseCompleted') {
-			console.log('entreSetFalse');
 			HotPutTask(task);
 			return;
 		}
 		if (e === 'setTrueCompleted') {
-			console.log('entreSetTrue');
 			HotPutTask(task);
 			return;
 		}
 		if (e === 'setFalseImportant') {
-			console.log('setfalse con', task);
 			HotPutTask(task);
 			return;
 		}
 		if (e === 'setTrueImportant') {
-			console.log('settrue con', task);
-			console.log(data);
 			HotPutTask(task);
 			return;
 		}

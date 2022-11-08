@@ -25,7 +25,7 @@ export const Lists = ({ data }) => {
 	}
 
 	return data.map(list => (
-		<Center>
+		<Center key={list.id}>
 			<ModalConfirm
 				onOpen={onOpen}
 				isOpen={isOpen}
@@ -34,6 +34,11 @@ export const Lists = ({ data }) => {
 				setSeleted={setSeleted}
 				{...ModalConfirmDates}
 			/>
+			{/*  
+			//TODO para quitar el warning: validateDOMNesting(...): <button> cannot appear as a descendant of <button>. 
+			hay que reemplazar el componente botton (padre) por algun otro de chakra respetando el hover para que pueda
+			tener un button dentro...  y no quede un button dentro de otro.-
+			*/}
 			<Button
 				variant='white'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}

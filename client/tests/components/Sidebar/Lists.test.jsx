@@ -2,7 +2,10 @@ import { render, renderHook, screen } from '@testing-library/react';
 import { vi, expect, describe, it, test, beforeEach } from 'vitest';
 import { Lists } from '../../../src/components/Sidebar/Lists';
 import { BrowserRouter as Router } from 'react-router-dom';
-import * as useDeleteList from '../../../src/Hooks/useDeleteList';
+
+import { Provider } from 'react-redux';
+
+import { store } from './../../../src/app/store';
 
 describe('Test suite on Lists component', () => {
 	const data = [
@@ -18,38 +21,37 @@ describe('Test suite on Lists component', () => {
 		return {
 			__esModule: true,
 			default: () => {
-				return <div />;
+				return <ModalConfirm />;
 			},
 			ModalConfirm: () => {
 				return <div />;
 			},
 		};
 	});
-	vi.mock(useDeleteList);
 
 	it('must match with the snapshot  ', () => {
 		const { container } = render(
-			<Router>
-				<Lists data={data} />
-			</Router>
+			<Provider store={store}>
+				<Router>
+					<Lists data={data} />
+				</Router>
+			</Provider>
 		);
 
 		expect(container).toMatchSnapshot();
 	});
 
-	it('should render name of list', async () => {
-		/*		useDeleteList
-			.mockReturnValue({
-				message: 'List eliminated successfully',
-			})
-			.mockRejectedValue(new Error('TEST_ERROR'))*/
+	it('must display data list from props', () => {
 		render(
-			<Router>
-				<Lists data={data} />
-			</Router>
+			<Provider store={store}>
+				<Router>
+					<Lists data={data} />
+				</Router>
+			</Provider>
 		);
+		screen.debug();
 
-		const text = screen.getByRole('link');
-		expect(text).toHaveTextContent(data[0].name);
+		const button = screen.getByText(data[0].name);
+		expect(button).toHaveTextContent(data[0].name);
 	});
 });

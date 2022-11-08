@@ -123,7 +123,6 @@ export const LoginForm = () => {
 						isClosable: true,
 					});
 					localStorage.setItem('identified-user', JSON.stringify(respon));
-					console.log(respon);
 				})
 				.catch(error => {
 					toast({

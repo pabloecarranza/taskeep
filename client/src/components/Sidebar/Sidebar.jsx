@@ -20,6 +20,8 @@ import { ModalAddList } from '../Modals/ModalAddList';
 import { Lists } from './Lists';
 import { Link, useNavigate } from 'react-router-dom';
 import { ModalAddListDates, ModalWelcomeDates } from '../../utils/EnglishTexts';
+import { LoggedUser } from './LoggedUser';
+import { DefaultLists } from './DefaultLists';
 
 export const Sidebar = () => {
 	const {
@@ -66,90 +68,11 @@ export const Sidebar = () => {
 				{...ModalAddListDates}
 			/>
 
-			<Button w='100%' variant='white' _hover={{ color: '#0084ff' }} mb='13px'>
-				<Flex w='100%' alignItems='center' pb='15px'>
-					<Box w='40%'>
-						<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
-							<Avatar size='md' name={userData.username} />
-						</SkeletonCircle>
-					</Box>
-					<Flex w='100%' textAlign='left'>
-						<SkeletonText
-							mt='2'
-							noOfLines={2}
-							isLoaded={isloaded}
-							fadeDuration={2}
-							spacing='2'
-						>
-							<Heading as='h5' size='xs'>
-								{userData.username}
-							</Heading>
-
-							<Spacer />
-							<Text fontSize='xs'>{userData.email}</Text>
-						</SkeletonText>
-					</Flex>
-				</Flex>
-			</Button>
-			<Button
-				isActive='true'
-				leftIcon={<FiSun />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={4}>
-					<Link to='/homepage/myday'>My day</Link>
-				</SkeletonText>
-			</Button>
-
-			<Button
-				leftIcon={<FiStar />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={5}>
-					<Link to='/homepage/important'>Important</Link>
-				</SkeletonText>
-			</Button>
-			<Button
-				leftIcon={<FiCalendar />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
-					<Link to='/homepage/planing'>Planing</Link>
-				</SkeletonText>
-			</Button>
-			<Button
-				leftIcon={<FiCheckCircle />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={6}>
-					<Link to='/homepage/completed'>Completed</Link>
-				</SkeletonText>
-			</Button>
-			<Button
-				leftIcon={<MdPostAdd />}
-				variant='white'
-				_hover={{ bg: '#44444442', color: '#0084ff' }}
-				w='100%'
-				justifyContent='flex-start'
-				mb='10px'
-				onClick={onOpenAddListModal}
-			>
-				<SkeletonText noOfLines={1} isLoaded={isloaded} fadeDuration={9}>
-					Add new list
-				</SkeletonText>
-			</Button>
+			<LoggedUser userdata={userData} isloaded={isloaded} />
+			<DefaultLists
+				isloaded={isloaded}
+				onOpenAddListModal={onOpenAddListModal}
+			/>
 			<Divider />
 			<Flex
 				flexDirection='column'
