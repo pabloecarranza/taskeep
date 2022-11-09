@@ -97,7 +97,7 @@ export const AddTask = () => {
 				title: 'Error.',
 				description: 'The field description cant be empty.',
 				status: 'error',
-				duration: 2000,
+				duration: 1500,
 				isClosable: true,
 			});
 			return;
@@ -109,7 +109,7 @@ export const AddTask = () => {
 						title: 'Success.',
 						description: `${respon.message}`,
 						status: 'success',
-						duration: 2000,
+						duration: 1500,
 						isClosable: true,
 					});
 				})
@@ -118,7 +118,7 @@ export const AddTask = () => {
 						title: 'Error',
 						description: `${error.data.message}`,
 						status: 'error',
-						duration: 2000,
+						duration: 1500,
 						isClosable: true,
 					});
 				});

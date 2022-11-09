@@ -140,7 +140,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 					title: 'Success.',
 					description: `${respon.message}`,
 					status: 'success',
-					duration: 3000,
+					duration: 1500,
 					isClosable: true,
 				});
 				onClose();
@@ -150,7 +150,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 					title: 'Error',
 					description: `${error.data.message}`,
 					status: 'error',
-					duration: 2000,
+					duration: 1500,
 					isClosable: true,
 				});
 			});
@@ -166,7 +166,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 					title: 'Success.',
 					description: `${respon.message}`,
 					status: 'success',
-					duration: 3000,
+					duration: 1500,
 					isClosable: true,
 				});
 				onClose();
@@ -176,7 +176,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 					title: 'Error',
 					description: `${error.data.message}`,
 					status: 'error',
-					duration: 2000,
+					duration: 1500,
 					isClosable: true,
 				});
 			});

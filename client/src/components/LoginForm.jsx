@@ -73,7 +73,7 @@ export const LoginForm = () => {
 					title: 'Success.',
 					description: `${respon.message}`,
 					status: 'success',
-					duration: 2000,
+					duration: 1500,
 					isClosable: true,
 				});
 
@@ -85,7 +85,7 @@ export const LoginForm = () => {
 					title: 'Error',
 					description: `${error.data.message}`,
 					status: 'error',
-					duration: 2000,
+					duration: 1500,
 					isClosable: true,
 				});
 			});
@@ -106,7 +106,7 @@ export const LoginForm = () => {
 				title: 'Error.',
 				description: 'The fields cant be empty.',
 				status: 'error',
-				duration: 2000,
+				duration: 1500,
 				isClosable: true,
 			});
 
@@ -119,7 +119,7 @@ export const LoginForm = () => {
 						title: 'Success.',
 						description: `${respon.message}`,
 						status: 'success',
-						duration: 2000,
+						duration: 1500,
 						isClosable: true,
 					});
 					localStorage.setItem('identified-user', JSON.stringify(respon));
@@ -129,7 +129,7 @@ export const LoginForm = () => {
 						title: 'Error',
 						description: `${error.data.message}`,
 						status: 'error',
-						duration: 2000,
+						duration: 1500,
 						isClosable: true,
 					});
 				});
@@ -146,7 +146,7 @@ export const LoginForm = () => {
 						title: 'Success.',
 						description: `${respon.message}`,
 						status: 'success',
-						duration: 2000,
+						duration: 1500,
 						isClosable: true,
 					});
 					localStorage.setItem('identified-user', JSON.stringify(respon));
@@ -156,7 +156,7 @@ export const LoginForm = () => {
 						title: 'Account created.',
 						description: `${error.data.message}`,
 						status: 'error',
-						duration: 2000,
+						duration: 1500,
 						isClosable: true,
 					});
 				});

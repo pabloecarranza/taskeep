@@ -18,7 +18,7 @@ const usehandleAdd = onClose => {
 					title: 'Error.',
 					description: 'The field list name cant by empty.',
 					status: 'error',
-					duration: 2000,
+					duration: 1500,
 					isClosable: true,
 				});
 				return;
@@ -30,7 +30,7 @@ const usehandleAdd = onClose => {
 							title: 'Success.',
 							description: `${respon.message}`,
 							status: 'success',
-							duration: 3000,
+							duration: 1500,
 							isClosable: true,
 						});
 						onClose();
@@ -40,7 +40,7 @@ const usehandleAdd = onClose => {
 							title: 'Error',
 							description: `${error.data.message}`,
 							status: 'error',
-							duration: 2000,
+							duration: 1500,
 							isClosable: true,
 						});
 					});
