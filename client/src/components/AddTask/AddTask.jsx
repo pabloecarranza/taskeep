@@ -41,26 +41,9 @@ export const AddTask = () => {
 		expiration_date: '',
 		repeat: 'YYYY-MM-DD',
 		notes: '',
-		listid: data.length ? data[0].id : null,
+		listid: null,
 		userid: userData.id,
 	});
-
-	useEffect(() => {
-		if (task.listid === null) {
-			setTask({
-				...task,
-				listid: data.length ? data[0].id : null,
-			});
-		}
-
-		const listExistOnDB = data.find(list => list.id === task.listid);
-		if (!listExistOnDB) {
-			setTask({
-				...task,
-				listid: data.length ? data[0].id : null,
-			});
-		}
-	}, [task]);
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
@@ -183,104 +166,86 @@ export const AddTask = () => {
 					w='70%'
 					type='tel'
 					variant='unstyled'
-					placeholder={
-						data.length
-							? 'Add new task'
-							: 'To enable ADD TASK you must add a task list first'
-					}
-					value={data.length ? task.description : (task.description = '')}
+					placeholder='Add new task'
+					value={task.description}
 					onChange={e => handleOnChange('description', e)}
-					isDisabled={data.length ? false : true}
 				/>
-				{data.length ? (
-					<>
-						<Menu computePositionOnMount={true}>
-							<MenuButton
-								as={Button}
-								rightIcon={<ChevronDownIcon />}
+
+				<Menu computePositionOnMount={true}>
+					<MenuButton
+						as={Button}
+						rightIcon={<ChevronDownIcon />}
+						variant='gray'
+						borderColor='gray.800'
+						bg='gray.800'
+						_hover={{ bg: '#44444442', color: '#0084ff' }}
+						_expanded={{ bg: '#23486b' }}
+					>
+						Options
+					</MenuButton>
+					<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
+						<MenuItem
+							_hover={{ bg: '#44444442', color: '#0084ff' }}
+							closeOnSelect={false}
+						>
+							<Stack align='center' direction='row'>
+								<Text>Important</Text>
+								<Switch
+									id='important'
+									pl='15px'
+									colorScheme='teal'
+									onChange={e => handleOnChange('important', e)}
+								></Switch>
+							</Stack>
+						</MenuItem>
+						<MenuItem
+							_hover={{ bg: '#44444442', color: '#0084ff' }}
+							closeOnSelect={false}
+						>
+							<Input
+								w='100%'
+								placeholder='Select Date and Time'
+								size='md'
 								variant='gray'
 								borderColor='gray.800'
 								bg='gray.800'
-								_hover={{ bg: '#44444442', color: '#0084ff' }}
-								_expanded={{ bg: '#23486b' }}
-								isDisabled={data.length ? false : true}
-							>
-								Options
-							</MenuButton>
-							<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
-								<MenuItem
+								type='date'
+								value={task.expiration_date}
+								onChange={e => handleOnChange('expiration_date', e)}
+							/>
+						</MenuItem>
+						<MenuDivider />
+						<MenuOptionGroup title='Task lists' type='radio'>
+							{data.map(list => (
+								<MenuItemOption
+									value={list.name}
+									name={list.name}
+									key={list.id}
 									_hover={{ bg: '#44444442', color: '#0084ff' }}
 									closeOnSelect={false}
+									onClick={() => handleOnChange('listid', list.id)}
 								>
-									<Stack align='center' direction='row'>
-										<Text>Important</Text>
-										<Switch
-											id='important'
-											pl='15px'
-											colorScheme='teal'
-											onChange={e => handleOnChange('important', e)}
-										></Switch>
-									</Stack>
-								</MenuItem>
-								<MenuItem
-									_hover={{ bg: '#44444442', color: '#0084ff' }}
-									closeOnSelect={false}
-								>
-									<Input
-										w='100%'
-										placeholder='Select Date and Time'
-										size='md'
-										variant='gray'
-										borderColor='gray.800'
-										bg='gray.800'
-										type='date'
-										value={task.expiration_date}
-										onChange={e => handleOnChange('expiration_date', e)}
-									/>
-								</MenuItem>
-								<MenuDivider />
-								<MenuOptionGroup title='Task lists' type='radio'>
-									{data.map(list => (
-										<MenuItemOption
-											value={list.name}
-											name={list.name}
-											key={list.id}
-											_hover={{ bg: '#44444442', color: '#0084ff' }}
-											closeOnSelect={false}
-											onClick={() => handleOnChange('listid', list.id)}
-										>
-											{capitalizeFirstLetter(list.name)}
-										</MenuItemOption>
-									))}
-									{isLoading ? <Spinner size='md' ml='10%' /> : ''}
-								</MenuOptionGroup>
-							</MenuList>
-						</Menu>
+									{capitalizeFirstLetter(list.name)}
+								</MenuItemOption>
+							))}
+							{isLoading ? <Spinner size='md' ml='10%' /> : ''}
+						</MenuOptionGroup>
+					</MenuList>
+				</Menu>
 
-						<Button
-							rightIcon={<ChevronRightIcon />}
-							variant='white'
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
-							colorScheme='blue'
-							aria-label='Search database'
-							mr='1%'
-							ml='1%'
-							w='12%'
-							isDisabled={data.length ? false : true}
-							onClick={handleSubmit}
-						>
-							Add
-						</Button>
-					</>
-				) : (
-					<>
-						<Button
-							ml='30%'
-							bg='gray.800'
-							_hover={{ bg: 'gray.800', color: '#0084ff' }}
-						></Button>
-					</>
-				)}
+				<Button
+					rightIcon={<ChevronRightIcon />}
+					variant='white'
+					_hover={{ bg: '#44444442', color: '#0084ff' }}
+					colorScheme='blue'
+					aria-label='Search database'
+					mr='1%'
+					ml='1%'
+					w='12%'
+					onClick={handleSubmit}
+				>
+					Add
+				</Button>
 			</InputGroup>
 		</Center>
 	);
