@@ -19,9 +19,13 @@ import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { Lists } from './Lists';
 import { Link, useNavigate } from 'react-router-dom';
-import { ModalAddListDates, ModalWelcomeDates } from '../../utils/EnglishTexts';
+import {
+	FiltersListsDates,
+	ModalAddListDates,
+	ModalWelcomeDates,
+} from '../../utils/EnglishTexts';
 import { LoggedUser } from './LoggedUser';
-import { DefaultLists } from './DefaultLists';
+import { FiltersLists } from './FiltersLists';
 
 export const Sidebar = () => {
 	const {
@@ -69,27 +73,14 @@ export const Sidebar = () => {
 			/>
 
 			<LoggedUser userdata={userData} isloaded={isloaded} />
-			<DefaultLists
+			<FiltersLists
 				isloaded={isloaded}
 				onOpenAddListModal={onOpenAddListModal}
+				{...FiltersListsDates}
 			/>
 			<Divider />
-			<Flex
-				flexDirection='column'
-				justifyContent='flex-start'
-				h='30%'
-				w='100%'
-				overflow='auto'
-			>
-				<SkeletonText
-					noOfLines={3}
-					isLoaded={isloaded}
-					fadeDuration={9}
-					spacing='6'
-				>
-					<Lists data={data} />
-				</SkeletonText>
-			</Flex>
+
+			<Lists data={data} isloaded={isloaded} />
 		</Box>
 	);
 };

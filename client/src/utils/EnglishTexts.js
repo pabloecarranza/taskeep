@@ -41,3 +41,11 @@ export const ModalAddListDates = {
 	button_two: 'Save',
 	place_holder: 'Write here...',
 };
+
+export const FiltersListsDates = {
+	main: 'My Day',
+	important: 'Important',
+	planing: 'Planing',
+	completed: 'Completed',
+	add: 'Add new list',
+};

@@ -10,6 +10,7 @@ import {
 	SkeletonCircle,
 	SkeletonText,
 } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 export const LoggedUser = ({ userdata, isloaded }) => {
 	return (
@@ -41,6 +42,7 @@ export const LoggedUser = ({ userdata, isloaded }) => {
 	);
 };
 
-/*
-
-*/
+LoggedUser.propTypes = {
+	userdata: PropTypes.object.isRequired,
+	isloaded: PropTypes.bool.isRequired,
+};
