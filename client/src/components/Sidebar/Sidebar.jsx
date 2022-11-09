@@ -1,24 +1,10 @@
-import {
-	Box,
-	Flex,
-	Heading,
-	Avatar,
-	Text,
-	Spacer,
-	Divider,
-	Button,
-	SkeletonCircle,
-	SkeletonText,
-	useDisclosure,
-} from '@chakra-ui/react';
+import { Box, Divider, useDisclosure } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-import { FiSun, FiStar, FiCalendar, FiCheckCircle } from 'react-icons/fi';
 import { useGetListsQuery } from '../../features/api/listSlice';
-import { MdPostAdd } from 'react-icons/md';
 import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
 import { Lists } from './Lists';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
 	FiltersListsDates,
 	ModalAddListDates,
@@ -79,7 +65,6 @@ export const Sidebar = () => {
 				{...FiltersListsDates}
 			/>
 			<Divider />
-
 			<Lists data={data} isloaded={isloaded} />
 		</Box>
 	);

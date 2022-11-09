@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
 import { TasksList } from './../TasksList';
-import { AddTask } from './../AddTask';
+import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { useParams } from 'react-router-dom';
 import { useGetListsQuery } from '../../features/api/listSlice';
@@ -19,7 +19,6 @@ export const CustomList = () => {
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
-
 		return capitalized;
 	}
 

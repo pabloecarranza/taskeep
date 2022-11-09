@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
 import { TasksList } from './../TasksList';
-import { AddTask } from './../AddTask';
+import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 
 export const Completed = () => {

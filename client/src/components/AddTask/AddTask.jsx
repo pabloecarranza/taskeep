@@ -1,14 +1,9 @@
 import React from 'react';
 import {
-	Container,
 	Center,
-	Box,
 	Input,
 	InputGroup,
 	InputLeftElement,
-	Checkbox,
-	IconButton,
-	Select,
 	Menu,
 	MenuButton,
 	MenuList,
@@ -22,19 +17,13 @@ import {
 	Stack,
 	useToast,
 	Text,
-	Hide,
 } from '@chakra-ui/react';
-import {
-	ChevronDownIcon,
-	AddIcon,
-	ArrowForwardIcon,
-	ChevronRightIcon,
-	SettingsIcon,
-} from '@chakra-ui/icons';
+import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { BiTask } from 'react-icons/bi';
-import { useGetListsQuery } from '../features/api/listSlice';
-import { useState, useEffect } from 'react';
-import { usePostTaskMutation } from '../features/api/taskSlice';
+import { useGetListsQuery } from '../../features/api/listSlice';
+import { useState } from 'react';
+import { usePostTaskMutation } from '../../features/api/taskSlice';
+import { useEffect } from 'react';
 
 export const AddTask = () => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
@@ -52,9 +41,26 @@ export const AddTask = () => {
 		expiration_date: '',
 		repeat: 'YYYY-MM-DD',
 		notes: '',
-		listid: null,
+		listid: data.length ? data[0].id : null,
 		userid: userData.id,
 	});
+
+	useEffect(() => {
+		if (task.listid === null) {
+			setTask({
+				...task,
+				listid: data.length ? data[0].id : null,
+			});
+		}
+
+		const listExistOnDB = data.find(list => list.id === task.listid);
+		if (!listExistOnDB) {
+			setTask({
+				...task,
+				listid: data.length ? data[0].id : null,
+			});
+		}
+	}, [task]);
 
 	function capitalizeFirstLetter(str) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);

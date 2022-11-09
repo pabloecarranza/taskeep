@@ -11,7 +11,6 @@ import { MyDay } from './Tabs/MyDay';
 import { Important } from './Tabs/Important';
 import { Planing } from './Tabs/Planing';
 import { Completed } from './Tabs/Completed';
-import { Tasks } from './Tabs/Tasks';
 import { CustomList } from './Tabs/CustomList';
 import { useState } from 'react';
 
@@ -66,7 +65,6 @@ export const TaskArea = () => {
 				<Route path='important' element={<Important />}></Route>
 				<Route path='planing' element={<Planing />}></Route>
 				<Route path='completed' element={<Completed />}></Route>
-				<Route path='tasks' element={<Tasks />}></Route>
 				<Route path='tasklist/:listId' element={<CustomList />}></Route>
 			</Routes>
 		</Box>
