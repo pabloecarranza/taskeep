@@ -17,7 +17,7 @@ import Typewriter from 'typewriter-effect';
 import { LoginForm } from '../components/LoginForm';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
-import bg from '../assets/BG7.png';
+import bg from '../assets/BG7.jpg';
 
 export const WelcomePage = ({
 	app_name,
