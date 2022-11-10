@@ -13,7 +13,6 @@ const usehandleAdd = onClose => {
 	const handleSubmit = event => {
 		if (event.key === 'Enter' || event.type === 'click') {
 			if (input.name.length === 0) {
-				console.log('no tiene nada');
 				toast({
 					title: 'Error.',
 					description: 'The field list name cant by empty.',

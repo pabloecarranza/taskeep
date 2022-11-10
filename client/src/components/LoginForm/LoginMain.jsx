@@ -31,7 +31,7 @@ export const LoginMain = () => {
 	const fadeSignIn = useSpring({
 		opacity: signUp ? 0 : 1,
 	});
-	console.log(SignInResponse.isSuccess);
+
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
 			{SignInResponse.isSuccess ? (

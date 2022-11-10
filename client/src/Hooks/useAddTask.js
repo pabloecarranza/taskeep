@@ -22,7 +22,6 @@ export const useAddTask = userData => {
 	});
 
 	function capitalizeFirstLetter(str) {
-		console.log(str);
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 
 		return capitalized;

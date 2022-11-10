@@ -63,7 +63,6 @@ export const useDrawerTask = onClose => {
 				...task,
 				listid: event,
 			});
-			console.log(task);
 		}
 
 		if (type === 'description') {
@@ -90,7 +89,6 @@ export const useDrawerTask = onClose => {
 				...task,
 				completed: !task.completed,
 			});
-			console.log(task);
 		}
 	};
 
