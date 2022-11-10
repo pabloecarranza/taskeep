@@ -49,3 +49,16 @@ export const FiltersListsDates = {
 	completed: 'Completed',
 	add: 'Add new list',
 };
+
+export const SignUpSuccessfullyDates = {
+	title: 'User created successfully!',
+	description:
+		'Thank you for your subscription to our application, we hope you enjoy it.',
+	button: 'Enter',
+};
+
+export const SignInSuccessfullyDates = {
+	title: 'User Log In successfully!',
+	description: 'Welcome back ! We love having you here.',
+	button: 'Enter',
+};

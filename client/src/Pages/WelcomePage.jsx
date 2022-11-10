@@ -14,10 +14,10 @@ import { VscGithubInverted } from 'react-icons/vsc';
 import { BsLinkedin } from 'react-icons/bs';
 import Logo from '../assets/daily-tasks.png';
 import Typewriter from 'typewriter-effect';
-import { LoginForm } from '../components/LoginForm';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 import bg from '../assets/BG7.jpg';
+import { LoginForm } from '../components/LoginForm/LoginForm';
 
 export const WelcomePage = ({
 	app_name,
