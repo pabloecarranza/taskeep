@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import { ModalConfirmDates } from '../../utils/EnglishTexts';
 import PropTypes from 'prop-types';
 
-export const Lists = ({ data, isloaded }) => {
+export const CustomLists = ({ data, isloaded }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const [seleted, setSeleted] = React.useState({});
@@ -56,8 +56,8 @@ export const Lists = ({ data, isloaded }) => {
 					/>
 					{/*  
 			//TODO para quitar el warning: validateDOMNesting(...): <button> cannot appear as a descendant of <button>. 
-			hay que reemplazar el componente botton (padre) por algun otro de chakra respetando el hover para que pueda
-			tener un button dentro...  y no quede un button dentro de otro.-
+			hay que reemplazar el componente botton (padre) por algun otro de chakra respetando el hover y el
+			 estilo visual general para que pueda tener un button dentro...  👇👇
 			*/}
 					<Button
 						variant='white'
@@ -88,7 +88,7 @@ export const Lists = ({ data, isloaded }) => {
 	));
 };
 
-Lists.propTypes = {
+CustomLists.propTypes = {
 	data: PropTypes.array.isRequired,
 	isloaded: PropTypes.bool.isRequired,
 };

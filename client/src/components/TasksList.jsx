@@ -1,35 +1,24 @@
 import React from 'react';
 import {
-	Box,
 	Text,
 	Center,
-	Flex,
-	Heading,
 	Button,
 	useToast,
 	useDisclosure,
 } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
 import {
 	AiOutlineStar,
 	AiTwotoneStar,
 	AiOutlineCalendar,
 	AiOutlineDelete,
 } from 'react-icons/ai';
-import {
-	BiCheckbox,
-	BiCheckboxChecked,
-	BiCircle,
-	BiChevronDownCircle,
-} from 'react-icons/bi';
+import { BiCircle, BiChevronDownCircle } from 'react-icons/bi';
 import {
 	useDeleteTaskMutation,
-	useGetTaskMutation,
-	useGetTasksQuery,
 	useHotPutTaskMutation,
 } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
-import { DrawerTask } from '../components/DrawerTask';
+import { DrawerTask } from '../components/DrawerTask/DrawerTask';
 import { currentTask } from '../features/api/sessionSlice';
 import { useDispatch } from 'react-redux';
 export const TasksList = ({ data = [] }) => {

@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { useGetListsQuery } from '../../features/api/listSlice';
 import { ModalWelcome } from './../Modals/ModalWelcome';
 import { ModalAddList } from '../Modals/ModalAddList';
-import { Lists } from './Lists';
 import { useNavigate } from 'react-router-dom';
 import {
 	FiltersListsDates,
@@ -12,6 +11,7 @@ import {
 } from '../../utils/EnglishTexts';
 import { LoggedUser } from './LoggedUser';
 import { FiltersLists } from './FiltersLists';
+import { CustomLists } from './CustomLists';
 
 export const Sidebar = () => {
 	const {
@@ -65,7 +65,7 @@ export const Sidebar = () => {
 				{...FiltersListsDates}
 			/>
 			<Divider />
-			<Lists data={data} isloaded={isloaded} />
+			<CustomLists data={data} isloaded={isloaded} />
 		</Box>
 	);
 };

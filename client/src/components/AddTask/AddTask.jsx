@@ -4,138 +4,26 @@ import {
 	Input,
 	InputGroup,
 	InputLeftElement,
-	Menu,
-	MenuButton,
-	MenuList,
-	MenuItem,
 	Spinner,
 	Button,
-	Switch,
-	MenuDivider,
-	MenuOptionGroup,
-	MenuItemOption,
-	Stack,
-	useToast,
-	Text,
 } from '@chakra-ui/react';
-import { ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import { BiTask } from 'react-icons/bi';
-import { useGetListsQuery } from '../../features/api/listSlice';
-import { useState } from 'react';
-import { usePostTaskMutation } from '../../features/api/taskSlice';
-import { useEffect } from 'react';
+import { useAddTask } from '../../Hooks/useAddTask';
+import { OptionsMenu } from './OptionsMenu';
 
 export const AddTask = () => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
 
-	const toast = useToast();
-	const { data = [], error, isLoading, refetch } = useGetListsQuery();
-
-	const [PostTask, PostTaskResponse] = usePostTaskMutation();
-
-	const [task, setTask] = useState({
-		completed: false,
-		important: false,
-		description: '',
-		reminder: 'YYYY-MM-DD',
-		expiration_date: '',
-		repeat: 'YYYY-MM-DD',
-		notes: '',
-		listid: null,
-		userid: userData.id,
-	});
-
-	function capitalizeFirstLetter(str) {
-		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
-
-		return capitalized;
-	}
-
-	const handleOnChange = (type, event) => {
-		if (type === 'expiration_date') {
-			setTask({
-				...task,
-				expiration_date: event.target.value,
-			});
-		}
-		if (type === 'listid') {
-			setTask({
-				...task,
-				listid: event,
-			});
-		}
-
-		if (type === 'description') {
-			setTask({
-				...task,
-				description: event.target.value,
-			});
-		}
-
-		if (type === 'important') {
-			setTask({
-				...task,
-				important: !task.important,
-			});
-		}
-	};
-
-	const handleSubmit = async () => {
-		if (task.description.length === 0) {
-			setTask({
-				completed: false,
-				important: task.important,
-				description: '',
-				reminder: 'YYYY-MM-DD',
-				expiration_date: '',
-				repeat: 'YYYY-MM-DD',
-				notes: '',
-				listid: task.listid,
-				userid: userData.id,
-			});
-			toast({
-				title: 'Error.',
-				description: 'The field description cant be empty.',
-				status: 'error',
-				duration: 1500,
-				isClosable: true,
-			});
-			return;
-		} else {
-			PostTask(task)
-				.unwrap()
-				.then(respon => {
-					toast({
-						title: 'Success.',
-						description: `${respon.message}`,
-						status: 'success',
-						duration: 1500,
-						isClosable: true,
-					});
-				})
-				.catch(error => {
-					toast({
-						title: 'Error',
-						description: `${error.data.message}`,
-						status: 'error',
-						duration: 1500,
-						isClosable: true,
-					});
-				});
-
-			setTask({
-				completed: false,
-				important: task.important,
-				description: '',
-				reminder: 'YYYY-MM-DD',
-				expiration_date: '',
-				repeat: 'YYYY-MM-DD',
-				notes: '',
-				listid: task.listid,
-				userid: userData.id,
-			});
-		}
-	};
+	const {
+		PostTaskResponse,
+		handleSubmit,
+		handleOnChange,
+		capitalizeFirstLetter,
+		data,
+		task,
+		isLoading,
+	} = useAddTask(userData);
 
 	return (
 		<Center
@@ -171,67 +59,13 @@ export const AddTask = () => {
 					onChange={e => handleOnChange('description', e)}
 				/>
 
-				<Menu computePositionOnMount={true}>
-					<MenuButton
-						as={Button}
-						rightIcon={<ChevronDownIcon />}
-						variant='gray'
-						borderColor='gray.800'
-						bg='gray.800'
-						_hover={{ bg: '#44444442', color: '#0084ff' }}
-						_expanded={{ bg: '#23486b' }}
-					>
-						Options
-					</MenuButton>
-					<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
-						<MenuItem
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
-							closeOnSelect={false}
-						>
-							<Stack align='center' direction='row'>
-								<Text>Important</Text>
-								<Switch
-									id='important'
-									pl='15px'
-									colorScheme='teal'
-									onChange={e => handleOnChange('important', e)}
-								></Switch>
-							</Stack>
-						</MenuItem>
-						<MenuItem
-							_hover={{ bg: '#44444442', color: '#0084ff' }}
-							closeOnSelect={false}
-						>
-							<Input
-								w='100%'
-								placeholder='Select Date and Time'
-								size='md'
-								variant='gray'
-								borderColor='gray.800'
-								bg='gray.800'
-								type='date'
-								value={task.expiration_date}
-								onChange={e => handleOnChange('expiration_date', e)}
-							/>
-						</MenuItem>
-						<MenuDivider />
-						<MenuOptionGroup title='Task lists' type='radio'>
-							{data.map(list => (
-								<MenuItemOption
-									value={list.name}
-									name={list.name}
-									key={list.id}
-									_hover={{ bg: '#44444442', color: '#0084ff' }}
-									closeOnSelect={false}
-									onClick={() => handleOnChange('listid', list.id)}
-								>
-									{capitalizeFirstLetter(list.name)}
-								</MenuItemOption>
-							))}
-							{isLoading ? <Spinner size='md' ml='10%' /> : ''}
-						</MenuOptionGroup>
-					</MenuList>
-				</Menu>
+				<OptionsMenu
+					capitalizeFirstLetter={capitalizeFirstLetter}
+					data={data}
+					task={task}
+					isLoading={isLoading}
+					handleOnChange={handleOnChange}
+				/>
 
 				<Button
 					rightIcon={<ChevronRightIcon />}
