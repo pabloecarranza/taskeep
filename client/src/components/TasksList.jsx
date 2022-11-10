@@ -18,7 +18,7 @@ import {
 	useHotPutTaskMutation,
 } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
-import { DrawerTask } from '../components/DrawerTask/DrawerTask';
+import { DrawerTask } from './DrawerTask/DrawerTask';
 import { currentTask } from '../features/api/sessionSlice';
 import { useDispatch } from 'react-redux';
 export const TasksList = ({ data = [] }) => {
