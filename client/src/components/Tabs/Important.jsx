@@ -1,8 +1,8 @@
 import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
-import { TasksList } from './../TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
+import { TasksList } from '../TaskList/TasksList';
 
 export const Important = () => {
 	const { data = [] } = useGetTasksQuery();

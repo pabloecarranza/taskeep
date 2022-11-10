@@ -1,10 +1,9 @@
 import React from 'react';
-import { Heading, Text, Center, Button, Spinner } from '@chakra-ui/react';
+import { Heading, Text, Center, Spinner } from '@chakra-ui/react';
 import { fecha } from './../../utils/date';
 import { AddTask } from '../AddTask/AddTask';
-import { TasksList } from './../TasksList';
+import { TasksList } from '../TaskList/TasksList';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
-import { AiOutlineMore } from 'react-icons/ai';
 
 export const MyDay = () => {
 	const { data = [], isLoading } = useGetTasksQuery();

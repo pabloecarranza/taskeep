@@ -9,13 +9,7 @@ import {
 	SlideFade,
 } from '@chakra-ui/react';
 
-export const LoginSuccessfully = ({
-	navigate,
-	title,
-	description,
-	button,
-	newuser,
-}) => {
+export const LoginDone = ({ navigate, title, description, button }) => {
 	return (
 		<SlideFade offsetY='20px' in='true'>
 			<Alert

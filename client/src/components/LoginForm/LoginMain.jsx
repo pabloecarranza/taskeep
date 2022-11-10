@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Center, Spinner } from '@chakra-ui/react';
 import { useSpring } from 'react-spring';
 import { useLoginUser } from '../../Hooks/useLoginUser';
-import { LoginSuccessfully } from './LoginSuccessfully';
+import { LoginDone } from './LoginDone';
 import {
 	SignInSuccessfullyDates,
 	SignUpSuccessfullyDates,
@@ -35,14 +35,11 @@ export const LoginMain = () => {
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
 			{SignInResponse.isSuccess ? (
-				<LoginSuccessfully navigate={navigate} {...SignInSuccessfullyDates} />
+				<LoginDone navigate={navigate} {...SignInSuccessfullyDates} />
 			) : (
 				<>
 					{SignUpResponse.isSuccess ? (
-						<LoginSuccessfully
-							navigate={navigate}
-							{...SignUpSuccessfullyDates}
-						/>
+						<LoginDone navigate={navigate} {...SignUpSuccessfullyDates} />
 					) : (
 						<>
 							{SignInResponse.isLoading || SignUpResponse.isLoading ? (
