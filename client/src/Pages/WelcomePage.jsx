@@ -17,7 +17,7 @@ import Typewriter from 'typewriter-effect';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 import bg from '../assets/BG7.jpg';
-import { LoginForm } from '../components/LoginForm/LoginForm';
+import { LoginMain } from '../components/LoginForm/LoginMain';
 
 export const WelcomePage = ({
 	app_name,
@@ -129,7 +129,7 @@ export const WelcomePage = ({
 				backgroundSize='cover'
 			>
 				<ScaleFade initialScale={0.9} in={isOpen}>
-					<LoginForm />
+					<LoginMain />
 				</ScaleFade>
 			</Center>
 		</Flex>
