@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { vi, expect, describe, it } from 'vitest';
 import { WelcomePage } from '../../src/Pages/WelcomePage';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { renderWithProviders } from '../../src/utils/utils-for-test';
 
 describe('Test suite on WelcomePage component', () => {
 	const WelcomePagesDates = {
@@ -27,13 +29,19 @@ describe('Test suite on WelcomePage component', () => {
 	});
 
 	it('must match with the snapshot', () => {
-		const { container } = render(<WelcomePage {...WelcomePagesDates} />);
+		const { container } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 		expect(container).toMatchSnapshot();
 	});
 
 	it('must show the name app send by props', () => {
-		const { getByText, getByTestId } = render(
-			<WelcomePage {...WelcomePagesDates} />
+		const { getByText, getByTestId } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
 		);
 		expect(getByText(WelcomePagesDates.app_name)).toBeTruthy();
 
@@ -41,42 +49,68 @@ describe('Test suite on WelcomePage component', () => {
 	});
 
 	it('must show text of subtitle send by props', () => {
-		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
+		const { getByText } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 
 		expect(getByText(WelcomePagesDates.subtitle)).toBeTruthy();
 	});
 
 	it('must show the typewriter send by props', () => {
-		const { getByText, getByTestId } = render(
-			<WelcomePage {...WelcomePagesDates} />
+		const { getByText, getByTestId } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
 		);
 		expect(getByTestId('typewriter-wrapper')).toBeTruthy();
 	});
 
 	it('must show the name of repository send by props', () => {
-		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
+		const { getByText } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 		expect(getByText(WelcomePagesDates.repository));
 	});
 
 	it('must show text get starter send by props', () => {
-		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
+		const { getByText } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 		expect(getByText(WelcomePagesDates.start_app));
 	});
 
 	it('must show the text (made by) send by props', () => {
-		const { getByText } = render(<WelcomePage {...WelcomePagesDates} />);
+		const { getByText } = renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 		expect(getByText(WelcomePagesDates.made));
 	});
 
 	it('should display Get Starter button', () => {
-		render(<WelcomePage {...WelcomePagesDates} />);
+		renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 
 		const button = screen.getByText(WelcomePagesDates.start_app);
 		expect(button.textContent).toEqual(WelcomePagesDates.start_app);
 	});
 
 	it('should display Repository button', () => {
-		render(<WelcomePage {...WelcomePagesDates} />);
+		renderWithProviders(
+			<Router>
+				<WelcomePage {...WelcomePagesDates} />
+			</Router>
+		);
 
 		const button = screen.getByText(WelcomePagesDates.repository);
 		expect(button.textContent).toEqual(WelcomePagesDates.repository);

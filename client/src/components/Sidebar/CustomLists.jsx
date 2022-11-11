@@ -18,9 +18,8 @@ export const CustomLists = ({ data, isloaded }) => {
 
 	const [seleted, setSeleted] = React.useState({});
 
-	function capitalizeFirstLetter(str) {
-		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
-
+	function capitalizeFirstLetter(nameList) {
+		const capitalized = nameList.charAt(0).toUpperCase() + nameList.slice(1);
 		return capitalized;
 	}
 

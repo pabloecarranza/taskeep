@@ -6,7 +6,138 @@ exports[`Name of the group > should match with snapshot 1`] = `
     class="css-ctfmb8"
   >
     <div />
-    <div />
+    <div
+      class="css-5apwkg"
+    >
+      <div
+        class="css-192qrng"
+      >
+        <div
+          class="chakra-radio-group css-0"
+          role="radiogroup"
+        >
+          <div
+            class="chakra-stack css-x9juev"
+          >
+            <label
+              class="chakra-radio css-1nqw95c"
+              data-checked=""
+            >
+              <input
+                checked=""
+                class="chakra-radio__input"
+                id="radio-:r1:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG1"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+                data-checked=""
+              />
+            </label>
+            <label
+              class="chakra-radio css-1nqw95c"
+            >
+              <input
+                class="chakra-radio__input"
+                id="radio-:r2:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG2"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+              />
+            </label>
+            <label
+              class="chakra-radio css-1nqw95c"
+            >
+              <input
+                class="chakra-radio__input"
+                id="radio-:r3:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG3"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+              />
+            </label>
+            <label
+              class="chakra-radio css-1nqw95c"
+            >
+              <input
+                class="chakra-radio__input"
+                id="radio-:r4:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG4"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+              />
+            </label>
+            <label
+              class="chakra-radio css-1nqw95c"
+            >
+              <input
+                class="chakra-radio__input"
+                id="radio-:r5:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG5"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+              />
+            </label>
+            <label
+              class="chakra-radio css-1nqw95c"
+            >
+              <input
+                class="chakra-radio__input"
+                id="radio-:r6:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG6"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+              />
+            </label>
+            <label
+              class="chakra-radio css-1nqw95c"
+            >
+              <input
+                class="chakra-radio__input"
+                id="radio-:r7:"
+                name="radio-:r0:"
+                style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+                type="radio"
+                value="BG7"
+              />
+              <span
+                aria-hidden="true"
+                class="chakra-radio__control css-ssalds"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
