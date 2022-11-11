@@ -22,6 +22,15 @@ export const SignInForm = ({
 	handleChange,
 	handleClick,
 	handleInvited,
+	title,
+	subtitle,
+	button,
+	title_form,
+	place_holder_one,
+	subtitle_form,
+	place_holder_two,
+	fast_login,
+	button_two,
 }) => {
 	return (
 		<animated.div style={fadeSignIn}>
@@ -29,17 +38,17 @@ export const SignInForm = ({
 				<Box>
 					<AiOutlineUser size='50px' />
 				</Box>
-				<Text fontSize='2xl'>Sign In</Text>
+				<Text fontSize='2xl'>{title}</Text>
 				<Box>
 					<Text>
-						You don&apos;t have an account?
+						{subtitle}
 						<Button
 							colorScheme='blue'
 							variant='link'
 							ml='7px'
 							onClick={handleClickType}
 						>
-							Sign Up.
+							{button}
 						</Button>
 					</Text>
 				</Box>
@@ -47,22 +56,22 @@ export const SignInForm = ({
 			<Center h='21rem' flexDir='column'>
 				<Box w='80%' h='70%'>
 					<FormControl isRequired>
-						<FormLabel>User Name</FormLabel>
+						<FormLabel>{title_form}</FormLabel>
 						<Input
 							name='username'
 							type='username'
 							value={credentials.username}
-							placeholder='Name'
+							placeholder={place_holder_one}
 							onChange={handleChange}
 						/>
 					</FormControl>
 					<FormControl isRequired pt='10px'>
-						<FormLabel>Password</FormLabel>
+						<FormLabel>{subtitle_form}</FormLabel>
 						<InputGroup size='md'>
 							<Input
 								name='password'
 								type={show ? 'text' : 'password'}
-								placeholder='Password'
+								placeholder={place_holder_two}
 								value={credentials.password}
 								onChange={handleChange}
 							/>
@@ -87,11 +96,11 @@ export const SignInForm = ({
 						onClick={handleInvited}
 						pb='11px'
 					>
-						Enter as a guest
+						{fast_login}
 					</Button>
 
 					<Button size='lg' colorScheme='blue' onClick={handleSubmit} w='80%'>
-						Log In
+						{button_two}
 					</Button>
 				</Center>
 			</Center>

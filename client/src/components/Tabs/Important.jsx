@@ -4,7 +4,7 @@ import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { TasksList } from '../TaskList/TasksList';
 
-export const Important = () => {
+export const Important = ({ text_four }) => {
 	const { data = [] } = useGetTasksQuery();
 
 	const onlyImportantTasks = data.filter(task => task.important === true);
@@ -19,7 +19,7 @@ export const Important = () => {
 			>
 				<Text textShadow='2px 2px #000000' m='6'>
 					<Heading as='h2' size='xl'>
-						Important
+						{text_four}
 					</Heading>
 				</Text>
 				<TasksList data={onlyImportantTasks} />

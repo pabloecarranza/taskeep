@@ -13,6 +13,7 @@ import { Planing } from './Tabs/Planing';
 import { Completed } from './Tabs/Completed';
 import { CustomList } from './Tabs/CustomList';
 import { useState } from 'react';
+import { TabsDates } from './../utils/EnglishTexts';
 
 export const TaskArea = () => {
 	const [value, setValue] = useState('BG1');
@@ -61,10 +62,10 @@ export const TaskArea = () => {
 				</RadioGroup>
 			</Center>
 			<Routes>
-				<Route path='myday' element={<MyDay />}></Route>
-				<Route path='important' element={<Important />}></Route>
-				<Route path='planing' element={<Planing />}></Route>
-				<Route path='completed' element={<Completed />}></Route>
+				<Route path='myday' element={<MyDay {...TabsDates} />}></Route>
+				<Route path='important' element={<Important {...TabsDates} />}></Route>
+				<Route path='planing' element={<Planing {...TabsDates} />}></Route>
+				<Route path='completed' element={<Completed {...TabsDates} />}></Route>
 				<Route path='tasklist/:listId' element={<CustomList />}></Route>
 			</Routes>
 		</Box>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { currentTask } from '../features/api/sessionSlice';
@@ -19,7 +18,7 @@ export const useDeleteTask = () => {
 		onOpen: onOpenDrawerTask,
 		onClose: onCloseDrawerTask,
 	} = useDisclosure();
-	const { data: lists = [], refetch } = useGetListsQuery();
+	const { data: lists = [] } = useGetListsQuery();
 
 	const listName = e => {
 		const found = lists.find(list => list.id === e);

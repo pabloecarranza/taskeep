@@ -4,7 +4,7 @@ import { TasksList } from '../TaskList/TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 
-export const Completed = () => {
+export const Completed = ({ text_one }) => {
 	const { data = [] } = useGetTasksQuery();
 
 	const onlyCompletedTasks = data.filter(task => task.completed === true);
@@ -19,7 +19,7 @@ export const Completed = () => {
 			>
 				<Text textShadow='2px 2px #000000' m='6'>
 					<Heading as='h2' size='xl'>
-						Completed
+						{text_one}
 					</Heading>
 				</Text>
 				<TasksList data={onlyCompletedTasks} />

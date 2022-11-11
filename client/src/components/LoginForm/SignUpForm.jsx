@@ -22,6 +22,16 @@ export const SignUpForm = ({
 	handleSubmit,
 	handleChange,
 	handleClick,
+	title,
+	subtitle,
+	button,
+	title_form,
+	place_holder_one,
+	subtitle_form,
+	place_holder_two,
+	title_form_two,
+	place_holder_three,
+	button_two,
 }) => {
 	return (
 		<animated.div style={fadeSignUp}>
@@ -29,17 +39,17 @@ export const SignUpForm = ({
 				<Box>
 					<AiOutlineUserAdd size='50px' />
 				</Box>
-				<Text fontSize='2xl'>Create an Account</Text>
+				<Text fontSize='2xl'>{title}</Text>
 				<Box>
 					<Text>
-						Already have an account?
+						{subtitle}
 						<Button
 							colorScheme='blue'
 							variant='link'
 							ml='7px'
 							onClick={handleClickType}
 						>
-							Log In.
+							{button}
 						</Button>
 					</Text>
 				</Box>
@@ -47,32 +57,32 @@ export const SignUpForm = ({
 			<Center flexDir='column' h='21rem'>
 				<Flex flexDir='column' w='80%'>
 					<FormControl isRequired pt='5px'>
-						<FormLabel>User Name</FormLabel>
+						<FormLabel>{title_form}</FormLabel>
 						<Input
 							name='username'
 							type='username'
 							value={credentials.username}
-							placeholder='Name'
+							placeholder={place_holder_one}
 							onChange={handleChange}
 						/>
 					</FormControl>
 					<FormControl isRequired pt='5px'>
-						<FormLabel>Email</FormLabel>
+						<FormLabel>{subtitle_form}</FormLabel>
 						<Input
 							name='email'
 							type='email'
 							value={credentials.email}
-							placeholder='email'
+							placeholder={place_holder_two}
 							onChange={handleChange}
 						/>
 					</FormControl>
 					<FormControl isRequired pt='5px'>
-						<FormLabel>Password</FormLabel>
+						<FormLabel>{title_form_two}</FormLabel>
 						<InputGroup size='md'>
 							<Input
 								name='password'
 								type={show ? 'text' : 'password'}
-								placeholder='Password'
+								placeholder={place_holder_three}
 								value={credentials.password}
 								onChange={handleChange}
 							/>
@@ -92,7 +102,7 @@ export const SignUpForm = ({
 				</Flex>
 				<Center flexDir='column' h='70%' w='100%'>
 					<Button size='lg' colorScheme='blue' onClick={handleSubmit} w='80%'>
-						Create Account
+						{button_two}
 					</Button>
 				</Center>
 			</Center>

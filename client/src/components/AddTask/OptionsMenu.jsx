@@ -57,7 +57,6 @@ export const OptionsMenu = ({
 				>
 					<Input
 						w='100%'
-						placeholder='Select Date and Time'
 						size='md'
 						variant='gray'
 						borderColor='gray.800'

@@ -4,8 +4,9 @@ import { fecha } from './../../utils/date';
 import { AddTask } from '../AddTask/AddTask';
 import { TasksList } from '../TaskList/TasksList';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
+import { AddTaskDates } from './../../utils/EnglishTexts';
 
-export const MyDay = () => {
+export const MyDay = ({ text_two }) => {
 	const { data = [], isLoading } = useGetTasksQuery();
 
 	return (
@@ -27,7 +28,7 @@ export const MyDay = () => {
 					<Center justifyContent='space-between' w='96%'>
 						<Center flexDir='column' alignItems='flex-start' pt='7px'>
 							<Heading as='h2' size='xl'>
-								My day
+								{text_two}
 							</Heading>
 							<Text as='h4' size='md' textShadow='2px 2px #000000' w='100%'>
 								{fecha()}
@@ -40,7 +41,7 @@ export const MyDay = () => {
 				<TasksList data={data} />
 			</Center>
 			<Center h='10%' alignItems='flex-end'>
-				<AddTask />
+				<AddTask {...AddTaskDates} />
 			</Center>
 		</>
 	);

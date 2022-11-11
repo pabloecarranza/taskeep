@@ -4,7 +4,6 @@ import { useGetListsQuery } from '../features/api/listSlice';
 import { clearCurrentTask } from '../features/api/sessionSlice';
 import {
 	useDeleteTaskMutation,
-	useGetTaskMutation,
 	usePutTaskMutation,
 } from '../features/api/taskSlice';
 import { useToast } from '@chakra-ui/react';

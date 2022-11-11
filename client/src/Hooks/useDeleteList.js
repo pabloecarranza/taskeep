@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDeleteListMutation } from '../features/api/listSlice';
 import { useToast } from '@chakra-ui/react';
 import { useGetTasksQuery } from '../features/api/taskSlice';

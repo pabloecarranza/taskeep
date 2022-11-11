@@ -5,7 +5,7 @@ import { useGetListsQuery } from '../features/api/listSlice';
 
 export const useAddTask = userData => {
 	const toast = useToast();
-	const { data = [], error, isLoading, refetch } = useGetListsQuery();
+	const { data = [], isLoading } = useGetListsQuery();
 
 	const [PostTask, PostTaskResponse] = usePostTaskMutation();
 

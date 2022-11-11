@@ -12,7 +12,7 @@ import { BiTask } from 'react-icons/bi';
 import { useAddTask } from '../../Hooks/useAddTask';
 import { OptionsMenu } from './OptionsMenu';
 
-export const AddTask = () => {
+export const AddTask = ({ button_text, placeholder_text }) => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
 
 	const {
@@ -54,7 +54,7 @@ export const AddTask = () => {
 					w='70%'
 					type='tel'
 					variant='unstyled'
-					placeholder='Add new task'
+					placeholder={placeholder_text}
 					value={task.description}
 					onChange={e => handleOnChange('description', e)}
 				/>
@@ -72,13 +72,12 @@ export const AddTask = () => {
 					variant='white'
 					_hover={{ bg: '#44444442', color: '#0084ff' }}
 					colorScheme='blue'
-					aria-label='Search database'
 					mr='1%'
 					ml='1%'
 					w='12%'
 					onClick={handleSubmit}
 				>
-					Add
+					{button_text}
 				</Button>
 			</InputGroup>
 		</Center>

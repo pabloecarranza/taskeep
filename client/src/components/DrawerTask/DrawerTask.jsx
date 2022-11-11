@@ -14,6 +14,7 @@ import { BiTrash } from 'react-icons/bi';
 import { useEffect } from 'react';
 import { useDrawerTask } from '../../Hooks/useDrawerTask';
 import { DrawerBodyTask } from './DrawerBodyTask';
+import { DrawerBodyTaskDates } from '../../utils/EnglishTexts';
 
 export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 	const firstField = React.useRef();
@@ -59,6 +60,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 						capitalizeFirstLetter={capitalizeFirstLetter}
 						task={task}
 						data={data}
+						{...DrawerBodyTaskDates}
 					/>
 
 					<DrawerFooter borderTopWidth='1px'>

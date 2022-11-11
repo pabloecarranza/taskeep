@@ -4,7 +4,7 @@ import { TasksList } from '../TaskList/TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 
-export const Planing = () => {
+export const Planing = ({ text_three }) => {
 	const { data = [] } = useGetTasksQuery();
 	const onlyPlaningTasks = data.filter(task => task.expiration_date);
 
@@ -18,7 +18,7 @@ export const Planing = () => {
 			>
 				<Text textShadow='2px 2px #000000' m='6'>
 					<Heading as='h2' size='xl'>
-						Planing
+						{text_three}
 					</Heading>
 				</Text>
 				<TasksList data={onlyPlaningTasks} />

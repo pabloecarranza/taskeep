@@ -62,3 +62,49 @@ export const SignInSuccessfullyDates = {
 	description: 'Welcome back ! We love having you here.',
 	button: 'Enter',
 };
+
+export const AddTaskDates = {
+	button_text: 'Add',
+	placeholder_text: 'Add new task',
+};
+
+export const DrawerBodyTaskDates = {
+	text_one: 'Description',
+	text_two: 'Important',
+	text_three: 'Completed',
+	text_four: 'Change List',
+	text_five: 'Expiration Date',
+	text_six: 'Notes',
+};
+
+export const SignInFormDates = {
+	title: 'Sign In',
+	subtitle: "You don't have an account?",
+	button: 'Sign Up.',
+	title_form: 'User Name',
+	place_holder_one: 'Name',
+	subtitle_form: 'Password',
+	place_holder_two: 'Password',
+	fast_login: 'Enter as a guest',
+	button_two: 'Log In',
+};
+
+export const SignUpFormDates = {
+	title: 'Create an Account',
+	subtitle: 'Already have an account?',
+	button: 'Log In.',
+	title_form: 'User Name',
+	place_holder_one: 'Name',
+	subtitle_form: 'Email',
+	place_holder_two: 'email',
+	title_form_two: 'Password',
+	place_holder_three: 'Password',
+	button_two: 'Create Account',
+};
+
+export const TabsDates = {
+	text_one: 'Completed',
+	text_two: 'My day',
+	text_three: 'Planing',
+	text_four: 'Important',
+};

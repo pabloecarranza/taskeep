@@ -20,12 +20,18 @@ export const DrawerBodyTask = ({
 	capitalizeFirstLetter,
 	task,
 	data,
+	text_one,
+	text_two,
+	text_three,
+	text_four,
+	text_five,
+	text_six,
 }) => {
 	return (
 		<DrawerBody>
 			<Stack spacing='24px'>
 				<Box>
-					<FormLabel htmlFor='desc'>Description</FormLabel>
+					<FormLabel htmlFor='desc'>{text_one}</FormLabel>
 					<Textarea
 						id='desc'
 						value={task.description}
@@ -40,14 +46,14 @@ export const DrawerBodyTask = ({
 						key={task.id}
 						onChange={e => handleOnChange('important', e)}
 					>
-						Important
+						{text_two}
 					</Checkbox>
 					<Checkbox
 						isChecked={task.completed}
 						key={task.id + 'a'}
 						onChange={e => handleOnChange('completed', e)}
 					>
-						Completed
+						{text_three}
 					</Checkbox>
 				</Box>
 
@@ -63,7 +69,7 @@ export const DrawerBodyTask = ({
 							_hover={{ bg: '#44444442', color: '#0084ff' }}
 							_expanded={{ bg: '#23486b' }}
 						>
-							Change List
+							{text_four}
 						</MenuButton>
 						<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
 							<MenuOptionGroup title='Task lists' type='radio'>
@@ -84,7 +90,7 @@ export const DrawerBodyTask = ({
 					</Menu>
 				</Box>
 				<Box>
-					<label>Expiration Date</label>
+					<label>{text_five}</label>
 					<Input
 						w='100%'
 						placeholder='Select Date and Time'
@@ -96,7 +102,7 @@ export const DrawerBodyTask = ({
 				</Box>
 
 				<Box>
-					<FormLabel htmlFor='desc'>Notes</FormLabel>
+					<FormLabel htmlFor='desc'>{text_six}</FormLabel>
 					<Textarea
 						id='notes'
 						value={task.notes}

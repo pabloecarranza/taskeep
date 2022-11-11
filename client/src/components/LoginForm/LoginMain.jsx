@@ -4,7 +4,9 @@ import { useSpring } from 'react-spring';
 import { useLoginUser } from '../../Hooks/useLoginUser';
 import { LoginDone } from './LoginDone';
 import {
+	SignInFormDates,
 	SignInSuccessfullyDates,
+	SignUpFormDates,
 	SignUpSuccessfullyDates,
 } from '../../utils/EnglishTexts';
 import { SignUpForm } from './SignUpForm';
@@ -57,6 +59,7 @@ export const LoginMain = () => {
 											handleSubmit={handleSubmit}
 											handleChange={handleChange}
 											handleClick={handleClick}
+											{...SignUpFormDates}
 										/>
 									) : (
 										<SignInForm
@@ -68,6 +71,7 @@ export const LoginMain = () => {
 											handleChange={handleChange}
 											handleClick={handleClick}
 											handleInvited={handleInvited}
+											{...SignInFormDates}
 										/>
 									)}
 								</>
