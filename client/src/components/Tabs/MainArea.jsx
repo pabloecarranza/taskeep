@@ -1,21 +1,21 @@
 import { Box, Radio, RadioGroup, Stack, Center } from '@chakra-ui/react';
-import BG1 from '../assets/BG1.jpg';
-import BG2 from '../assets/BG2.jpg';
-import BG3 from '../assets/BG3.jpg';
-import BG4 from '../assets/BG4.jpg';
-import BG5 from '../assets/BG5.jpg';
-import BG6 from '../assets/BG6.jpg';
-import BG7 from '../assets/BG7.jpg';
+import BG1 from '../../assets/BG1.jpg';
+import BG2 from '../../assets/BG2.jpg';
+import BG3 from '../../assets/BG3.jpg';
+import BG4 from '../../assets/BG4.jpg';
+import BG5 from '../../assets/BG5.jpg';
+import BG6 from '../../assets/BG6.jpg';
+import BG7 from '../../assets/BG7.jpg';
 import { Routes, Route } from 'react-router-dom';
-import { MyDay } from './Tabs/MyDay';
-import { Important } from './Tabs/Important';
-import { Planing } from './Tabs/Planing';
-import { Completed } from './Tabs/Completed';
-import { CustomList } from './Tabs/CustomList';
+import { MyDay } from './MyDay';
+import { Important } from './Important';
+import { Planing } from './Planing';
+import { Completed } from './Completed';
+import { CustomList } from './CustomList';
 import { useState } from 'react';
-import { TabsDates } from './../utils/EnglishTexts';
+import { TabsDates } from '../../utils/EnglishTexts';
 
-export const TaskArea = () => {
+export const MainArea = () => {
 	const [value, setValue] = useState('BG1');
 
 	return (
