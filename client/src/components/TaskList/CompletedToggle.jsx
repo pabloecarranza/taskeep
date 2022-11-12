@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, Center, Button } from '@chakra-ui/react';
 import { BiCircle, BiChevronDownCircle } from 'react-icons/bi';
+import PropTypes from 'prop-types';
 
 export const CompletedToggle = ({
 	list,
@@ -63,4 +64,11 @@ export const CompletedToggle = ({
 			</Button>
 		</Center>
 	);
+};
+
+CompletedToggle.propTypes = {
+	list: PropTypes.object.isRequired,
+	setSelectedTask: PropTypes.func.isRequired,
+	capitalizeFirstLetter: PropTypes.func.isRequired,
+	listName: PropTypes.func.isRequired,
 };

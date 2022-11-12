@@ -5,6 +5,7 @@ import { DrawerTask } from '../DrawerTask/DrawerTask';
 import { useDeleteTask } from '../../Hooks/useDeleteTask';
 import { CompletedToggle } from './CompletedToggle';
 import { ImportantToggle } from './ImportantToggle';
+import PropTypes from 'prop-types';
 
 export const TasksList = ({ data = [] }) => {
 	const {
@@ -67,4 +68,8 @@ export const TasksList = ({ data = [] }) => {
 			))}
 		</>
 	);
+};
+
+TasksList.propTypes = {
+	data: PropTypes.array.isRequired,
 };

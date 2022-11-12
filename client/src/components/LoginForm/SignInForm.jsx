@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { AiOutlineUser } from 'react-icons/all';
 import { animated } from 'react-spring';
+import PropTypes from 'prop-types';
 
 export const SignInForm = ({
 	fadeSignIn,
@@ -106,4 +107,24 @@ export const SignInForm = ({
 			</Center>
 		</animated.div>
 	);
+};
+
+SignInForm.propTypes = {
+	fadeSignIn: PropTypes.object.isRequired,
+	handleClickType: PropTypes.func.isRequired,
+	credentials: PropTypes.object.isRequired,
+	show: PropTypes.bool.isRequired,
+	handleSubmit: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	handleClick: PropTypes.func.isRequired,
+	handleInvited: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
+	subtitle: PropTypes.string.isRequired,
+	button: PropTypes.string.isRequired,
+	title_form: PropTypes.string.isRequired,
+	place_holder_one: PropTypes.string.isRequired,
+	subtitle_form: PropTypes.string.isRequired,
+	place_holder_two: PropTypes.string.isRequired,
+	fast_login: PropTypes.string.isRequired,
+	button_two: PropTypes.string.isRequired,
 };

@@ -3,7 +3,7 @@ import { Heading, Text, Center } from '@chakra-ui/react';
 import { TasksList } from '../TaskList/TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
-
+import PropTypes from 'prop-types';
 export const Completed = ({ text_one }) => {
 	const { data = [] } = useGetTasksQuery();
 
@@ -29,4 +29,8 @@ export const Completed = ({ text_one }) => {
 			</Center>
 		</>
 	);
+};
+
+Completed.propTypes = {
+	text_one: PropTypes.string.isRequired,
 };

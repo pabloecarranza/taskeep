@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { useDrawerTask } from '../../Hooks/useDrawerTask';
 import { DrawerBodyTask } from './DrawerBodyTask';
 import { DrawerBodyTaskDates } from '../../utils/EnglishTexts';
+import PropTypes from 'prop-types';
 
 export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 	const firstField = React.useRef();
@@ -89,4 +90,10 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 			</Drawer>
 		</>
 	);
+};
+
+DrawerTask.propTypes = {
+	onOpen: PropTypes.func.isRequired,
+	onClose: PropTypes.func.isRequired,
+	isOpen: PropTypes.bool.isRequired,
 };

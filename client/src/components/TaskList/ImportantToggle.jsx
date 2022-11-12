@@ -5,6 +5,7 @@ import {
 	AiTwotoneStar,
 	AiOutlineCalendar,
 } from 'react-icons/ai';
+import PropTypes from 'prop-types';
 
 export const ImportantToggle = ({ list, setSelectedTask }) => {
 	return (
@@ -54,4 +55,9 @@ export const ImportantToggle = ({ list, setSelectedTask }) => {
 			)}
 		</Center>
 	);
+};
+
+ImportantToggle.propTypes = {
+	list: PropTypes.object.isRequired,
+	setSelectedTask: PropTypes.func.isRequired,
 };

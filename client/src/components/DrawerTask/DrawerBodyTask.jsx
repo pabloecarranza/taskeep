@@ -15,6 +15,7 @@ import {
 	MenuItemOption,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import PropTypes from 'prop-types';
 export const DrawerBodyTask = ({
 	handleOnChange,
 	capitalizeFirstLetter,
@@ -113,4 +114,17 @@ export const DrawerBodyTask = ({
 			</Stack>
 		</DrawerBody>
 	);
+};
+
+DrawerBodyTask.propTypes = {
+	handleOnChange: PropTypes.func.isRequired,
+	capitalizeFirstLetter: PropTypes.func.isRequired,
+	task: PropTypes.object.isRequired,
+	data: PropTypes.array.isRequired,
+	text_one: PropTypes.string.isRequired,
+	text_two: PropTypes.string.isRequired,
+	text_three: PropTypes.string.isRequired,
+	text_four: PropTypes.string.isRequired,
+	text_five: PropTypes.string.isRequired,
+	text_six: PropTypes.string.isRequired,
 };

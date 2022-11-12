@@ -8,6 +8,7 @@ import {
 	AlertDescription,
 	SlideFade,
 } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 
 export const LoginDone = ({ navigate, title, description, button }) => {
 	return (
@@ -41,4 +42,11 @@ export const LoginDone = ({ navigate, title, description, button }) => {
 			</Alert>
 		</SlideFade>
 	);
+};
+
+LoginDone.propTypes = {
+	navigate: PropTypes.func.isRequired,
+	title: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired,
+	button: PropTypes.string.isRequired,
 };

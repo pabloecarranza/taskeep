@@ -5,6 +5,7 @@ import { AddTask } from '../AddTask/AddTask';
 import { TasksList } from '../TaskList/TasksList';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { AddTaskDates } from './../../utils/EnglishTexts';
+import PropTypes from 'prop-types';
 
 export const MyDay = ({ text_two }) => {
 	const { data = [], isLoading } = useGetTasksQuery();
@@ -45,4 +46,8 @@ export const MyDay = ({ text_two }) => {
 			</Center>
 		</>
 	);
+};
+
+MyDay.propTypes = {
+	text_two: PropTypes.string.isRequired,
 };

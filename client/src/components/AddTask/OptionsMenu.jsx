@@ -15,6 +15,7 @@ import {
 	Text,
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import PropTypes from 'prop-types';
 
 export const OptionsMenu = ({
 	task,
@@ -85,4 +86,12 @@ export const OptionsMenu = ({
 			</MenuList>
 		</Menu>
 	);
+};
+
+OptionsMenu.propTypes = {
+	task: PropTypes.object.isRequired,
+	data: PropTypes.array.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	capitalizeFirstLetter: PropTypes.func.isRequired,
+	handleOnChange: PropTypes.func.isRequired,
 };
