@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { vi, expect, describe, it } from 'vitest';
-import { WelcomePage } from '../../src/Pages/WelcomePage';
+
 import { BrowserRouter as Router } from 'react-router-dom';
-import { renderWithProviders } from '../../src/utils/utils-for-test';
+
+import { WelcomePage } from './../../../src/Pages/WelcomePage';
+import { renderWithProviders } from './../../../src/utils/utils-for-test';
 
 describe('Test suite on WelcomePage component', () => {
 	const WelcomePagesDates = {

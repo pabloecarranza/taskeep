@@ -1,8 +1,3 @@
-import {
-	useGetProfileQuery,
-	useSignInMutation,
-	useSignUpMutation,
-} from '../../../src/features/api/authSlice';
 import { describe, it } from 'vitest';
 
 describe('Name of the group', () => {

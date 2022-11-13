@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { vi, expect, describe, it, test } from 'vitest';
-import { HomePage } from './../../src/Pages/HomePage';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { HomePage } from './../../../src/Pages/HomePage';
+import { renderWithProviders } from './../../../src/utils/utils-for-test';
 
-describe('Name of the group', () => {
-	vi.mock('../../src/components/Sidebar/Sidebar', () => {
+describe('Test suite on HomePage component', () => {
+	vi.mock('../../../src/components/Sidebar/Sidebar', () => {
 		return {
 			__esModule: true,
 			default: () => {
@@ -16,25 +17,20 @@ describe('Name of the group', () => {
 		};
 	});
 
-	vi.mock('../../src/components/TaskArea.jsx', () => {
+	vi.mock('../../../src/components/Tabs/MainArea', () => {
 		return {
 			__esModule: true,
 			default: () => {
-				return <TaskArea />;
+				return <MainArea />;
 			},
-			TaskArea: () => {
+			MainArea: () => {
 				return <div />;
 			},
 		};
 	});
 
-	it('should match with snapshot', () => {
-		const { container } = render(
-			<Router>
-				<HomePage />
-			</Router>
-		);
-
+	it('should ', () => {
+		const { container } = render(<HomePage />);
 		expect(container).toMatchSnapshot();
 	});
 });

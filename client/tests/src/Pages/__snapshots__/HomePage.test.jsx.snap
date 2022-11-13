@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`Test suite on HomePage component > should  1`] = `
+<div>
+  <div
+    class="css-ctfmb8"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;

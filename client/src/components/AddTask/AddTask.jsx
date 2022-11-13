@@ -15,7 +15,6 @@ import PropTypes from 'prop-types';
 
 export const AddTask = ({ button_text, placeholder_text }) => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
-
 	const {
 		PostTaskResponse,
 		handleSubmit,

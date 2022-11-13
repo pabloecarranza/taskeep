@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { expect, describe, it } from 'vitest';
-import { ModalWelcome } from '../../../src/components/Modals/ModalWelcome';
+import { ModalWelcome } from './../../../../src/components/Modals/ModalWelcome';
 
 describe('Test suite on ModalWelcome component', () => {
 	const ModalWelcomeDates = {

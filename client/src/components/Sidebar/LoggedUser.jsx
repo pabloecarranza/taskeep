@@ -18,7 +18,7 @@ export const LoggedUser = ({ userdata, isloaded }) => {
 			<Flex w='100%' alignItems='center' pb='15px'>
 				<Box w='40%'>
 					<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>
-						<Avatar size='md' name={userdata.username} />
+						<Avatar size='md' name={userdata ? userdata.username : ''} />
 					</SkeletonCircle>
 				</Box>
 				<Flex w='100%' textAlign='left'>
@@ -30,11 +30,11 @@ export const LoggedUser = ({ userdata, isloaded }) => {
 						spacing='2'
 					>
 						<Heading as='h5' size='xs'>
-							{userdata.username}
+							{userdata ? userdata.username : ''}
 						</Heading>
 
 						<Spacer />
-						<Text fontSize='xs'>{userdata.email}</Text>
+						<Text fontSize='xs'>{userdata ? userdata.email : ''}</Text>
 					</SkeletonText>
 				</Flex>
 			</Flex>
@@ -43,6 +43,6 @@ export const LoggedUser = ({ userdata, isloaded }) => {
 };
 
 LoggedUser.propTypes = {
-	userdata: PropTypes.object.isRequired,
+	userdata: PropTypes.object,
 	isloaded: PropTypes.bool.isRequired,
 };
