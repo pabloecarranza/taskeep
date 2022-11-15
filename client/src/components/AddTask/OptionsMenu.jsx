@@ -37,7 +37,12 @@ export const OptionsMenu = ({
 			>
 				Options
 			</MenuButton>
-			<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
+			<MenuList
+				variant='gray'
+				borderColor='gray.800'
+				bg='gray.800'
+				aria-label='menulist'
+			>
 				<MenuItem
 					_hover={{ bg: '#44444442', color: '#0084ff' }}
 					closeOnSelect={false}
@@ -81,7 +86,11 @@ export const OptionsMenu = ({
 							{capitalizeFirstLetter(list.name)}
 						</MenuItemOption>
 					))}
-					{isLoading ? <Spinner size='md' ml='10%' /> : ''}
+					{isLoading ? (
+						<Spinner size='md' ml='10%' aria-label='spinnertasklist' />
+					) : (
+						''
+					)}
 				</MenuOptionGroup>
 			</MenuList>
 		</Menu>
