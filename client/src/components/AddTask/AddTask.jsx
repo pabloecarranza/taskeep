@@ -35,7 +35,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 			boxShadow='dark-lg'
 		>
 			{PostTaskResponse.isLoading ? (
-				<Spinner size='md' ml='15px' mr='15px' />
+				<Spinner size='md' ml='15px' mr='15px' aria-label='spinner' />
 			) : (
 				''
 			)}
@@ -43,6 +43,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 			<InputGroup>
 				{!PostTaskResponse.isLoading ? (
 					<InputLeftElement
+						aria-label='icontask'
 						pointerEvents='none'
 						children={<BiTask color='gray.300' />}
 					/>
@@ -54,6 +55,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 					w='70%'
 					type='tel'
 					variant='unstyled'
+					aria-label='taskname'
 					placeholder={placeholder_text}
 					value={task.description}
 					onChange={e => handleOnChange('description', e)}
