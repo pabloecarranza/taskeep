@@ -50,6 +50,7 @@ export const OptionsMenu = ({
 					<Stack align='center' direction='row'>
 						<Text>Important</Text>
 						<Switch
+							data-testid='important'
 							id='important'
 							pl='15px'
 							colorScheme='teal'
@@ -65,6 +66,7 @@ export const OptionsMenu = ({
 						w='100%'
 						size='md'
 						variant='gray'
+						data-testid='date'
 						borderColor='gray.800'
 						bg='gray.800'
 						type='date'

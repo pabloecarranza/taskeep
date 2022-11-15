@@ -31,20 +31,23 @@ describe('suite test on OptionsMenu component', () => {
 	it('al habilitar el checkbox important debe llamar a handleOnChange  ', () => {
 		render(<OptionsMenu {...datesOptions} />);
 		const buttonOptions = screen.getByRole('button');
-		const onDisplayOptions = screen.getByLabelText('menulist');
+		const toggleImportant = screen.getByTestId('important');
+
 		fireEvent.click(buttonOptions);
+		fireEvent.click(toggleImportant);
+		expect(handleOnChange).toHaveBeenCalledTimes(1);
+	});
+
+	it('al hacer click en datepicker debe llamar a handleOnChange ', () => {
+		render(<OptionsMenu {...datesOptions} />);
+		const datePicker = screen.getByTestId('date');
+		screen.debug(datePicker);
 	});
 });
 
 /*
 
 
-
-
-
-
-
-al hacer click en datepicker debe llamar a handleOnChange
 
 si tiene lista de tareas debe mostrarlas dentro del menuGroup
 
