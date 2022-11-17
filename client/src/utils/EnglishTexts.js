@@ -42,6 +42,13 @@ export const ModalAddListDates = {
 	place_holder: 'Write here...',
 };
 
+export const ModalLogoutDates = {
+	title: 'Sign Off',
+	message: 'Are you sure you want to log out?',
+	button_one: 'Cancel',
+	button_two: 'Log Out',
+};
+
 export const FiltersListsDates = {
 	main: 'My Day',
 	important: 'Important',

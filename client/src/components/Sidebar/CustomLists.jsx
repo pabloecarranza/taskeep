@@ -11,16 +11,17 @@ import {
 import { FiLogOut } from 'react-icons/fi';
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link, useNavigate } from 'react-router-dom';
-import { ModalConfirmDates } from '../../utils/EnglishTexts';
+import { ModalConfirmDates, ModalLogoutDates } from '../../utils/EnglishTexts';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { sessionOut } from '../../features/api/sessionSlice';
+import { ModalLogout } from './../Modals/ModalLogout';
 
 export const CustomLists = ({ data, isloaded }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const dispatch = useDispatch();
-	let navigate = useNavigate();
-
+	const {
+		isOpen: isOpenModalLogout,
+		onOpen: onOpenModalLogout,
+		onClose: onCloseModalLogout,
+	} = useDisclosure();
 	const [seleted, setSeleted] = React.useState({});
 
 	function capitalizeFirstLetter(nameList) {
@@ -35,10 +36,9 @@ export const CustomLists = ({ data, isloaded }) => {
 		onOpen();
 	}
 
-	const logOut = () => {
-		dispatch(sessionOut());
-		navigate('/', { replace: true });
-	};
+	function logOut() {
+		onOpenModalLogout();
+	}
 
 	return (
 		<Flex flexDir='column' h='50%'>
@@ -65,6 +65,12 @@ export const CustomLists = ({ data, isloaded }) => {
 								List={seleted}
 								setSeleted={setSeleted}
 								{...ModalConfirmDates}
+							/>
+							<ModalLogout
+								isOpen={isOpenModalLogout}
+								onOpen={onOpenModalLogout}
+								onClose={onCloseModalLogout}
+								{...ModalLogoutDates}
 							/>
 							{/*  
 					//TODO para quitar el warning: validateDOMNesting(...): <button> cannot appear as a descendant of <button>. 
@@ -102,9 +108,9 @@ export const CustomLists = ({ data, isloaded }) => {
 			<Flex justifyContent='flex-end'>
 				<Button
 					rightIcon={<FiLogOut />}
-					colorScheme='teal'
-					variant='outline'
-					onClick={logOut}
+					variant='white'
+					_hover={{ bg: '#44444442', color: '#0084ff' }}
+					onClick={() => logOut()}
 				>
 					Logout
 				</Button>

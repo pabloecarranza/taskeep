@@ -12,6 +12,7 @@ import {
 import { LoggedUser } from './LoggedUser';
 import { FiltersLists } from './FiltersLists';
 import { CustomLists } from './CustomLists';
+import { useSelector } from 'react-redux';
 
 export const Sidebar = () => {
 	const {
@@ -29,7 +30,7 @@ export const Sidebar = () => {
 	const [isloaded, setIsloaded] = React.useState(false);
 	const { data = [], error, isLoading, refetch } = useGetListsQuery();
 	const navigate = useNavigate();
-	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	const currentUser = useSelector(state => state.session);
 
 	useEffect(() => {
 		onOpenWelcomeModal();
@@ -58,7 +59,10 @@ export const Sidebar = () => {
 				{...ModalAddListDates}
 			/>
 
-			<LoggedUser userdata={userData} isloaded={isloaded} />
+			<LoggedUser
+				userdata={currentUser ? currentUser : {}}
+				isloaded={isloaded}
+			/>
 			<FiltersLists
 				isloaded={isloaded}
 				onOpenAddListModal={onOpenAddListModal}

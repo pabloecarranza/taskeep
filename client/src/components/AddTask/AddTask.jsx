@@ -12,9 +12,11 @@ import { BiTask } from 'react-icons/bi';
 import { useAddTask } from '../../Hooks/useAddTask';
 import { OptionsMenu } from './OptionsMenu';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 export const AddTask = ({ button_text, placeholder_text }) => {
-	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	const currentUser = useSelector(state => state.session);
+
 	const {
 		PostTaskResponse,
 		handleSubmit,
@@ -23,7 +25,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 		data,
 		task,
 		isLoading,
-	} = useAddTask(userData);
+	} = useAddTask(currentUser ? currentUser : {});
 
 	return (
 		<Center

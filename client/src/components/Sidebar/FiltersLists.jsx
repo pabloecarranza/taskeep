@@ -20,6 +20,7 @@ export const FiltersLists = ({
 				isActive='true'
 				leftIcon={<FiSun />}
 				variant='white'
+				colorScheme='blue'
 				_hover={{ bg: '#44444442', color: '#0084ff' }}
 				w='100%'
 				justifyContent='flex-start'
