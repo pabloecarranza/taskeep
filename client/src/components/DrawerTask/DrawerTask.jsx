@@ -53,7 +53,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 				>
 					<DrawerCloseButton />
 					<DrawerHeader borderBottomWidth='1px'>
-						Edit task number {task.id}
+						Edit task number {task ? task.id : 0}
 					</DrawerHeader>
 
 					<DrawerBodyTask
@@ -78,7 +78,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 							_hover={{ bg: '#44444442', color: '#0084ff' }}
 							colorScheme='blue'
 							mr={3}
-							onClick={onClose}
+							onClick={onClosed}
 						>
 							Cancel
 						</Button>

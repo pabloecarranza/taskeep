@@ -74,6 +74,7 @@ export const signIn = async (req, res) => {
     username: userFound.username,
     email: userFound.email,
     token: token,
+    logged: true,
   });
 };
 

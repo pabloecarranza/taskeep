@@ -6,7 +6,12 @@ const initialState = {
 	username: null,
 	email: null,
 	message: null,
+	logged: false,
 	currentTask: {},
+};
+
+const logout = () => {
+	localStorage.removeItem('identified-user');
 };
 
 export const sessionSlice = createSlice({
@@ -24,7 +29,19 @@ export const sessionSlice = createSlice({
 				(state.token = action.payload.token),
 				(state.username = action.payload.username),
 				(state.email = action.payload.email),
-				(state.message = action.payload.message);
+				(state.message = action.payload.message),
+				(state.logged = action.payload.logged);
+		},
+		sessionOut: state => {
+			state.id = null;
+			state.token = null;
+			state.currentTask = {};
+			state.username = null;
+			state.email = null;
+			state.message = null;
+			state.logged = false;
+
+			logout();
 		},
 		currentTask: (state, action) => {
 			state.currentTask = action.payload;
@@ -35,5 +52,5 @@ export const sessionSlice = createSlice({
 	},
 });
 
-export const { sessionIn, currentTask, clearCurrentTask } =
+export const { sessionIn, sessionOut, currentTask, clearCurrentTask } =
 	sessionSlice.actions;

@@ -31,6 +31,30 @@ export const WelcomePage = ({
 }) => {
 	const { isOpen, onToggle } = useDisclosure();
 
+	/*
+	verificar si el usuario ya esta logueado con el token en el localstorage
+	en caso de estar logueado mostrar solo el loginDone para ingresar nuevamente
+	
+	Agregar el boton de logout y borrar el token del localstorage.
+	verificar porque se agregan las tareas a todos los usuarios y no unicamente
+	al que esta logueado.
+
+	en caso de no tener lista de tareas en el menu options ocultar "task lists"
+
+	cuando se borra el usuario del localstorage se rompe la aplicacion por ej
+	cuando se intenta agregar una tarea. esto deberia redireccionar al loginPage
+	
+	sino estamos logueados al intentar entrar a /homepage/myday deberia de
+	redireccionarnos al loginPage y no que se rompa la aplicacion 
+
+	y estando logueado no deberiamos poder ir al loginPage sin haber hecho el logout
+
+    mediante el uso de un contexto de redux primero se deberia comprobar si el usuario esta
+	logueado en localstorage caso contrario se deberia establecer y al hacer click en logout
+	se deberia limpiar ese estado almacenado en el localstorage
+
+	*/
+
 	return (
 		<Flex
 			w='100vw'

@@ -96,6 +96,7 @@ export const useLoginUser = () => {
 						isClosable: true,
 					});
 					localStorage.setItem('identified-user', JSON.stringify(respon));
+					dispatch(sessionIn(respon));
 				})
 				.catch(error => {
 					toast({
@@ -123,6 +124,7 @@ export const useLoginUser = () => {
 						isClosable: true,
 					});
 					localStorage.setItem('identified-user', JSON.stringify(respon));
+					dispatch(sessionIn(respon));
 				})
 				.catch(error => {
 					toast({

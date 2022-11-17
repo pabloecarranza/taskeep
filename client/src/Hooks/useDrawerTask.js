@@ -20,7 +20,7 @@ export const useDrawerTask = onClose => {
 		expiration_date: '',
 		repeat: 'YYYY-MM-DD',
 		notes: '',
-		listid: getCurrentTask.listid,
+		listid: getCurrentTask ? getCurrentTask.listid : null,
 		userid: null,
 	});
 
@@ -92,7 +92,7 @@ export const useDrawerTask = onClose => {
 	};
 
 	function deleteTaskSubmit() {
-		DeleteTask(getCurrentTask.id)
+		DeleteTask(getCurrentTask?.id)
 			.unwrap()
 			.then(respon => {
 				toast({
