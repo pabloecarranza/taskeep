@@ -20,7 +20,7 @@ export const NotFoundPage = ({
 }) => {
 	let navigate = useNavigate();
 	const reDirectTo = () => {
-		navigate('/homepage', { replace: true });
+		navigate('/', { replace: true });
 	};
 
 	return (
