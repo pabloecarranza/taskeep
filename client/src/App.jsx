@@ -4,8 +4,6 @@ import { NotFoundPage } from './Pages/NotFoundPage';
 import { HomePage } from './Pages/HomePage';
 import { WelcomePage } from './Pages/WelcomePage';
 import { NotFoundPageDates, WelcomePagesDates } from './utils/EnglishTexts';
-import { PrivateRoutes } from './components/Routes/PrivateRoutes';
-import { PublicRoutes } from './components/Routes/PublicRoutes';
 
 export const App = () => {
 	return (
