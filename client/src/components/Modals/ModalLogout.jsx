@@ -7,6 +7,7 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	Button,
+	ModalOverlay,
 } from '@chakra-ui/react';
 import { sessionOut } from '../../features/api/sessionSlice';
 import PropTypes from 'prop-types';
@@ -28,8 +29,8 @@ export const ModalLogout = ({
 
 	const logoutConfirm = () => {
 		dispatch(sessionOut());
-		navigate('/', { replace: true });
 		onClose();
+		navigate('/', { replace: true });
 	};
 
 	return (
@@ -41,6 +42,7 @@ export const ModalLogout = ({
 				onOpen={onOpen}
 				isCentered
 			>
+				<ModalOverlay />
 				<ModalContent bg='#1A202C'>
 					<ModalHeader>{title}</ModalHeader>
 					<ModalCloseButton />

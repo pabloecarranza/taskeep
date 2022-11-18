@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import { Sidebar } from '../components/Sidebar/Sidebar';
-import { MainArea } from '../components/Tabs/MainArea';
+import { MainArea } from './../components/Routes/MainArea';
 
 export const HomePage = () => {
 	return (

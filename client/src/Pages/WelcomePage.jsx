@@ -18,6 +18,8 @@ import { ArrowForwardIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 import bg from '../assets/BG7.jpg';
 import { LoginMain } from '../components/LoginForm/LoginMain';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export const WelcomePage = ({
 	app_name,
@@ -30,7 +32,15 @@ export const WelcomePage = ({
 	test,
 }) => {
 	const { isOpen, onToggle } = useDisclosure();
+	const currentUser = JSON.parse(localStorage.getItem('identified-user'));
 
+	useEffect(() => {
+		if (currentUser === null) {
+			console.log('no estoy');
+		} else {
+			onToggle();
+		}
+	}, []);
 	/*
 	verificar si el usuario ya esta logueado con el token en el localstorage
 	en caso de estar logueado mostrar solo el loginDone para ingresar nuevamente

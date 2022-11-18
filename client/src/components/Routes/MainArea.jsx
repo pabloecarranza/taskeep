@@ -7,11 +7,11 @@ import BG5 from '../../assets/BG5.jpg';
 import BG6 from '../../assets/BG6.jpg';
 import BG7 from '../../assets/BG7.jpg';
 import { Routes, Route } from 'react-router-dom';
-import { MyDay } from './MyDay';
-import { Important } from './Important';
-import { Planing } from './Planing';
-import { Completed } from './Completed';
-import { CustomList } from './CustomList';
+import { MyDay } from './../Tabs/MyDay';
+import { Important } from './../Tabs/Important';
+import { Planing } from './../Tabs/Planing';
+import { Completed } from './../Tabs/Completed';
+import { CustomList } from './../Tabs/CustomList';
 import { useState } from 'react';
 import { TabsDates } from '../../utils/EnglishTexts';
 

@@ -33,10 +33,11 @@ export const LoginMain = () => {
 	const fadeSignIn = useSpring({
 		opacity: signUp ? 0 : 1,
 	});
+	const currentUser = JSON.parse(localStorage.getItem('identified-user'));
 
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>
-			{SignInResponse.isSuccess ? (
+			{SignInResponse.isSuccess || currentUser?.logged ? (
 				<LoginDone navigate={navigate} {...SignInSuccessfullyDates} />
 			) : (
 				<>

@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import me from '../../assets/me.jpg';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 export const ModalWelcome = ({
 	isOpen,
@@ -29,7 +30,7 @@ export const ModalWelcome = ({
 		setIsloaded(v => !v);
 	};
 
-	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	const userData = useSelector(state => state.session);
 
 	return (
 		<Modal isOpen={isOpen} onClose={handleClick} isCentered size='lg'>

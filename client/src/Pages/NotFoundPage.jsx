@@ -16,6 +16,7 @@ export const NotFoundPage = ({
 	error_text,
 	message_redirect,
 	page_redirect,
+	test = false,
 }) => {
 	let navigate = useNavigate();
 	const reDirectTo = () => {

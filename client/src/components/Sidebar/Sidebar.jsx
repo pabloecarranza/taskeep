@@ -31,7 +31,7 @@ export const Sidebar = () => {
 	const { data = [], error, isLoading, refetch } = useGetListsQuery();
 	const navigate = useNavigate();
 	const currentUser = useSelector(state => state.session);
-
+	const userData = JSON.parse(localStorage.getItem('identified-user'));
 	useEffect(() => {
 		onOpenWelcomeModal();
 
@@ -60,7 +60,7 @@ export const Sidebar = () => {
 			/>
 
 			<LoggedUser
-				userdata={currentUser ? currentUser : {}}
+				userdata={userData ? userData : currentUser}
 				isloaded={isloaded}
 			/>
 			<FiltersLists
