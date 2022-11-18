@@ -20,9 +20,8 @@ export const App = () => {
 						</PrivateRoutes>
 					}
 				/>
-				{/*<Route path='/homepage/*' element={<HomePage />} /> */}
 
-				<Route path='*' element={<NotFoundPage {...NotFoundPageDates} />} />
+				<Route path='/*' element={<NotFoundPage {...NotFoundPageDates} />} />
 			</Routes>
 		</BrowserRouter>
 	);
