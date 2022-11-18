@@ -43,7 +43,12 @@ export const CustomLists = ({ data, isloaded }) => {
 
 	return (
 		<Flex flexDir='column' h='50%'>
-			{' '}
+			<ModalLogout
+				isOpen={isOpenModalLogout}
+				onOpen={onOpenModalLogout}
+				onClose={onCloseModalLogout}
+				{...ModalLogoutDates}
+			/>
 			{data.map(list => (
 				<Flex
 					flexDirection='column'
@@ -67,12 +72,7 @@ export const CustomLists = ({ data, isloaded }) => {
 								setSeleted={setSeleted}
 								{...ModalConfirmDates}
 							/>
-							<ModalLogout
-								isOpen={isOpenModalLogout}
-								onOpen={onOpenModalLogout}
-								onClose={onCloseModalLogout}
-								{...ModalLogoutDates}
-							/>
+
 							{/*  
 					//TODO para quitar el warning: validateDOMNesting(...): <button> cannot appear as a descendant of <button>. 
 					hay que reemplazar el componente botton (padre) por algun otro de chakra respetando el hover y el

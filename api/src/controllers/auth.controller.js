@@ -41,6 +41,7 @@ export const signUp = async (req, res) => {
       username: NewUser.username,
       email: NewUser.email,
       token: token,
+      logged: true,
     });
   }
 };

@@ -11,7 +11,6 @@ export const App = () => {
 			<Routes>
 				<Route path='/' element={<WelcomePage {...WelcomePagesDates} />} />
 				<Route path='/homepage/*' element={<HomePage />} />
-
 				<Route path='*' element={<NotFoundPage {...NotFoundPageDates} />} />
 			</Routes>
 		</BrowserRouter>
