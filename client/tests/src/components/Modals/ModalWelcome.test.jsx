@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { expect, describe, it } from 'vitest';
+import { renderWithProviders } from '../../../../src/utils/utils-for-test';
 import { ModalWelcome } from './../../../../src/components/Modals/ModalWelcome';
 
 describe('Test suite on ModalWelcome component', () => {
@@ -15,7 +16,7 @@ describe('Test suite on ModalWelcome component', () => {
 	const isOpen = true;
 
 	it('must show the alt text on image render', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}
@@ -27,7 +28,7 @@ describe('Test suite on ModalWelcome component', () => {
 	});
 
 	it('should display name on component', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}
@@ -41,7 +42,7 @@ describe('Test suite on ModalWelcome component', () => {
 	});
 
 	it('should display gretting on component', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}
@@ -55,7 +56,7 @@ describe('Test suite on ModalWelcome component', () => {
 	});
 
 	it('should display welcome text one on component', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}
@@ -69,7 +70,7 @@ describe('Test suite on ModalWelcome component', () => {
 	});
 
 	it('should display welcome text two on component', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}
@@ -83,7 +84,7 @@ describe('Test suite on ModalWelcome component', () => {
 	});
 
 	it('should display close text on button', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}
@@ -97,7 +98,7 @@ describe('Test suite on ModalWelcome component', () => {
 	});
 
 	it('should display close button', () => {
-		render(
+		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
 				onClose={() => {}}

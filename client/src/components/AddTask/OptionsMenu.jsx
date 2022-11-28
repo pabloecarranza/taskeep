@@ -75,7 +75,7 @@ export const OptionsMenu = ({
 					/>
 				</MenuItem>
 				<MenuDivider />
-				<MenuOptionGroup title='Task lists' type='radio'>
+				<MenuOptionGroup title={data.length ? 'Task lists' : ''} type='radio'>
 					{data.map(list => (
 						<MenuItemOption
 							value={list.name}

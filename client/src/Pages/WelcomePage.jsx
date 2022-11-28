@@ -29,7 +29,7 @@ export const WelcomePage = ({
 	repository,
 	start_app,
 	made,
-	test,
+	test = false,
 }) => {
 	const { isOpen, onToggle } = useDisclosure();
 	const currentUser = JSON.parse(localStorage.getItem('identified-user'));

@@ -17,7 +17,7 @@ describe('Test suite on HomePage component', () => {
 		};
 	});
 
-	vi.mock('../../../src/components/Tabs/MainArea', () => {
+	vi.mock('../../../src/components/Routes/MainArea.jsx', () => {
 		return {
 			__esModule: true,
 			default: () => {
@@ -30,7 +30,12 @@ describe('Test suite on HomePage component', () => {
 	});
 
 	it('should ', () => {
-		const { container } = render(<HomePage />);
+		const { container } = renderWithProviders(
+			<Router>
+				<HomePage />
+			</Router>
+		);
+
 		expect(container).toMatchSnapshot();
 	});
 });

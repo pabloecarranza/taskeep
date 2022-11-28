@@ -10,7 +10,11 @@ export const App = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path='/' element={<WelcomePage {...WelcomePagesDates} />} />
+				<Route
+					exact
+					path='/'
+					element={<WelcomePage {...WelcomePagesDates} />}
+				/>
 
 				<Route
 					path='/homepage/*'

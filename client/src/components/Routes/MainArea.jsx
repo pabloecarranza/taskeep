@@ -13,7 +13,8 @@ import { Planing } from './../Tabs/Planing';
 import { Completed } from './../Tabs/Completed';
 import { CustomList } from './../Tabs/CustomList';
 import { useState } from 'react';
-import { TabsDates } from '../../utils/EnglishTexts';
+import { NotFoundPageDates, TabsDates } from '../../utils/EnglishTexts';
+import { NotFoundPage } from './../../Pages/NotFoundPage';
 
 export const MainArea = () => {
 	const [value, setValue] = useState('BG1');
@@ -67,6 +68,7 @@ export const MainArea = () => {
 				<Route path='planing' element={<Planing {...TabsDates} />}></Route>
 				<Route path='completed' element={<Completed {...TabsDates} />}></Route>
 				<Route path='tasklist/:listId' element={<CustomList />}></Route>
+				<Route path='*' element={<NotFoundPage {...NotFoundPageDates} />} />
 			</Routes>
 		</Box>
 	);

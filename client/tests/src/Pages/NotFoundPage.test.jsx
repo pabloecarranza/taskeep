@@ -8,6 +8,7 @@ describe('Test suite on NotFoundPage component', () => {
 		error_text: "We're",
 		message_redirect: 'Our team',
 		page_redirect: 'Page',
+		test: true,
 	};
 
 	it('must show the error text app send by props', () => {
