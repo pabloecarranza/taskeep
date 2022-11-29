@@ -36,7 +36,6 @@ export const WelcomePage = ({
 
 	useEffect(() => {
 		if (currentUser === null) {
-			console.log('no estoy');
 		} else {
 			onToggle();
 		}

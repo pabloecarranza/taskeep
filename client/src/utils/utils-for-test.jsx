@@ -20,6 +20,12 @@ export function renderWithProviders(
 				taskSlice: taskSlice.reducer,
 				session: sessionSlice.reducer,
 			},
+			middleware: getDefaultMiddleware =>
+				getDefaultMiddleware().concat(
+					authSlice.middleware,
+					listSlice.middleware,
+					taskSlice.middleware
+				),
 			preloadedState,
 		}),
 		...renderOptions
