@@ -8,7 +8,7 @@ import {
 	sessionSlice,
 } from '../../../../src/features/api/sessionSlice';
 
-describe('Name of the group', () => {
+describe('Test suite on SessionSlice Reducer', () => {
 	const initialState = {
 		id: null,
 		token: null,

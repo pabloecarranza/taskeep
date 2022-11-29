@@ -83,6 +83,6 @@ describe('Test suite on AddTask component', () => {
 
 		const submitButton = screen.getByText('Add');
 		fireEvent.click(submitButton);
-		expect(handleSubmit).toHaveBeenCalledTimes(1);
+		expect(handleSubmit).toHaveBeenCalled();
 	});
 });

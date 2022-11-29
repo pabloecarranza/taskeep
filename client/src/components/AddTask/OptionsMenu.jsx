@@ -80,6 +80,7 @@ export const OptionsMenu = ({
 						<MenuItemOption
 							value={list.name}
 							name={list.name}
+							data-testid={list.name}
 							key={list.id}
 							_hover={{ bg: '#44444442', color: '#0084ff' }}
 							closeOnSelect={false}
