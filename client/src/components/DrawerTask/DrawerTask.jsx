@@ -36,6 +36,9 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 		setTask(getCurrentTask);
 	}, [isOpen]);
 
+	console.log('data', data);
+	console.log('task', task);
+
 	return (
 		<>
 			<Drawer
@@ -66,6 +69,7 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 
 					<DrawerFooter borderTopWidth='1px'>
 						<Button
+							data-testid='trash'
 							variant='white'
 							_hover={{ color: '#ff0000' }}
 							colorScheme='red'
