@@ -35,10 +35,6 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 	useEffect(() => {
 		setTask(getCurrentTask);
 	}, [isOpen]);
-
-	console.log('data', data);
-	console.log('task', task);
-
 	return (
 		<>
 			<Drawer

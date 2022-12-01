@@ -4,7 +4,7 @@ import { DrawerBodyTask } from './../../../../src/components/DrawerTask/DrawerBo
 import { DrawerBodyTaskDates } from './../../../../src/utils/EnglishTexts';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
 import { Drawer, DrawerContent } from '@chakra-ui/react';
-describe('Name of the group', () => {
+describe('test suite on DrawerBodyTask', () => {
 	const capitalizeFirstLetter = vi.fn();
 	const handleOnChange = vi.fn();
 	const task = {
@@ -34,7 +34,76 @@ describe('Name of the group', () => {
 	const onClosed = vi.fn();
 	const firstField = vi.fn();
 
-	it('should ', () => {
+	it('debe mostrar la descripcion de la tarea seleccionada y llamar a handleOnChange si cambia', () => {
+		const { getByDisplayValue } = renderWithProviders(
+			<Drawer
+				isOpen={isOpen}
+				placement='right'
+				initialFocusRef={firstField}
+				onClose={onClosed}
+			>
+				<DrawerContent
+					bg='gray.700'
+					color='white'
+					borderRadius='10px'
+					boxShadow='dark-lg'
+				>
+					<DrawerBodyTask
+						handleOnChange={handleOnChange}
+						capitalizeFirstLetter={capitalizeFirstLetter}
+						task={task}
+						data={data}
+						{...DrawerBodyTaskDates}
+					/>
+				</DrawerContent>
+			</Drawer>
+		);
+
+		const description = getByDisplayValue(task.description);
+		expect(description.textContent).toEqual(task.description);
+
+		fireEvent.change(description, { target: { value: '12' } });
+		expect(handleOnChange).toHaveBeenCalled();
+
+		const important = screen.getByText(DrawerBodyTaskDates.text_two);
+		const completed = screen.getByText(DrawerBodyTaskDates.text_three);
+		const changeList = screen.getByText(DrawerBodyTaskDates.text_four);
+		const taskList = screen.getByTestId(data[0].name);
+	});
+
+	it('debe llamar handleOnChange al hacer click en important ', () => {
+		const { getByText } = renderWithProviders(
+			<Drawer
+				isOpen={isOpen}
+				placement='right'
+				initialFocusRef={firstField}
+				onClose={onClosed}
+			>
+				<DrawerContent
+					bg='gray.700'
+					color='white'
+					borderRadius='10px'
+					boxShadow='dark-lg'
+				>
+					<DrawerBodyTask
+						handleOnChange={handleOnChange}
+						capitalizeFirstLetter={capitalizeFirstLetter}
+						task={task}
+						data={data}
+						{...DrawerBodyTaskDates}
+					/>
+				</DrawerContent>
+			</Drawer>
+		);
+
+		const important = getByText(DrawerBodyTaskDates.text_two);
+		expect(important.textContent).toEqual(DrawerBodyTaskDates.text_two);
+
+		fireEvent.click(important);
+		expect(handleOnChange).toHaveBeenCalledTimes(2);
+	});
+
+	it('debe llamar handleOnChange al hacer click en completado', () => {
 		renderWithProviders(
 			<Drawer
 				isOpen={isOpen}
@@ -58,16 +127,101 @@ describe('Name of the group', () => {
 				</DrawerContent>
 			</Drawer>
 		);
-		screen.debug();
+
+		const completed = screen.getByText(DrawerBodyTaskDates.text_three);
+
+		fireEvent.click(completed);
+		expect(handleOnChange).toHaveBeenCalled();
+	});
+
+	it('debe llamar handleOnChange al hacer click en notes', () => {
+		const { getByDisplayValue } = renderWithProviders(
+			<Drawer
+				isOpen={isOpen}
+				placement='right'
+				initialFocusRef={firstField}
+				onClose={onClosed}
+			>
+				<DrawerContent
+					bg='gray.700'
+					color='white'
+					borderRadius='10px'
+					boxShadow='dark-lg'
+				>
+					<DrawerBodyTask
+						handleOnChange={handleOnChange}
+						capitalizeFirstLetter={capitalizeFirstLetter}
+						task={task}
+						data={data}
+						{...DrawerBodyTaskDates}
+					/>
+				</DrawerContent>
+			</Drawer>
+		);
+
+		const description = getByDisplayValue(task.notes);
+		expect(description.textContent).toEqual(task.notes);
+		fireEvent.click(description);
+		expect(handleOnChange).toHaveBeenCalled();
+	});
+	it('debe llamar handleOnChange al hacer click en datepicker', () => {
+		renderWithProviders(
+			<Drawer
+				isOpen={isOpen}
+				placement='right'
+				initialFocusRef={firstField}
+				onClose={onClosed}
+			>
+				<DrawerContent
+					bg='gray.700'
+					color='white'
+					borderRadius='10px'
+					boxShadow='dark-lg'
+				>
+					<DrawerBodyTask
+						handleOnChange={handleOnChange}
+						capitalizeFirstLetter={capitalizeFirstLetter}
+						task={task}
+						data={data}
+						{...DrawerBodyTaskDates}
+					/>
+				</DrawerContent>
+			</Drawer>
+		);
+
+		const datePicker = screen.getByDisplayValue(task.expiration_date);
+		fireEvent.change(datePicker, { target: { value: '2019-11-22' } });
+		expect(handleOnChange).toHaveBeenCalled();
+	});
+
+	it('debe mostrar los nombres de las listas de tareas y llamar handleOnChange al hacer click en una', () => {
+		renderWithProviders(
+			<Drawer
+				isOpen={isOpen}
+				placement='right'
+				initialFocusRef={firstField}
+				onClose={onClosed}
+			>
+				<DrawerContent
+					bg='gray.700'
+					color='white'
+					borderRadius='10px'
+					boxShadow='dark-lg'
+				>
+					<DrawerBodyTask
+						handleOnChange={handleOnChange}
+						capitalizeFirstLetter={capitalizeFirstLetter}
+						task={task}
+						data={data}
+						{...DrawerBodyTaskDates}
+					/>
+				</DrawerContent>
+			</Drawer>
+		);
+
+		const taskList = screen.getByTestId(data[0].name);
+
+		fireEvent.click(taskList);
+		expect(handleOnChange).toHaveBeenCalled();
 	});
 });
-
-/*
-debe mostrar los datos de la tarea seleccionada
-debe llamar handleOnChange al hacer click en la descripcion
-debe llamar handleOnChange al hacer click en important
-debe llamar handleOnChange al hacer click en completado
-debe mostrar los nombres de las listas de tareas y llamar handleOnChange al hacer click en una
-debe llamar handleOnChange al hacer click en datepicker
-debe llamar handleOnChange al hacer click en notes
-*/
