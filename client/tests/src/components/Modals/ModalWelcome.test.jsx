@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { expect, describe, it } from 'vitest';
 import { renderWithProviders } from '../../../../src/utils/utils-for-test';
 import { ModalWelcome } from './../../../../src/components/Modals/ModalWelcome';
@@ -15,7 +15,9 @@ describe('Test suite on ModalWelcome component', () => {
 
 	const isOpen = true;
 
-	it('must show the alt text on image render', () => {
+	const handleClick = vi.fn();
+
+	it('must show all texts send by props', () => {
 		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
@@ -24,90 +26,41 @@ describe('Test suite on ModalWelcome component', () => {
 				setIsloaded={() => {}}
 			/>
 		);
+		const text = screen.getByRole('dialog');
+		const button = screen.getByText(ModalWelcomeDates.button_text);
 		expect(screen.getByRole('img').alt).toBe(ModalWelcomeDates.alt);
-	});
-
-	it('should display name on component', () => {
-		renderWithProviders(
-			<ModalWelcome
-				{...ModalWelcomeDates}
-				onClose={() => {}}
-				isOpen={isOpen}
-				setIsloaded={() => {}}
-			/>
-		);
-
-		const text = screen.getByRole('dialog');
+		expect(button.textContent).toEqual(ModalWelcomeDates.button_text);
 		expect(text).toHaveTextContent(ModalWelcomeDates.name);
-	});
-
-	it('should display gretting on component', () => {
-		renderWithProviders(
-			<ModalWelcome
-				{...ModalWelcomeDates}
-				onClose={() => {}}
-				isOpen={isOpen}
-				setIsloaded={() => {}}
-			/>
-		);
-
-		const text = screen.getByRole('dialog');
 		expect(text).toHaveTextContent(ModalWelcomeDates.greeting);
-	});
-
-	it('should display welcome text one on component', () => {
-		renderWithProviders(
-			<ModalWelcome
-				{...ModalWelcomeDates}
-				onClose={() => {}}
-				isOpen={isOpen}
-				setIsloaded={() => {}}
-			/>
-		);
-
-		const text = screen.getByRole('dialog');
 		expect(text).toHaveTextContent(ModalWelcomeDates.welcome_text_1);
-	});
-
-	it('should display welcome text two on component', () => {
-		renderWithProviders(
-			<ModalWelcome
-				{...ModalWelcomeDates}
-				onClose={() => {}}
-				isOpen={isOpen}
-				setIsloaded={() => {}}
-			/>
-		);
-
-		const text = screen.getByRole('dialog');
 		expect(text).toHaveTextContent(ModalWelcomeDates.welcome_text_2);
-	});
-
-	it('should display close text on button', () => {
-		renderWithProviders(
-			<ModalWelcome
-				{...ModalWelcomeDates}
-				onClose={() => {}}
-				isOpen={isOpen}
-				setIsloaded={() => {}}
-			/>
-		);
-
-		const text = screen.getByRole('dialog');
 		expect(text).toHaveTextContent(ModalWelcomeDates.button_text);
 	});
-
-	it('should display close button', () => {
+	it('should call handleClick onClose Modal', () => {
 		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
-				onClose={() => {}}
+				onClose={handleClick}
 				isOpen={isOpen}
 				setIsloaded={() => {}}
 			/>
 		);
-
 		const button = screen.getByText(ModalWelcomeDates.button_text);
-		expect(button.textContent).toEqual(ModalWelcomeDates.button_text);
+		fireEvent.click(button);
+		expect(handleClick).toHaveBeenCalled();
+	});
+
+	it('should call handleClick onClose Modal', () => {
+		renderWithProviders(
+			<ModalWelcome
+				{...ModalWelcomeDates}
+				onClose={handleClick}
+				isOpen={isOpen}
+				setIsloaded={() => {}}
+			/>
+		);
+		const button = screen.getByText(ModalWelcomeDates.button_text);
+		fireEvent.click(button);
+		expect(handleClick).toHaveBeenCalled();
 	});
 });
