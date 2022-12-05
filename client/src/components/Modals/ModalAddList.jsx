@@ -23,11 +23,8 @@ export const ModalAddList = ({
 	button_two,
 	place_holder,
 }) => {
-	const handleClick = () => {
-		onClose();
-	};
-
-	const [input, handleChange, handleSubmit] = usehandleAdd(onClose);
+	const [input, handleChange, handleSubmit, handleClick] =
+		usehandleAdd(onClose);
 
 	const initialRef = React.useRef(null);
 

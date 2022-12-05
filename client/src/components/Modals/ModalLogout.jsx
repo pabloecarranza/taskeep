@@ -65,7 +65,6 @@ export const ModalLogout = ({
 ModalLogout.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	onOpen: PropTypes.func.isRequired,
-	List: PropTypes.object.isRequired,
 	title: PropTypes.string.isRequired,
 	message: PropTypes.string.isRequired,
 	button_one: PropTypes.string.isRequired,

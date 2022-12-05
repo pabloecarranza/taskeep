@@ -10,6 +10,10 @@ const usehandleAdd = onClose => {
 		setInput({ name: value });
 	};
 
+	const handleClick = () => {
+		onClose();
+	};
+
 	const handleSubmit = event => {
 		if (event.key === 'Enter' || event.type === 'click') {
 			if (input.name.length === 0) {
@@ -48,7 +52,7 @@ const usehandleAdd = onClose => {
 		}
 	};
 
-	return [input, handleChange, handleSubmit];
+	return [input, handleChange, handleSubmit, handleClick];
 };
 
 export default usehandleAdd;

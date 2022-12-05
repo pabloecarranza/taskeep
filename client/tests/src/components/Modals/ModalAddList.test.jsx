@@ -14,8 +14,11 @@ describe('test suite on addListModal component', () => {
 	const input = { name: 'testText' };
 	const handleChange = vi.fn();
 	const handleSubmit = vi.fn();
+	const handleClick = vi.fn();
 
-	usehandleAdd = vi.fn().mockReturnValue([input, handleChange, handleSubmit]);
+	usehandleAdd = vi
+		.fn()
+		.mockReturnValue([input, handleChange, handleSubmit, handleClick]);
 	it('should set the new list name on input field', () => {
 		renderWithProviders(
 			<ModalAddList {...ModalAddListDates} isOpen={isOpen} onClose={onClose} />
@@ -47,5 +50,19 @@ describe('test suite on addListModal component', () => {
 		fireEvent.click(cancelButton);
 
 		expect(onClose).toHaveBeenCalled();
+	});
+
+	it('should call handleSubmit on keydown of button save', () => {
+		const { getByText } = renderWithProviders(
+			<ModalAddList {...ModalAddListDates} isOpen={isOpen} onClose={onClose} />
+		);
+
+		const saveButton = getByText(ModalAddListDates.button_two);
+		fireEvent.keyDown(saveButton, {
+			key: 'Enter',
+			code: 13,
+		});
+
+		expect(handleSubmit).toHaveBeenCalled();
 	});
 });

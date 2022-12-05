@@ -9,6 +9,9 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: '../client/src/test/setup.ts',
 		css: true,
+		coverage: {
+			provider: 'c8',
+		},
 	},
 	server: {
 		watch: {
