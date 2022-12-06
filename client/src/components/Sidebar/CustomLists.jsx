@@ -37,7 +37,6 @@ export const CustomLists = ({ data, isloaded }) => {
 	}
 
 	function logOut() {
-		console.log('s');
 		onOpenModalLogout();
 	}
 
