@@ -18,6 +18,7 @@ export const CustomList = () => {
 	);
 
 	function capitalizeFirstLetter(str) {
+		if (!str) return 'Undefined';
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 		return capitalized;
 	}
@@ -30,11 +31,11 @@ export const CustomList = () => {
 				alignItems='flex-start'
 				h='10%'
 			>
-				<Text textShadow='2px 2px #000000' m='6'>
-					<Heading as='h2' size='xl'>
+				<Heading as='h2' size='xl'>
+					<Text textShadow='2px 2px #000000' m='6'>
 						{capitalizeFirstLetter(params.listId)}
-					</Heading>
-				</Text>
+					</Text>
+				</Heading>
 				<TasksList data={onlySelectListTasks} />
 			</Center>
 			<Center h='88%' alignItems='flex-end'>
