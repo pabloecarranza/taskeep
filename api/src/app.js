@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 const corsOptions = {
-  origin: "https://taskeep-api.vercel.app/",
+  origin: "https://taskeep.vercel.app/",
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
