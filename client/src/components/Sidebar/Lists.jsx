@@ -2,7 +2,7 @@ import { Button, Center, useDisclosure } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
-import { ModalConfirmDates, ModalLogoutDates } from '../../utils/EnglishTexts';
+import { ModalConfirmDates } from '../../utils/EnglishTexts';
 import { CgClose } from 'react-icons/cg';
 export const Lists = ({ list }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();

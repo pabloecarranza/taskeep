@@ -45,7 +45,7 @@ export const CustomLists = ({ data, isloaded, test = false }) => {
 						<Lists list={list} />
 					) : (
 						<SkeletonText
-							noOfLines={3}
+							noOfLines={2}
 							isLoaded={isloaded}
 							fadeDuration={9}
 							spacing='6'
