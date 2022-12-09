@@ -17,27 +17,11 @@ import { NotFoundPageDates, TabsDates } from '../../utils/EnglishTexts';
 import { NotFoundPage } from './../../Pages/NotFoundPage';
 
 export const MainArea = () => {
-	const [value, setValue] = useState('BG1');
+	const [value, setValue] = useState(BG1);
 
 	return (
 		<Box
-			backgroundImage={
-				value == 'BG1'
-					? BG1
-					: value == 'BG2'
-					? BG2
-					: value == 'BG3'
-					? BG3
-					: value == 'BG4'
-					? BG4
-					: value == 'BG5'
-					? BG5
-					: value == 'BG6'
-					? BG6
-					: value == 'BG7'
-					? BG7
-					: BG1
-			}
+			backgroundImage={value}
 			backgroundPosition='center'
 			backgroundRepeat='no-repeat'
 			backgroundSize='cover'
@@ -52,13 +36,13 @@ export const MainArea = () => {
 			<Center justifyContent='flex-end'>
 				<RadioGroup onChange={setValue} value={value}>
 					<Stack direction='row'>
-						<Radio value='BG1'></Radio>
-						<Radio value='BG2'></Radio>
-						<Radio value='BG3'></Radio>
-						<Radio value='BG4'></Radio>
-						<Radio value='BG5'></Radio>
-						<Radio value='BG6'></Radio>
-						<Radio value='BG7'></Radio>
+						<Radio value={BG1}></Radio>
+						<Radio value={BG2}></Radio>
+						<Radio value={BG3}></Radio>
+						<Radio value={BG4}></Radio>
+						<Radio value={BG5}></Radio>
+						<Radio value={BG6}></Radio>
+						<Radio value={BG7}></Radio>
 					</Stack>
 				</RadioGroup>
 			</Center>
