@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Modal,
 	ModalOverlay,
@@ -20,10 +19,10 @@ export const ModalWelcome = ({
 	onClose,
 	setIsloaded,
 	greeting,
-	welcome_text_1,
-	welcome_text_2,
+	welcomeTextOne,
+	welcomeTextTwo,
 	name,
-	button_text,
+	buttonText,
 }) => {
 	const handleClick = () => {
 		onClose();
@@ -42,9 +41,9 @@ export const ModalWelcome = ({
 				<ModalCloseButton />
 				<ModalBody>
 					<Center>
-						{welcome_text_1}
+						{welcomeTextOne}
 						<br />
-						{welcome_text_2}
+						{welcomeTextTwo}
 						<Image src={me} alt='PabloCarranza' w='30%' />
 					</Center>
 					<br />
@@ -53,7 +52,7 @@ export const ModalWelcome = ({
 
 				<ModalFooter>
 					<Button colorScheme='blue' mr={3} onClick={handleClick}>
-						{button_text}
+						{buttonText}
 					</Button>
 				</ModalFooter>
 			</ModalContent>
@@ -63,10 +62,10 @@ export const ModalWelcome = ({
 
 ModalWelcome.propTypes = {
 	greeting: PropTypes.string.isRequired,
-	welcome_text_1: PropTypes.string.isRequired,
-	welcome_text_2: PropTypes.string.isRequired,
+	welcomeTextOne: PropTypes.string.isRequired,
+	welcomeTextTwo: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	button_text: PropTypes.string.isRequired,
+	buttonText: PropTypes.string.isRequired,
 	onClose: PropTypes.func.isRequired,
 	setIsloaded: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,

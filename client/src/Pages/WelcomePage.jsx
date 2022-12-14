@@ -20,12 +20,12 @@ import { LoginMain } from '../components/LoginForm/LoginMain';
 import { useEffect } from 'react';
 
 export const WelcomePage = ({
-	app_name,
-	slogan_one,
-	slogan_two,
+	appName,
+	sloganOne,
+	sloganTwo,
 	subtitle,
 	repository,
-	start_app,
+	startApp,
 	made,
 	test = false,
 }) => {
@@ -33,10 +33,7 @@ export const WelcomePage = ({
 	const currentUser = JSON.parse(localStorage.getItem('identified-user'));
 
 	useEffect(() => {
-		if (currentUser === null) {
-		} else {
-			onToggle();
-		}
+		if (!currentUser === null) onToggle();
 	}, []);
 
 	return (
@@ -63,14 +60,14 @@ export const WelcomePage = ({
 						fontSize='6xl'
 						fontWeight='extrabold'
 						pb='10px'
-						data-testid='app_name'
+						data-testid='appName'
 					>
-						{app_name}
+						{appName}
 					</Text>
 					<Heading as='h2' size='2xl' nooflines={1} fontWeight='bold'>
 						<Typewriter
 							options={{
-								strings: [`${slogan_one}`, `${slogan_two}`],
+								strings: [`${sloganOne}`, `${sloganTwo}`],
 								autoStart: true,
 								loop: true,
 							}}
@@ -108,7 +105,7 @@ export const WelcomePage = ({
 							size='lg'
 							onClick={onToggle}
 						>
-							{start_app}
+							{startApp}
 						</Button>
 					</Box>
 
@@ -145,11 +142,12 @@ export const WelcomePage = ({
 };
 
 WelcomePage.propTypes = {
-	app_name: PropTypes.string.isRequired,
-	slogan_one: PropTypes.string.isRequired,
-	slogan_two: PropTypes.string.isRequired,
+	appName: PropTypes.string.isRequired,
+	sloganOne: PropTypes.string.isRequired,
+	sloganTwo: PropTypes.string.isRequired,
 	subtitle: PropTypes.string.isRequired,
 	repository: PropTypes.string.isRequired,
-	start_app: PropTypes.string.isRequired,
+	startApp: PropTypes.string.isRequired,
 	made: PropTypes.string.isRequired,
+	test: PropTypes.bool,
 };

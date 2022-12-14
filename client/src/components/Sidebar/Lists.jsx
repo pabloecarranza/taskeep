@@ -1,9 +1,10 @@
 import { Button, Center, useDisclosure, Flex } from '@chakra-ui/react';
-import React, { useState } from 'react';
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
 import { ModalConfirmDates } from '../../utils/EnglishTexts';
 import { CgClose } from 'react-icons/cg';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 export const Lists = ({ list, test }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	function capitalizeFirstLetter(nameList) {
@@ -72,4 +73,9 @@ export const Lists = ({ list, test }) => {
 			</Button>
 		</Center>
 	);
+};
+
+Lists.propTypes = {
+	list: PropTypes.object,
+	test: PropTypes.bool,
 };

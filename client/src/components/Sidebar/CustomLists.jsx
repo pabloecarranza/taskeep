@@ -1,8 +1,5 @@
-import React from 'react';
-
 import {
 	Button,
-	Center,
 	useDisclosure,
 	SkeletonText,
 	Flex,
@@ -73,4 +70,5 @@ export const CustomLists = ({ data, isloaded, test = false }) => {
 CustomLists.propTypes = {
 	data: PropTypes.array.isRequired,
 	isloaded: PropTypes.bool.isRequired,
+	test: PropTypes.bool,
 };

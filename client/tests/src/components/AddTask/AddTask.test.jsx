@@ -25,13 +25,11 @@ describe('Test suite on AddTask component', () => {
 		});
 		renderWithProviders(<AddTask {...AddTaskDates} />);
 
-		const buttonAdd = screen.getByText(AddTaskDates.button_text);
-		const inputTask = screen.getByPlaceholderText(
-			AddTaskDates.placeholder_text
-		);
+		const buttonAdd = screen.getByText(AddTaskDates.buttonText);
+		const inputTask = screen.getByPlaceholderText(AddTaskDates.placeholderText);
 
 		expect(inputTask).toBeTruthy();
-		expect(buttonAdd.textContent).toEqual(AddTaskDates.button_text);
+		expect(buttonAdd.textContent).toEqual(AddTaskDates.buttonText);
 	});
 
 	it('debe mostrar el spinner cuando se esta cargando la respuesta del posteo de la tarea ', () => {

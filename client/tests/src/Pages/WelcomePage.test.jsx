@@ -8,12 +8,12 @@ import { renderWithProviders } from './../../../src/utils/utils-for-test';
 
 describe('Test suite on WelcomePage component', () => {
 	const WelcomePagesDates = {
-		app_name: 'TASKEEP',
-		slogan_one: 'The most powerful',
-		slogan_two: 'The real powerful',
+		appName: 'TASKEEP',
+		sloganOne: 'The most powerful',
+		sloganTwo: 'The real powerful',
 		subtitle: 'Task Management App',
 		repository: 'Github',
-		start_app: 'Get Starter',
+		startApp: 'Get Starter',
 		made: 'Made by Pablo Carranza',
 		test: true,
 	};
@@ -45,9 +45,9 @@ describe('Test suite on WelcomePage component', () => {
 				<WelcomePage {...WelcomePagesDates} />
 			</Router>
 		);
-		expect(getByText(WelcomePagesDates.app_name)).toBeTruthy();
+		expect(getByText(WelcomePagesDates.appName)).toBeTruthy();
 
-		expect(getByTestId('app_name').innerHTML).toBe(WelcomePagesDates.app_name);
+		expect(getByTestId('appName').innerHTML).toBe(WelcomePagesDates.appName);
 	});
 
 	it('must show text of subtitle send by props', () => {
@@ -84,7 +84,7 @@ describe('Test suite on WelcomePage component', () => {
 				<WelcomePage {...WelcomePagesDates} />
 			</Router>
 		);
-		expect(getByText(WelcomePagesDates.start_app));
+		expect(getByText(WelcomePagesDates.startApp));
 	});
 
 	it('must show the text (made by) send by props', () => {
@@ -103,8 +103,8 @@ describe('Test suite on WelcomePage component', () => {
 			</Router>
 		);
 
-		const button = screen.getByText(WelcomePagesDates.start_app);
-		expect(button.textContent).toEqual(WelcomePagesDates.start_app);
+		const button = screen.getByText(WelcomePagesDates.startApp);
+		expect(button.textContent).toEqual(WelcomePagesDates.startApp);
 	});
 
 	it('should display Repository button', () => {

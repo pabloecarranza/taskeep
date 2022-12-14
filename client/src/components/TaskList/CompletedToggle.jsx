@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text, Center, Button } from '@chakra-ui/react';
 import { BiCircle, BiChevronDownCircle } from 'react-icons/bi';
 import PropTypes from 'prop-types';

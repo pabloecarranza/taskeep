@@ -57,7 +57,6 @@ export const useDeleteTask = () => {
 		}
 		if (e === 'setTrueImportant') {
 			HotPutTask(task);
-			return;
 		}
 	}
 

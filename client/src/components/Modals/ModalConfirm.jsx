@@ -17,11 +17,11 @@ export const ModalConfirm = ({
 	onOpen,
 	List,
 	setSeleted,
-	title_partOne,
-	title_partTwo,
+	titlePartOne,
+	titlePartTwo,
 	message,
-	button_one,
-	button_two,
+	buttonOne,
+	buttonTwo,
 }) => {
 	const initialRef = React.useRef(null);
 
@@ -37,13 +37,13 @@ export const ModalConfirm = ({
 				isCentered
 			>
 				<ModalContent bg='#1A202C'>
-					<ModalHeader>{title_partOne + List.name + title_partTwo}</ModalHeader>
+					<ModalHeader>{titlePartOne + List.name + titlePartTwo}</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>{message}</ModalBody>
 
 					<ModalFooter>
 						<Button variant='ghost' onClick={onClose}>
-							{button_one}
+							{buttonOne}
 						</Button>
 						<Button
 							colorScheme='red'
@@ -51,7 +51,7 @@ export const ModalConfirm = ({
 							onClick={() => deleteList(List)}
 							ml='4px'
 						>
-							{button_two}
+							{buttonTwo}
 						</Button>
 					</ModalFooter>
 				</ModalContent>
@@ -65,9 +65,10 @@ ModalConfirm.propTypes = {
 	onOpen: PropTypes.func.isRequired,
 	List: PropTypes.object.isRequired,
 	setSeleted: PropTypes.func.isRequired,
-	title_partOne: PropTypes.string.isRequired,
-	title_partTwo: PropTypes.string.isRequired,
+	titlePartOne: PropTypes.string.isRequired,
+	titlePartTwo: PropTypes.string.isRequired,
 	message: PropTypes.string.isRequired,
-	button_one: PropTypes.string.isRequired,
-	button_two: PropTypes.string.isRequired,
+	buttonOne: PropTypes.string.isRequired,
+	buttonTwo: PropTypes.string.isRequired,
+	isOpen: PropTypes.bool,
 };

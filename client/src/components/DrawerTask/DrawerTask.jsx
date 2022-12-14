@@ -1,7 +1,5 @@
-import React from 'react';
 import {
 	Drawer,
-	DrawerBody,
 	DrawerFooter,
 	DrawerHeader,
 	DrawerOverlay,
@@ -11,14 +9,14 @@ import {
 } from '@chakra-ui/react';
 
 import { BiTrash } from 'react-icons/bi';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDrawerTask } from '../../Hooks/useDrawerTask';
 import { DrawerBodyTask } from './DrawerBodyTask';
 import { DrawerBodyTaskDates } from '../../utils/EnglishTexts';
 import PropTypes from 'prop-types';
 
 export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
-	const firstField = React.useRef();
+	const firstField = useRef();
 
 	const {
 		data,

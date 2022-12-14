@@ -1,52 +1,51 @@
 export const NotFoundPageDates = {
-	error_text: "We're sorry - something's gone wrong.",
-	message_redirect:
-		'Our team has been notified, but click below to go HomePage',
-	page_redirect: 'HomePage',
+	errorText: "We're sorry - something's gone wrong.",
+	messageRedirect: 'Our team has been notified, but click below to go HomePage',
+	pageRedirect: 'HomePage',
 };
 
 export const WelcomePagesDates = {
-	app_name: 'TASKEEP',
-	slogan_one: 'The most powerful',
-	slogan_two: 'The real powerful',
+	appName: 'TASKEEP',
+	sloganOne: 'The most powerful',
+	sloganTwo: 'The real powerful',
 	subtitle: 'Task Management App',
 	repository: 'Github',
-	start_app: 'Get Starter',
+	startApp: 'Get Starter',
 	made: 'Made by Pablo Carranza',
 	test: false,
 };
 
 export const ModalWelcomeDates = {
 	greeting: 'Hi',
-	welcome_text_1: 'Welcome to my personal app for task management.',
-	welcome_text_2:
+	welcomeTextOne: 'Welcome to my personal app for task management.',
+	welcomeTextTwo:
 		'The main functionalities are to create tasks and group them by lists, set the priority and expiration date. I hope you enjoy it !',
 	name: 'Pablo',
-	button_text: 'Close',
+	buttonText: 'Close',
 };
 
 export const ModalConfirmDates = {
-	title_partOne: 'Delete ',
-	title_partTwo: 'task list',
+	titlePartOne: 'Delete ',
+	titlePartTwo: 'task list',
 	message:
 		"Are you sure? You can't undo this action afterwards and all task assigned to this list be eliminated",
-	button_one: 'Cancel',
-	button_two: 'Delete',
+	buttonOne: 'Cancel',
+	buttonTwo: 'Delete',
 };
 
 export const ModalAddListDates = {
 	title: 'Create a new task list',
 	name: 'List name',
-	button_one: 'Cancel',
-	button_two: 'Save',
-	place_holder: 'Write here...',
+	buttonOne: 'Cancel',
+	buttonTwo: 'Save',
+	placeHolder: 'Write here...',
 };
 
 export const ModalLogoutDates = {
 	title: 'Sign Off',
 	message: 'Are you sure you want to log out?',
-	button_one: 'Cancel',
-	button_two: 'Log Out',
+	buttonOne: 'Cancel',
+	buttonTwo: 'Log Out',
 };
 
 export const FiltersListsDates = {
@@ -71,47 +70,47 @@ export const SignInSuccessfullyDates = {
 };
 
 export const AddTaskDates = {
-	button_text: 'Add',
-	placeholder_text: 'Add new task',
+	buttonText: 'Add',
+	placeholderText: 'Add new task',
 };
 
 export const DrawerBodyTaskDates = {
-	text_one: 'Description',
-	text_two: 'Important',
-	text_three: 'Completed',
-	text_four: 'Change List',
-	text_five: 'Expiration Date',
-	text_six: 'Notes',
+	textOne: 'Description',
+	textTwo: 'Important',
+	textThree: 'Completed',
+	textFour: 'Change List',
+	textFive: 'Expiration Date',
+	textSix: 'Notes',
 };
 
 export const SignInFormDates = {
 	title: 'Sign In',
 	subtitle: "You don't have an account?",
 	button: 'Sign Up.',
-	title_form: 'User Name',
-	place_holder_one: 'Name',
-	subtitle_form: 'Password',
-	place_holder_two: 'Password',
-	fast_login: 'Enter as a guest',
-	button_two: 'Log In',
+	titleForm: 'User Name',
+	placeHolderOne: 'Name',
+	subtitleForm: 'Password',
+	placeHolderTwo: 'Password',
+	fastLogin: 'Enter as a guest',
+	buttonTwo: 'Log In',
 };
 
 export const SignUpFormDates = {
 	title: 'Create an Account',
 	subtitle: 'Already have an account?',
 	button: 'Log In.',
-	title_form: 'User Name',
-	place_holder_one: 'Name',
-	subtitle_form: 'Email',
-	place_holder_two: 'email',
-	title_form_two: 'Password',
-	place_holder_three: 'Password',
-	button_two: 'Create Account',
+	titleForm: 'User Name',
+	placeHolderOne: 'Name',
+	subtitleForm: 'Email',
+	placeHolderTwo: 'email',
+	titleFormTwo: 'Password',
+	placeHolderThree: 'Password',
+	buttonTwo: 'Create Account',
 };
 
 export const TabsDates = {
-	text_one: 'Completed',
-	text_two: 'My day',
-	text_three: 'Planing',
-	text_four: 'Important',
+	textOne: 'Completed',
+	textTwo: 'My day',
+	textThree: 'Planing',
+	textFour: 'Important',
 };

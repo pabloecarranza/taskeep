@@ -13,12 +13,12 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const NotFoundPage = ({
-	error_text,
-	message_redirect,
-	page_redirect,
+	errorText,
+	messageRedirect,
+	pageRedirect,
 	test = false,
 }) => {
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 	const reDirectTo = () => {
 		navigate('/', { replace: true });
 	};
@@ -38,7 +38,7 @@ export const NotFoundPage = ({
 						<Image src={Logo} alt='Logo_Task' boxSize='150px' />
 					</Box>
 					<Heading as='h2' size='2xl' fontWeight='bold' textAlign='center'>
-						{error_text}
+						{errorText}
 						<Text
 							bgGradient={test ? '' : 'linear(to-l, #7928ca, #0084ff)'}
 							bgClip='text'
@@ -47,7 +47,7 @@ export const NotFoundPage = ({
 							pb='30px'
 							pt='20px'
 						>
-							{message_redirect}
+							{messageRedirect}
 						</Text>
 					</Heading>
 					<Box>
@@ -57,7 +57,7 @@ export const NotFoundPage = ({
 							size='lg'
 							onClick={reDirectTo}
 						>
-							{page_redirect}
+							{pageRedirect}
 						</Button>
 					</Box>
 				</Box>
@@ -67,7 +67,8 @@ export const NotFoundPage = ({
 };
 
 NotFoundPage.propTypes = {
-	error_text: PropTypes.string.isRequired,
-	message_redirect: PropTypes.string.isRequired,
-	page_redirect: PropTypes.string.isRequired,
+	errorText: PropTypes.string.isRequired,
+	messageRedirect: PropTypes.string.isRequired,
+	pageRedirect: PropTypes.string.isRequired,
+	test: PropTypes.bool,
 };

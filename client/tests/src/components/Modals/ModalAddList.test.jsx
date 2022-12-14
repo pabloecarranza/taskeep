@@ -35,7 +35,7 @@ describe('test suite on addListModal component', () => {
 			<ModalAddList {...ModalAddListDates} isOpen={isOpen} onClose={onClose} />
 		);
 
-		const saveButton = screen.getByText(ModalAddListDates.button_two);
+		const saveButton = screen.getByText(ModalAddListDates.buttonTwo);
 		fireEvent.click(saveButton);
 
 		expect(handleSubmit).toHaveBeenCalled();
@@ -46,7 +46,7 @@ describe('test suite on addListModal component', () => {
 			<ModalAddList {...ModalAddListDates} isOpen={isOpen} onClose={onClose} />
 		);
 
-		const cancelButton = screen.getByText(ModalAddListDates.button_one);
+		const cancelButton = screen.getByText(ModalAddListDates.buttonOne);
 		fireEvent.click(cancelButton);
 
 		expect(onClose).toHaveBeenCalled();
@@ -57,7 +57,7 @@ describe('test suite on addListModal component', () => {
 			<ModalAddList {...ModalAddListDates} isOpen={isOpen} onClose={onClose} />
 		);
 
-		const saveButton = getByText(ModalAddListDates.button_two);
+		const saveButton = getByText(ModalAddListDates.buttonTwo);
 		fireEvent.keyDown(saveButton, {
 			key: 'Enter',
 			code: 13,

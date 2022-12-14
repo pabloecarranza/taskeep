@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Center,
 	Input,
@@ -12,11 +11,7 @@ import { BiTask } from 'react-icons/bi';
 import { useAddTask } from '../../Hooks/useAddTask';
 import { OptionsMenu } from './OptionsMenu';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-
-export const AddTask = ({ button_text, placeholder_text }) => {
-	const currentUser = useSelector(state => state.session);
-
+export const AddTask = ({ buttonText, placeholderText }) => {
 	const {
 		PostTaskResponse,
 		handleSubmit,
@@ -25,7 +20,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 		data,
 		task,
 		isLoading,
-	} = useAddTask(currentUser ? currentUser : {});
+	} = useAddTask();
 
 	return (
 		<Center
@@ -47,6 +42,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 					<InputLeftElement
 						aria-label='icontask'
 						pointerEvents='none'
+						// eslint-disable-next-line react/no-children-prop
 						children={<BiTask color='gray.300' />}
 					/>
 				) : (
@@ -58,7 +54,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 					type='tel'
 					variant='unstyled'
 					aria-label='taskname'
-					placeholder={placeholder_text}
+					placeholder={placeholderText}
 					value={task.description}
 					onChange={e => handleOnChange('description', e)}
 				/>
@@ -81,7 +77,7 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 					w='12%'
 					onClick={handleSubmit}
 				>
-					{button_text}
+					{buttonText}
 				</Button>
 			</InputGroup>
 		</Center>
@@ -89,6 +85,8 @@ export const AddTask = ({ button_text, placeholder_text }) => {
 };
 
 AddTask.propTypes = {
+	buttonText: PropTypes.string,
+	placeholderText: PropTypes.string,
 	PostTaskResponse: PropTypes.bool,
 	handleSubmit: PropTypes.func,
 	handleOnChange: PropTypes.func,

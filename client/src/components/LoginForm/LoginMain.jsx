@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Center, Spinner } from '@chakra-ui/react';
 import { useSpring } from 'react-spring';
 import { useLoginUser } from '../../Hooks/useLoginUser';

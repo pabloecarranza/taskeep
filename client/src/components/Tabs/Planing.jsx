@@ -1,11 +1,10 @@
-import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
 import { TasksList } from '../TaskList/TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import PropTypes from 'prop-types';
 
-export const Planing = ({ text_three }) => {
+export const Planing = ({ textThree }) => {
 	const { data = [] } = useGetTasksQuery();
 	const onlyPlaningTasks = data.filter(task => task.expiration_date);
 
@@ -19,7 +18,7 @@ export const Planing = ({ text_three }) => {
 			>
 				<Text textShadow='2px 2px #000000' m='6'>
 					<Heading as='h2' size='xl'>
-						{text_three}
+						{textThree}
 					</Heading>
 				</Text>
 				<TasksList data={onlyPlaningTasks} />
@@ -32,5 +31,5 @@ export const Planing = ({ text_three }) => {
 };
 
 Planing.propTypes = {
-	text_three: PropTypes.string.isRequired,
+	textThree: PropTypes.string.isRequired,
 };

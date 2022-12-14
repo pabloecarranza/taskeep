@@ -21,7 +21,7 @@ export const useLoginUser = () => {
 
 	const [SignIn, SignInResponse] = useSignInMutation();
 	const [SignUp, SignUpResponse] = useSignUpMutation();
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 	const handleClick = () => setShow(!show);
 	const handleClickType = () => {
 		setSignUp(!signUp);
@@ -82,8 +82,6 @@ export const useLoginUser = () => {
 				duration: 1500,
 				isClosable: true,
 			});
-
-			return;
 		} else if (!signUp) {
 			SignIn(credentials)
 				.unwrap()

@@ -1,11 +1,10 @@
-import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { TasksList } from '../TaskList/TasksList';
 import PropTypes from 'prop-types';
 
-export const Important = ({ text_four }) => {
+export const Important = ({ textFour }) => {
 	const { data = [] } = useGetTasksQuery();
 
 	const onlyImportantTasks = data.filter(task => task.important === true);
@@ -20,7 +19,7 @@ export const Important = ({ text_four }) => {
 			>
 				<Text textShadow='2px 2px #000000' m='6'>
 					<Heading as='h2' size='xl'>
-						{text_four}
+						{textFour}
 					</Heading>
 				</Text>
 				<TasksList data={onlyImportantTasks} />
@@ -33,5 +32,5 @@ export const Important = ({ text_four }) => {
 };
 
 Important.propTypes = {
-	text_four: PropTypes.string.isRequired,
+	textFour: PropTypes.string.isRequired,
 };

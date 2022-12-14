@@ -28,7 +28,7 @@ export const Sidebar = () => {
 	} = useDisclosure();
 
 	const [isloaded, setIsloaded] = React.useState(false);
-	const { data = [], error, isLoading, refetch } = useGetListsQuery();
+	const { data = [] } = useGetListsQuery();
 	const navigate = useNavigate();
 	const currentUser = useSelector(state => state.session);
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
@@ -60,7 +60,7 @@ export const Sidebar = () => {
 			/>
 
 			<LoggedUser
-				userdata={userData ? userData : currentUser}
+				userdata={userData.length ? userData : currentUser}
 				isloaded={isloaded}
 			/>
 			<FiltersLists

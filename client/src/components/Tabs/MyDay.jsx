@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heading, Text, Center, Spinner } from '@chakra-ui/react';
 import { fecha } from './../../utils/date';
 import { AddTask } from '../AddTask/AddTask';
@@ -7,7 +6,7 @@ import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { AddTaskDates } from './../../utils/EnglishTexts';
 import PropTypes from 'prop-types';
 
-export const MyDay = ({ text_two }) => {
+export const MyDay = ({ textTwo }) => {
 	const { data = [], isLoading } = useGetTasksQuery();
 
 	return (
@@ -29,7 +28,7 @@ export const MyDay = ({ text_two }) => {
 					<Center justifyContent='space-between' w='96%'>
 						<Center flexDir='column' alignItems='flex-start' pt='7px'>
 							<Heading as='h2' size='xl'>
-								{text_two}
+								{textTwo}
 							</Heading>
 							<Text as='h4' size='md' textShadow='2px 2px #000000' w='100%'>
 								{fecha()}
@@ -49,5 +48,5 @@ export const MyDay = ({ text_two }) => {
 };
 
 MyDay.propTypes = {
-	text_two: PropTypes.string.isRequired,
+	textTwo: PropTypes.string.isRequired,
 };

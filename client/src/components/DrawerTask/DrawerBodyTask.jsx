@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	DrawerBody,
 	Button,
@@ -21,18 +20,18 @@ export const DrawerBodyTask = ({
 	capitalizeFirstLetter,
 	task,
 	data,
-	text_one,
-	text_two,
-	text_three,
-	text_four,
-	text_five,
-	text_six,
+	textOne,
+	textTwo,
+	textThree,
+	textFour,
+	textFive,
+	textSix,
 }) => {
 	return (
 		<DrawerBody>
 			<Stack spacing='24px'>
 				<Box>
-					<FormLabel htmlFor='desc'>{text_one}</FormLabel>
+					<FormLabel htmlFor='desc'>{textOne}</FormLabel>
 					<Textarea
 						id='desc'
 						value={task.description}
@@ -47,14 +46,14 @@ export const DrawerBodyTask = ({
 						key={task.id}
 						onChange={e => handleOnChange('important', e)}
 					>
-						{text_two}
+						{textTwo}
 					</Checkbox>
 					<Checkbox
 						isChecked={task.completed}
 						key={task.id + 'a'}
 						onChange={e => handleOnChange('completed', e)}
 					>
-						{text_three}
+						{textThree}
 					</Checkbox>
 				</Box>
 
@@ -70,7 +69,7 @@ export const DrawerBodyTask = ({
 							_hover={{ bg: '#44444442', color: '#0084ff' }}
 							_expanded={{ bg: '#23486b' }}
 						>
-							{text_four}
+							{textFour}
 						</MenuButton>
 						<MenuList variant='gray' borderColor='gray.800' bg='gray.800'>
 							<MenuOptionGroup title='Task lists' type='radio'>
@@ -92,7 +91,7 @@ export const DrawerBodyTask = ({
 					</Menu>
 				</Box>
 				<Box>
-					<label>{text_five}</label>
+					<label>{textFive}</label>
 					<Input
 						w='100%'
 						placeholder='Select Date and Time'
@@ -104,7 +103,7 @@ export const DrawerBodyTask = ({
 				</Box>
 
 				<Box>
-					<FormLabel htmlFor='desc'>{text_six}</FormLabel>
+					<FormLabel htmlFor='desc'>{textSix}</FormLabel>
 					<Textarea
 						id='notes'
 						value={task.notes}
@@ -122,10 +121,10 @@ DrawerBodyTask.propTypes = {
 	capitalizeFirstLetter: PropTypes.func.isRequired,
 	task: PropTypes.object.isRequired,
 	data: PropTypes.array.isRequired,
-	text_one: PropTypes.string.isRequired,
-	text_two: PropTypes.string.isRequired,
-	text_three: PropTypes.string.isRequired,
-	text_four: PropTypes.string.isRequired,
-	text_five: PropTypes.string.isRequired,
-	text_six: PropTypes.string.isRequired,
+	textOne: PropTypes.string.isRequired,
+	textTwo: PropTypes.string.isRequired,
+	textThree: PropTypes.string.isRequired,
+	textFour: PropTypes.string.isRequired,
+	textFive: PropTypes.string.isRequired,
+	textSix: PropTypes.string.isRequired,
 };

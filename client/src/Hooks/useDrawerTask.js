@@ -26,7 +26,7 @@ export const useDrawerTask = onClose => {
 
 	const [DeleteTask] = useDeleteTaskMutation();
 	const [PutTask] = usePutTaskMutation();
-	const { data = [], error, isLoading, refetch } = useGetListsQuery();
+	const { data = [] } = useGetListsQuery();
 
 	function onClosed() {
 		dispatch(clearCurrentTask());

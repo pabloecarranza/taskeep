@@ -1,4 +1,3 @@
-import React from 'react';
 import { Text, Center, Button } from '@chakra-ui/react';
 import {
 	AiOutlineStar,

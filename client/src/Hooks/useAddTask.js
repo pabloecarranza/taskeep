@@ -1,9 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { usePostTaskMutation } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
+import { useDispatch } from 'react-redux';
+import { sessionIn, sessionOut } from '../features/api/sessionSlice';
 
-export const useAddTask = userData => {
+export const useAddTask = () => {
+	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (!userData) {
+			//	<Navigate to='/' replace={true} />;
+			console.log('entre');
+			return dispatch(sessionOut());
+		}
+		dispatch(sessionIn(userData));
+	}, []);
+
 	const toast = useToast();
 	const { data = [], isLoading } = useGetListsQuery();
 
@@ -76,7 +90,6 @@ export const useAddTask = userData => {
 				duration: 1500,
 				isClosable: true,
 			});
-			return;
 		} else {
 			PostTask(task)
 				.unwrap()

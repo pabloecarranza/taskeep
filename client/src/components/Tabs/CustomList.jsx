@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heading, Text, Center } from '@chakra-ui/react';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';

@@ -6,11 +6,11 @@ import { ModalWelcome } from './../../../../src/components/Modals/ModalWelcome';
 describe('Test suite on ModalWelcome component', () => {
 	const ModalWelcomeDates = {
 		greeting: 'Hi',
-		welcome_text_1: 'personal',
-		welcome_text_2: 'functionalities',
+		welcomeTextOne: 'personal',
+		welcomeTextTwo: 'functionalities',
 		name: 'Pablo',
 		alt: 'PabloCarranza',
-		button_text: 'Close',
+		buttonText: 'Close',
 	};
 
 	const isOpen = true;
@@ -27,14 +27,14 @@ describe('Test suite on ModalWelcome component', () => {
 			/>
 		);
 		const text = screen.getByRole('dialog');
-		const button = screen.getByText(ModalWelcomeDates.button_text);
+		const button = screen.getByText(ModalWelcomeDates.buttonText);
 		expect(screen.getByRole('img').alt).toBe(ModalWelcomeDates.alt);
-		expect(button.textContent).toEqual(ModalWelcomeDates.button_text);
+		expect(button.textContent).toEqual(ModalWelcomeDates.buttonText);
 		expect(text).toHaveTextContent(ModalWelcomeDates.name);
 		expect(text).toHaveTextContent(ModalWelcomeDates.greeting);
-		expect(text).toHaveTextContent(ModalWelcomeDates.welcome_text_1);
-		expect(text).toHaveTextContent(ModalWelcomeDates.welcome_text_2);
-		expect(text).toHaveTextContent(ModalWelcomeDates.button_text);
+		expect(text).toHaveTextContent(ModalWelcomeDates.welcomeTextOne);
+		expect(text).toHaveTextContent(ModalWelcomeDates.welcomeTextTwo);
+		expect(text).toHaveTextContent(ModalWelcomeDates.buttonText);
 	});
 	it('should call handleClick onClose Modal', () => {
 		renderWithProviders(
@@ -45,7 +45,7 @@ describe('Test suite on ModalWelcome component', () => {
 				setIsloaded={() => {}}
 			/>
 		);
-		const button = screen.getByText(ModalWelcomeDates.button_text);
+		const button = screen.getByText(ModalWelcomeDates.buttonText);
 		fireEvent.click(button);
 		expect(handleClick).toHaveBeenCalled();
 	});
@@ -59,7 +59,7 @@ describe('Test suite on ModalWelcome component', () => {
 				setIsloaded={() => {}}
 			/>
 		);
-		const button = screen.getByText(ModalWelcomeDates.button_text);
+		const button = screen.getByText(ModalWelcomeDates.buttonText);
 		fireEvent.click(button);
 		expect(handleClick).toHaveBeenCalled();
 	});

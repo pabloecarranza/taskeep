@@ -20,12 +20,12 @@ export const ModalLogout = ({
 	onOpen,
 	title,
 	message,
-	button_one,
-	button_two,
+	buttonOne,
+	buttonTwo,
 }) => {
 	const initialRef = React.useRef(null);
 	const dispatch = useDispatch();
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const logoutConfirm = () => {
 		dispatch(sessionOut());
@@ -50,10 +50,10 @@ export const ModalLogout = ({
 
 					<ModalFooter>
 						<Button variant='ghost' onClick={onClose}>
-							{button_one}
+							{buttonOne}
 						</Button>
 						<Button colorScheme='red' mr={3} onClick={logoutConfirm} ml='4px'>
-							{button_two}
+							{buttonTwo}
 						</Button>
 					</ModalFooter>
 				</ModalContent>
@@ -67,6 +67,7 @@ ModalLogout.propTypes = {
 	onOpen: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 	message: PropTypes.string.isRequired,
-	button_one: PropTypes.string.isRequired,
-	button_two: PropTypes.string.isRequired,
+	buttonOne: PropTypes.string.isRequired,
+	buttonTwo: PropTypes.string.isRequired,
+	isOpen: PropTypes.bool,
 };

@@ -25,12 +25,12 @@ export const sessionSlice = createSlice({
 			state.value -= 1;
 		},
 		sessionIn: (state, action) => {
-			(state.id = action.payload.id),
-				(state.token = action.payload.token),
-				(state.username = action.payload.username),
-				(state.email = action.payload.email),
-				(state.message = action.payload.message),
-				(state.logged = action.payload.logged);
+			state.id = action.payload.id;
+			state.token = action.payload.token;
+			state.username = action.payload.username;
+			state.email = action.payload.email;
+			state.message = action.payload.message;
+			state.logged = action.payload.logged;
 		},
 		sessionOut: state => {
 			state.id = null;

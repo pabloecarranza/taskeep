@@ -1,5 +1,4 @@
 import { Button, SkeletonText } from '@chakra-ui/react';
-import React from 'react';
 import { FiSun, FiStar, FiCalendar, FiCheckCircle } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 import { MdPostAdd } from 'react-icons/md';

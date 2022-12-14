@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Box,
 	Button,
@@ -26,12 +25,12 @@ export const SignInForm = ({
 	title,
 	subtitle,
 	button,
-	title_form,
-	place_holder_one,
-	subtitle_form,
-	place_holder_two,
-	fast_login,
-	button_two,
+	titleForm,
+	placeHolderOne,
+	subtitleForm,
+	placeHolderTwo,
+	fastLogin,
+	buttonTwo,
 }) => {
 	return (
 		<animated.div style={fadeSignIn}>
@@ -57,22 +56,22 @@ export const SignInForm = ({
 			<Center h='21rem' flexDir='column'>
 				<Box w='80%' h='70%'>
 					<FormControl isRequired>
-						<FormLabel>{title_form}</FormLabel>
+						<FormLabel>{titleForm}</FormLabel>
 						<Input
 							name='username'
 							type='username'
 							value={credentials.username}
-							placeholder={place_holder_one}
+							placeholder={placeHolderOne}
 							onChange={handleChange}
 						/>
 					</FormControl>
 					<FormControl isRequired pt='10px'>
-						<FormLabel>{subtitle_form}</FormLabel>
+						<FormLabel>{subtitleForm}</FormLabel>
 						<InputGroup size='md'>
 							<Input
 								name='password'
 								type={show ? 'text' : 'password'}
-								placeholder={place_holder_two}
+								placeholder={placeHolderTwo}
 								value={credentials.password}
 								onChange={handleChange}
 							/>
@@ -97,11 +96,11 @@ export const SignInForm = ({
 						onClick={handleInvited}
 						pb='11px'
 					>
-						{fast_login}
+						{fastLogin}
 					</Button>
 
 					<Button size='lg' colorScheme='blue' onClick={handleSubmit} w='80%'>
-						{button_two}
+						{buttonTwo}
 					</Button>
 				</Center>
 			</Center>
@@ -121,10 +120,10 @@ SignInForm.propTypes = {
 	title: PropTypes.string.isRequired,
 	subtitle: PropTypes.string.isRequired,
 	button: PropTypes.string.isRequired,
-	title_form: PropTypes.string.isRequired,
-	place_holder_one: PropTypes.string.isRequired,
-	subtitle_form: PropTypes.string.isRequired,
-	place_holder_two: PropTypes.string.isRequired,
-	fast_login: PropTypes.string.isRequired,
-	button_two: PropTypes.string.isRequired,
+	titleForm: PropTypes.string.isRequired,
+	placeHolderOne: PropTypes.string.isRequired,
+	subtitleForm: PropTypes.string.isRequired,
+	placeHolderTwo: PropTypes.string.isRequired,
+	fastLogin: PropTypes.string.isRequired,
+	buttonTwo: PropTypes.string.isRequired,
 };

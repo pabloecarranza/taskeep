@@ -19,9 +19,9 @@ export const ModalAddList = ({
 	onClose,
 	title,
 	name,
-	button_one,
-	button_two,
-	place_holder,
+	buttonOne,
+	buttonTwo,
+	placeHolder,
 }) => {
 	const [input, handleChange, handleSubmit, handleClick] =
 		usehandleAdd(onClose);
@@ -44,7 +44,7 @@ export const ModalAddList = ({
 							<FormLabel> {name} </FormLabel>
 							<Input
 								ref={initialRef}
-								placeholder={place_holder}
+								placeholder={placeHolder}
 								value={input.name}
 								onChange={e => handleChange(e.target.value)}
 								onKeyDown={e => handleSubmit(e)}
@@ -54,7 +54,7 @@ export const ModalAddList = ({
 
 					<ModalFooter>
 						<Button variant='ghost' onClick={onClose}>
-							{button_one}
+							{buttonOne}
 						</Button>
 						<Button
 							colorScheme='blue'
@@ -63,7 +63,7 @@ export const ModalAddList = ({
 							onClick={e => handleSubmit(e)}
 							onKeyDown={e => handleSubmit(e)}
 						>
-							{button_two}
+							{buttonTwo}
 						</Button>
 					</ModalFooter>
 				</ModalContent>
@@ -77,7 +77,7 @@ ModalAddList.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	button_one: PropTypes.string.isRequired,
-	button_two: PropTypes.string.isRequired,
-	place_holder: PropTypes.string.isRequired,
+	buttonOne: PropTypes.string.isRequired,
+	buttonTwo: PropTypes.string.isRequired,
+	placeHolder: PropTypes.string.isRequired,
 };

@@ -37,11 +37,11 @@ describe('Name of the group', () => {
 			</Router>
 		);
 		const text = screen.getByRole('dialog');
-		expect(text).toHaveTextContent(ModalConfirmDates.button_one);
-		expect(text).toHaveTextContent(ModalConfirmDates.button_two);
+		expect(text).toHaveTextContent(ModalConfirmDates.buttonOne);
+		expect(text).toHaveTextContent(ModalConfirmDates.buttonTwo);
 		expect(text).toHaveTextContent(ModalConfirmDates.message);
-		expect(text).toHaveTextContent(ModalConfirmDates.title_partOne);
-		expect(text).toHaveTextContent(ModalConfirmDates.title_partTwo);
+		expect(text).toHaveTextContent(ModalConfirmDates.titlePartOne);
+		expect(text).toHaveTextContent(ModalConfirmDates.titlePartTwo);
 		expect(text).toHaveTextContent(List.name);
 	});
 	it('should call deleteList when confirm delete', () => {
@@ -58,7 +58,7 @@ describe('Name of the group', () => {
 			</Router>
 		);
 
-		const buttonDelete = screen.getByText(ModalConfirmDates.button_two);
+		const buttonDelete = screen.getByText(ModalConfirmDates.buttonTwo);
 
 		fireEvent.click(buttonDelete);
 		expect(deleteList).toHaveBeenCalled();

@@ -22,7 +22,7 @@ exports[`Test suite on WelcomePage component > must match with the snapshot 1`] 
         </div>
         <p
           class="chakra-text css-1e0y8hh"
-          data-testid="app_name"
+          data-testid="appName"
         >
           TASKEEP
         </p>

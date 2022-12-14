@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	Box,
 	Button,
@@ -26,13 +25,13 @@ export const SignUpForm = ({
 	title,
 	subtitle,
 	button,
-	title_form,
-	place_holder_one,
-	subtitle_form,
-	place_holder_two,
-	title_form_two,
-	place_holder_three,
-	button_two,
+	titleForm,
+	placeHolderOne,
+	subtitleForm,
+	placeHolderTwo,
+	titleFormTwo,
+	placeHolderThree,
+	buttonTwo,
 }) => {
 	return (
 		<animated.div style={fadeSignUp}>
@@ -58,32 +57,32 @@ export const SignUpForm = ({
 			<Center flexDir='column' h='21rem'>
 				<Flex flexDir='column' w='80%'>
 					<FormControl isRequired pt='5px'>
-						<FormLabel>{title_form}</FormLabel>
+						<FormLabel>{titleForm}</FormLabel>
 						<Input
 							name='username'
 							type='username'
 							value={credentials.username}
-							placeholder={place_holder_one}
+							placeholder={placeHolderOne}
 							onChange={handleChange}
 						/>
 					</FormControl>
 					<FormControl isRequired pt='5px'>
-						<FormLabel>{subtitle_form}</FormLabel>
+						<FormLabel>{subtitleForm}</FormLabel>
 						<Input
 							name='email'
 							type='email'
 							value={credentials.email}
-							placeholder={place_holder_two}
+							placeholder={placeHolderTwo}
 							onChange={handleChange}
 						/>
 					</FormControl>
 					<FormControl isRequired pt='5px'>
-						<FormLabel>{title_form_two}</FormLabel>
+						<FormLabel>{titleFormTwo}</FormLabel>
 						<InputGroup size='md'>
 							<Input
 								name='password'
 								type={show ? 'text' : 'password'}
-								placeholder={place_holder_three}
+								placeholder={placeHolderThree}
 								value={credentials.password}
 								onChange={handleChange}
 							/>
@@ -103,7 +102,7 @@ export const SignUpForm = ({
 				</Flex>
 				<Center flexDir='column' h='70%' w='100%'>
 					<Button size='lg' colorScheme='blue' onClick={handleSubmit} w='80%'>
-						{button_two}
+						{buttonTwo}
 					</Button>
 				</Center>
 			</Center>
@@ -122,9 +121,11 @@ SignUpForm.propTypes = {
 	title: PropTypes.string.isRequired,
 	subtitle: PropTypes.string.isRequired,
 	button: PropTypes.string.isRequired,
-	title_form: PropTypes.string.isRequired,
-	place_holder_one: PropTypes.string.isRequired,
-	subtitle_form: PropTypes.string.isRequired,
-	place_holder_two: PropTypes.string.isRequired,
-	button_two: PropTypes.string.isRequired,
+	titleForm: PropTypes.string.isRequired,
+	placeHolderOne: PropTypes.string.isRequired,
+	subtitleForm: PropTypes.string.isRequired,
+	placeHolderTwo: PropTypes.string.isRequired,
+	buttonTwo: PropTypes.string.isRequired,
+	titleFormTwo: PropTypes.string,
+	placeHolderThree: PropTypes.string,
 };

@@ -14,7 +14,7 @@ export function fecha() {
 		'December',
 	];
 
-	const dias_semana = [
+	const diasSemana = [
 		'Sunday',
 		'Monday',
 		'Tuesday',
@@ -26,8 +26,8 @@ export function fecha() {
 
 	const fecha = new Date();
 
-	let date =
-		dias_semana[fecha.getDay()] +
+	const date =
+		diasSemana[fecha.getDay()] +
 		', ' +
 		fecha.getDate() +
 		' de ' +
@@ -39,7 +39,7 @@ export function fecha() {
 }
 
 export function validate(input) {
-	let errors = {};
+	const errors = {};
 	const regexName = /^([a-zA-Z ]+)$/i;
 	input.name
 		? (errors.name = '')
@@ -52,7 +52,7 @@ export function validate(input) {
 }
 
 export function diaDeSemana() {
-	const dias_semana = [
+	const diasSemana = [
 		'Sunday',
 		'Monday',
 		'Tuesday',
@@ -64,7 +64,7 @@ export function diaDeSemana() {
 
 	const fecha = new Date();
 
-	let date = dias_semana[fecha.getDay()];
+	const date = diasSemana[fecha.getDay()];
 
 	return date;
 }
@@ -87,6 +87,6 @@ export function MesyDia() {
 
 	const fecha = new Date();
 
-	let date = fecha.getDate() + ' de ' + meses[fecha.getMonth()];
+	const date = fecha.getDate() + ' de ' + meses[fecha.getMonth()];
 	return date;
 }

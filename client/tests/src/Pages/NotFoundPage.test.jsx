@@ -5,9 +5,9 @@ import { NotFoundPage } from './../../../src/Pages/NotFoundPage';
 
 describe('Test suite on NotFoundPage component', () => {
 	const NotFoundPageDates = {
-		error_text: "We're",
-		message_redirect: 'Our team',
-		page_redirect: 'Page',
+		errorText: "We're",
+		messageRedirect: 'Our team',
+		pageRedirect: 'Page',
 		test: true,
 	};
 
@@ -17,7 +17,7 @@ describe('Test suite on NotFoundPage component', () => {
 				<NotFoundPage {...NotFoundPageDates} />
 			</Router>
 		);
-		expect(getByText(NotFoundPageDates.error_text)).toBeTruthy();
+		expect(getByText(NotFoundPageDates.errorText)).toBeTruthy();
 	});
 
 	it('must show the redirect message send by props', () => {
@@ -26,7 +26,7 @@ describe('Test suite on NotFoundPage component', () => {
 				<NotFoundPage {...NotFoundPageDates} />
 			</Router>
 		);
-		expect(getByText(NotFoundPageDates.message_redirect));
+		expect(getByText(NotFoundPageDates.messageRedirect));
 	});
 
 	it('must show the name of page to redirect  send by props', () => {
@@ -35,7 +35,7 @@ describe('Test suite on NotFoundPage component', () => {
 				<NotFoundPage {...NotFoundPageDates} />
 			</Router>
 		);
-		expect(getByText(NotFoundPageDates.page_redirect));
+		expect(getByText(NotFoundPageDates.pageRedirect));
 	});
 
 	it('must match vith the snapshot', () => {
@@ -54,7 +54,7 @@ describe('Test suite on NotFoundPage component', () => {
 			</Router>
 		);
 
-		const button = screen.getByText(NotFoundPageDates.page_redirect);
-		expect(button.textContent).toEqual(NotFoundPageDates.page_redirect);
+		const button = screen.getByText(NotFoundPageDates.pageRedirect);
+		expect(button.textContent).toEqual(NotFoundPageDates.pageRedirect);
 	});
 });

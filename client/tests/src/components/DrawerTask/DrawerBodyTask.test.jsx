@@ -65,9 +65,9 @@ describe('test suite on DrawerBodyTask', () => {
 		fireEvent.change(description, { target: { value: '12' } });
 		expect(handleOnChange).toHaveBeenCalled();
 
-		const important = screen.getByText(DrawerBodyTaskDates.text_two);
-		const completed = screen.getByText(DrawerBodyTaskDates.text_three);
-		const changeList = screen.getByText(DrawerBodyTaskDates.text_four);
+		const important = screen.getByText(DrawerBodyTaskDates.textTwo);
+		const completed = screen.getByText(DrawerBodyTaskDates.textThree);
+		const changeList = screen.getByText(DrawerBodyTaskDates.textFour);
 		const taskList = screen.getByTestId(data[0].name);
 	});
 
@@ -96,8 +96,8 @@ describe('test suite on DrawerBodyTask', () => {
 			</Drawer>
 		);
 
-		const important = getByText(DrawerBodyTaskDates.text_two);
-		expect(important.textContent).toEqual(DrawerBodyTaskDates.text_two);
+		const important = getByText(DrawerBodyTaskDates.textTwo);
+		expect(important.textContent).toEqual(DrawerBodyTaskDates.textTwo);
 
 		fireEvent.click(important);
 		expect(handleOnChange).toHaveBeenCalledTimes(2);
@@ -128,7 +128,7 @@ describe('test suite on DrawerBodyTask', () => {
 			</Drawer>
 		);
 
-		const completed = screen.getByText(DrawerBodyTaskDates.text_three);
+		const completed = screen.getByText(DrawerBodyTaskDates.textThree);
 
 		fireEvent.click(completed);
 		expect(handleOnChange).toHaveBeenCalled();

@@ -5,7 +5,7 @@ import { usePostListMutation } from '../features/api/listSlice';
 const usehandleAdd = onClose => {
 	const [input, setInput] = useState({ name: '' });
 	const toast = useToast();
-	const [PostList, PostListResponse] = usePostListMutation();
+	const [PostList] = usePostListMutation();
 	const handleChange = value => {
 		setInput({ name: value });
 	};
@@ -24,7 +24,6 @@ const usehandleAdd = onClose => {
 					duration: 1500,
 					isClosable: true,
 				});
-				return;
 			} else {
 				PostList(input)
 					.unwrap()

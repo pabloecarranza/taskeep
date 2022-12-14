@@ -1,4 +1,3 @@
-import React from 'react';
 import { Center, Button } from '@chakra-ui/react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { DrawerTask } from '../DrawerTask/DrawerTask';

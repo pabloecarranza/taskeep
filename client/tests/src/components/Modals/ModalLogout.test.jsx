@@ -23,8 +23,8 @@ describe('test suite on modal logout', () => {
 		const text = screen.getByRole('dialog');
 		expect(text).toHaveTextContent(ModalLogoutDates.title);
 		expect(text).toHaveTextContent(ModalLogoutDates.message);
-		expect(text).toHaveTextContent(ModalLogoutDates.button_one);
-		expect(text).toHaveTextContent(ModalLogoutDates.button_two);
+		expect(text).toHaveTextContent(ModalLogoutDates.buttonOne);
+		expect(text).toHaveTextContent(ModalLogoutDates.buttonTwo);
 	});
 	it('should call onClose when click on cancel', () => {
 		renderWithProviders(
@@ -38,7 +38,7 @@ describe('test suite on modal logout', () => {
 			</Router>
 		);
 
-		const cancelButton = screen.getByText(ModalLogoutDates.button_one);
+		const cancelButton = screen.getByText(ModalLogoutDates.buttonOne);
 		fireEvent.click(cancelButton);
 		expect(onClose).toHaveBeenCalled();
 	});
@@ -54,7 +54,7 @@ describe('test suite on modal logout', () => {
 			</Router>
 		);
 
-		const logoutButton = screen.getByText(ModalLogoutDates.button_two);
+		const logoutButton = screen.getByText(ModalLogoutDates.buttonTwo);
 		fireEvent.click(logoutButton);
 		expect(onClose).toHaveBeenCalled();
 	});
