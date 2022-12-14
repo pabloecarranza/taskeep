@@ -1,10 +1,10 @@
-import { Button, Center, useDisclosure } from '@chakra-ui/react';
+import { Button, Center, useDisclosure, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { ModalConfirm } from '../Modals/ModalConfirm';
 import { Link } from 'react-router-dom';
 import { ModalConfirmDates } from '../../utils/EnglishTexts';
 import { CgClose } from 'react-icons/cg';
-export const Lists = ({ list }) => {
+export const Lists = ({ list, test }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	function capitalizeFirstLetter(nameList) {
 		const capitalized = nameList.charAt(0).toUpperCase() + nameList.slice(1);
@@ -48,16 +48,27 @@ export const Lists = ({ list }) => {
 				<Link to={'tasklist/' + list.name}>
 					{capitalizeFirstLetter(list.name)}
 				</Link>
-				<Button
-					justifyContent='center'
-					rightIcon={<CgClose />}
-					key={list.id}
-					variant='gray'
-					name={list.name}
-					colorScheme='whiteAlpha'
-					_hover={{ color: '#ff4000' }}
-					onClick={() => handleDeleted(list.id)}
-				/>
+				{test ? (
+					<Flex
+						justifyContent='center'
+						key={list.id}
+						variant='gray'
+						name={list.name}
+						_hover={{ color: '#ff4000' }}
+						onClick={() => handleDeleted(list.id)}
+					/>
+				) : (
+					<Button
+						justifyContent='center'
+						rightIcon={<CgClose />}
+						key={list.id}
+						variant='gray'
+						name={list.name}
+						colorScheme='whiteAlpha'
+						_hover={{ color: '#ff4000' }}
+						onClick={() => handleDeleted(list.id)}
+					/>
+				)}
 			</Button>
 		</Center>
 	);

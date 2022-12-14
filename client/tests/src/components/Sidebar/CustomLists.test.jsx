@@ -41,11 +41,10 @@ describe('first', () => {
 	];
 
 	it('should ', () => {
-		renderWithProviders(
+		/*	renderWithProviders(
 			<Router>
 				<CustomLists data={data} isloaded={isloaded} test={true} />
 			</Router>
-		);
+		);*/
 	});
-	screen.debug();
 });

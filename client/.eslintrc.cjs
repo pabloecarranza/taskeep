@@ -3,11 +3,13 @@ module.exports = {
 		browser: true,
 		commonjs: true,
 		es2021: true,
+		node: true,
 	},
 	extends: [
 		'plugin:react/recommended',
 		'plugin:react/jsx-runtime',
 		'standard',
+		'eslint:recommended',
 		'eslint-config-prettier',
 	],
 	overrides: [],
@@ -16,5 +18,12 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['react'],
-	rules: {},
+	rules: {
+		'no-console': 'warn',
+	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
+	},
 };
