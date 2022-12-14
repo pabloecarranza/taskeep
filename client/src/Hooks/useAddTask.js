@@ -4,18 +4,27 @@ import { usePostTaskMutation } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { useDispatch } from 'react-redux';
 import { sessionIn, sessionOut } from '../features/api/sessionSlice';
+import { useNavigate } from 'react-router-dom';
 
 export const useAddTask = () => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
 	const dispatch = useDispatch();
-
-	useEffect(() => {
+	const navigate = useNavigate();
+	const userCheck = () => {
 		if (!userData) {
-			//	<Navigate to='/' replace={true} />;
-			console.log('entre');
-			return dispatch(sessionOut());
+			dispatch(sessionOut());
+			navigate('/');
+			return;
 		}
 		dispatch(sessionIn(userData));
+		setTask({
+			...task,
+			userid: userData.id,
+		});
+	};
+
+	useEffect(() => {
+		userCheck();
 	}, []);
 
 	const toast = useToast();
@@ -32,7 +41,7 @@ export const useAddTask = () => {
 		repeat: 'YYYY-MM-DD',
 		notes: '',
 		listid: null,
-		userid: userData.id,
+		userid: null,
 	});
 
 	function capitalizeFirstLetter(str) {
@@ -42,6 +51,11 @@ export const useAddTask = () => {
 	}
 
 	const handleOnChange = (type, event) => {
+		if (task.id === null) {
+			dispatch(sessionOut());
+			navigate('/');
+			return;
+		}
 		if (type === 'expiration_date') {
 			setTask({
 				...task,
@@ -71,6 +85,11 @@ export const useAddTask = () => {
 	};
 
 	const handleSubmit = async () => {
+		if (task.id === null) {
+			dispatch(sessionOut());
+			navigate('/');
+			return;
+		}
 		if (task.description.length === 0) {
 			setTask({
 				completed: false,

@@ -12,7 +12,8 @@ import {
 import { LoggedUser } from './LoggedUser';
 import { FiltersLists } from './FiltersLists';
 import { CustomLists } from './CustomLists';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { sessionIn, sessionOut } from '../../features/api/sessionSlice';
 
 export const Sidebar = () => {
 	const {
@@ -30,8 +31,21 @@ export const Sidebar = () => {
 	const [isloaded, setIsloaded] = React.useState(false);
 	const { data = [] } = useGetListsQuery();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const currentUser = useSelector(state => state.session);
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	const userCheck = () => {
+		if (!userData) {
+			dispatch(sessionOut());
+			navigate('/');
+			return;
+		}
+		dispatch(sessionIn(userData));
+	};
+
+	useEffect(() => {
+		userCheck();
+	}, []);
 	useEffect(() => {
 		onOpenWelcomeModal();
 
@@ -60,7 +74,7 @@ export const Sidebar = () => {
 			/>
 
 			<LoggedUser
-				userdata={userData.length ? userData : currentUser}
+				userdata={userData?.length ? userData : currentUser}
 				isloaded={isloaded}
 			/>
 			<FiltersLists
