@@ -52,7 +52,7 @@ export const MainArea = () => {
 				<Route path='planing' element={<Planing {...TabsDates} />}></Route>
 				<Route path='completed' element={<Completed {...TabsDates} />}></Route>
 				<Route path='tasklist/:listId' element={<CustomList />}></Route>
-				<Route path='*' element={<NotFoundPage {...NotFoundPageDates} />} />
+				<Route path='/*' element={<NotFoundPage {...NotFoundPageDates} />} />
 			</Routes>
 		</Box>
 	);
