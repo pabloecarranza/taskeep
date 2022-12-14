@@ -12,7 +12,7 @@ export const App = () => {
 			<Routes>
 				<Route
 					exact
-					path='/'
+					path='/login'
 					element={<WelcomePage {...WelcomePagesDates} />}
 				/>
 
@@ -25,7 +25,7 @@ export const App = () => {
 					}
 				/>
 
-				<Route path='*' element={<NotFoundPage {...NotFoundPageDates} />} />
+				<Route path='/*' element={<NotFoundPage {...NotFoundPageDates} />} />
 			</Routes>
 		</BrowserRouter>
 	);
