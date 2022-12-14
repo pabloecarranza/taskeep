@@ -12,7 +12,7 @@ export const HomePage = () => {
 	const userCheck = () => {
 		if (!userData) {
 			dispatch(sessionOut());
-			navigate('/login');
+			navigate('/');
 			return;
 		}
 		dispatch(sessionIn(userData));

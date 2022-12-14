@@ -12,7 +12,7 @@ export const App = () => {
 			<Routes>
 				<Route
 					exact
-					path='/login'
+					path='/'
 					element={<WelcomePage {...WelcomePagesDates} />}
 				/>
 
