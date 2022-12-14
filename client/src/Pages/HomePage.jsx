@@ -8,10 +8,13 @@ import { sessionIn, sessionOut } from '../features/api/sessionSlice';
 export const HomePage = () => {
 	const userData = JSON.parse(localStorage.getItem('identified-user'));
 	const dispatch = useDispatch();
-
-	useEffect(() => {
+	const userCheck = () => {
 		if (!userData) return dispatch(sessionOut());
 		dispatch(sessionIn(userData));
+	};
+
+	useEffect(() => {
+		userCheck();
 	}, []);
 
 	return (

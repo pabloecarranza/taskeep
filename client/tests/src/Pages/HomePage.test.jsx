@@ -9,6 +9,7 @@ describe('Test suite on HomePage component', () => {
 		return {
 			__esModule: true,
 			default: () => {
+				// eslint-disable-next-line react/jsx-no-undef
 				return <Sidebar />;
 			},
 			Sidebar: () => {
@@ -21,6 +22,7 @@ describe('Test suite on HomePage component', () => {
 		return {
 			__esModule: true,
 			default: () => {
+				// eslint-disable-next-line react/jsx-no-undef
 				return <MainArea />;
 			},
 			MainArea: () => {
