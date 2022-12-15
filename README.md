@@ -1,23 +1,11 @@
 # TASKEEP App
 
-Welcome to my personal app for task management. 
-The main functionalities are to create tasks and group them by lists setting the priority, state completed or not, expiration date and add extra notes 
-in each one, I hope you enjoy it.!
+BASE DE DATOS: es una base de datos relacional creada en PostgreSQL con llaves foraneas (tablas intermedias) para almacenar todos los datos necesarios
 
-Techincal details:
-This is a Full Stack project, i build the database. the logic in Backend and the view Frontend.
+BACKEND: El backend lo hago en NodeJS con ExpressJS y Sequelize como ORM para el manejo de la base de datos y JWT para el inicio de sesion
 
-DATABASE:
-The database is a relational DB created in PostgreSQL 
+FRONTEND: inicializado con Vite para un mejor rendimiento eligiendo React como un marco principal y la interfaz de usuario de chakraUI como biblioteca de CSS. Para obtener datos del backend, elijo RTK Query para administrar datos en caché. Redux Toolkit para el estado global de la información.
 
-BACKEND
-The backend i make it on NodeJS with ExpressJS and Sequelize like ORM for the database and JWT to login
+TESTING: eh agregado de manera exitosa Test Unitarios con Vitest y React Testing library para todos los componentes como asi tambien a los customHooks, reducers y todas los consumos de API y flujos de Redux llegando a mas del 90% del coverage en testing
 
-
-FRONTEND
-initialized with Vite for better performance choosing React like a principal framework and chakra UI like a CSS library. for the fetch data from backend i choose RTK Query for administrate  data in cache. Redux toolkit for global state of information 
-
-* i work on it with ESLint and Prettier for catch error and orden correct code
-
-DEPLOY:
-The database is on AWS on RDS service, the backend is ready on Heroku and the frontend is on Vercel
+DESPLIGUE: la base de datos está en AWS en el servicio RDS, el backend disponible en Railway y el frontend está en Vercel
