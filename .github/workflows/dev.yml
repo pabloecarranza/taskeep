@@ -1,4 +1,4 @@
-name: say hello
+name: Development
 
 
 on:
@@ -9,6 +9,14 @@ jobs:
   hello_world:
     runs-on: ubuntu-18.04
     steps:
-      - name: Echo the message
-        run: |
-         echo "Hola Pablo"
+    - uses: actions/checkout@v3
+      with:
+       fetch-depth: 0
+    - uses: actions/setup-node@v3
+      with:
+       node-version: 16
+    - name: Install dependencies
+      run: npm install
+    - name: ESlint
+      run: npm run eslint
+
