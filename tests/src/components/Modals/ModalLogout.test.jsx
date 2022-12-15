@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
 import { ModalLogoutDates } from '../../../../src/utils/EnglishTexts';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';

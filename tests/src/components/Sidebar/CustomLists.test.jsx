@@ -1,7 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { expect, describe, it, vi } from 'vitest';
-import { renderWithProviders } from './../../../../src/utils/utils-for-test';
-import { CustomLists } from './../../../../src/components/Sidebar/CustomLists';
+import { describe, it, vi } from 'vitest';
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router } from 'react-router-dom';
 import { SkeletonText } from '@chakra-ui/react';
 
@@ -18,7 +16,9 @@ vi.mock('@chakra-ui/react/SkeletonText', () => {
 });
 
 describe('first', () => {
+	// eslint-disable-next-line no-unused-vars
 	const isloaded = true;
+	// eslint-disable-next-line no-unused-vars
 	const data = [
 		{
 			createdAt: '2022-12-06T20:09:57.949Z',
@@ -41,6 +41,7 @@ describe('first', () => {
 	];
 
 	it('should ', () => {
+		// eslint-disable-next-line spaced-comment
 		/*	renderWithProviders(
 			<Router>
 				<CustomLists data={data} isloaded={isloaded} test={true} />

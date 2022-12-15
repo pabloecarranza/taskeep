@@ -2,12 +2,14 @@ import { screen, fireEvent } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
 import { DrawerTask } from './../../../../src/components/DrawerTask/DrawerTask';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
+// eslint-disable-next-line no-unused-vars
 import { useDrawerTask } from './../../../../src/Hooks/useDrawerTask';
 
 vi.mock('../../../../src/components/DrawerTask/DrawerBodyTask', () => {
 	return {
 		__esModule: true,
 		default: () => {
+			// eslint-disable-next-line react/jsx-no-undef
 			return <DrawerBodyTask />;
 		},
 		DrawerBodyTask: () => {
@@ -28,6 +30,7 @@ describe('Test suite on DrawerTask component', () => {
 	const onClosed = vi.fn();
 
 	it('debe mostrar el numero de la tarea a editar', () => {
+		// eslint-disable-next-line no-import-assign
 		useDrawerTask = vi.fn().mockReturnValue({
 			data: [],
 			onClosed,

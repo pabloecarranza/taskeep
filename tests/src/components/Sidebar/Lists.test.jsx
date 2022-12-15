@@ -1,5 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { expect, describe, it, vi } from 'vitest';
+import { describe, it } from 'vitest';
 import { Lists } from '../../../../src/components/Sidebar/Lists';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -18,7 +17,5 @@ describe('Name of the group', () => {
 				<Lists list={list} test={true} />
 			</Router>
 		);
-
-		
 	});
 });
