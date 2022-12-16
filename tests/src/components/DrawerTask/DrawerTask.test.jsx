@@ -34,7 +34,7 @@ describe('Test suite on DrawerTask component', () => {
 		useDrawerTask = vi.fn().mockReturnValue({
 			data: [],
 			onClosed,
-			task: task,
+			task,
 			setTask: vi.fn(),
 			handleOnChange: vi.fn(),
 			deleteTaskSubmit,

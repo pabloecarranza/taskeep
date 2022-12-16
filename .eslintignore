@@ -1,3 +1,4 @@
 src/assets/*.jpg
 src/assets/*.png
 src/app.css
+dist/
