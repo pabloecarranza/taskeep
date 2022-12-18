@@ -1,4 +1,4 @@
-import { screen, fireEvent, render, within } from '@testing-library/react';
+import { screen, fireEvent, render } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
 import { OptionsMenu } from '../../../../src/components/AddTask/OptionsMenu';
 describe('suite test on OptionsMenu component', () => {

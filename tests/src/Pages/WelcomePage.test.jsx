@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { vi, expect, describe, it } from 'vitest';
 
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -61,7 +61,7 @@ describe('Test suite on WelcomePage component', () => {
 	});
 
 	it('must show the typewriter send by props', () => {
-		const { getByText, getByTestId } = renderWithProviders(
+		const { getByTestId } = renderWithProviders(
 			<Router>
 				<WelcomePage {...WelcomePagesDates} />
 			</Router>

@@ -3,17 +3,18 @@ import { expect, describe, it, vi } from 'vitest';
 import { AddTask } from '../../../../src/components/AddTask/AddTask';
 import { AddTaskDates } from './../../../../src/utils/EnglishTexts';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
+// eslint-disable-next-line no-unused-vars
 import { useAddTask } from './../../../../src/Hooks/useAddTask';
 
 vi.mock('../../../../src/Hooks/useAddTask');
 
 describe('Test suite on AddTask component', () => {
-	//en esta prueba logre mockear un customHook
 	const capitalizeFirstLetter = vi.fn();
 	const handleOnChange = vi.fn();
 	const handleSubmit = vi.fn();
 
 	it('debe mostrar el texto del boton y el texto del placeholder del input enviado por props ', () => {
+		// eslint-disable-next-line no-import-assign
 		useAddTask = vi.fn().mockReturnValue({
 			PostTaskResponse: {},
 			capitalizeFirstLetter,
@@ -33,6 +34,7 @@ describe('Test suite on AddTask component', () => {
 	});
 
 	it('debe mostrar el spinner cuando se esta cargando la respuesta del posteo de la tarea ', () => {
+		// eslint-disable-next-line no-import-assign
 		useAddTask = vi.fn().mockReturnValue({
 			PostTaskResponse: {
 				isLoading: true,
@@ -51,6 +53,7 @@ describe('Test suite on AddTask component', () => {
 	});
 
 	it('debe mostrar el icono de la tarea cuando no se esta cargando la respuesta de un posteo de tarea', () => {
+		// eslint-disable-next-line no-import-assign
 		useAddTask = vi.fn().mockReturnValue({
 			PostTaskResponse: {
 				isLoading: false,

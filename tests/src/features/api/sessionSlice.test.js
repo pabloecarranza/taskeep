@@ -1,4 +1,3 @@
-import { render, screen } from '@testing-library/react';
 import { expect, describe, it } from 'vitest';
 import {
 	clearCurrentTask,
@@ -62,7 +61,7 @@ describe('Test suite on SessionSlice Reducer', () => {
 	});
 
 	it('should set the selected task', () => {
-		let currentTaskSelected = sessionSlice.reducer(
+		const currentTaskSelected = sessionSlice.reducer(
 			initialState,
 			currentTask(selectedTask)
 		);

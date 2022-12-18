@@ -1,5 +1,5 @@
-import { render, renderHook, screen } from '@testing-library/react';
-import { vi, expect, describe, it, test } from 'vitest';
+/* eslint-disable spaced-comment */
+import { describe, it } from 'vitest';
 //import useDeleteList from './../../src/Hooks/useDeleteList';
 
 describe('Name of the group', () => {

@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import { vi, expect, describe, it, test } from 'vitest';
+import { vi, expect, describe, it } from 'vitest';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { HomePage } from './../../../src/Pages/HomePage';
 import { renderWithProviders } from './../../../src/utils/utils-for-test';

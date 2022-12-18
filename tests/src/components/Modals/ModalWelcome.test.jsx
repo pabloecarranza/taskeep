@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { expect, describe, it } from 'vitest';
+import { screen, fireEvent } from '@testing-library/react';
+import { expect, describe, it, vi } from 'vitest';
 import { renderWithProviders } from '../../../../src/utils/utils-for-test';
 import { ModalWelcome } from './../../../../src/components/Modals/ModalWelcome';
 
