@@ -12,6 +12,9 @@ import {
 import PropTypes from 'prop-types';
 
 export const LoggedUser = ({ userdata, isloaded }) => {
+	const a = 's';
+	console.log(a);
+
 	return (
 		<Button w='100%' variant='white' _hover={{ color: '#0084ff' }} mb='13px'>
 			<Flex w='100%' alignItems='center' pb='15px'>
