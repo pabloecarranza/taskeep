@@ -10,6 +10,8 @@ on:
 jobs:
   development:
     runs-on: ubuntu-20.04
+    permissions:
+      actions: write
     steps:
     - uses: styfle/cancel-workflow-action
       name: Cancel Previous Runs
