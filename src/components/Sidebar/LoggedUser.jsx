@@ -12,8 +12,8 @@ import {
 import PropTypes from 'prop-types';
 
 export const LoggedUser = ({ userdata, isloaded }) => {
-	const c = 'c';
-	console.log(c);
+	const b = 'b';
+	console.log(b);
 
 	return (
 		<Button w='100%' variant='white' mb='13px' cursor='default'>
