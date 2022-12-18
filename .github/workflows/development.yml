@@ -10,11 +10,7 @@ on:
 jobs:
   development:
     runs-on: ubuntu-20.04
-    permissions:
-      actions: write
     steps:
-    - name: Cancel Previous Runs
-      uses: styfle/cancel-workflow-action
     - uses: actions/checkout@v3
       with:
        fetch-depth: 0
