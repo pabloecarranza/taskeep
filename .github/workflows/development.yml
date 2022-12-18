@@ -2,10 +2,15 @@ name: development
 
 on:
  push:
-   branches: [development]
+   branches: 
+   - development
  pull_request:
-   branches: [development]
-   types: [opened, synchronize]
+   branches: 
+   - development
+   types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   development:
