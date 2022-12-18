@@ -13,10 +13,8 @@ jobs:
     permissions:
       actions: write
     steps:
-    - uses: styfle/cancel-workflow-action
-      name: Cancel Previous Runs
-      with:
-        access_token: ${{ github.token }}
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action
     - uses: actions/checkout@v3
       with:
        fetch-depth: 0
