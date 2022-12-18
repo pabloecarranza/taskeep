@@ -16,7 +16,7 @@ export const LoggedUser = ({ userdata, isloaded }) => {
 	console.log(a);
 
 	return (
-		<Button w='100%' variant='white' _hover={{ color: '#0084ff' }} mb='13px'>
+		<Button w='100%' variant='white' mb='13px' cursor='default'>
 			<Flex w='100%' alignItems='center' pb='15px'>
 				<Box w='40%'>
 					<SkeletonCircle size='12' isLoaded={isloaded} fadeDuration={1}>

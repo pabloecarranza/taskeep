@@ -1,8 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
 import { ModalAddList } from './../../../../src/components/Modals/ModalAddList';
 import { ModalAddListDates } from './../../../../src/utils/EnglishTexts';
+// eslint-disable-next-line no-unused-vars
 import usehandleAdd from './../../../../src/Hooks/useHandleAdd';
 
 vi.mock('../../../../src/Hooks/useHandleAdd');
@@ -16,6 +17,7 @@ describe('test suite on addListModal component', () => {
 	const handleSubmit = vi.fn();
 	const handleClick = vi.fn();
 
+	// eslint-disable-next-line no-import-assign
 	usehandleAdd = vi
 		.fn()
 		.mockReturnValue([input, handleChange, handleSubmit, handleClick]);

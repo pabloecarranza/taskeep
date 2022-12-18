@@ -1,9 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
 import { ModalConfirmDates } from '../../../../src/utils/EnglishTexts';
 import { ModalConfirm } from './../../../../src/components/Modals/ModalConfirm';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
 import { BrowserRouter as Router } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import useDeleteList from './../../../../src/Hooks/useDeleteList';
 
 vi.mock('../../../../src/Hooks/useDeleteList');
@@ -21,6 +22,7 @@ describe('Name of the group', () => {
 	const setSeleted = vi.fn();
 	const deleteList = vi.fn();
 
+	// eslint-disable-next-line no-import-assign
 	useDeleteList = vi.fn().mockReturnValue([deleteList]);
 
 	it('must show all texts send by props ', () => {

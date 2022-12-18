@@ -1,4 +1,4 @@
-import { screen, fireEvent, render } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
 import { DrawerBodyTask } from './../../../../src/components/DrawerTask/DrawerBodyTask';
 import { DrawerBodyTaskDates } from './../../../../src/utils/EnglishTexts';
@@ -64,11 +64,6 @@ describe('test suite on DrawerBodyTask', () => {
 
 		fireEvent.change(description, { target: { value: '12' } });
 		expect(handleOnChange).toHaveBeenCalled();
-
-		const important = screen.getByText(DrawerBodyTaskDates.textTwo);
-		const completed = screen.getByText(DrawerBodyTaskDates.textThree);
-		const changeList = screen.getByText(DrawerBodyTaskDates.textFour);
-		const taskList = screen.getByTestId(data[0].name);
 	});
 
 	it('debe llamar handleOnChange al hacer click en important ', () => {
