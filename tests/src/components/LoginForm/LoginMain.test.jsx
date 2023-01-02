@@ -1,17 +1,17 @@
 import { screen, fireEvent, render } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
-import { SignInFormDates } from '../../../../src/utils/EnglishTexts';
 import { LoginMain } from './../../../../src/components/LoginForm/LoginMain';
-import { useLoginUser } from './../../../../src/Hooks/useLoginUser';
 import {
 	SignUpFormDates,
 	SignInSuccessfullyDates,
 	SignUpSuccessfullyDates,
+	SignInFormDates,
 } from './../../../../src/utils/EnglishTexts';
 
 vi.mock('../../../../src/Hooks/useLoginUser');
 
 describe('Name of the group', () => {
+	// eslint-disable-next-line no-undef
 	afterEach(() => {
 		vi.clearAllMocks();
 		vi.resetAllMocks();
@@ -33,7 +33,7 @@ describe('Name of the group', () => {
 	const show = true;
 
 	it('debe llamar a la funcion para mostrar el formulario de alta de usuario ', () => {
-		// eslint-disable-next-line no-import-assign
+		// eslint-disable-next-line no-undef
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp,
 			SignInResponse,
@@ -59,7 +59,7 @@ describe('Name of the group', () => {
 	});
 
 	it('debe llamar a la funcion para mostrar el formulario de inicio de sesion ', () => {
-		// eslint-disable-next-line no-import-assign
+		// eslint-disable-next-line no-undef
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp: true,
 			SignInResponse,
@@ -85,7 +85,7 @@ describe('Name of the group', () => {
 	});
 
 	it('debe mostrar el mensaje de bienvenida al loguearse ', () => {
-		// eslint-disable-next-line no-import-assign
+		// eslint-disable-next-line no-undef
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp,
 			SignInResponse: { isSuccess: true },
@@ -112,7 +112,7 @@ describe('Name of the group', () => {
 	});
 
 	it('debe mostrar el mensaje de bienvenida al registrarse ', () => {
-		// eslint-disable-next-line no-import-assign
+		// eslint-disable-next-line no-undef
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp,
 			SignInResponse,
