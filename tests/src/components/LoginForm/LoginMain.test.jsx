@@ -35,7 +35,7 @@ describe('test suite on loginMain component', () => {
 	const show = true;
 
 	it('debe llamar a la funcion para mostrar el formulario de alta de usuario ', () => {
-		// eslint-disable-next-line no-undef
+		// eslint-disable-next-line no-undef, no-import-assign
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp,
 			SignInResponse,
@@ -61,7 +61,7 @@ describe('test suite on loginMain component', () => {
 	});
 
 	it('debe llamar a la funcion para mostrar el formulario de inicio de sesion ', () => {
-		// eslint-disable-next-line no-undef
+		// eslint-disable-next-line no-undef, no-import-assign
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp: true,
 			SignInResponse,
@@ -87,7 +87,7 @@ describe('test suite on loginMain component', () => {
 	});
 
 	it('debe mostrar el mensaje de bienvenida al loguearse ', () => {
-		// eslint-disable-next-line no-undef
+		// eslint-disable-next-line no-undef, no-import-assign
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp,
 			SignInResponse: { isSuccess: true },
@@ -114,7 +114,7 @@ describe('test suite on loginMain component', () => {
 	});
 
 	it('debe mostrar el mensaje de bienvenida al registrarse ', () => {
-		// eslint-disable-next-line no-undef
+		// eslint-disable-next-line no-undef, no-import-assign
 		useLoginUser = vi.fn().mockReturnValue({
 			signUp,
 			SignInResponse,
