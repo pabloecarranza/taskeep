@@ -1,5 +1,7 @@
 import { screen, fireEvent, render } from '@testing-library/react';
 import { expect, describe, it, vi } from 'vitest';
+// eslint-disable-next-line no-unused-vars
+import { useLoginUser } from '../../../../src/Hooks/useLoginUser';
 import { LoginMain } from './../../../../src/components/LoginForm/LoginMain';
 import {
 	SignUpFormDates,
@@ -10,7 +12,7 @@ import {
 
 vi.mock('../../../../src/Hooks/useLoginUser');
 
-describe('Name of the group', () => {
+describe('test suite on loginMain component', () => {
 	// eslint-disable-next-line no-undef
 	afterEach(() => {
 		vi.clearAllMocks();
