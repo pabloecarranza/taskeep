@@ -139,4 +139,8 @@ describe('test suite on loginMain component', () => {
 		expect(signUpOK.textContent).toEqual(SignUpSuccessfullyDates.title);
 		expect(navigate).toHaveBeenCalled();
 	});
+	it('should ', () => {
+		// eslint-disable-next-line no-console
+		console.log('test');
+	});
 });
