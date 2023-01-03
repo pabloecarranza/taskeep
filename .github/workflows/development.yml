@@ -13,20 +13,65 @@ on:
       - synchronize
 
 jobs:
-  development:
+  avoid_reduncy: 
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
-      with:
-       fetch-depth: 0
-    - uses: actions/setup-node@v3
-      with:
-       node-version: 16
-    - name: install
-      run: npm install --no-audit --no-fund
-    - name: lint 
-      run: npm run lint
-    - name: test
-      run: npm run test
-    - name: build
-      run: npm run build
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: install
+        run: npm install --no-audit --no-fund
+      - name: lint 
+        run: npm run lint
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: install
+        run: npm install --no-audit --no-fund
+      - name: build
+        run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist  
+
+  test:
+    needs: [lint, build]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: install
+        run: npm install --no-audit --no-fund
+      - name: build
+        run: npm run build
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+      - name: test
+        run: npm run test
+      - name: build
+        run: npm run build
