@@ -12,7 +12,19 @@ import {
 } from '@chakra-ui/react';
 import me from '../../assets/me.jpg';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useCustomSelector } from '../../Hooks/reduxHooks';
+
+interface Props {
+	greeting: string,
+	welcomeTextOne: string,
+	welcomeTextTwo:string,
+	name: string,
+	buttonText: string,
+	onClose: () => void,
+	setIsloaded: (cb: (value: boolean) => boolean ) => void,
+	isOpen: boolean,
+}
+
 
 export const ModalWelcome = ({
 	isOpen,
@@ -23,20 +35,21 @@ export const ModalWelcome = ({
 	welcomeTextTwo,
 	name,
 	buttonText,
-}) => {
-	const handleClick = () => {
+}: Props) => {
+	
+	const handleClick = () :void  => {
 		onClose();
-		setIsloaded(v => !v);
+		setIsloaded(value => !value);
 	};
 
-	const userData = useSelector(state => state.session);
+	const { username } = useCustomSelector((state) => state.session);
 
 	return (
 		<Modal isOpen={isOpen} onClose={handleClick} isCentered size='lg'>
 			<ModalOverlay />
 			<ModalContent bg='#1A202C'>
 				<ModalHeader>
-					{greeting} {userData ? userData.username : ''}!
+					{greeting} {username || ''}!
 				</ModalHeader>
 				<ModalCloseButton />
 				<ModalBody>
