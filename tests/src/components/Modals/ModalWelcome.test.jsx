@@ -1,9 +1,16 @@
 import { screen, fireEvent } from '@testing-library/react';
-import { expect, describe, it, vi } from 'vitest';
+import { expect, describe, it, vi, beforeEach } from 'vitest';
 import { renderWithProviders } from '../../../../src/utils/utils-for-test';
 import { ModalWelcome } from './../../../../src/components/Modals/ModalWelcome';
 
 describe('Test suite on ModalWelcome component', () => {
+	beforeEach(() => {
+		vi.clearAllMocks();
+	});
+
+	const onClose = vi.fn();
+	const setIsloaded = vi.fn();
+
 	const ModalWelcomeDates = {
 		greeting: 'Hi',
 		welcomeTextOne: 'personal',
@@ -21,9 +28,9 @@ describe('Test suite on ModalWelcome component', () => {
 		renderWithProviders(
 			<ModalWelcome
 				{...ModalWelcomeDates}
-				onClose={() => {}}
+				onClose={onClose}
 				isOpen={isOpen}
-				setIsloaded={() => {}}
+				setIsloaded={setIsloaded}
 			/>
 		);
 		const text = screen.getByRole('dialog');
@@ -42,7 +49,7 @@ describe('Test suite on ModalWelcome component', () => {
 				{...ModalWelcomeDates}
 				onClose={handleClick}
 				isOpen={isOpen}
-				setIsloaded={() => {}}
+				setIsloaded={setIsloaded}
 			/>
 		);
 		const button = screen.getByText(ModalWelcomeDates.buttonText);
@@ -56,7 +63,7 @@ describe('Test suite on ModalWelcome component', () => {
 				{...ModalWelcomeDates}
 				onClose={handleClick}
 				isOpen={isOpen}
-				setIsloaded={() => {}}
+				setIsloaded={setIsloaded}
 			/>
 		);
 		const button = screen.getByText(ModalWelcomeDates.buttonText);

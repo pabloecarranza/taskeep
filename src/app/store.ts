@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { authSlice } from '../features/api/authSlice';
-import { listSlice } from './../features/api/listSlice';
-import { sessionSlice } from './../features/api/sessionSlice';
-import { taskSlice } from './../features/api/taskSlice';
+import { listSlice } from '../features/api/listSlice';
+import { sessionSlice } from '../features/api/sessionSlice';
+import { taskSlice } from '../features/api/taskSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -19,4 +19,8 @@ export const store = configureStore({
 			taskSlice.middleware
 		),
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type Dispatch = typeof store.dispatch;
+
 setupListeners(store.dispatch);

@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 export const authSlice = createApi({
 	reducerPath: 'authSlice',
 	baseQuery: fetchBaseQuery({
@@ -37,5 +38,5 @@ export const authSlice = createApi({
 		}),
 	}),
 });
-export const { useSignInMutation, useSignUpMutation, useGetProfileQuery } =
+export const { useSignInMutation, useSignUpMutation } =
 	authSlice;
