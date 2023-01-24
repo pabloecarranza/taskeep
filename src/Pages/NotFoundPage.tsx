@@ -12,12 +12,19 @@ import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+interface Props {
+	errorText: string,
+	messageRedirect: string,
+	pageRedirect: string,
+	test: boolean,
+}
+
 export const NotFoundPage = ({
 	errorText,
 	messageRedirect,
 	pageRedirect,
 	test = false,
-}) => {
+}: Props ) => {
 	const navigate = useNavigate();
 	const reDirectTo = () => {
 		navigate('/', { replace: true });
