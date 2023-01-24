@@ -9,11 +9,11 @@ import {
 
 describe('Test suite on SessionSlice Reducer', () => {
 	const initialState = {
-		id: null,
-		token: null,
-		username: null,
-		email: null,
-		message: null,
+		id: '',
+		token: '',
+		username: '',
+		email: '',
+		message: '',
 		logged: false,
 		currentTask: {},
 	};

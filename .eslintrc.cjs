@@ -11,13 +11,18 @@ module.exports = {
 		'standard',
 		'eslint:recommended',
 		'eslint-config-prettier',
+		'plugin:@typescript-eslint/eslint-recommended',
+		'plugin:@typescript-eslint/recommended',
 	],
 	overrides: [],
+	/* 	parser: {
+		parser: '@typescript-eslint/parser',
+	}, */
 	parserOptions: {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: ['react'],
+	plugins: ['react', '@typescript-eslint'],
 	rules: {
 		'no-console': 'warn',
 	},

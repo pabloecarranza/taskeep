@@ -1,11 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-	id: null,
-	token: null,
-	username: null,
-	email: null,
-	message: null,
+interface SessionState {
+	id: string,
+	token: string,
+	username: string,
+	email: string,
+	message: string,
+	logged: boolean,
+	currentTask: object,
+}
+const initialState: SessionState = {
+	id: '',
+	token: '',
+	username: '',
+	email: '',
+	message: '',
 	logged: false,
 	currentTask: {},
 };
@@ -18,12 +27,6 @@ export const sessionSlice = createSlice({
 	name: 'session',
 	initialState,
 	reducers: {
-		increment: state => {
-			state.value += 1;
-		},
-		decrement: state => {
-			state.value -= 1;
-		},
 		sessionIn: (state, action) => {
 			state.id = action.payload.id;
 			state.token = action.payload.token;
@@ -33,12 +36,12 @@ export const sessionSlice = createSlice({
 			state.logged = action.payload.logged;
 		},
 		sessionOut: state => {
-			state.id = null;
-			state.token = null;
+			state.id = '';
+			state.token = '';
 			state.currentTask = {};
-			state.username = null;
-			state.email = null;
-			state.message = null;
+			state.username = '';
+			state.email = '';
+			state.message = '';
 			state.logged = false;
 
 			logout();

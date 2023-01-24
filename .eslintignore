@@ -1,4 +1,5 @@
 src/assets/*.jpg
 src/assets/*.png
+node_modules
 src/app.css
 dist/

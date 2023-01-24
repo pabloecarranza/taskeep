@@ -15,7 +15,7 @@ import { DrawerBodyTask } from './DrawerBodyTask';
 import { DrawerBodyTaskDates } from '../../utils/EnglishTexts';
 import PropTypes from 'prop-types';
 
-export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
+export const DrawerTask = ({ onClose, isOpen }) => {
 	const firstField = useRef();
 
 	const {
@@ -91,7 +91,6 @@ export const DrawerTask = ({ onOpen, onClose, isOpen }) => {
 };
 
 DrawerTask.propTypes = {
-	onOpen: PropTypes.func.isRequired,
 	onClose: PropTypes.func.isRequired,
 	isOpen: PropTypes.bool.isRequired,
 };

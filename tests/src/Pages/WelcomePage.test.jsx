@@ -1,8 +1,6 @@
 import { screen } from '@testing-library/react';
 import { vi, expect, describe, it } from 'vitest';
-
 import { BrowserRouter as Router } from 'react-router-dom';
-
 import { WelcomePage } from './../../../src/Pages/WelcomePage';
 import { renderWithProviders } from './../../../src/utils/utils-for-test';
 

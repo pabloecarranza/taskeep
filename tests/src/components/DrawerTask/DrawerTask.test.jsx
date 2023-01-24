@@ -1,15 +1,15 @@
 import { screen, fireEvent } from '@testing-library/react';
-import { expect, describe, it, vi } from 'vitest';
+import { expect, describe, it, vi, beforeEach } from 'vitest';
 import { DrawerTask } from './../../../../src/components/DrawerTask/DrawerTask';
 import { renderWithProviders } from './../../../../src/utils/utils-for-test';
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 import { useDrawerTask } from './../../../../src/Hooks/useDrawerTask';
 
 vi.mock('../../../../src/components/DrawerTask/DrawerBodyTask', () => {
 	return {
 		__esModule: true,
 		default: () => {
-			// eslint-disable-next-line react/jsx-no-undef
+			// eslint-disable-next-line react/jsx-no-undef, no-undef
 			return <DrawerBodyTask />;
 		},
 		DrawerBodyTask: () => {
@@ -28,8 +28,13 @@ describe('Test suite on DrawerTask component', () => {
 	const deleteTaskSubmit = vi.fn();
 	const PutTaskSubmit = vi.fn();
 	const onClosed = vi.fn();
+	const onClose = vi.fn();
+	const onOpen = vi.fn();
 
 	it('debe mostrar el numero de la tarea a editar', () => {
+		beforeEach(() => {
+			vi.clearAllMocks();
+		});
 		// eslint-disable-next-line no-import-assign
 		useDrawerTask = vi.fn().mockReturnValue({
 			data: [],
@@ -44,7 +49,7 @@ describe('Test suite on DrawerTask component', () => {
 		});
 
 		const { getByRole } = renderWithProviders(
-			<DrawerTask onClose={() => {}} isOpen={isOpen} onOpen={() => {}} />
+			<DrawerTask onClose={onClose} isOpen={isOpen} onOpen={onOpen} />
 		);
 
 		const header = getByRole('banner');
@@ -52,7 +57,7 @@ describe('Test suite on DrawerTask component', () => {
 	});
 	it(' al hacer click en cancel debe llamar a onclosed', () => {
 		renderWithProviders(
-			<DrawerTask onClose={() => {}} isOpen={isOpen} onOpen={() => {}} />
+			<DrawerTask onClose={onClose} isOpen={isOpen} onOpen={onOpen} />
 		);
 
 		const cancelButton = screen.getByText('Cancel');
@@ -62,7 +67,7 @@ describe('Test suite on DrawerTask component', () => {
 
 	it('al hacer click en el icono de trash debe llamar a deleteTask submit ', () => {
 		renderWithProviders(
-			<DrawerTask onClose={() => {}} isOpen={isOpen} onOpen={() => {}} />
+			<DrawerTask onClose={onClose} isOpen={isOpen} onOpen={onOpen} />
 		);
 
 		const trashButton = screen.getByTestId('trash');
@@ -73,7 +78,7 @@ describe('Test suite on DrawerTask component', () => {
 
 	it('al hacer click en save debe llamar a puttasksubmit', () => {
 		renderWithProviders(
-			<DrawerTask onClose={() => {}} isOpen={isOpen} onOpen={() => {}} />
+			<DrawerTask onClose={onClose} isOpen={isOpen} onOpen={onOpen} />
 		);
 
 		const saveButton = screen.getByText('Save');
