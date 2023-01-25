@@ -28,7 +28,7 @@ export const ModalConfirmDates = {
 	titlePartOne: 'Delete ',
 	titlePartTwo: 'task list',
 	message:
-		"Are you sure? You can't undo this action afterwards and all task assigned to this list be eliminated",
+		'Are you sure? You will not be able to undo this action later and all tasks assigned to this list will be eliminated.',
 	buttonOne: 'Cancel',
 	buttonTwo: 'Delete',
 };

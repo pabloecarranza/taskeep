@@ -3,14 +3,23 @@ import { useToast } from '@chakra-ui/react';
 import { useGetTasksQuery } from '../features/api/taskSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const useDeleteList = (onClose, setSeleted) => {
+interface List {
+	createdAt: string;
+	id: number;
+	name: string;
+	updatedAt: string;
+}
+
+const useDeleteList = () => {
 	const [DeleteList] = useDeleteListMutation();
 	const toast = useToast();
 	const params = useParams();
-	const { refetch } = useGetTasksQuery();
+	const { refetch } = useGetTasksQuery(undefined);
 	const navigate = useNavigate();
 
-	const deleteList = list => {
+	const deleteList = (list: List) => {
+		const onSelectedList = Object.values(params)[0].includes(list.name);
+
 		DeleteList(list.id)
 			.unwrap()
 			.then(respon => {
@@ -21,7 +30,6 @@ const useDeleteList = (onClose, setSeleted) => {
 					duration: 1500,
 					isClosable: true,
 				});
-				onClose();
 			})
 			.catch(error => {
 				toast({
@@ -32,10 +40,8 @@ const useDeleteList = (onClose, setSeleted) => {
 					isClosable: true,
 				});
 			});
-		setSeleted({});
-		onClose();
 		refetch();
-		if (Object.values(params)[0].includes(list.name)) {
+		if (onSelectedList) {
 			navigate('/homepage/myday');
 		}
 	};

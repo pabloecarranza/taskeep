@@ -10,7 +10,6 @@ import {
 import Logo from '../assets/daily-tasks.png';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 interface Props {
 	errorText: string,
@@ -71,11 +70,4 @@ export const NotFoundPage = ({
 			</Center>
 		</Container>
 	);
-};
-
-NotFoundPage.propTypes = {
-	errorText: PropTypes.string.isRequired,
-	messageRedirect: PropTypes.string.isRequired,
-	pageRedirect: PropTypes.string.isRequired,
-	test: PropTypes.bool,
 };

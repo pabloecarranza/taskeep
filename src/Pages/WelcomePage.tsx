@@ -14,7 +14,6 @@ import { BsLinkedin } from 'react-icons/bs';
 import Logo from '../assets/daily-tasks.png';
 import Typewriter from 'typewriter-effect';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import PropTypes from 'prop-types';
 import bg from '../assets/BG7.jpg';
 import { LoginMain } from '../components/LoginForm/LoginMain';
 import { useEffect } from 'react';
@@ -151,15 +150,4 @@ export const WelcomePage = ({
 			</Center>
 		</Flex>
 	);
-};
-
-WelcomePage.propTypes = {
-	appName: PropTypes.string.isRequired,
-	sloganOne: PropTypes.string.isRequired,
-	sloganTwo: PropTypes.string.isRequired,
-	subtitle: PropTypes.string.isRequired,
-	repository: PropTypes.string.isRequired,
-	startApp: PropTypes.string.isRequired,
-	made: PropTypes.string.isRequired,
-	test: PropTypes.bool,
 };

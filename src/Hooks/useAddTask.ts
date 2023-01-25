@@ -8,16 +8,21 @@ import { useNavigate } from 'react-router-dom';
 import { getItem } from '../utils/LocalStorage';
 
 interface Task {
-		id?: string,
-		completed: boolean,
-		important: boolean,
-		description: string,
-		reminder: string,
-		expiration_date: string,
-		repeat: string,
-		notes: string,
-		listid: ChangeEvent<HTMLInputElement> | string,
-		userid: string,
+	id?: string;
+	completed: boolean;
+	important: boolean;
+	description: string;
+	reminder: string;
+	expiration_date: string;
+	repeat: string;
+	notes: string;
+	listid: ChangeEvent<HTMLInputElement> | null;
+	userid: string;
+}
+
+interface Event {
+	event: ChangeEvent<HTMLInputElement> | null | string;
+	target: { value: string };
 }
 
 export const useAddTask = () => {
@@ -42,7 +47,7 @@ export const useAddTask = () => {
 	}, []);
 
 	const toast = useToast();
-	const { data = [], isLoading } = useGetListsQuery();
+	const { data = [], isLoading } = useGetListsQuery(undefined);
 
 	const [PostTask, PostTaskResponse] = usePostTaskMutation();
 
@@ -54,7 +59,7 @@ export const useAddTask = () => {
 		expiration_date: '',
 		repeat: 'YYYY-MM-DD',
 		notes: '',
-		listid: '',
+		listid: null,
 		userid: '',
 	});
 
@@ -64,7 +69,7 @@ export const useAddTask = () => {
 		return capitalized;
 	}
 
-	const handleOnChange = (type: string, event: ChangeEvent<HTMLInputElement> ) => {
+	const handleOnChange = (type: string, event: Event) => {
 		if (task.id === null) {
 			dispatch(sessionOut());
 			navigate('/');
