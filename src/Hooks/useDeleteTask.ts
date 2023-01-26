@@ -1,14 +1,29 @@
-import { useDispatch } from 'react-redux';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { currentTask } from '../features/api/sessionSlice';
+import { useCustomDispatch } from './reduxHooks';
 import {
 	useDeleteTaskMutation,
 	useHotPutTaskMutation,
 } from '../features/api/taskSlice';
 import { useToast, useDisclosure } from '@chakra-ui/react';
 
+interface List {
+	completed: boolean;
+	createdAt: string;
+	description: string;
+	expiration_date: string;
+	id: string;
+	important: boolean;
+	listid: null;
+	notes: string;
+	reminder: string;
+	repeat: string;
+	updatedAt: string;
+	userid: string;
+}
+
 export const useDeleteTask = () => {
-	const dispatch = useDispatch();
+	const dispatch = useCustomDispatch();
 	const toast = useToast();
 	const [HotPutTask] = useHotPutTaskMutation();
 	const [DeleteTask] = useDeleteTaskMutation();
@@ -18,15 +33,15 @@ export const useDeleteTask = () => {
 		onOpen: onOpenDrawerTask,
 		onClose: onCloseDrawerTask,
 	} = useDisclosure();
-	const { data: lists = [] } = useGetListsQuery();
+	const { data: lists = [] } = useGetListsQuery(undefined);
 
-	const listName = e => {
-		const found = lists.find(list => list.id === e);
+	const listName = (event: string) => {
+		const found = lists.find((list: List) => list.id === event);
 
 		return found?.name;
 	};
 
-	function capitalizeFirstLetter(str) {
+	function capitalizeFirstLetter(str: string) {
 		if (!str) {
 			return '';
 		} else {
@@ -36,7 +51,7 @@ export const useDeleteTask = () => {
 		}
 	}
 
-	function setSelectedTask(task, e) {
+	function setSelectedTask(task: string, e: string) {
 		if (e === 'openTask') {
 			dispatch(currentTask(task));
 			onOpenDrawerTask();
@@ -60,7 +75,7 @@ export const useDeleteTask = () => {
 		}
 	}
 
-	function deleteTaskSubmit(taskid) {
+	function deleteTaskSubmit(taskid: string) {
 		DeleteTask(taskid)
 			.unwrap()
 			.then(respon => {

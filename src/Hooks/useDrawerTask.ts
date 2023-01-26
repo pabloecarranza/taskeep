@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { clearCurrentTask } from '../features/api/sessionSlice';
 import {
@@ -7,12 +7,33 @@ import {
 	usePutTaskMutation,
 } from '../features/api/taskSlice';
 import { useToast } from '@chakra-ui/react';
+import { useCustomSelector } from './reduxHooks';
 
-export const useDrawerTask = onClose => {
+type onClose = () => void;
+
+interface Event {
+	event: string;
+	target: { value: string };
+}
+
+interface Task {
+	id?: string;
+	completed: boolean;
+	important: boolean;
+	description: string;
+	reminder: string;
+	expiration_date: string;
+	repeat: string;
+	notes: string;
+	listid: Event | null | string;
+	userid: string | null;
+}
+
+export const useDrawerTask = (onClose: onClose) => {
 	const toast = useToast();
 	const dispatch = useDispatch();
-	const getCurrentTask = useSelector(state => state.session.currentTask);
-	const [task, setTask] = useState({
+	const getCurrentTask = useCustomSelector(state => state.session.currentTask);
+	const [task, setTask] = useState<Task>({
 		completed: false,
 		important: false,
 		description: '',
@@ -20,37 +41,37 @@ export const useDrawerTask = onClose => {
 		expiration_date: '',
 		repeat: 'YYYY-MM-DD',
 		notes: '',
-		listid: getCurrentTask ? getCurrentTask.listid : null,
+		listid: getCurrentTask.listid || null,
 		userid: null,
 	});
 
 	const [DeleteTask] = useDeleteTaskMutation();
 	const [PutTask] = usePutTaskMutation();
-	const { data = [] } = useGetListsQuery();
+	const { data = [] } = useGetListsQuery(undefined);
 
 	function onClosed() {
 		dispatch(clearCurrentTask());
 		onClose();
 		setTask({
 			completed: false,
-			important: null,
+			important: false,
 			description: '',
 			reminder: 'YYYY-MM-DD',
 			expiration_date: '',
 			repeat: 'YYYY-MM-DD',
 			notes: '',
-			listid: null,
+			listid: '',
 			userid: null,
 		});
 	}
 
-	function capitalizeFirstLetter(str) {
+	function capitalizeFirstLetter(str: string) {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 
 		return capitalized;
 	}
 
-	const handleOnChange = (type, event) => {
+	const handleOnChange = (type: string, event: Event) => {
 		if (type === 'expiration_date') {
 			setTask({
 				...task,
@@ -143,7 +164,7 @@ export const useDrawerTask = onClose => {
 		onClose();
 		setTask({
 			completed: false,
-			important: null,
+			important: false,
 			description: '',
 			reminder: 'YYYY-MM-DD',
 			expiration_date: '',

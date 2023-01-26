@@ -1,4 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface Task {
+	id?: string;
+	completed: boolean;
+	important: boolean;
+	description: string;
+	reminder: string;
+	expiration_date: string;
+	repeat: string;
+	notes: string;
+	listid: string;
+	userid: string;
+}
 
 interface SessionState {
 	id: string;
@@ -7,9 +20,10 @@ interface SessionState {
 	email: string;
 	message: string;
 	logged: boolean;
-	currentTask: object;
+	currentTask: Task;
 	currentTab: string;
 }
+
 const initialState: SessionState = {
 	id: '',
 	token: '',
@@ -17,7 +31,17 @@ const initialState: SessionState = {
 	email: '',
 	message: '',
 	logged: false,
-	currentTask: {},
+	currentTask: {
+		completed: false,
+		important: false,
+		description: '',
+		reminder: 'YYYY-MM-DD',
+		expiration_date: '',
+		repeat: 'YYYY-MM-DD',
+		notes: '',
+		listid: '',
+		userid: '',
+	},
 	currentTab: '',
 };
 
@@ -29,7 +53,7 @@ export const sessionSlice = createSlice({
 	name: 'session',
 	initialState,
 	reducers: {
-		sessionIn: (state, action) => {
+		sessionIn: (state, action: PayloadAction<SessionState>) => {
 			state.id = action.payload.id;
 			state.token = action.payload.token;
 			state.username = action.payload.username;
@@ -41,7 +65,17 @@ export const sessionSlice = createSlice({
 		sessionOut: state => {
 			state.id = '';
 			state.token = '';
-			state.currentTask = {};
+			state.currentTask = {
+				completed: false,
+				important: false,
+				description: '',
+				reminder: 'YYYY-MM-DD',
+				expiration_date: '',
+				repeat: 'YYYY-MM-DD',
+				notes: '',
+				listid: '',
+				userid: '',
+			};
 			state.username = '';
 			state.email = '';
 			state.message = '';
@@ -54,7 +88,17 @@ export const sessionSlice = createSlice({
 			state.currentTask = action.payload;
 		},
 		clearCurrentTask: state => {
-			state.currentTask = {};
+			state.currentTask = {
+				completed: false,
+				important: false,
+				description: '',
+				reminder: 'YYYY-MM-DD',
+				expiration_date: '',
+				repeat: 'YYYY-MM-DD',
+				notes: '',
+				listid: '',
+				userid: '',
+			};
 		},
 		currentTab: (state, action) => {
 			state.currentTab = action.payload;
