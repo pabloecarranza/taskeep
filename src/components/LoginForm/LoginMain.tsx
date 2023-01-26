@@ -9,7 +9,9 @@ import {
 	SignUpSuccessfullyDates,
 } from '../../utils/EnglishTexts';
 import { SignUpForm } from './SignUpForm';
+
 import { SignInForm } from './SignInForm';
+import { getItem } from './../../utils/LocalStorage';
 
 export const LoginMain = () => {
 	const {
@@ -32,7 +34,7 @@ export const LoginMain = () => {
 	const fadeSignIn = useSpring({
 		opacity: signUp ? 0 : 1,
 	});
-	const currentUser = JSON.parse(localStorage.getItem('identified-user'));
+	const currentUser = getItem('identified-user');
 
 	return (
 		<Box w='25rem' h='31rem' boxShadow='dark-lg' rounded='md' bg='#1A202C'>

@@ -1,12 +1,14 @@
 import { Flex } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { Sidebar } from '../components/Sidebar/Sidebar';
-import { MainArea } from './../components/Routes/MainArea';
+import { MainArea } from '../components/Routes/MainArea';
 import { useDispatch } from 'react-redux';
 import { sessionIn, sessionOut } from '../features/api/sessionSlice';
 import { useNavigate } from 'react-router-dom';
+import { getItem } from './../utils/LocalStorage';
 export const HomePage = () => {
-	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	
+	const userData = getItem('identified-user');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const userCheck = () => {

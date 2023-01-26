@@ -27,8 +27,7 @@ exports[`Test suite on WelcomePage component > must match with the snapshot 1`] 
           TASKEEP
         </p>
         <h2
-          class="chakra-heading css-in3yi3"
-          nooflines="1"
+          class="chakra-heading css-1lfxd7w"
         >
           <div
             class="Typewriter"

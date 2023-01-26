@@ -14,10 +14,21 @@ import { BsLinkedin } from 'react-icons/bs';
 import Logo from '../assets/daily-tasks.png';
 import Typewriter from 'typewriter-effect';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import PropTypes from 'prop-types';
 import bg from '../assets/BG7.jpg';
 import { LoginMain } from '../components/LoginForm/LoginMain';
 import { useEffect } from 'react';
+import { getItem } from './../utils/LocalStorage';
+
+interface Props {
+	appName: string,
+	sloganOne: string,
+	sloganTwo: string,
+	subtitle: string,
+	repository: string,
+	startApp: string,
+	made: string,
+	test: boolean,
+}
 
 export const WelcomePage = ({
 	appName,
@@ -28,9 +39,9 @@ export const WelcomePage = ({
 	startApp,
 	made,
 	test = false,
-}) => {
+}: Props ) => {
 	const { isOpen, onToggle } = useDisclosure();
-	const currentUser = JSON.parse(localStorage.getItem('identified-user'));
+	const currentUser = getItem('identified-user')
 
 	useEffect(() => {
 		if (!currentUser === null) onToggle();
@@ -64,7 +75,7 @@ export const WelcomePage = ({
 					>
 						{appName}
 					</Text>
-					<Heading as='h2' size='2xl' nooflines={1} fontWeight='bold'>
+					<Heading as='h2' size='2xl' noOfLines={0} fontWeight='bold'>
 						<Typewriter
 							options={{
 								strings: [`${sloganOne}`, `${sloganTwo}`],
@@ -139,15 +150,4 @@ export const WelcomePage = ({
 			</Center>
 		</Flex>
 	);
-};
-
-WelcomePage.propTypes = {
-	appName: PropTypes.string.isRequired,
-	sloganOne: PropTypes.string.isRequired,
-	sloganTwo: PropTypes.string.isRequired,
-	subtitle: PropTypes.string.isRequired,
-	repository: PropTypes.string.isRequired,
-	startApp: PropTypes.string.isRequired,
-	made: PropTypes.string.isRequired,
-	test: PropTypes.bool,
 };

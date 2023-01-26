@@ -4,6 +4,9 @@ import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { useParams } from 'react-router-dom';
 import { useGetListsQuery } from '../../features/api/listSlice';
 import { TasksList } from '../TaskList/TasksList';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { currentTab } from '../../features/api/sessionSlice';
 
 export const CustomList = () => {
 	const params = useParams();
@@ -21,6 +24,12 @@ export const CustomList = () => {
 		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
 		return capitalized;
 	}
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(currentTab(listSelect?.name));
+	}, []);
 
 	return (
 		<>

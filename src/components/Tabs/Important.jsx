@@ -3,11 +3,20 @@ import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { TasksList } from '../TaskList/TasksList';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { currentTab } from '../../features/api/sessionSlice';
+import { useDispatch } from 'react-redux';
 
 export const Important = ({ textFour }) => {
 	const { data = [] } = useGetTasksQuery();
 
 	const onlyImportantTasks = data.filter(task => task.important === true);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(currentTab('Important'));
+	}, []);
 
 	return (
 		<>

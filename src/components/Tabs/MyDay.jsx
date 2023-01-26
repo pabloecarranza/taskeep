@@ -5,9 +5,18 @@ import { TasksList } from '../TaskList/TasksList';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import { AddTaskDates } from './../../utils/EnglishTexts';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { currentTab } from '../../features/api/sessionSlice';
 
 export const MyDay = ({ textTwo }) => {
 	const { data = [], isLoading } = useGetTasksQuery();
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(currentTab('MyDay'));
+	}, []);
 
 	return (
 		<>

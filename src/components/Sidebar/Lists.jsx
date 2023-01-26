@@ -28,7 +28,6 @@ export const Lists = ({ list, test }) => {
 				isOpen={isOpen}
 				onClose={onClose}
 				List={seleted}
-				setSeleted={setSeleted}
 				{...ModalConfirmDates}
 			/>
 
