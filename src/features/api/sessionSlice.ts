@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface SessionState {
-	id: string,
-	token: string,
-	username: string,
-	email: string,
-	message: string,
-	logged: boolean,
-	currentTask: object,
+	id: string;
+	token: string;
+	username: string;
+	email: string;
+	message: string;
+	logged: boolean;
+	currentTask: object;
+	currentTab: string;
 }
 const initialState: SessionState = {
 	id: '',
@@ -17,6 +18,7 @@ const initialState: SessionState = {
 	message: '',
 	logged: false,
 	currentTask: {},
+	currentTab: '',
 };
 
 const logout = () => {
@@ -34,6 +36,7 @@ export const sessionSlice = createSlice({
 			state.email = action.payload.email;
 			state.message = action.payload.message;
 			state.logged = action.payload.logged;
+			state.currentTab = action.payload.currentTab;
 		},
 		sessionOut: state => {
 			state.id = '';
@@ -43,6 +46,7 @@ export const sessionSlice = createSlice({
 			state.email = '';
 			state.message = '';
 			state.logged = false;
+			state.currentTab = '';
 
 			logout();
 		},
@@ -52,8 +56,16 @@ export const sessionSlice = createSlice({
 		clearCurrentTask: state => {
 			state.currentTask = {};
 		},
+		currentTab: (state, action) => {
+			state.currentTab = action.payload;
+		},
 	},
 });
 
-export const { sessionIn, sessionOut, currentTask, clearCurrentTask } =
-	sessionSlice.actions;
+export const {
+	sessionIn,
+	sessionOut,
+	currentTask,
+	clearCurrentTask,
+	currentTab,
+} = sessionSlice.actions;

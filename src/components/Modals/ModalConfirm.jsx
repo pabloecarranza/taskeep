@@ -16,7 +16,6 @@ export const ModalConfirm = ({
 	onClose,
 	onOpen,
 	List,
-	setSeleted,
 	titlePartOne,
 	titlePartTwo,
 	message,
@@ -25,7 +24,7 @@ export const ModalConfirm = ({
 }) => {
 	const initialRef = React.useRef(null);
 
-	const [deleteList] = useDeleteList(onClose, setSeleted);
+	const [deleteList] = useDeleteList();
 
 	return (
 		<>
@@ -64,7 +63,7 @@ ModalConfirm.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	onOpen: PropTypes.func.isRequired,
 	List: PropTypes.object.isRequired,
-	setSeleted: PropTypes.func.isRequired,
+
 	titlePartOne: PropTypes.string.isRequired,
 	titlePartTwo: PropTypes.string.isRequired,
 	message: PropTypes.string.isRequired,

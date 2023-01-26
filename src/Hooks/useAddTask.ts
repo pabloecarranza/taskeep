@@ -1,13 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { usePostTaskMutation } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
 import { useDispatch } from 'react-redux';
 import { sessionIn, sessionOut } from '../features/api/sessionSlice';
 import { useNavigate } from 'react-router-dom';
+import { getItem } from '../utils/LocalStorage';
+
+interface Task {
+	id?: string;
+	completed: boolean;
+	important: boolean;
+	description: string;
+	reminder: string;
+	expiration_date: string;
+	repeat: string;
+	notes: string;
+	listid: ChangeEvent<HTMLInputElement> | null | string;
+	userid: string;
+}
+
+interface Event {
+	event: ChangeEvent<HTMLInputElement> | null | string;
+	target: { value: string };
+}
 
 export const useAddTask = () => {
-	const userData = JSON.parse(localStorage.getItem('identified-user'));
+	const userData = getItem('identified-user');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const userCheck = () => {
@@ -28,11 +47,11 @@ export const useAddTask = () => {
 	}, []);
 
 	const toast = useToast();
-	const { data = [], isLoading } = useGetListsQuery();
+	const { data = [], isLoading } = useGetListsQuery(undefined);
 
 	const [PostTask, PostTaskResponse] = usePostTaskMutation();
 
-	const [task, setTask] = useState({
+	const [task, setTask] = useState<Task>({
 		completed: false,
 		important: false,
 		description: '',
@@ -41,16 +60,16 @@ export const useAddTask = () => {
 		repeat: 'YYYY-MM-DD',
 		notes: '',
 		listid: null,
-		userid: null,
+		userid: '',
 	});
 
-	function capitalizeFirstLetter(str) {
-		const capitalized = str.charAt(0).toUpperCase() + str.slice(1);
+	function capitalizeFirstLetter(text: string) {
+		const capitalized = text.charAt(0).toUpperCase() + text.slice(1);
 
 		return capitalized;
 	}
 
-	const handleOnChange = (type, event) => {
+	const handleOnChange = (type: string, event: Event) => {
 		if (task.id === null) {
 			dispatch(sessionOut());
 			navigate('/');
@@ -65,7 +84,7 @@ export const useAddTask = () => {
 		if (type === 'listid') {
 			setTask({
 				...task,
-				listid: event,
+				listid: event.target.value,
 			});
 		}
 
