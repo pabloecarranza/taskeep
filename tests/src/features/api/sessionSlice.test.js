@@ -15,7 +15,17 @@ describe('Test suite on SessionSlice Reducer', () => {
 		email: '',
 		message: '',
 		logged: false,
-		currentTask: {},
+		currentTask: {
+			completed: false,
+			important: false,
+			description: '',
+			reminder: 'YYYY-MM-DD',
+			expiration_date: '',
+			repeat: 'YYYY-MM-DD',
+			notes: '',
+			listid: '',
+			userid: '',
+		},
 		currentTab: '',
 	};
 
@@ -26,7 +36,17 @@ describe('Test suite on SessionSlice Reducer', () => {
 		email: 'test@test.com',
 		token: '654sdt24dssdtttt4654et234',
 		logged: true,
-		currentTask: {},
+		currentTask: {
+			completed: false,
+			important: false,
+			description: '',
+			reminder: 'YYYY-MM-DD',
+			expiration_date: '',
+			repeat: 'YYYY-MM-DD',
+			notes: '',
+			listid: '',
+			userid: '',
+		},
 		currentTab: '',
 	};
 

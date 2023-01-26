@@ -2,10 +2,10 @@ import { useEffect, useState, ChangeEvent } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { usePostTaskMutation } from '../features/api/taskSlice';
 import { useGetListsQuery } from '../features/api/listSlice';
-import { useDispatch } from 'react-redux';
 import { sessionIn, sessionOut } from '../features/api/sessionSlice';
 import { useNavigate } from 'react-router-dom';
 import { getItem } from '../utils/LocalStorage';
+import { useCustomDispatch } from './reduxHooks';
 
 interface Task {
 	id?: string;
@@ -27,7 +27,7 @@ interface Event {
 
 export const useAddTask = () => {
 	const userData = getItem('identified-user');
-	const dispatch = useDispatch();
+	const dispatch = useCustomDispatch();
 	const navigate = useNavigate();
 	const userCheck = () => {
 		if (!userData) {
