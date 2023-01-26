@@ -1,4 +1,4 @@
-[![Development](https://github.com/pabloecarranza/taskeep/actions/workflows/dev.yml/badge.svg)](https://github.com/pabloecarranza/taskeep/actions/workflows/dev.yml)
+[![development](https://github.com/pabloecarranza/taskeep/actions/workflows/development.yml/badge.svg?branch=production)](https://github.com/pabloecarranza/taskeep/actions/workflows/development.yml)
 
 # TASKEEP App
 
