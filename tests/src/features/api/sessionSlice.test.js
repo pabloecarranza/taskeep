@@ -16,6 +16,7 @@ describe('Test suite on SessionSlice Reducer', () => {
 		message: '',
 		logged: false,
 		currentTask: {},
+		currentTab: '',
 	};
 
 	const loggedser = {
@@ -26,6 +27,7 @@ describe('Test suite on SessionSlice Reducer', () => {
 		token: '654sdt24dssdtttt4654et234',
 		logged: true,
 		currentTask: {},
+		currentTab: '',
 	};
 
 	const selectedTask = {

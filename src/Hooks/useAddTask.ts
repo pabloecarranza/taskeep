@@ -16,7 +16,7 @@ interface Task {
 	expiration_date: string;
 	repeat: string;
 	notes: string;
-	listid: ChangeEvent<HTMLInputElement> | null;
+	listid: ChangeEvent<HTMLInputElement> | null | string;
 	userid: string;
 }
 
@@ -84,7 +84,7 @@ export const useAddTask = () => {
 		if (type === 'listid') {
 			setTask({
 				...task,
-				listid: event,
+				listid: event.target.value,
 			});
 		}
 

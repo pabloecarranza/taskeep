@@ -3,10 +3,19 @@ import { TasksList } from '../TaskList/TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { currentTab } from '../../features/api/sessionSlice';
 
 export const Planing = ({ textThree }) => {
 	const { data = [] } = useGetTasksQuery();
 	const onlyPlaningTasks = data.filter(task => task.expiration_date);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(currentTab('Planing'));
+	}, []);
 
 	return (
 		<>

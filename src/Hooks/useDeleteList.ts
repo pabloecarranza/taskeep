@@ -1,7 +1,8 @@
 import { useDeleteListMutation } from '../features/api/listSlice';
 import { useToast } from '@chakra-ui/react';
 import { useGetTasksQuery } from '../features/api/taskSlice';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useCustomSelector } from './reduxHooks';
 
 interface List {
 	createdAt: string;
@@ -13,13 +14,11 @@ interface List {
 const useDeleteList = () => {
 	const [DeleteList] = useDeleteListMutation();
 	const toast = useToast();
-	const params = useParams();
 	const { refetch } = useGetTasksQuery(undefined);
 	const navigate = useNavigate();
+	const { currentTab } = useCustomSelector(state => state.session);
 
 	const deleteList = (list: List) => {
-		const onSelectedList = Object.values(params)[0].includes(list.name);
-
 		DeleteList(list.id)
 			.unwrap()
 			.then(respon => {
@@ -41,7 +40,7 @@ const useDeleteList = () => {
 				});
 			});
 		refetch();
-		if (onSelectedList) {
+		if (list.name === currentTab) {
 			navigate('/homepage/myday');
 		}
 	};

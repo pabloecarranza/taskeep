@@ -3,10 +3,20 @@ import { TasksList } from '../TaskList/TasksList';
 import { AddTask } from '../AddTask/AddTask';
 import { useGetTasksQuery } from '../../features/api/taskSlice';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { currentTab } from '../../features/api/sessionSlice';
+
 export const Completed = ({ textOne }) => {
 	const { data = [] } = useGetTasksQuery();
 
 	const onlyCompletedTasks = data.filter(task => task.completed === true);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(currentTab('Completed'));
+	}, []);
 
 	return (
 		<>
