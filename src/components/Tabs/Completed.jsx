@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { currentTab } from '../../features/api/sessionSlice';
+import { AddTaskDates } from '../../utils/EnglishTexts';
 
 export const Completed = ({ textOne }) => {
 	const { data = [] } = useGetTasksQuery();
@@ -34,7 +35,7 @@ export const Completed = ({ textOne }) => {
 				<TasksList data={onlyCompletedTasks} />
 			</Center>
 			<Center h='88%' alignItems='flex-end'>
-				<AddTask />
+				<AddTask {...AddTaskDates} />
 			</Center>
 		</>
 	);

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { currentTab } from '../../features/api/sessionSlice';
+import { AddTaskDates } from '../../utils/EnglishTexts';
 
 export const Planing = ({ textThree }) => {
 	const { data = [] } = useGetTasksQuery();
@@ -33,7 +34,7 @@ export const Planing = ({ textThree }) => {
 				<TasksList data={onlyPlaningTasks} />
 			</Center>
 			<Center h='88%' alignItems='flex-end'>
-				<AddTask />
+				<AddTask {...AddTaskDates} />
 			</Center>
 		</>
 	);
