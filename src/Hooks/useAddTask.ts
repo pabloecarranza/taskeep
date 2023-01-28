@@ -7,6 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { getItem } from '../utils/LocalStorage';
 import { useCustomDispatch } from './reduxHooks';
 
+interface Event {
+	event: ChangeEvent<HTMLInputElement> | null | string;
+	target: { value: string };
+}
+
 interface Task {
 	id?: string;
 	completed: boolean;
@@ -18,11 +23,6 @@ interface Task {
 	notes: string;
 	listid: Event | null;
 	userid: string;
-}
-
-interface Event {
-	event: ChangeEvent<HTMLInputElement> | null | string;
-	target: { value: string };
 }
 
 export const useAddTask = () => {
