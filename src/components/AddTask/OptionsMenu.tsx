@@ -15,6 +15,35 @@ import {
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
+import { ChangeEvent } from 'react';
+
+interface Task {
+	id?: string;
+	completed: boolean;
+	important: boolean;
+	description: string;
+	reminder: string;
+	expiration_date: string;
+	repeat: string;
+	notes: string;
+	listid: ChangeEvent<HTMLInputElement> | null | string;
+	userid: string;
+}
+
+interface List {
+	createdAt: string;
+	id: number;
+	name: string;
+	updatedAt: string;
+}
+
+interface Props {
+	task: Task,
+	data: List[],
+	isLoading: boolean,
+	capitalizeFirstLetter: (arg: string )=> string,
+	handleOnChange: (arg: string, arg2: ChangeEvent<HTMLInputElement> | number ) => void,
+}
 
 export const OptionsMenu = ({
 	task,
@@ -22,7 +51,7 @@ export const OptionsMenu = ({
 	isLoading,
 	capitalizeFirstLetter,
 	handleOnChange,
-}) => {
+}: Props) => {
 	return (
 		<Menu computePositionOnMount={true}>
 			<MenuButton
@@ -37,7 +66,6 @@ export const OptionsMenu = ({
 				Options
 			</MenuButton>
 			<MenuList
-				variant='gray'
 				borderColor='gray.800'
 				bg='gray.800'
 				aria-label='menulist'
