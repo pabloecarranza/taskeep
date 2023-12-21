@@ -7,6 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { getItem } from '../utils/LocalStorage';
 import { useCustomDispatch } from './reduxHooks';
 
+interface Event {
+	event: ChangeEvent<HTMLInputElement> | null | string;
+	target: { value: string };
+}
+
 interface Task {
 	id?: string;
 	completed: boolean;
@@ -16,13 +21,8 @@ interface Task {
 	expiration_date: string;
 	repeat: string;
 	notes: string;
-	listid: ChangeEvent<HTMLInputElement> | null | string;
+	listid: Event | null;
 	userid: string;
-}
-
-interface Event {
-	event: ChangeEvent<HTMLInputElement> | null | string;
-	target: { value: string };
 }
 
 export const useAddTask = () => {
@@ -84,7 +84,7 @@ export const useAddTask = () => {
 		if (type === 'listid') {
 			setTask({
 				...task,
-				listid: event.target.value,
+				listid: event,
 			});
 		}
 

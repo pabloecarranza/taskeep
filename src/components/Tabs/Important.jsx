@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { currentTab } from '../../features/api/sessionSlice';
 import { useDispatch } from 'react-redux';
+import { AddTaskDates } from '../../utils/EnglishTexts';
 
 export const Important = ({ textFour }) => {
 	const { data = [] } = useGetTasksQuery();
@@ -34,7 +35,7 @@ export const Important = ({ textFour }) => {
 				<TasksList data={onlyImportantTasks} />
 			</Center>
 			<Center h='88%' alignItems='flex-end'>
-				<AddTask />
+				<AddTask {...AddTaskDates} />
 			</Center>
 		</>
 	);

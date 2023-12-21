@@ -75,7 +75,7 @@ export const useDeleteTask = () => {
 		}
 	}
 
-	function deleteTaskSubmit(taskid: string) {
+	function deleteTaskSubmit(taskid: string | undefined) {
 		DeleteTask(taskid)
 			.unwrap()
 			.then(respon => {

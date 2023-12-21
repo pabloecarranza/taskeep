@@ -7,6 +7,7 @@ import { TasksList } from '../TaskList/TasksList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { currentTab } from '../../features/api/sessionSlice';
+import { AddTaskDates } from '../../utils/EnglishTexts';
 
 export const CustomList = () => {
 	const params = useParams();
@@ -47,7 +48,7 @@ export const CustomList = () => {
 				<TasksList data={onlySelectListTasks} />
 			</Center>
 			<Center h='88%' alignItems='flex-end'>
-				<AddTask />
+				<AddTask {...AddTaskDates} />
 			</Center>
 		</>
 	);

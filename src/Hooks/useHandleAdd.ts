@@ -2,11 +2,19 @@ import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { usePostListMutation } from '../features/api/listSlice';
 
-const usehandleAdd = onClose => {
+type onClose = () => void;
+
+interface Event {
+	type: string;
+	key: string;
+	target: { value: string };
+}
+
+const usehandleAdd = (onClose: onClose) => {
 	const [input, setInput] = useState({ name: '' });
 	const toast = useToast();
 	const [PostList] = usePostListMutation();
-	const handleChange = value => {
+	const handleChange = (value: string) => {
 		setInput({ name: value });
 	};
 
@@ -14,7 +22,7 @@ const usehandleAdd = onClose => {
 		onClose();
 	};
 
-	const handleSubmit = event => {
+	const handleSubmit = (event: Event) => {
 		if (event.key === 'Enter' || event.type === 'click') {
 			if (input.name.length === 0) {
 				toast({

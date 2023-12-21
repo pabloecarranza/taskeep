@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import {
@@ -8,12 +8,17 @@ import {
 import { useDispatch } from 'react-redux';
 import { sessionIn } from '../features/api/sessionSlice';
 
+interface Event {
+	event: ChangeEvent<HTMLInputElement> | null | string;
+	target: { value: string; name: string };
+}
+
 export const useLoginUser = () => {
 	const dispatch = useDispatch();
 	const toast = useToast();
-	const [signUp, setSignUp] = React.useState(false);
-	const [show, setShow] = React.useState(true);
-	const [credentials, setCredentials] = React.useState({
+	const [signUp, setSignUp] = useState(false);
+	const [show, setShow] = useState(true);
+	const [credentials, setCredentials] = useState({
 		username: '',
 		password: '',
 		email: '',
@@ -27,7 +32,7 @@ export const useLoginUser = () => {
 		setSignUp(!signUp);
 	};
 
-	const handleChange = e => {
+	const handleChange = (e: Event) => {
 		setCredentials({
 			...credentials,
 			[e.target.name]: e.target.value,

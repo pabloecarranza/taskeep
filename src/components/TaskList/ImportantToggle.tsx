@@ -4,9 +4,28 @@ import {
 	AiTwotoneStar,
 	AiOutlineCalendar,
 } from 'react-icons/ai';
-import PropTypes from 'prop-types';
 
-export const ImportantToggle = ({ list, setSelectedTask }) => {
+interface List {
+	completed: boolean;
+	createdAt: string;
+	description: string;
+	expiration_date: string;
+	id: string;
+	important: boolean;
+	listid: null;
+	notes: string;
+	reminder: string;
+	repeat: string;
+	updatedAt: string;
+	userid: string;
+}
+
+interface Props {
+	list: List,
+	setSelectedTask: (args: string, args2: string) => void
+}
+
+export const ImportantToggle = ({ list, setSelectedTask }: Props) => {
 	return (
 		<Center p='2' w='40%' h='50px' justifyContent='flex-end'>
 			{list.expiration_date ? (
@@ -29,6 +48,7 @@ export const ImportantToggle = ({ list, setSelectedTask }) => {
 					_active={{
 						bg: 'gray.600',
 					}}
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					onClick={e =>
 						setSelectedTask(`${list.id}?important=false`, 'setFalseImportant')
 					}
@@ -44,6 +64,7 @@ export const ImportantToggle = ({ list, setSelectedTask }) => {
 						_active={{
 							bg: 'gray.600',
 						}}
+						// eslint-disable-next-line @typescript-eslint/no-unused-vars
 						onClick={e =>
 							setSelectedTask(`${list.id}?important=true`, 'setTrueImportant')
 						}
@@ -56,7 +77,3 @@ export const ImportantToggle = ({ list, setSelectedTask }) => {
 	);
 };
 
-ImportantToggle.propTypes = {
-	list: PropTypes.object.isRequired,
-	setSelectedTask: PropTypes.func.isRequired,
-};
